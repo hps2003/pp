@@ -8,10 +8,26 @@
 (function () {
   'use strict';
 
-  var RECIPIENT = 'service@goamazing.com.tw';
+  /* ── 設定 ────────────────────────────────────────────────────────
+     apiEndpoint 留空  → 按下送出時開啟 Gmail 撰寫視窗（預設）
+     apiEndpoint 有填  → 直接 POST 到你的後端，由伺服器寄信，
+                         使用者不需再按一次「傳送」。設定方式見 README。 */
+  var CONFIG = {
+    recipient:   'service@goamazing.com.tw',
+    apiEndpoint: ''
+  };
+  var RECIPIENT = CONFIG.recipient;
 
-  var $  = function (s, r) { return (r || document).querySelector(s); };
-  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  /* 同一份程式碼同時服務兩種輸出：
+       單機版      → 沒有 #gx-root，退回 document / documentElement
+       CyberBiz 版 → 所有查詢與 CSS 變數都限縮在 #gx-root 之內，
+                     不會抓到店家版型的元素，也不會污染全站樣式 */
+  var ROOT  = document.getElementById('gx-root');
+  var SCOPE = ROOT || document;
+  var VARS  = ROOT || document.documentElement;
+
+  var $  = function (s, r) { return (r || SCOPE).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || SCOPE).querySelectorAll(s)); };
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -19,7 +35,7 @@
      用 JS 同步真實視窗高度到 CSS 變數，解決 iOS Safari 網址列
      伸縮時 100vh 會跳動、造成首屏文字被切掉的問題。            */
   function syncViewport() {
-    var doc = document.documentElement;
+    var doc = VARS;
     doc.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
     // 緞帶蝴蝶結尺寸：同時受寬度與高度限制，橫置手機也不會爆版
     var bow = Math.max(96, Math.min(190, window.innerWidth * 0.125, window.innerHeight * 0.2));
@@ -169,7 +185,8 @@
     if (sh && best) {
       if (!fancy) { sh.style.opacity = '0'; return; }
       var w = best.offsetWidth * 0.78;
-      sh.style.width = w.toFixed(0) + 'px';
+      // 用自訂屬性而非 style.width：CyberBiz 版會把 width 標成 !important 防主題污染
+      sh.style.setProperty('--rail-shadow-w', w.toFixed(0) + 'px');
       sh.style.transform = 'translateX(' + (best.offsetLeft + best.offsetWidth / 2 - track.scrollLeft - w / 2).toFixed(1) + 'px)';
       sh.style.opacity = String(Math.max(0, 1 - bestD));
     }
@@ -364,13 +381,61 @@
              '&body=' + encodeURIComponent(m.body);
     }
 
-    // 送出：開 Gmail 撰寫視窗
+    // 把欄位整理成 API 用的 JSON
+    function payload(m) {
+      var data = { to: m.to, subject: m.subject, body: m.body, source: 'goamazing-homepage' };
+      // 同時給英文欄位名（company/contact/…）與中文標籤（公司名稱/聯絡人/…），
+      // 後端用哪一種寫法都接得到。
+      fields().forEach(function (input) {
+        var v = (input.value || '').trim();
+        var en = input.getAttribute('name'), zh = input.getAttribute('data-field');
+        if (en) data[en] = v;
+        if (zh) data[zh] = v;
+      });
+      var hp = $('[data-hp]', form);      // 蜜罐欄位：真人看不到，只有機器人會填
+      if (hp) data.hp = hp.value || '';
+      return data;
+    }
+
+    // 模式二：POST 到後端，由伺服器直接寄信
+    function sendViaApi(m) {
+      if (submitBtn) { submitBtn.disabled = true; }
+      setStatus('傳送中…', 'ok');
+      // 用 text/plain 送出 JSON 字串，屬於「簡單請求」不會觸發 CORS 預檢，
+      // Google Apps Script 之類的端點才收得到（詳見 README）。
+      fetch(CONFIG.apiEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload(m))
+      })
+      .then(function (r) { return r.text().then(function (t) { return { ok: r.ok, t: t }; }); })
+      .then(function (r) {
+        var okFlag = r.ok;
+        try { var j = JSON.parse(r.t); if (j && typeof j.ok === 'boolean') okFlag = j.ok; } catch (e) {}
+        if (!okFlag) throw new Error(r.t || '伺服器回應失敗');
+        form.reset();
+        setStatus('已送出，感謝您的來信！專屬企福顧問將盡快與您聯繫。', 'ok');
+      })
+      .catch(function (err) {
+        // 後端掛掉時不要讓使用者白填一次，退回 Gmail
+        setStatus('系統寄送失敗（' + (err.message || err) + '），已為您改開 Gmail，請直接按「傳送」。', 'warn');
+        var w = window.open(gmailUrl(m), '_blank', 'noopener,noreferrer');
+        if (!w) window.location.href = gmailUrl(m);
+      })
+      .then(function () { if (submitBtn) submitBtn.disabled = false; });
+    }
+
+    // 送出
     form.addEventListener('submit', function (e) {
-      e.preventDefault();                 // 不做傳統表單送出，改由 Gmail 接手
+      e.preventDefault();                 // 不做傳統表單送出
       setStatus('');
       if (!validate()) return;
 
       var m = compose();
+
+      if (CONFIG.apiEndpoint) { sendViaApi(m); return; }
+
+      // 模式一（預設）：開 Gmail 撰寫視窗
       var url = gmailUrl(m);
 
       // window.open 必須在使用者點擊的同一個事件內同步呼叫，

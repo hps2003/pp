@@ -1,0 +1,1499 @@
+<!-- ═══ 購精彩 GOAMAZING 首頁 —— CyberBiz 可貼上片段 ═══
+     圖片模式：url（外連，請把下方 https://請換成你的圖片網址/ 換成你的圖片網址）
+     · 所有樣式限縮在 #gx-root 之下，不會影響店家其他頁面
+     · 所有 class / id 皆有 gx- 前綴，不會與佈景主題相撞
+     · 若不要滿版，把下一行的 class="gx-full" 刪掉即可
+     · 若店家頁首是固定的，把 style 裡的 --gx-header-h 改成頁首高度
+     ══════════════════════════════════════════════ -->
+<div id="gx-root" class="gx-full" style="--gx-header-h:0px">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
+#gx-root{--brand-red: #c8161d;--brand-red-dark: #a5121a;--brand-gold: #c9a063;--gold-line: #c8a96a;--ink: #1c1a19;--ink-soft: #5c5754;--ink-faint: #8a8481;--surface: #faf9fb;--page: #fff;--film-warmth: .55;--grain-opacity: .16;--gutter: clamp(18px, 5.5vw, 88px);--maxw: 1560px;--nav-h: 62px;--stage-h: 340vh;--font-zh: "Noto Sans TC", "PingFang TC", "PingFang SC", "Microsoft JhengHei",
+             "Hiragino Sans TC", "Heiti TC", sans-serif;--font-en: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;--font-ui: "Archivo", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei",
+             -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;--radius-card: 20px;--radius-block: 26px;--shadow-card: 0 12px 34px rgba(32, 30, 29, .07);--shadow-soft: 0 10px 30px rgba(32, 30, 29, .06);}
+@media (min-width: 900px){
+#gx-root{--nav-h: 72px;}
+}
+@media (max-width: 899px){
+#gx-root{--stage-h: 260vh;}
+}
+@media (max-width: 599px){
+#gx-root{--stage-h: 220vh;}
+}
+#gx-root, #gx-root *, #gx-root *::before, #gx-root *::after{box-sizing: border-box !important;}
+#gx-root{scroll-behavior: smooth !important;-webkit-text-size-adjust: 100% !important;text-size-adjust: 100% !important;}
+#gx-root{margin: 0 !important;background: #000 !important;color: #fff !important;font-family: var(--font-ui) !important;font-size: 16px !important;line-height: 1.6 !important;-webkit-font-smoothing: antialiased !important;-moz-osx-font-smoothing: grayscale !important;overflow-x: clip !important;overscroll-behavior-y: none !important;}
+#gx-root img, #gx-root svg, #gx-root video{display: block !important;max-width: 100% !important;}
+#gx-root img{height: auto !important;}
+#gx-root a{color: var(--brand-gold) !important;text-decoration: none !important;}
+#gx-root a:hover{color: #fff !important;}
+#gx-root button, #gx-root input, #gx-root textarea, #gx-root select{font: inherit !important;color: inherit !important;}
+#gx-root ::selection{background: var(--brand-red) !important;color: #fff !important;}
+#gx-root :focus-visible{outline: 3px solid var(--brand-gold) !important;outline-offset: 3px !important;border-radius: 4px !important;}
+#gx-root section[id], #gx-root div[id]{scroll-margin-top: calc(var(--nav-h) + 12px) !important;}
+#gx-root .gx-skip-link{position: absolute !important;left: -9999px !important;top: 0 !important;z-index: 200;background: #fff !important;color: var(--brand-red) !important;padding: 12px 20px !important;font-weight: 700 !important;}
+#gx-root .gx-skip-link:focus{left: 12px !important;top: 12px !important;}
+#gx-root .gx-shell{width: 100% !important;max-width: var(--maxw) !important;margin-inline: auto !important;}
+#gx-root .gx-section{background: var(--page) !important;color: var(--ink) !important;padding-inline: var(--gutter) !important;}
+#gx-root .gx-section--pad-top{padding-top: clamp(44px, 6vw, 88px) !important;}
+#gx-root .gx-section--pad-bottom{padding-bottom: clamp(44px, 6vw, 86px) !important;}
+#gx-root .gx-section--pad-contact{padding-bottom: clamp(40px, 5vw, 72px) !important;}
+#gx-root .gx-section--pad-consult{padding-bottom: clamp(48px, 6.5vw, 96px) !important;}
+#gx-root .gx-sec-head{display: flex !important;flex-direction: column !important;gap: 14px !important;padding-block: clamp(34px, 5vw, 68px) clamp(20px, 3vw, 38px) !important;}
+#gx-root .gx-sec-head--center{align-items: center !important;text-align: center !important;}
+#gx-root .gx-sec-head--split{gap: 18px !important;}
+@media (min-width: 900px){
+#gx-root .gx-sec-head--split{flex-direction: row !important;align-items: flex-end !important;justify-content: space-between !important;}
+}
+#gx-root .gx-sec-title{margin: 0 !important;font-family: var(--font-zh) !important;font-weight: 900 !important;font-size: clamp(21px, 4.4vw, 38px) !important;line-height: 1.35 !important;letter-spacing: .02em !important;color: var(--brand-red) !important;text-wrap: balance !important;}
+#gx-root .gx-sec-title--wide{max-width: 17em !important;}
+#gx-root .gx-sec-rule{width: min(400px, 58%) !important;height: 18px !important;}
+#gx-root .gx-nav{position: fixed !important;inset: 0 0 auto 0 !important;z-index: 120;display: flex !important;align-items: center !important;justify-content: space-between !important;gap: 16px !important;min-height: var(--nav-h) !important;padding: 10px var(--gutter) !important;padding-top: max(10px, env(safe-area-inset-top)) !important;background: transparent !important;border-bottom: 1px solid rgba(255, 255, 255, 0) !important;transition: background .35s ease, border-color .35s ease !important;}
+#gx-root .gx-nav.gx-is-solid{background: var(--brand-red) !important;border-bottom-color: rgba(255, 255, 255, .3) !important;}
+#gx-root .gx-nav__logo{flex: 0 0 auto !important;display: inline-flex !important;align-items: center !important;min-height: 44px !important;padding-right: 8px !important;}
+#gx-root .gx-nav__logo img{height: clamp(18px, 2.4vw, 26px) !important;width: auto !important;}
+#gx-root .gx-nav__links{display: flex !important;align-items: center !important;gap: clamp(14px, 2.4vw, 34px) !important;}
+#gx-root .gx-nav__link{display: inline-flex !important;align-items: center !important;min-height: 44px !important;color: #fff !important;font-size: 13px !important;font-weight: 600 !important;letter-spacing: .04em !important;white-space: nowrap !important;}
+#gx-root .gx-nav__link:hover{color: var(--brand-gold) !important;}
+#gx-root .gx-nav__cta{display: inline-flex !important;align-items: center !important;justify-content: center !important;min-height: 44px !important;padding: 0 18px !important;border: 2px solid #fff !important;color: #fff !important;font-size: 13px !important;font-weight: 700 !important;letter-spacing: .04em !important;white-space: nowrap !important;}
+#gx-root .gx-nav__cta:hover{background: #fff !important;color: var(--brand-red) !important;}
+#gx-root .gx-nav__burger{display: inline-flex !important;align-items: center !important;justify-content: center !important;width: 44px !important;height: 44px !important;padding: 0 !important;background: transparent !important;border: 1px solid rgba(255, 255, 255, .55) !important;color: #fff !important;cursor: pointer !important;flex: 0 0 auto !important;}
+#gx-root .gx-nav__burger span{position: relative !important;display: block !important;width: 20px !important;height: 2px !important;background: #fff !important;transition: transform .28s ease, background-color .28s ease !important;}
+#gx-root .gx-nav__burger span::before, #gx-root .gx-nav__burger span::after{content: "" !important;position: absolute !important;left: 0 !important;width: 20px !important;height: 2px !important;background: #fff !important;transition: transform .28s ease !important;}
+#gx-root .gx-nav__burger span::before{top: -6px !important;}
+#gx-root .gx-nav__burger span::after{top: 6px !important;}
+#gx-root .gx-nav__burger[aria-expanded="true"] span{background: transparent !important;}
+#gx-root .gx-nav__burger[aria-expanded="true"] span::before{transform: translateY(6px) rotate(45deg);}
+#gx-root .gx-nav__burger[aria-expanded="true"] span::after{transform: translateY(-6px) rotate(-45deg);}
+#gx-root .gx-nav__drawer{position: fixed !important;inset: var(--nav-h) 0 auto 0 !important;z-index: 119;display: flex !important;flex-direction: column !important;padding: 8px var(--gutter) 22px !important;background: var(--brand-red) !important;border-bottom: 1px solid rgba(255, 255, 255, .3) !important;transform: translateY(-12px);opacity: 0;visibility: hidden !important;pointer-events: none !important;transition: opacity .25s ease, transform .25s ease, visibility .25s !important;max-height: calc(100dvh - var(--nav-h)) !important;overflow-y: auto !important;}
+#gx-root .gx-nav__drawer.gx-is-open{opacity: 1;visibility: visible !important;pointer-events: auto !important;transform: translateY(0);}
+#gx-root .gx-nav__drawer a{display: flex !important;align-items: center !important;min-height: 52px !important;color: #fff !important;font-family: var(--font-zh) !important;font-size: 16px !important;font-weight: 700 !important;letter-spacing: .04em !important;border-bottom: 1px solid rgba(255, 255, 255, .22) !important;}
+#gx-root .gx-nav__drawer a:last-child{border-bottom: 0 !important;}
+@media (max-width: 899px){
+#gx-root .gx-nav__links{display: none !important;}
+}
+@media (min-width: 900px){
+#gx-root .gx-nav__burger, #gx-root .gx-nav__drawer{display: none !important;}
+}
+#gx-root .gx-stage{position: relative !important;height: var(--stage-h) !important;background: #000 !important;}
+#gx-root .gx-stage__sticky{position: sticky !important;top: 0 !important;height: 100vh !important;height: 100svh !important;overflow: hidden !important;background: #000 !important;}
+#gx-root .gx-stage__layer{position: absolute !important;inset: 0 !important;overflow: hidden !important;}
+#gx-root .gx-stage__photo{position: absolute !important;inset: 0 !important;width: 100% !important;height: 100% !important;object-fit: cover !important;object-position: 50% 40% !important;transform: scale(1.16);transform-origin: 4% 46% !important;filter: sepia(calc(var(--film-warmth) * .42))
+          saturate(calc(1 + var(--film-warmth) * .06))
+          contrast(1.07) brightness(1.03) !important;}
+#gx-root .gx-stage__warm{position: absolute !important;inset: 0 !important;pointer-events: none !important;background: linear-gradient(205deg, rgba(222,158,96,.42), rgba(178,88,44,.16) 55%, rgba(26,18,14,.4)) !important;opacity: calc(var(--film-warmth) * .85);mix-blend-mode: multiply !important;}
+#gx-root .gx-stage__grain{position: absolute !important;inset: 0 !important;pointer-events: none !important;opacity: var(--grain-opacity);mix-blend-mode: overlay !important;background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") !important;}
+#gx-root .gx-stage__scrim{position: absolute !important;inset: 0 !important;pointer-events: none !important;background: linear-gradient(0deg, rgba(18,10,8,.9) 0%, rgba(18,10,8,.68) 42%, rgba(18,10,8,.12) 80%) !important;}
+#gx-root .gx-stage__veil{position: absolute !important;inset: 0 !important;background: #000 !important;pointer-events: none !important;}
+@media (min-width: 780px){
+#gx-root .gx-stage__scrim{background: linear-gradient(100deg, rgba(18,10,8,.86) 0%, rgba(18,10,8,.62) 34%,
+                                        rgba(18,10,8,.12) 62%, rgba(18,10,8,.3) 100%) !important;}
+}
+#gx-root .gx-hero{position: absolute !important;inset: 0 !important;z-index: 5;display: flex !important;flex-direction: column !important;justify-content: flex-end !important;gap: clamp(14px, 2.4vw, 30px) !important;padding: calc(var(--nav-h) + 16px) var(--gutter) 14vh !important;padding-bottom: max(14vh, calc(14vh + env(safe-area-inset-bottom))) !important;opacity: 0;pointer-events: none !important;}
+#gx-root .gx-hero > *{pointer-events: auto !important;}
+@media (min-width: 780px){
+#gx-root .gx-hero{justify-content: center !important;padding-bottom: 0 !important;}
+}
+@media (max-height: 520px) and (orientation: landscape){
+#gx-root .gx-hero{justify-content: center !important;padding-bottom: 0 !important;gap: 10px !important;}
+}
+#gx-root .gx-hero__eyebrow{display: flex !important;align-items: center !important;gap: 14px !important;}
+#gx-root .gx-hero__eyebrow i{width: clamp(30px, 4vw, 58px) !important;height: 2px !important;background: var(--brand-gold) !important;flex: 0 0 auto !important;}
+#gx-root .gx-hero__eyebrow span{font-size: clamp(11px, 2.6vw, 12px) !important;font-weight: 700 !important;letter-spacing: .2em !important;color: var(--brand-gold) !important;white-space: nowrap !important;}
+#gx-root .gx-hero__eyebrow--alt{color: rgba(255, 255, 255, .8) !important;letter-spacing: .24em !important;}
+#gx-root .gx-stage__tagline{font-family: var(--font-zh) !important;font-size: clamp(12px, 1.1vw, 15px) !important;font-weight: 500 !important;letter-spacing: .24em !important;color: rgba(255, 255, 255, .86) !important;white-space: nowrap !important;}
+#gx-root .gx-hero__title{margin: 0 !important;max-width: 15em !important;font-family: var(--font-zh) !important;font-weight: 900 !important;font-size: clamp(26px, 6.4vw, 66px) !important;line-height: 1.25 !important;letter-spacing: .015em !important;color: #fff !important;text-shadow: 0 2px 26px rgba(0, 0, 0, .45) !important;text-wrap: balance !important;}
+#gx-root .gx-hero__sub{margin: 0 !important;max-width: 29em !important;border-left: 1px solid rgba(255, 255, 255, .42) !important;padding-left: 16px !important;font-family: var(--font-zh) !important;font-weight: 400 !important;font-size: clamp(13px, 3.2vw, 16px) !important;line-height: 1.95 !important;letter-spacing: .02em !important;color: rgba(255, 255, 255, .88) !important;text-shadow: 0 1px 16px rgba(0, 0, 0, .5) !important;}
+@media (max-width: 380px), (max-height: 480px) and (orientation: landscape){
+#gx-root .gx-hero__sub{display: none !important;}
+}
+#gx-root .gx-hero__btns{display: flex !important;flex-wrap: wrap !important;gap: 12px !important;margin-top: 4px !important;width: 100% !important;}
+#gx-root .gx-stage__panel{position: absolute !important;left: 0 !important;right: 0 !important;height: 50.2% !important;background: var(--brand-red) !important;overflow: hidden !important;will-change: transform !important;}
+#gx-root .gx-stage__panel--top{top: 0 !important;}
+#gx-root .gx-stage__panel--bottom{bottom: 0 !important;}
+#gx-root .gx-stage__panel i{position: absolute !important;background: rgba(255, 255, 255, .22) !important;top: 0 !important;bottom: 0 !important;width: 1px !important;}
+#gx-root .gx-stage__panel i.gx-l{left: var(--gutter) !important;}
+#gx-root .gx-stage__panel i.gx-r{right: var(--gutter) !important;}
+#gx-root .gx-stage__panel u{position: absolute !important;left: 0 !important;right: 0 !important;height: 1px !important;background: rgba(255, 255, 255, .16) !important;}
+#gx-root .gx-stage__panel--top u{bottom: 0 !important;}
+#gx-root .gx-stage__panel--bottom u{top: 0 !important;}
+#gx-root .gx-stage__wordmark{position: absolute !important;left: calc(var(--gutter) + clamp(12px, 3vw, 44px)) !important;top: clamp(84px, 15vh, 168px) !important;right: clamp(56px, 8vw, 90px) !important;display: flex !important;flex-direction: column !important;gap: clamp(8px, 1.6vw, 20px) !important;}
+#gx-root .gx-stage__wordmark b{font-family: var(--font-en) !important;font-weight: 900 !important;font-size: clamp(30px, 7.4vw, 132px) !important;line-height: .88 !important;letter-spacing: -.045em !important;color: #fff !important;}
+#gx-root .gx-stage__gift{position: absolute !important;right: clamp(20px, 3vw, 40px) !important;top: clamp(84px, 14vh, 150px) !important;writing-mode: vertical-rl !important;font-size: 11px !important;font-weight: 700 !important;letter-spacing: .3em !important;color: rgba(255, 255, 255, .62) !important;}
+#gx-root .gx-stage__zh{position: absolute !important;right: calc(var(--gutter) + clamp(12px, 3vw, 44px)) !important;bottom: clamp(80px, 14vh, 158px) !important;left: clamp(16px, 5vw, 60px) !important;display: flex !important;flex-direction: column !important;align-items: flex-end !important;gap: clamp(8px, 1.5vw, 18px) !important;}
+#gx-root .gx-stage__zh b{font-family: var(--font-zh) !important;font-weight: 900 !important;font-size: clamp(38px, 10.4vw, 158px) !important;line-height: .9 !important;letter-spacing: .06em !important;color: #fff !important;}
+#gx-root .gx-stage__hint{position: absolute !important;left: calc(var(--gutter) + clamp(12px, 3vw, 44px)) !important;bottom: max(clamp(28px, 5vh, 52px), env(safe-area-inset-bottom)) !important;display: flex !important;align-items: center !important;gap: 12px !important;animation: gx-amzHint 2.1s ease-in-out infinite !important;}
+#gx-root .gx-stage__hint b{font-size: 11px !important;font-weight: 700 !important;letter-spacing: .24em !important;color: #fff !important;white-space: nowrap !important;}
+#gx-root .gx-stage__hint i{font-family: var(--font-en) !important;font-size: 13px !important;font-style: normal !important;color: var(--brand-gold) !important;}
+@keyframes gx-amzHint{0%, 100%{ transform: translateY(0); opacity: .55; }
+50%{ transform: translateY(7px); opacity: 1; }}
+#gx-root .gx-stage__ribbon{position: absolute !important;top: 50% !important;left: 0 !important;right: 0 !important;height: 0 !important;z-index: 6;display: flex !important;align-items: center !important;justify-content: center !important;pointer-events: none !important;}
+#gx-root .gx-stage__ribbon .gx-line{position: absolute !important;width: 52% !important;height: 2px !important;}
+#gx-root .gx-stage__ribbon .gx-line.gx-l{right: 50% !important;background: linear-gradient(90deg, rgba(201,160,99,0), var(--brand-gold) 22%, var(--brand-gold)) !important;}
+#gx-root .gx-stage__ribbon .gx-line.gx-r{left: 50% !important;background: linear-gradient(270deg, rgba(201,160,99,0), var(--brand-gold) 22%, var(--brand-gold)) !important;}
+#gx-root .gx-stage__bow{position: relative !important;width: var(--bow-w, 150px) !important;height: calc(var(--bow-w, 150px) / 1.273) !important;}
+#gx-root .gx-stage__bow img{position: absolute !important;top: 0 !important;left: 0 !important;width: 100% !important;height: auto !important;max-width: none !important;will-change: transform !important;}
+#gx-root .gx-btn{display: inline-flex !important;align-items: center !important;justify-content: space-between !important;gap: 16px !important;min-height: 52px !important;padding: 12px 20px !important;flex: 1 1 100% !important;width: 100% !important;font-family: var(--font-zh) !important;font-size: clamp(14px, 3.4vw, 16px) !important;font-weight: 700 !important;letter-spacing: .03em !important;line-height: 1.3 !important;border: 0 !important;border-radius: 0 !important;cursor: pointer !important;text-align: left !important;transition: background-color .25s ease, color .25s ease, border-color .25s ease !important;}
+#gx-root .gx-btn i{font-family: var(--font-en) !important;font-style: normal !important;font-weight: 400 !important;flex: 0 0 auto !important;}
+@media (min-width: 600px){
+#gx-root .gx-btn{flex: 0 1 auto !important;width: auto !important;min-width: 236px !important;}
+}
+#gx-root .gx-btn--solid{background: var(--brand-red) !important;color: #fff !important;}
+#gx-root .gx-btn--solid:hover{background: var(--brand-red-dark) !important;color: #fff !important;}
+#gx-root .gx-btn--outline{background: rgba(255, 255, 255, .08) !important;border: 2px solid #fff !important;color: #fff !important;-webkit-backdrop-filter: blur(2px) !important;backdrop-filter: blur(2px) !important;}
+#gx-root .gx-btn--outline:hover{background: #fff !important;color: #121212 !important;}
+#gx-root .gx-btn--white{background: #fff !important;color: var(--brand-red) !important;border-radius: 14px !important;min-height: 56px !important;}
+#gx-root .gx-btn--white:hover{background: #fdf8ea !important;color: var(--brand-red) !important;}
+#gx-root .gx-btn--submit{background: var(--brand-red) !important;color: #fff !important;border-radius: 14px !important;min-height: 56px !important;font-weight: 900 !important;font-size: 16px !important;}
+#gx-root .gx-btn--submit:hover:not(:disabled){background: var(--brand-red-dark) !important;}
+#gx-root .gx-btn--submit:disabled{opacity: .6;cursor: progress !important;}
+#gx-root .gx-features{display: grid !important;gap: clamp(14px, 2vw, 28px) !important;grid-template-columns: 1fr !important;}
+@media (min-width: 640px){
+#gx-root .gx-features{grid-template-columns: repeat(2, minmax(0, 1fr)) !important;}
+}
+@media (min-width: 1080px){
+#gx-root .gx-features{grid-template-columns: repeat(3, minmax(0, 1fr)) !important;}
+}
+#gx-root .gx-feature{display: flex !important;align-items: flex-start !important;gap: clamp(14px, 1.6vw, 22px) !important;background: var(--surface) !important;border-radius: var(--radius-card) !important;padding: clamp(20px, 2.4vw, 32px) !important;box-shadow: var(--shadow-soft);min-width: 0 !important;}
+#gx-root .gx-feature__badge{display: flex !important;align-items: center !important;justify-content: center !important;width: clamp(54px, 5vw, 72px) !important;height: clamp(54px, 5vw, 72px) !important;border-radius: 50% !important;background: var(--brand-red) !important;flex: 0 0 auto !important;}
+#gx-root .gx-feature__badge svg{width: 55% !important;height: 55% !important;}
+#gx-root .gx-feature__text{display: flex !important;flex-direction: column !important;gap: 8px !important;min-width: 0 !important;}
+#gx-root .gx-feature h3{margin: 0 !important;font-family: var(--font-zh) !important;font-weight: 900 !important;font-size: clamp(16px, 1.5vw, 21px) !important;letter-spacing: .03em !important;color: var(--ink) !important;line-height: 1.4 !important;}
+#gx-root .gx-feature p{margin: 0 !important;font-family: var(--font-zh) !important;font-size: clamp(13px, 1.05vw, 15px) !important;line-height: 1.85 !important;color: var(--ink-soft) !important;}
+#gx-root .gx-rail-wrap{position: relative !important;width: 100% !important;max-width: var(--maxw) !important;margin-inline: auto !important;}
+#gx-root .gx-rail{display: grid !important;grid-auto-flow: column !important;gap: clamp(14px, 2vw, 26px) !important;overflow-x: auto !important;overflow-y: hidden !important;scroll-snap-type: x mandatory;-webkit-overflow-scrolling: touch !important;scrollbar-width: none !important;cursor: grab !important;grid-auto-columns: var(--card-w) !important;padding: 22px max(8px, calc(50% - var(--card-w) / 2)) 30px !important;}
+#gx-root .gx-rail::-webkit-scrollbar{display: none !important;}
+#gx-root .gx-rail:active{cursor: grabbing !important;}
+#gx-root .gx-rail--wide{--card-w: min(80vw, 300px);}
+#gx-root .gx-rail--narrow{--card-w: min(68vw, 250px);}
+@media (min-width: 600px){
+#gx-root .gx-rail--wide{--card-w: min(58vw, 340px);}
+#gx-root .gx-rail--narrow{--card-w: min(44vw, 262px);}
+}
+@media (min-width: 900px){
+#gx-root .gx-rail--wide{--card-w: clamp(280px, 34vw, 360px);}
+#gx-root .gx-rail--narrow{--card-w: clamp(220px, 25vw, 268px);}
+}
+@media (min-width: 1200px){
+#gx-root .gx-rail--wide{--card-w: clamp(300px, 27vw, 404px);}
+#gx-root .gx-rail--narrow{--card-w: clamp(230px, 19vw, 282px);}
+}
+@media (hover: hover) and (pointer: fine){
+#gx-root .gx-rail{perspective: 1500px !important;perspective-origin: 50% 45% !important;}
+}
+#gx-root .gx-card{scroll-snap-align: center !important;display: flex !important;flex-direction: column !important;background: var(--surface) !important;border-radius: var(--radius-card) !important;box-shadow: var(--shadow-card);transition: box-shadow .3s ease, opacity .3s ease !important;will-change: transform !important;backface-visibility: hidden !important;min-width: 0 !important;}
+#gx-root .gx-card__media{position: relative !important;}
+#gx-root .gx-card__media > .gx-frame{border-radius: 16px !important;overflow: hidden !important;}
+#gx-root .gx-card__media img.gx-photo{width: 100% !important;height: auto !important;aspect-ratio: 426 / 308 !important;object-fit: cover !important;}
+#gx-root .gx-card__badge{position: absolute !important;display: flex !important;align-items: center !important;justify-content: center !important;aspect-ratio: 1 !important;border-radius: 50% !important;background: var(--surface) !important;}
+#gx-root .gx-card__badge--center{left: calc(50% - 13.5%) !important;bottom: -19% !important;width: 27% !important;}
+#gx-root .gx-card__badge--left{left: 4.8% !important;bottom: -26% !important;width: 33.5% !important;}
+#gx-root .gx-card__badge img{width: var(--badge-w, 60%) !important;height: auto !important;}
+#gx-root .gx-card__body{display: flex !important;flex-direction: column !important;gap: 8px !important;padding: clamp(18px, 1.8vw, 26px) !important;text-align: center !important;}
+#gx-root .gx-card__body--offset-center{padding-top: 24% !important;}
+#gx-root .gx-card__body--offset-left{padding-top: 26% !important;}
+#gx-root .gx-card h3{margin: 0 !important;font-family: var(--font-zh) !important;font-weight: 900 !important;font-size: clamp(16px, 1.5vw, 22px) !important;letter-spacing: .03em !important;color: var(--ink) !important;line-height: 1.4 !important;}
+#gx-root .gx-card p{margin: 0 !important;font-family: var(--font-zh) !important;font-size: clamp(13px, 1.05vw, 15px) !important;line-height: 1.85 !important;color: var(--ink-soft) !important;}
+#gx-root .gx-card--scene{align-items: center !important;gap: 12px !important;text-align: center !important;padding: clamp(22px, 2.6vw, 38px) clamp(14px, 1.6vw, 24px) !important;}
+#gx-root .gx-card--scene svg{width: 44px !important;height: 44px !important;flex: 0 0 auto !important;}
+#gx-root .gx-card--scene h3{font-size: clamp(15px, 1.35vw, 19px) !important;}
+#gx-root .gx-card--scene p{font-size: clamp(12.5px, 1vw, 14.5px) !important;line-height: 1.8 !important;}
+#gx-root .gx-rail__shadow{position: absolute !important;left: 0 !important;bottom: 2px !important;width: var(--rail-shadow-w, 300px) !important;height: 34px !important;background: radial-gradient(ellipse at 50% 0%, rgba(32,30,29,.3), rgba(32,30,29,0) 70%) !important;filter: blur(5px) !important;pointer-events: none !important;opacity: 0;transition: opacity .3s ease !important;}
+#gx-root .gx-rail-nav{display: flex !important;align-items: center !important;gap: 12px !important;}
+#gx-root .gx-rail-nav--center{justify-content: center !important;margin-bottom: 6px !important;}
+#gx-root .gx-rail-nav__hint{font-family: var(--font-zh) !important;font-size: 12px !important;letter-spacing: .12em !important;color: var(--ink-faint) !important;}
+#gx-root .gx-rail-nav button{display: flex !important;align-items: center !important;justify-content: center !important;width: 46px !important;height: 46px !important;flex: 0 0 auto !important;border-radius: 50% !important;border: 1px solid #e6e0da !important;background: #fff !important;color: var(--brand-red) !important;font-family: var(--font-en) !important;font-size: 19px !important;line-height: 1 !important;cursor: pointer !important;box-shadow: 0 6px 16px rgba(32, 30, 29, .08);transition: background-color .2s ease, color .2s ease, border-color .2s ease !important;}
+#gx-root .gx-rail-nav button:hover{background: var(--brand-red) !important;color: #fff !important;border-color: var(--brand-red) !important;}
+@media (max-width: 760px){
+#gx-root .gx-rail-nav__hint{display: none !important;}
+}
+#gx-root .gx-omo{display: grid !important;gap: clamp(14px, 1.8vw, 24px) !important;grid-template-columns: 1fr !important;justify-items: center !important;align-items: stretch !important;width: 100% !important;max-width: var(--maxw) !important;margin-inline: auto !important;}
+#gx-root .gx-omo__cycle{display: flex !important;align-items: center !important;justify-content: center !important;flex: 0 0 auto !important;}
+#gx-root .gx-omo__cycle img{width: clamp(56px, 6vw, 88px) !important;height: auto !important;will-change: transform !important;}
+#gx-root .gx-omo__card{display: flex !important;align-items: center !important;gap: clamp(14px, 1.8vw, 32px) !important;border-radius: 22px !important;padding: clamp(22px, 3vw, 46px) !important;width: 100% !important;min-width: 0 !important;}
+#gx-root .gx-omo__card--online{background: #fdeeee !important;}
+#gx-root .gx-omo__card--offline{background: #fdf8ea !important;}
+#gx-root .gx-omo__card img{width: clamp(64px, 7vw, 106px) !important;height: auto !important;flex: 0 0 auto !important;}
+#gx-root .gx-omo__text{display: flex !important;flex-direction: column !important;gap: 14px !important;min-width: 0 !important;flex: 1 1 auto !important;}
+#gx-root .gx-omo__text h3{margin: 0 !important;font-family: var(--font-zh) !important;font-weight: 900 !important;font-size: clamp(17px, 1.7vw, 25px) !important;letter-spacing: .03em !important;line-height: 1.4 !important;}
+#gx-root .gx-omo__card--online  h3{color: var(--brand-red) !important;}
+#gx-root .gx-omo__card--offline h3{color: var(--gold-line) !important;}
+#gx-root .gx-omo__text ul{display: flex !important;flex-direction: column !important;gap: 12px !important;margin: 0 !important;padding-left: 20px !important;font-family: var(--font-zh) !important;font-size: clamp(13.5px, 1.08vw, 16px) !important;line-height: 1.7 !important;color: #4c4744 !important;}
+@media (max-width: 479px){
+#gx-root .gx-omo__card{flex-direction: column !important;text-align: center !important;gap: 16px !important;}
+#gx-root .gx-omo__card--offline{flex-direction: column-reverse !important;}
+#gx-root .gx-omo__text ul{text-align: left !important;align-self: center !important;}
+}
+@media (min-width: 900px){
+#gx-root .gx-omo{grid-template-columns: 1fr auto 1fr !important;align-items: center !important;}
+}
+#gx-root .gx-stats{display: grid !important;gap: clamp(18px, 2.4vw, 34px) !important;grid-template-columns: 1fr !important;width: 100% !important;max-width: var(--maxw) !important;margin-inline: auto !important;background: #fdfbe9 !important;border-radius: var(--radius-block) !important;padding: clamp(26px, 3.6vw, 56px) clamp(18px, 2.4vw, 36px) !important;}
+#gx-root .gx-stat{display: flex !important;align-items: flex-start !important;gap: clamp(14px, 1.6vw, 26px) !important;padding: clamp(16px, 1.8vw, 30px) clamp(8px, 1.8vw, 30px) 0 !important;border-top: 1px solid var(--gold-line) !important;min-width: 0 !important;}
+#gx-root .gx-stat:first-child{border-top: 0 !important;padding-top: 0 !important;}
+#gx-root .gx-stat svg{width: 44px !important;height: 44px !important;flex: 0 0 auto !important;}
+#gx-root .gx-stat__text{display: flex !important;flex-direction: column !important;gap: 8px !important;min-width: 0 !important;}
+#gx-root .gx-stat__num{font-family: var(--font-zh) !important;font-weight: 900 !important;font-size: clamp(26px, 2.9vw, 42px) !important;line-height: 1 !important;color: var(--brand-red) !important;}
+#gx-root .gx-stat p{margin: 0 !important;font-family: var(--font-zh) !important;font-size: clamp(13px, 1.04vw, 15.5px) !important;line-height: 1.9 !important;color: #4c4744 !important;}
+@media (min-width: 900px){
+#gx-root .gx-stats{grid-template-columns: repeat(3, minmax(0, 1fr)) !important;}
+#gx-root .gx-stat{border-top: 0 !important;border-left: 1px solid var(--gold-line) !important;padding: 0 clamp(12px, 1.8vw, 30px) !important;}
+#gx-root .gx-stat:first-child{border-left: 0 !important;padding-left: 0 !important;}
+}
+#gx-root .gx-contact{display: flex !important;flex-direction: column !important;width: 100% !important;max-width: var(--maxw) !important;margin-inline: auto !important;background: var(--brand-red) !important;border-radius: var(--radius-block) !important;overflow: hidden !important;}
+#gx-root .gx-contact__top{display: flex !important;flex-direction: column !important;}
+#gx-root .gx-contact__copy{display: flex !important;flex-direction: column !important;justify-content: center !important;gap: clamp(12px, 1.5vw, 20px) !important;padding: clamp(28px, 3.8vw, 62px) clamp(20px, 2.8vw, 48px) clamp(22px, 2.6vw, 40px) !important;min-width: 0 !important;order: 2 !important;}
+#gx-root .gx-contact__copy h2{margin: 0 !important;font-family: var(--font-zh) !important;font-weight: 900 !important;font-size: clamp(19px, 4.4vw, 42px) !important;line-height: 1.35 !important;letter-spacing: .02em !important;color: #fff !important;text-wrap: balance !important;}
+#gx-root .gx-contact__copy p{margin: 0 !important;font-family: var(--font-zh) !important;font-size: clamp(13.5px, 1.15vw, 17px) !important;line-height: 1.9 !important;color: rgba(255, 255, 255, .92) !important;}
+#gx-root .gx-contact__copy .gx-btn{align-self: stretch !important;margin-top: 4px !important;}
+#gx-root .gx-contact__photo{position: relative !important;order: 1 !important;min-height: clamp(200px, 46vw, 380px) !important;}
+#gx-root .gx-contact__photo img{position: absolute !important;inset: 0 !important;width: 100% !important;height: 100% !important;object-fit: cover !important;object-position: 50% 30% !important;}
+@media (min-width: 900px){
+#gx-root .gx-contact__top{flex-direction: row !important;align-items: stretch !important;}
+#gx-root .gx-contact__copy{flex: 1 1 560px !important;order: 1 !important;}
+#gx-root .gx-contact__copy .gx-btn{align-self: flex-start !important;min-width: 268px !important;}
+#gx-root .gx-contact__photo{flex: 1 1 340px !important;order: 2 !important;min-height: clamp(250px, 26vw, 380px) !important;}
+}
+#gx-root .gx-pills{display: grid !important;gap: clamp(10px, 1.2vw, 18px) !important;grid-template-columns: 1fr !important;padding: 0 clamp(20px, 2.8vw, 48px) clamp(24px, 3vw, 46px) !important;}
+@media (min-width: 560px){
+#gx-root .gx-pills{grid-template-columns: repeat(2, minmax(0, 1fr)) !important;}
+}
+@media (min-width: 1200px){
+#gx-root .gx-pills{grid-template-columns: repeat(4, minmax(0, 1fr)) !important;}
+}
+#gx-root .gx-pill{display: flex !important;align-items: center !important;gap: 12px !important;padding: 13px clamp(12px, 1.3vw, 20px) !important;border: 1px solid rgba(255, 255, 255, .5) !important;border-radius: 12px !important;min-width: 0 !important;}
+#gx-root .gx-pill svg{width: 28px !important;height: 28px !important;flex: 0 0 auto !important;}
+#gx-root .gx-pill span{font-family: var(--font-zh) !important;font-size: clamp(13px, 1.05vw, 15.5px) !important;font-weight: 500 !important;line-height: 1.5 !important;color: #fff !important;min-width: 0 !important;}
+#gx-root .gx-consult{display: flex !important;flex-direction: column !important;gap: clamp(20px, 3vw, 52px) !important;width: 100% !important;max-width: var(--maxw) !important;margin-inline: auto !important;background: var(--surface) !important;border-radius: var(--radius-block) !important;padding: clamp(24px, 3.4vw, 56px) clamp(20px, 2.8vw, 48px) !important;box-shadow: var(--shadow-soft);}
+#gx-root .gx-consult__intro{display: flex !important;flex-direction: column !important;gap: 12px !important;min-width: 0 !important;}
+#gx-root .gx-consult__intro h2{margin: 0 !important;font-family: var(--font-zh) !important;font-weight: 900 !important;font-size: clamp(20px, 4.4vw, 34px) !important;line-height: 1.4 !important;letter-spacing: .02em !important;color: var(--brand-red) !important;}
+#gx-root .gx-consult__intro p{margin: 0 !important;font-family: var(--font-zh) !important;font-size: clamp(13.5px, 1.1vw, 16px) !important;line-height: 1.9 !important;color: var(--ink-soft) !important;}
+#gx-root .gx-consult__mail{display: flex !important;flex-wrap: wrap !important;align-items: center !important;gap: 4px !important;margin-top: 4px !important;font-family: var(--font-zh) !important;font-size: 14px !important;color: var(--ink-soft) !important;}
+#gx-root .gx-consult__mail a{display: inline-flex !important;align-items: center !important;min-height: 44px !important;color: var(--brand-red) !important;text-decoration: underline !important;text-underline-offset: 3px !important;word-break: break-all !important;}
+#gx-root .gx-consult__form{display: flex !important;flex-direction: column !important;gap: 16px !important;min-width: 0 !important;}
+@media (min-width: 1000px){
+#gx-root .gx-consult{flex-direction: row !important;align-items: flex-start !important;}
+#gx-root .gx-consult__intro{flex: 1 1 300px !important;}
+#gx-root .gx-consult__form{flex: 1 1 420px !important;}
+}
+#gx-root .gx-field-row{display: grid !important;gap: 16px !important;grid-template-columns: 1fr !important;}
+@media (min-width: 520px){
+#gx-root .gx-field-row{grid-template-columns: repeat(2, minmax(0, 1fr)) !important;}
+}
+#gx-root .gx-field{display: flex !important;flex-direction: column !important;gap: 8px !important;min-width: 0 !important;}
+#gx-root .gx-field > span{font-family: var(--font-zh) !important;font-size: 13px !important;font-weight: 700 !important;letter-spacing: .06em !important;color: var(--ink-soft) !important;}
+#gx-root .gx-field > span em{font-style: normal !important;color: var(--brand-red) !important;margin-left: 2px !important;}
+#gx-root .gx-field input, #gx-root .gx-field textarea{width: 100% !important;min-height: 48px !important;padding: 12px 14px !important;background: #fff !important;border: 1px solid #e3dfdb !important;border-radius: 10px !important;color: var(--ink) !important;font-size: 16px !important;line-height: 1.5 !important;transition: border-color .2s ease, box-shadow .2s ease !important;-webkit-appearance: none !important;appearance: none !important;}
+#gx-root .gx-field textarea{min-height: 108px !important;resize: vertical !important;font-family: var(--font-zh) !important;}
+#gx-root .gx-field input:focus, #gx-root .gx-field textarea:focus{border-color: var(--brand-red) !important;outline: none !important;box-shadow: 0 0 0 3px rgba(200, 22, 29, .14);}
+#gx-root .gx-field input[aria-invalid="true"], #gx-root .gx-field textarea[aria-invalid="true"]{border-color: var(--brand-red) !important;background: #fff7f7 !important;}
+#gx-root .gx-field__err{font-family: var(--font-zh) !important;font-size: 12.5px !important;color: var(--brand-red) !important;min-height: 0 !important;}
+#gx-root .gx-field__err:empty{display: none !important;}
+#gx-root .gx-consult__actions{display: flex !important;flex-direction: column !important;gap: 10px !important;align-items: stretch !important;}
+@media (min-width: 520px){
+#gx-root .gx-consult__actions{flex-direction: row !important;align-items: center !important;flex-wrap: wrap !important;}
+}
+#gx-root .gx-consult__actions .gx-btn--submit{min-width: 256px !important;}
+#gx-root .gx-link-alt{font-family: var(--font-zh) !important;font-size: 13.5px !important;color: var(--ink-soft) !important;text-decoration: underline !important;text-underline-offset: 3px !important;background: none !important;border: 0 !important;cursor: pointer !important;padding: 12px 4px !important;text-align: left !important;}
+#gx-root .gx-link-alt:hover{color: var(--brand-red) !important;}
+#gx-root .gx-hp{position: absolute !important;left: -9999px !important;width: 1px !important;height: 1px !important;overflow: hidden !important;}
+#gx-root .gx-form-note{font-family: var(--font-zh) !important;font-size: 13px !important;line-height: 1.7 !important;color: var(--ink-soft) !important;margin: 0 !important;}
+#gx-root .gx-form-status{font-family: var(--font-zh) !important;font-size: 13.5px !important;line-height: 1.7 !important;padding: 12px 14px !important;border-radius: 10px !important;margin: 0 !important;}
+#gx-root .gx-form-status:empty{display: none !important;}
+#gx-root .gx-form-status.gx-is-ok{background: #eef8ef !important;color: #1e6b32 !important;border: 1px solid #bfe0c6 !important;}
+#gx-root .gx-form-status.gx-is-warn{background: #fff7e8 !important;color: #8a5a12 !important;border: 1px solid #f0dab0 !important;}
+#gx-root .gx-footer{background: #141110 !important;color: rgba(255, 255, 255, .6) !important;padding: clamp(28px, 4vw, 54px) var(--gutter) !important;padding-bottom: max(clamp(28px, 4vw, 54px), env(safe-area-inset-bottom)) !important;display: flex !important;flex-direction: column !important;gap: 18px !important;align-items: center !important;text-align: center !important;}
+#gx-root .gx-footer nav{display: flex !important;flex-wrap: wrap !important;gap: 16px 22px !important;justify-content: center !important;}
+#gx-root .gx-footer span, #gx-root .gx-footer a{font-family: var(--font-zh) !important;font-size: 12px !important;letter-spacing: .08em !important;}
+@media (min-width: 760px){
+#gx-root .gx-footer{flex-direction: row !important;justify-content: space-between !important;text-align: left !important;}
+}
+@media (prefers-reduced-motion: reduce){
+#gx-root{scroll-behavior: auto !important;}
+#gx-root, #gx-root *, #gx-root *::before, #gx-root *::after{animation-duration: .001ms !important;animation-iteration-count: 1 !important;transition-duration: .001ms !important;scroll-behavior: auto !important;}
+#gx-root .gx-rail{scroll-snap-type: none;}
+}
+@media print{
+#gx-root .gx-nav, #gx-root .gx-nav__drawer, #gx-root .gx-stage, #gx-root .gx-rail-nav{display: none !important;}
+#gx-root{background: #fff !important;color: #000 !important;}
+}
+#gx-root, #gx-root *, #gx-root *::before, #gx-root *::after{box-sizing: border-box !important;}
+#gx-root img, #gx-root svg{max-width: 100% !important;border: 0 !important;float: none !important;background: none !important;}
+#gx-root h1, #gx-root h2, #gx-root h3, #gx-root h4, #gx-root h5, #gx-root h6,
+#gx-root p, #gx-root span, #gx-root li, #gx-root b, #gx-root label{text-transform: none !important;text-indent: 0 !important;float: none !important;text-shadow: none !important;}
+#gx-root ul, #gx-root ol{list-style: none !important;}
+#gx-root .gx-omo__text ul{list-style: disc !important;}
+#gx-root button{background: none !important;border: 0 !important;border-radius: 0 !important;text-transform: none !important;box-shadow: none;}
+#gx-root a{text-decoration: none !important;box-shadow: none;}
+#gx-root h1, #gx-root h2, #gx-root h3, #gx-root h4, #gx-root p,
+#gx-root ul, #gx-root ol, #gx-root figure{margin: 0 !important;padding: 0 !important;}
+#gx-root input, #gx-root textarea, #gx-root button, #gx-root label{max-width: 100% !important;}
+#gx-root::before, #gx-root::after{content: none !important;}
+#gx-root.gx-full{width: var(--gx-vw, 100vw) !important;max-width: var(--gx-vw, 100vw) !important;margin-left: calc(50% - var(--gx-vw, 100vw) / 2) !important;margin-right: calc(50% - var(--gx-vw, 100vw) / 2) !important;}
+#gx-root{--gx-header-h: 0px;}
+#gx-root .gx-nav{position: -webkit-sticky !important;position: sticky !important;top: var(--gx-header-h) !important;inset: auto !important;z-index: 40;}
+#gx-root .gx-nav__drawer{position: absolute !important;inset: auto 0 auto 0 !important;top: 100% !important;z-index: -1;max-height: 70vh !important;}
+#gx-root .gx-nav__drawer.gx-is-open{z-index: 1;}
+#gx-root.gx-nostick .gx-stage{height: auto !important;}
+#gx-root.gx-nostick .gx-stage__sticky{position: relative !important;height: 100svh !important;min-height: 520px !important;}
+#gx-root.gx-nostick .gx-stage__panel,
+#gx-root.gx-nostick .gx-stage__ribbon,
+#gx-root.gx-nostick .gx-stage__veil,
+#gx-root.gx-nostick .gx-stage__hint{display: none !important;}
+#gx-root.gx-nostick .gx-hero{opacity: 1 !important;transform: none !important;}
+#gx-root.gx-nostick .gx-hero > *{opacity: 1 !important;transform: none !important;}
+#gx-root:not(.gx-js) .gx-hero{opacity: 1;}
+#gx-root:not(.gx-js) .gx-stage{height: auto !important;}
+#gx-root:not(.gx-js) .gx-stage__sticky{position: relative !important;height: 100svh !important;min-height: 520px !important;}
+#gx-root:not(.gx-js) .gx-stage__panel,
+#gx-root:not(.gx-js) .gx-stage__ribbon,
+#gx-root:not(.gx-js) .gx-stage__veil{display: none !important;}
+#gx-root .gx-footer{margin-bottom: 0 !important;}
+</style>
+
+<a class="gx-skip-link" href="#gx-features">跳至主要內容</a>
+
+<!-- ══════════ 導覽列 ══════════ -->
+<header class="gx-nav">
+  <a class="gx-nav__logo" href="#gx-top" aria-label="GOAMAZING 購精彩 首頁">
+    <img src="https://請換成你的圖片網址/logo-wordmark.png" alt="Amazing 購精彩" width="1201" height="165">
+  </a>
+
+  <nav class="gx-nav__links" aria-label="主選單">
+    <a class="gx-nav__link" href="#gx-resources">服務內容</a>
+    <a class="gx-nav__link" href="#gx-products">商品規劃</a>
+    <a class="gx-nav__link" href="#gx-scenes">福利場景</a>
+    <a class="gx-nav__cta" href="#gx-consult">預約諮詢</a>
+  </nav>
+
+  <button class="gx-nav__burger" type="button" data-burger aria-expanded="false"
+          aria-controls="gx-mobile-menu" aria-label="開啟選單"><span></span></button>
+<nav class="gx-nav__drawer" id="gx-mobile-menu" data-drawer aria-label="行動裝置選單">
+  <a href="#gx-resources">服務內容</a>
+  <a href="#gx-products">商品規劃</a>
+  <a href="#gx-scenes">福利場景</a>
+  <a href="#gx-omo">OMO 整合優勢</a>
+  <a href="#gx-consult">預約諮詢</a>
+</nav>
+</header>
+
+
+
+<!-- ══════════ 首屏：拆禮物 ══════════ -->
+<div class="gx-stage" id="gx-top" data-stage>
+  <div class="gx-stage__sticky">
+
+    <div class="gx-stage__layer">
+      <img class="gx-stage__photo" data-photo src="https://請換成你的圖片網址/hero-gift.jpg" alt="" width="960" height="1200" fetchpriority="high">
+    </div>
+    <div class="gx-stage__warm"></div>
+    <div class="gx-stage__grain"></div>
+    <div class="gx-stage__scrim"></div>
+    <div class="gx-stage__veil" data-veil></div>
+
+    <!-- 首屏文案（捲動後淡入） -->
+    <div class="gx-hero" data-hero>
+      <div class="gx-hero__eyebrow">
+        <i></i><span>GOAMAZING 購精彩</span>
+      </div>
+      <h1 class="gx-hero__title" data-hero-title>把福利變成員工有感的生活體驗</h1>
+      <p class="gx-hero__sub" data-hero-sub>整合線上與實體資源，彈性規劃福利方案，快速提升員工滿意度，打造企業專屬的溫度福利體驗。</p>
+      <div class="gx-hero__btns" data-hero-btns>
+        <a class="gx-btn gx-btn--solid" href="#gx-resources">立即參考福利方案<i>→</i></a>
+        <a class="gx-btn gx-btn--outline" href="#gx-consult">聯繫您的專屬顧問<i>→</i></a>
+      </div>
+    </div>
+
+    <!-- 禮物包裝：上蓋 -->
+    <div class="gx-stage__panel gx-stage__panel--top" data-panel="top">
+      <i class="gx-l"></i><i class="gx-r"></i><u></u>
+      <div class="gx-stage__wordmark">
+        <div class="gx-hero__eyebrow">
+          <i></i><span class="gx-hero__eyebrow--alt">EMPLOYEE BENEFITS</span>
+        </div>
+        <b>GOAMAZING</b>
+      </div>
+      <div class="gx-stage__gift">GIFT / 01</div>
+    </div>
+
+    <!-- 禮物包裝：下蓋 -->
+    <div class="gx-stage__panel gx-stage__panel--bottom" data-panel="bottom">
+      <i class="gx-l"></i><i class="gx-r"></i><u></u>
+      <div class="gx-stage__zh">
+        <b>購精彩</b>
+        <div class="gx-hero__eyebrow">
+          <span class="gx-stage__tagline">企業福利平台</span>
+          <i></i>
+        </div>
+      </div>
+      <div class="gx-stage__hint" data-hint>
+        <b>SCROLL TO UNWRAP</b><i>↓</i>
+      </div>
+    </div>
+
+    <!-- 緞帶 -->
+    <div class="gx-stage__ribbon" aria-hidden="true">
+      <div class="gx-line gx-l" data-line="l"></div>
+      <div class="gx-line gx-r" data-line="r"></div>
+      <div class="gx-stage__bow">
+        <img data-bow="l" src="https://請換成你的圖片網址/ribbon-bow-left.png" alt="" width="210" height="165">
+        <img data-bow="r" src="https://請換成你的圖片網址/ribbon-bow-right.png" alt="" width="210" height="165">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ 三大特色 ══════════ -->
+<section class="gx-section gx-section--pad-top" id="gx-features">
+  <div class="gx-features gx-shell">
+    <div class="gx-feature">
+      <div class="gx-feature__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="8" width="18" height="13" rx="1"></rect><path d="M12 8v13M3 12h18"></path>
+          <path d="M12 8c-1.5-3-6-4-6-1.2 0 1 1 1.9 2.4 2.2M12 8c1.5-3 6-4 6-1.2 0 1-1 1.9-2.4 2.2"></path>
+        </svg>
+      </div>
+      <div class="gx-feature__text">
+        <h3>福利方案</h3>
+        <p>彈性規劃專屬方案，協助企業打造高效福利。</p>
+      </div>
+    </div>
+
+    <div class="gx-feature">
+      <div class="gx-feature__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 18h18"></path><path d="M5 15a7 7 0 0 1 14 0z"></path>
+          <circle cx="12" cy="6" r="1.4"></circle><path d="M12 7.4V8"></path>
+        </svg>
+      </div>
+      <div class="gx-feature__text">
+        <h3>多樣亮點</h3>
+        <p>綜合多元福利商品，滿足不同企業與員工需求。</p>
+      </div>
+    </div>
+
+    <div class="gx-feature">
+      <div class="gx-feature__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="13" rx="1.5"></rect><path d="M6 9l6 4 6-4"></path>
+          <path d="M9 21h6M12 17v4"></path>
+        </svg>
+      </div>
+      <div class="gx-feature__text">
+        <h3>專業執行效率</h3>
+        <p>流程化管理與專人支援，確保福利活動順利落實。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 服務內容（橫向卡片） ══════════ -->
+<section class="gx-section gx-section--pad-bottom" id="gx-resources">
+  <div class="gx-sec-head gx-sec-head--split gx-shell">
+    <h2 class="gx-sec-title">一站式主題企福服務內容</h2>
+    <div class="gx-rail-nav" data-rail-nav="services">
+      <span class="gx-rail-nav__hint">左右拖曳瀏覽</span>
+      <button type="button" data-dir="prev" aria-label="上一組服務">‹</button>
+      <button type="button" data-dir="next" aria-label="下一組服務">›</button>
+    </div>
+  </div>
+
+  <div class="gx-rail-wrap">
+    <div class="gx-rail gx-rail--wide" data-rail="services" role="region" aria-label="服務內容" tabindex="0">
+
+      <article class="gx-card" data-card>
+        <div class="gx-card__media">
+          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/svc-mall.jpg" alt="企業專屬福利商城" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--center"><img src="https://請換成你的圖片網址/svc-mall-icon.png" alt="" style="--badge-w:59.1%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="gx-card__body gx-card__body--offset-center">
+          <h3>企業專屬福利商城</h3>
+          <p>打造企業專屬線上福利商城，商品多、更新快、體驗更方便。</p>
+        </div>
+      </article>
+
+      <article class="gx-card" data-card>
+        <div class="gx-card__media">
+          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/svc-promo.jpg" alt="企業限定優惠活動" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--center"><img src="https://請換成你的圖片網址/svc-promo-icon.png" alt="" style="--badge-w:62.7%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="gx-card__body gx-card__body--offset-center">
+          <h3>企業限定優惠活動</h3>
+          <p>合作夥伴優惠專屬活動內容，讓員工享有更多超值福利。</p>
+        </div>
+      </article>
+
+      <article class="gx-card" data-card>
+        <div class="gx-card__media">
+          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/svc-familyday.jpg" alt="企業家庭日與親子日" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--center"><img src="https://請換成你的圖片網址/svc-familyday-icon.png" alt="" style="--badge-w:81.8%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="gx-card__body gx-card__body--offset-center">
+          <h3>企業家庭日／親子日</h3>
+          <p>打造員工與家人的美好互動時光，互動更緊密，向心力更提升。</p>
+        </div>
+      </article>
+
+      <article class="gx-card" data-card>
+        <div class="gx-card__media">
+          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/svc-festival.jpg" alt="節慶福利一站式規劃" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--center"><img src="https://請換成你的圖片網址/svc-festival-icon.png" alt="" style="--badge-w:64.5%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="gx-card__body gx-card__body--offset-center">
+          <h3>節慶福利，一站式規劃</h3>
+          <p>整合節慶禮品與活動規劃，省時、省力、傳遞溫暖心意。</p>
+        </div>
+      </article>
+
+    </div>
+    <div class="gx-rail__shadow" data-rail-shadow aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ══════════ OMO 線上線下整合 ══════════ -->
+<section class="gx-section gx-section--pad-bottom" id="gx-omo">
+  <div class="gx-sec-head gx-sec-head--center gx-shell">
+    <h2 class="gx-sec-title">OMO 線上線下整合優勢</h2>
+    <svg class="gx-sec-rule" viewBox="0 0 400 20" fill="none" stroke="#c8a96a" stroke-width="1.2" aria-hidden="true">
+      <circle cx="6" cy="10" r="3.2"></circle><path d="M12 10h168"></path>
+      <path d="M176 5.5 186 10l-10 4.5z" fill="#c8a96a" stroke="none"></path>
+      <path d="M200 3.5 206.5 10 200 16.5 193.5 10z" fill="#c8a96a" stroke="none"></path>
+      <path d="M224 5.5 214 10l10 4.5z" fill="#c8a96a" stroke="none"></path>
+      <path d="M220 10h168"></path><circle cx="394" cy="10" r="3.2"></circle>
+    </svg>
+  </div>
+
+  <div class="gx-omo">
+    <div class="gx-omo__card gx-omo__card--online">
+      <img src="https://請換成你的圖片網址/omo-online.png" alt="" width="198" height="215" loading="lazy">
+      <div class="gx-omo__text">
+        <h3>線上福利式選購</h3>
+        <ul><li>企福商城</li><li>企業員工專屬優惠</li><li>嚴選優質商品福利商城</li></ul>
+      </div>
+    </div>
+
+    <div class="gx-omo__cycle">
+      <img data-cycle src="https://請換成你的圖片網址/omo-cycle.png" alt="" width="162" height="173" loading="lazy">
+    </div>
+
+    <div class="gx-omo__card gx-omo__card--offline">
+      <div class="gx-omo__text">
+        <h3>線下實體體驗</h3>
+        <ul><li>歐洲風格生活體驗</li><li>企福市集／節慶市集</li><li>團隊凝聚創作藝術旅程</li></ul>
+      </div>
+      <img src="https://請換成你的圖片網址/omo-offline.png" alt="" width="194" height="182" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 數據亮點 ══════════ -->
+<section class="gx-section gx-section--pad-bottom" id="gx-scale">
+  <div class="gx-stats">
+    <div class="gx-stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="7" r="3"></circle><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"></path>
+        <path d="M16 4.5a3 3 0 0 1 0 5M17 14.6c2.4.7 4 2.7 4 5.4"></path>
+      </svg>
+      <div class="gx-stat__text">
+        <span class="gx-stat__num">30萬</span>
+        <p>企業員工<br>精準觸達企業福委會<br>員工福利需求明確</p>
+      </div>
+    </div>
+
+    <div class="gx-stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2.5" y="8.5" width="15" height="10" rx="1.5"></rect>
+        <path d="M6 5.5h13a2 2 0 0 1 2 2v8"></path><path d="M5 13h4M5 15.5h2.5"></path>
+      </svg>
+      <div class="gx-stat__text">
+        <span class="gx-stat__num">700萬</span>
+        <p>信用卡友<br>持續穩定的消費<br>帶來可觀的市場價值</p>
+      </div>
+    </div>
+
+    <div class="gx-stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 21V6l7-3 7 3v15"></path><path d="M9 21v-5h6v5"></path>
+        <path d="M8 9h2M14 9h2M8 12.5h2M14 12.5h2"></path>
+      </svg>
+      <div class="gx-stat__text">
+        <span class="gx-stat__num">500家</span>
+        <p>企業客戶<br>上市櫃及外商企業<br>禮贈品與公關活動需求</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 商品規劃（橫向卡片） ══════════ -->
+<section class="gx-section gx-section--pad-bottom" id="gx-products">
+  <div class="gx-sec-head gx-sec-head--split gx-shell">
+    <h2 class="gx-sec-title gx-sec-title--wide">整合員工福利的精選商品規劃</h2>
+    <div class="gx-rail-nav" data-rail-nav="goods">
+      <span class="gx-rail-nav__hint">左右拖曳瀏覽</span>
+      <button type="button" data-dir="prev" aria-label="上一組商品">‹</button>
+      <button type="button" data-dir="next" aria-label="下一組商品">›</button>
+    </div>
+  </div>
+
+  <div class="gx-rail-wrap">
+    <div class="gx-rail gx-rail--wide" data-rail="goods" role="region" aria-label="商品規劃" tabindex="0">
+
+      <article class="gx-card" data-card>
+        <div class="gx-card__media">
+          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/goods-appliance.jpg" alt="小家電" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--left"><img src="https://請換成你的圖片網址/goods-appliance-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="gx-card__body gx-card__body--offset-left">
+          <h3>小家電</h3>
+          <p>實用家電，提升生活便利性與居家幸福感。</p>
+        </div>
+      </article>
+
+      <article class="gx-card" data-card>
+        <div class="gx-card__media">
+          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/goods-coffee.jpg" alt="咖啡與食品" draggable="false" width="852" height="610" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--left"><img src="https://請換成你的圖片網址/goods-coffee-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="gx-card__body gx-card__body--offset-left">
+          <h3>咖啡與食品</h3>
+          <p>嚴選美味食品與飲品，滿足味蕾與日常需求。</p>
+        </div>
+      </article>
+
+      <article class="gx-card" data-card>
+        <div class="gx-card__media">
+          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/goods-sport.jpg" alt="運動健康" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--left"><img src="https://請換成你的圖片網址/goods-sport-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="gx-card__body gx-card__body--offset-left">
+          <h3>運動健康</h3>
+          <p>關注身心健康，提供運動與保健相關好物。</p>
+        </div>
+      </article>
+
+      <article class="gx-card" data-card>
+        <div class="gx-card__media">
+          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/goods-living.jpg" alt="生活美學" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--left"><img src="https://請換成你的圖片網址/goods-living-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="gx-card__body gx-card__body--offset-left">
+          <h3>生活美學</h3>
+          <p>美感生活用品，提升日常品味與質感。</p>
+        </div>
+      </article>
+
+    </div>
+    <div class="gx-rail__shadow" data-rail-shadow aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ══════════ 適用福利場景 ══════════ -->
+<section class="gx-section gx-section--pad-bottom" id="gx-scenes">
+  <div class="gx-sec-head gx-sec-head--center gx-shell">
+    <h2 class="gx-sec-title">適用企業福利場景</h2>
+    <svg class="gx-sec-rule" viewBox="0 0 400 20" fill="none" stroke="#c8a96a" stroke-width="1.2" aria-hidden="true">
+      <circle cx="6" cy="10" r="3.2"></circle><path d="M12 10h168"></path>
+      <path d="M176 5.5 186 10l-10 4.5z" fill="#c8a96a" stroke="none"></path>
+      <path d="M200 3.5 206.5 10 200 16.5 193.5 10z" fill="#c8a96a" stroke="none"></path>
+      <path d="M224 5.5 214 10l10 4.5z" fill="#c8a96a" stroke="none"></path>
+      <path d="M220 10h168"></path><circle cx="394" cy="10" r="3.2"></circle>
+    </svg>
+  </div>
+
+  <div class="gx-rail-nav gx-rail-nav--center gx-shell" data-rail-nav="scenes">
+    <span class="gx-rail-nav__hint">左右拖曳瀏覽</span>
+    <button type="button" data-dir="prev" aria-label="上一個場景">‹</button>
+    <button type="button" data-dir="next" aria-label="下一個場景">›</button>
+  </div>
+
+  <div class="gx-rail-wrap">
+    <div class="gx-rail gx-rail--narrow" data-rail="scenes" role="region" aria-label="適用福利場景" tabindex="0">
+
+      <article class="gx-card gx-card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 20h16v-6H4z"></path>
+          <path d="M4 14c1.5-2 3-2 4 0s2.5 2 4 0 2.5-2 4 0 2.5 2 4 0"></path>
+          <path d="M8 10V8M12 10V7M16 10V8"></path>
+          <circle cx="8" cy="6" r=".7"></circle><circle cx="12" cy="5" r=".7"></circle><circle cx="16" cy="6" r=".7"></circle>
+        </svg>
+        <h3>員工生日禮</h3>
+        <p>傳遞心意，讓員工感受到企業關懷。</p>
+      </article>
+
+      <article class="gx-card gx-card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="8" width="18" height="13" rx="1"></rect><path d="M12 8v13M3 12h18"></path>
+          <path d="M12 8c-1.5-3-6-4-6-1.2 0 1 1 1.9 2.4 2.2M12 8c1.5-3 6-4 6-1.2 0 1-1 1.9-2.4 2.2"></path>
+        </svg>
+        <h3>節慶福利品</h3>
+        <p>中秋、端午、春節等節慶禮品，傳遞祝福與感謝。</p>
+      </article>
+
+      <article class="gx-card gx-card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 4h8v5a4 4 0 0 1-8 0z"></path>
+          <path d="M8 6H5.5a2.5 2.5 0 0 0 2.5 4M16 6h2.5a2.5 2.5 0 0 1-2.5 4"></path>
+          <path d="M12 13v4M9 20h6"></path>
+          <path d="m12 6 .7 1.4 1.5.2-1.1 1 .3 1.5-1.4-.8-1.4.8.3-1.5-1.1-1 1.5-.2z"></path>
+        </svg>
+        <h3>部門獎勵方案</h3>
+        <p>獎勵團隊與個人，提升士氣與工作動力。</p>
+      </article>
+
+      <article class="gx-card gx-card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="8" cy="6.5" r="2.6"></circle>
+          <path d="M3.5 20c0-3.3 2-5.6 4.5-5.6s4.5 2.3 4.5 5.6"></path>
+          <circle cx="16" cy="11" r="2"></circle>
+          <path d="M12.8 20c0-2.4 1.4-4 3.2-4s3.2 1.6 3.2 4"></path>
+        </svg>
+        <h3>家庭日／親子日</h3>
+        <p>不只是家庭日，更是企業與員工一起留下的溫暖記憶。</p>
+      </article>
+
+      <article class="gx-card gx-card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9z"></path>
+          <path d="M4 13h3l1.5-2.5L10.5 15l2-4 1.5 2h3"></path>
+        </svg>
+        <h3>企業健康月</h3>
+        <p>推廣健康生活，關懷員工身心健康。</p>
+      </article>
+
+    </div>
+    <div class="gx-rail__shadow" data-rail-shadow aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ══════════ 聯絡我們 ══════════ -->
+<section class="gx-section gx-section--pad-contact" id="gx-contact">
+  <div class="gx-contact">
+    <div class="gx-contact__top">
+      <div class="gx-contact__copy">
+        <h2>讓員工福利，成為企業最有感的投資</h2>
+        <p>從商品到活動，從線上到線下，購精彩陪伴企業打造更有溫度的福利體驗。</p>
+        <a class="gx-btn gx-btn--white" href="#gx-consult">聯絡專屬企福顧問<i>›</i></a>
+      </div>
+      <div class="gx-contact__photo">
+        <img src="https://請換成你的圖片網址/contact-team.jpg" alt="購精彩企福顧問團隊" width="635" height="367" loading="lazy" decoding="async">
+      </div>
+    </div>
+
+    <div class="gx-pills">
+      <div class="gx-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="6" r="2.4"></circle><path d="M7 20c0-3 2.2-5.2 5-5.2s5 2.2 5 5.2"></path>
+          <circle cx="5" cy="9.5" r="1.8"></circle><circle cx="19" cy="9.5" r="1.8"></circle>
+          <path d="M2.5 17c0-2 1-3.4 2.5-3.8M21.5 17c0-2-1-3.4-2.5-3.8"></path>
+        </svg>
+        <span>專業企福團隊<br>一對一服務</span>
+      </div>
+      <div class="gx-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="6" width="18" height="14" rx="1.5"></rect>
+          <path d="M7 15V11M11 15V9M15 15v-3"></path><path d="M3 6l3-3h12l3 3"></path>
+        </svg>
+        <span>彈性預算規劃<br>滿足企業需求</span>
+      </div>
+      <div class="gx-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 10h16v10H4z"></path><path d="M3 10 5 5h14l2 5"></path>
+          <path d="M8 20v-4h3v4"></path><path d="M14 14h3v3h-3z"></path>
+        </svg>
+        <span>線上企福商城<br>線下實體活動</span>
+      </div>
+      <div class="gx-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"></path>
+          <path d="M9.5 11.5a1.8 1.8 0 0 1 2.5-1.2 1.8 1.8 0 0 1 2.5 1.2c0 1.5-2.5 3-2.5 3s-2.5-1.5-2.5-3z"></path>
+        </svg>
+        <span>完善售後服務<br>安心有保障</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 諮詢表單 → Gmail ══════════ -->
+<section class="gx-section gx-section--pad-consult" id="gx-consult">
+  <div class="gx-consult">
+    <div class="gx-consult__intro">
+      <h2>聯繫您的專屬顧問</h2>
+      <p>留下聯絡資訊，專屬企福顧問將與您聯繫，為您的團隊規劃合適的福利方案。</p>
+      <span class="gx-consult__mail">
+        直接來信：<a href="mailto:service@goamazing.com.tw">service@goamazing.com.tw</a>
+      </span>
+    </div>
+
+    <!-- novalidate：改用自訂驗證，訊息才能統一為繁體中文 -->
+    <form class="gx-consult__form" data-consult-form novalidate>
+      <div class="gx-field-row">
+        <label class="gx-field">
+          <span>公司名稱<em>*</em></span>
+          <input type="text" name="company" data-field="公司名稱" data-required
+                 autocomplete="organization" enterkeyhint="next" placeholder="例：購精彩股份有限公司">
+          <span class="gx-field__err"></span>
+        </label>
+        <label class="gx-field">
+          <span>聯絡人<em>*</em></span>
+          <input type="text" name="contact" data-field="聯絡人" data-required
+                 autocomplete="name" enterkeyhint="next" placeholder="例：王小明">
+          <span class="gx-field__err"></span>
+        </label>
+      </div>
+
+      <div class="gx-field-row">
+        <label class="gx-field">
+          <span>電子郵件<em>*</em></span>
+          <!-- inputmode=email 讓手機鍵盤直接切到含 @ 的版面 -->
+          <input type="email" name="email" data-field="電子郵件" data-required
+                 inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false"
+                 enterkeyhint="next" placeholder="name@company.com">
+          <span class="gx-field__err"></span>
+        </label>
+        <label class="gx-field">
+          <span>聯絡電話</span>
+          <input type="tel" name="phone" data-field="聯絡電話"
+                 inputmode="tel" autocomplete="tel" enterkeyhint="next" placeholder="例：02-1234-5678">
+          <span class="gx-field__err"></span>
+        </label>
+      </div>
+
+      <label class="gx-field">
+        <span>需求說明</span>
+        <textarea name="message" data-field="需求說明" rows="4" maxlength="2000"
+                  placeholder="例：約 300 位員工，想規劃中秋節慶禮品與家庭日活動，預算範圍…"></textarea>
+        <span class="gx-field__err"></span>
+      </label>
+
+      <!-- 蜜罐欄位：真人看不到也 tab 不到，只有機器人會填，後端據此擋垃圾訊息 -->
+      <div class="gx-hp" aria-hidden="true">
+        <label>請勿填寫此欄<input type="text" data-hp name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="gx-consult__actions">
+        <button type="submit" class="gx-btn gx-btn--submit" data-submit>
+          以 Gmail 送出諮詢<i>→</i>
+        </button>
+        <button type="button" class="gx-link-alt" data-send-mailto>改用預設郵件軟體</button>
+        <button type="button" class="gx-link-alt" data-copy>複製信件內容</button>
+      </div>
+
+      <p class="gx-form-note">
+        送出後會開啟 Gmail 撰寫視窗，並自動帶入您填寫的內容，收件人為
+        <strong>service@goamazing.com.tw</strong>，確認無誤後按「傳送」即可寄出。
+      </p>
+
+      <p class="gx-form-status" data-form-status role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════ 頁尾 ══════════ -->
+<footer class="gx-footer">
+  <span>© 2026 GOAMAZING 購精彩</span>
+  <nav aria-label="頁尾選單">
+    <a href="#gx-resources">服務內容</a>
+    <a href="#gx-products">商品規劃</a>
+    <a href="#gx-omo">OMO 整合優勢</a>
+    <a href="#gx-consult">聯繫顧問</a>
+  </nav>
+</footer>
+
+<script>
+/* ==========================================================================
+   GOAMAZING 購精彩 — 首頁互動邏輯
+   1. 首屏拆禮物捲動動畫
+   2. 導覽列（固定 / 手機抽屜）
+   3. 橫向卡片軌道
+   4. 諮詢表單 → Gmail 寄信
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  /* ── 設定 ────────────────────────────────────────────────────────
+     apiEndpoint 留空  → 按下送出時開啟 Gmail 撰寫視窗（預設）
+     apiEndpoint 有填  → 直接 POST 到你的後端，由伺服器寄信，
+                         使用者不需再按一次「傳送」。設定方式見 README。 */
+  var CONFIG = {
+    recipient:   'service@goamazing.com.tw',
+    apiEndpoint: ''
+  };
+  var RECIPIENT = CONFIG.recipient;
+
+  /* 同一份程式碼同時服務兩種輸出：
+       單機版      → 沒有 #gx-root，退回 document / documentElement
+       CyberBiz 版 → 所有查詢與 CSS 變數都限縮在 #gx-root 之內，
+                     不會抓到店家版型的元素，也不會污染全站樣式 */
+  var ROOT  = document.getElementById('gx-root');
+  var SCOPE = ROOT || document;
+  var VARS  = ROOT || document.documentElement;
+
+  var $  = function (s, r) { return (r || SCOPE).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || SCOPE).querySelectorAll(s)); };
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── 1. 視窗尺寸變數 ───────────────────────────────────────────────
+     用 JS 同步真實視窗高度到 CSS 變數，解決 iOS Safari 網址列
+     伸縮時 100vh 會跳動、造成首屏文字被切掉的問題。            */
+  function syncViewport() {
+    var doc = VARS;
+    doc.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+    // 緞帶蝴蝶結尺寸：同時受寬度與高度限制，橫置手機也不會爆版
+    var bow = Math.max(96, Math.min(190, window.innerWidth * 0.125, window.innerHeight * 0.2));
+    doc.style.setProperty('--bow-w', bow.toFixed(0) + 'px');
+    // 導覽列實際高度回寫，錨點捲動位移永遠正確
+    var nav = $('.gx-nav');
+    if (nav) doc.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+  }
+
+  /* ── 2. 首屏拆禮物動畫 ───────────────────────────────────────── */
+  var stage = {
+    wrap:    $('[data-stage]'),
+    photo:   $('[data-photo]'),
+    veil:    $('[data-veil]'),
+    hero:    $('[data-hero]'),
+    title:   $('[data-hero-title]'),
+    sub:     $('[data-hero-sub]'),
+    btns:    $('[data-hero-btns]'),
+    panelT:  $('[data-panel="top"]'),
+    panelB:  $('[data-panel="bottom"]'),
+    lineL:   $('[data-line="l"]'),
+    lineR:   $('[data-line="r"]'),
+    bowL:    $('[data-bow="l"]'),
+    bowR:    $('[data-bow="r"]'),
+    hint:    $('[data-hint]'),
+    nav:     $('.gx-nav'),
+    cycle:   $('[data-cycle]')
+  };
+
+  function setStyle(el, css) { if (el) { for (var k in css) el.style[k] = css[k]; } }
+
+  function applyStage(seen) {
+    var vh = window.innerHeight, vw = window.innerWidth;
+    var seg  = function (a, b) { return Math.min(1, Math.max(0, (seen - a) / (b - a))); };
+    var ease = function (t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
+
+    var ribbon = ease(seg(.14, .58));
+    var open   = ease(seg(.32, .84));
+    var fade   = seg(.58, .86);
+    var veil   = 1 - ease(seg(.22, .74));
+    var textIn = ease(seg(.66, .96));
+    var pull   = vw * .5;
+
+    setStyle(stage.bowL, { transform: 'translate(' + (-ribbon * pull) + 'px,' + (-ribbon * vh * .07) + 'px) rotate(' + (-ribbon * 16) + 'deg)', opacity: String(1 - fade) });
+    setStyle(stage.bowR, { transform: 'translate(' + ( ribbon * pull) + 'px,' + (-ribbon * vh * .07) + 'px) rotate(' + ( ribbon * 16) + 'deg)', opacity: String(1 - fade) });
+    setStyle(stage.lineL, { transform: 'translateX(' + (-ribbon * pull * 1.3) + 'px)', opacity: String(1 - fade) });
+    setStyle(stage.lineR, { transform: 'translateX(' + ( ribbon * pull * 1.3) + 'px)', opacity: String(1 - fade) });
+    setStyle(stage.panelT, { transform: 'translateY(' + (-open * 100) + '%)', boxShadow: '0 ' + (open * 26) + 'px ' + (open * 64) + 'px rgba(0,0,0,' + (open * .55) + ')' });
+    setStyle(stage.panelB, { transform: 'translateY(' + ( open * 100) + '%)', boxShadow: '0 ' + (-open * 26) + 'px ' + (open * 64) + 'px rgba(0,0,0,' + (open * .55) + ')' });
+    setStyle(stage.veil,  { opacity: String(veil) });
+    setStyle(stage.photo, { transform: 'scale(' + (1.18 - .09 * ease(seg(.18, 1))) + ')' });
+    setStyle(stage.hint,  { opacity: String(1 - seg(0, .10)) });
+    setStyle(stage.hero,  { opacity: String(textIn) });
+
+    [stage.title, stage.sub, stage.btns].forEach(function (el, i) {
+      var t = ease(seg(.66 + i * .07, .94 + i * .04));
+      setStyle(el, { transform: 'translateY(' + ((1 - t) * 34) + 'px)', opacity: String(t) });
+    });
+
+    // 循環箭頭隨捲動微幅旋轉
+    if (stage.cycle) {
+      var r = stage.cycle.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < vh) {
+        stage.cycle.style.transform = 'rotate(' + ((vh / 2 - (r.top + r.height / 2)) * 0.42).toFixed(2) + 'deg)';
+      }
+    }
+  }
+
+  function updateNav() {
+    if (!stage.nav) return;
+    var solid = window.scrollY > window.innerHeight * .5;
+    if (solid !== stage.navSolid) {
+      stage.navSolid = solid;
+      stage.nav.classList.toggle('gx-is-solid', solid);
+    }
+  }
+
+  var rafId = null;
+  function onScroll() {
+    if (rafId) return;
+    rafId = requestAnimationFrame(function () {
+      rafId = null;
+      if (stage.wrap) {
+        var seen = Math.min(1, Math.max(0,
+          -stage.wrap.getBoundingClientRect().top / Math.max(1, stage.wrap.offsetHeight - window.innerHeight)));
+        applyStage(reduceMotion ? 1 : seen);
+      }
+      updateNav();
+    });
+  }
+
+  /* ── 3. 導覽列抽屜 ───────────────────────────────────────────── */
+  function initNav() {
+    var burger = $('[data-burger]'), drawer = $('[data-drawer]');
+    if (!burger || !drawer) return;
+
+    function setOpen(open) {
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      drawer.classList.toggle('gx-is-open', open);
+    }
+    burger.addEventListener('click', function () {
+      setOpen(burger.getAttribute('aria-expanded') !== 'true');
+    });
+    // 點選單項目後自動收合
+    $$('a', drawer).forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    // 點外面 / 按 Esc / 放大到桌機寬度 → 收合，避免殘留擋住畫面
+    document.addEventListener('click', function (e) {
+      if (!drawer.contains(e.target) && !burger.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    window.matchMedia('(min-width: 900px)').addEventListener('change', function (e) { if (e.matches) setOpen(false); });
+  }
+
+  /* ── 4. 橫向卡片軌道 ─────────────────────────────────────────── */
+  function railCards(track) { return $$('[data-card]', track); }
+
+  function markCenter(track) {
+    var cards = railCards(track);
+    if (!cards.length) return;
+    var fancy = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion;
+    var mid = track.scrollLeft + track.clientWidth / 2;
+    var span = cards[0].offsetWidth + 24;
+    var best = null, bestD = Infinity;
+
+    cards.forEach(function (c) {
+      var d = (c.offsetLeft + c.offsetWidth / 2 - mid) / span;
+      var a = Math.min(Math.abs(d), 1.7);
+      var t = 1 - a / 1.7;
+      var e = t * t * (3 - 2 * t);
+      if (fancy) {
+        c.style.transform = 'translateY(' + (-16 * e).toFixed(2) + 'px) scale(' + (0.888 + 0.132 * e).toFixed(4) +
+                            ') rotateY(' + (-Math.max(-1.7, Math.min(1.7, d)) * 8).toFixed(2) + 'deg)';
+        c.style.opacity = (0.5 + 0.5 * e).toFixed(3);
+        c.style.boxShadow = '0 ' + (8 + 24 * e).toFixed(0) + 'px ' + (22 + 34 * e).toFixed(0) +
+                            'px rgba(32,30,29,' + (0.04 + 0.13 * e).toFixed(3) + ')';
+      } else {
+        // 觸控裝置不做 3D 變形：省效能，也避免卡片邊緣被裁切
+        c.style.transform = '';
+        c.style.opacity = (0.68 + 0.32 * e).toFixed(3);
+        c.style.boxShadow = '';
+      }
+      c.style.zIndex = String(10 + Math.round(e * 10));
+      if (Math.abs(d) < bestD) { bestD = Math.abs(d); best = c; }
+    });
+
+    var sh = track.parentElement && track.parentElement.querySelector('[data-rail-shadow]');
+    if (sh && best) {
+      if (!fancy) { sh.style.opacity = '0'; return; }
+      var w = best.offsetWidth * 0.78;
+      // 用自訂屬性而非 style.width：CyberBiz 版會把 width 標成 !important 防主題污染
+      sh.style.setProperty('--rail-shadow-w', w.toFixed(0) + 'px');
+      sh.style.transform = 'translateX(' + (best.offsetLeft + best.offsetWidth / 2 - track.scrollLeft - w / 2).toFixed(1) + 'px)';
+      sh.style.opacity = String(Math.max(0, 1 - bestD));
+    }
+  }
+
+  function restRail(track) {
+    var cards = railCards(track);
+    if (!cards.length) return;
+    // 起始停在第二張，暗示左右都還有內容；窄螢幕只放得下一張時就停在第一張
+    var card = cards[Math.min(1, cards.length - 1)];
+    var max = track.scrollWidth - track.clientWidth;
+    track.scrollLeft = Math.max(0, Math.min(max, card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2));
+    markCenter(track);
+  }
+
+  function centerCard(track, card) {
+    track.dataset.touched = '1';
+    var max = track.scrollWidth - track.clientWidth;
+    var left = Math.max(0, Math.min(max, card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2));
+    track.scrollTo({ left: left, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+
+  function initRails() {
+    $$('[data-rail]').forEach(function (track) {
+      var down = false, sx = 0, sl = 0, moved = 0, hoverT = null, raf = null;
+
+      // 滑鼠拖曳（觸控交給瀏覽器原生捲動，體驗最順）
+      track.addEventListener('pointerdown', function (e) {
+        track.dataset.touched = '1';
+        if (e.pointerType === 'touch') return;
+        down = true; moved = 0; sx = e.clientX; sl = track.scrollLeft;
+        track.style.scrollSnapType = 'none';
+      });
+      track.addEventListener('pointermove', function (e) {
+        if (!down) return;
+        var dx = e.clientX - sx;
+        moved = Math.max(moved, Math.abs(dx));
+        if (moved > 3) e.preventDefault();
+        track.scrollLeft = sl - dx;
+      });
+      function up() {
+        if (!down) return;
+        down = false;
+        setTimeout(function () { track.style.scrollSnapType = 'x mandatory'; }, 60);
+      }
+      track.addEventListener('pointerup', up);
+      track.addEventListener('pointercancel', up);
+      track.addEventListener('pointerleave', up);
+      track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+      track.addEventListener('scroll', function () {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () { markCenter(track); });
+      }, { passive: true });
+
+      // 只攔截「明確的橫向」滾輪手勢；垂直滾動一律讓頁面自己捲，
+      // 否則在 Windows 觸控板 / 觸控筆電上滑到卡片區會卡住整頁。
+      track.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+        var max = track.scrollWidth - track.clientWidth;
+        if ((e.deltaX > 0 && track.scrollLeft >= max - 1) || (e.deltaX < 0 && track.scrollLeft <= 1)) return;
+        e.preventDefault();
+        track.scrollLeft += e.deltaX;
+      }, { passive: false });
+
+      railCards(track).forEach(function (card) {
+        card.addEventListener('click', function () { if (moved < 5) centerCard(track, card); });
+        card.addEventListener('mouseenter', function () {
+          clearTimeout(hoverT);
+          hoverT = setTimeout(function () { if (!down) centerCard(track, card); }, 110);
+        });
+        card.addEventListener('mouseleave', function () { clearTimeout(hoverT); });
+      });
+
+      var id = track.getAttribute('data-rail');
+      var nav = $('[data-rail-nav="' + id + '"]');
+      if (nav) {
+        $$('button[data-dir]', nav).forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var first = railCards(track)[0];
+            var step = first ? first.offsetWidth + 24 : 300;
+            track.dataset.touched = '1';
+            track.scrollBy({ left: btn.getAttribute('data-dir') === 'prev' ? -step : step,
+                             behavior: reduceMotion ? 'auto' : 'smooth' });
+          });
+        });
+      }
+
+      restRail(track);
+      requestAnimationFrame(function () { restRail(track); });
+    });
+  }
+
+  function relayoutRails() {
+    $$('[data-rail]').forEach(function (t) { t.dataset.touched ? markCenter(t) : restRail(t); });
+  }
+
+  /* ── 5. 諮詢表單 → Gmail ─────────────────────────────────────────
+     點「送出諮詢需求」時，把表單內容組成信件主旨與內文，
+     直接開啟 Gmail 撰寫視窗，收件人固定為 service@goamazing.com.tw。
+
+     跨平台策略（不做不可靠的瀏覽器偵測）：
+       · Windows / macOS 桌機 → 新分頁開啟 Gmail 網頁版撰寫畫面
+       · iOS / iPadOS        → mail.google.com 是 Gmail App 的 Universal Link，
+                               裝了 App 會直接跳 App，沒裝則開 Gmail 行動網頁
+       · Android             → 同上，由系統 App Links 接手
+     另備兩條退路：改用系統預設郵件軟體（mailto:）、或一鍵複製內容。   */
+  function initForm() {
+    var form = $('[data-consult-form]');
+    if (!form) return;
+
+    var statusEl = $('[data-form-status]', form);
+    var submitBtn = $('[data-submit]', form);
+
+    function fields() { return $$('[data-field]', form); }
+
+    function setStatus(msg, kind) {
+      if (!statusEl) return;
+      statusEl.textContent = msg || '';
+      statusEl.className = 'gx-form-status' + (msg ? ' gx-is-' + (kind || 'ok') : '');
+    }
+
+    function showError(input, msg) {
+      var box = input.closest('.gx-field');
+      var err = box && box.querySelector('.gx-field__err');
+      if (err) err.textContent = msg || '';
+      input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      return !msg;
+    }
+
+    function validate() {
+      var ok = true, firstBad = null;
+      fields().forEach(function (input) {
+        var label = input.getAttribute('data-field');
+        var val = (input.value || '').trim();
+        var msg = '';
+        if (input.hasAttribute('data-required') && !val) {
+          msg = '請填寫' + label;
+        } else if (val && input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) {
+          msg = '請輸入正確的電子郵件格式';
+        } else if (val && input.type === 'tel' && !/^[\d+\-()#*\s]{6,}$/.test(val)) {
+          msg = '請輸入正確的電話號碼';
+        }
+        if (!showError(input, msg)) { ok = false; if (!firstBad) firstBad = input; }
+      });
+      if (firstBad) {
+        firstBad.focus();
+        firstBad.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+        setStatus('請確認標示的欄位後再送出。', 'warn');
+      }
+      return ok;
+    }
+
+    // 把畫面上填寫的資料組成信件內容
+    function compose() {
+      var company = '', lines = [];
+      fields().forEach(function (input) {
+        var label = input.getAttribute('data-field');
+        var val = (input.value || '').trim();
+        if (label === '公司名稱') company = val;
+        if (!val) return;
+        // 多行欄位（需求說明）另起一段，維持信件可讀性
+        lines.push(input.tagName === 'TEXTAREA' ? label + '：\n' + val : label + '：' + val);
+      });
+
+      var now = new Date();
+      var pad = function (n) { return String(n).padStart(2, '0'); };
+      var stamp = now.getFullYear() + '/' + pad(now.getMonth() + 1) + '/' + pad(now.getDate()) +
+                  ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
+
+      var body = '【企業福利方案諮詢】\n\n' + lines.join('\n') +
+                 '\n\n──────────────────\n' +
+                 '來源：GOAMAZING 購精彩 官網諮詢表單\n' +
+                 '填寫時間：' + stamp + '\n';
+
+      return {
+        to: RECIPIENT,
+        subject: '企業福利方案諮詢' + (company ? '｜' + company : ''),
+        body: body
+      };
+    }
+
+    function gmailUrl(m) {
+      return 'https://mail.google.com/mail/?view=cm&fs=1&tf=1' +
+             '&to=' + encodeURIComponent(m.to) +
+             '&su=' + encodeURIComponent(m.subject) +
+             '&body=' + encodeURIComponent(m.body);
+    }
+    function mailtoUrl(m) {
+      return 'mailto:' + encodeURIComponent(m.to) +
+             '?subject=' + encodeURIComponent(m.subject) +
+             '&body=' + encodeURIComponent(m.body);
+    }
+
+    // 把欄位整理成 API 用的 JSON
+    function payload(m) {
+      var data = { to: m.to, subject: m.subject, body: m.body, source: 'goamazing-homepage' };
+      // 同時給英文欄位名（company/contact/…）與中文標籤（公司名稱/聯絡人/…），
+      // 後端用哪一種寫法都接得到。
+      fields().forEach(function (input) {
+        var v = (input.value || '').trim();
+        var en = input.getAttribute('name'), zh = input.getAttribute('data-field');
+        if (en) data[en] = v;
+        if (zh) data[zh] = v;
+      });
+      var hp = $('[data-hp]', form);      // 蜜罐欄位：真人看不到，只有機器人會填
+      if (hp) data.hp = hp.value || '';
+      return data;
+    }
+
+    // 模式二：POST 到後端，由伺服器直接寄信
+    function sendViaApi(m) {
+      if (submitBtn) { submitBtn.disabled = true; }
+      setStatus('傳送中…', 'ok');
+      // 用 text/plain 送出 JSON 字串，屬於「簡單請求」不會觸發 CORS 預檢，
+      // Google Apps Script 之類的端點才收得到（詳見 README）。
+      fetch(CONFIG.apiEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload(m))
+      })
+      .then(function (r) { return r.text().then(function (t) { return { ok: r.ok, t: t }; }); })
+      .then(function (r) {
+        var okFlag = r.ok;
+        try { var j = JSON.parse(r.t); if (j && typeof j.ok === 'boolean') okFlag = j.ok; } catch (e) {}
+        if (!okFlag) throw new Error(r.t || '伺服器回應失敗');
+        form.reset();
+        setStatus('已送出，感謝您的來信！專屬企福顧問將盡快與您聯繫。', 'ok');
+      })
+      .catch(function (err) {
+        // 後端掛掉時不要讓使用者白填一次，退回 Gmail
+        setStatus('系統寄送失敗（' + (err.message || err) + '），已為您改開 Gmail，請直接按「傳送」。', 'warn');
+        var w = window.open(gmailUrl(m), '_blank', 'noopener,noreferrer');
+        if (!w) window.location.href = gmailUrl(m);
+      })
+      .then(function () { if (submitBtn) submitBtn.disabled = false; });
+    }
+
+    // 送出
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();                 // 不做傳統表單送出
+      setStatus('');
+      if (!validate()) return;
+
+      var m = compose();
+
+      if (CONFIG.apiEndpoint) { sendViaApi(m); return; }
+
+      // 模式一（預設）：開 Gmail 撰寫視窗
+      var url = gmailUrl(m);
+
+      // window.open 必須在使用者點擊的同一個事件內同步呼叫，
+      // 否則 iOS Safari 會當成彈出視窗擋掉。
+      var win = window.open(url, '_blank', 'noopener,noreferrer');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        // 被封鎖彈出視窗 → 直接在本頁跳轉，確保一定送得出去
+        window.location.href = url;
+      }
+      setStatus('已為您開啟 Gmail 撰寫視窗，內容已自動帶入，確認後按「傳送」即可寄出。若沒有跳出，請改用下方的備用方式。', 'ok');
+    });
+
+    // 備用一：系統預設郵件軟體（Outlook / Apple Mail 等）
+    var altBtn = $('[data-send-mailto]', form);
+    if (altBtn) altBtn.addEventListener('click', function () {
+      if (!validate()) return;
+      window.location.href = mailtoUrl(compose());
+      setStatus('已呼叫您裝置的預設郵件軟體。', 'ok');
+    });
+
+    // 備用二：複製信件內容，貼到任何信箱都能寄
+    var copyBtn = $('[data-copy]', form);
+    if (copyBtn) copyBtn.addEventListener('click', function () {
+      if (!validate()) return;
+      var m = compose();
+      var text = '收件人：' + m.to + '\n主旨：' + m.subject + '\n\n' + m.body;
+      function done() { setStatus('信件內容已複製，可直接貼到任何郵件軟體寄給 ' + RECIPIENT + '。', 'ok'); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { legacyCopy(text, done); });
+      } else {
+        legacyCopy(text, done);
+      }
+    });
+
+    function legacyCopy(text, done) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:absolute;left:-9999px;top:0';
+      document.body.appendChild(ta);
+      ta.select(); ta.setSelectionRange(0, text.length);   // iOS 需要明確選取範圍
+      try { document.execCommand('copy'); done(); }
+      catch (err) { setStatus('複製失敗，請手動寄信至 ' + RECIPIENT + '。', 'warn'); }
+      document.body.removeChild(ta);
+    }
+
+    // 邊打字邊清除錯誤提示
+    fields().forEach(function (input) {
+      input.addEventListener('input', function () {
+        if (input.getAttribute('aria-invalid') === 'true') showError(input, '');
+      });
+    });
+  }
+
+  /* ── 6. 啟動 ─────────────────────────────────────────────────── */
+  function init() {
+    syncViewport();
+    initNav();
+    initRails();
+    initForm();
+    onScroll();
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    var resizeT = null;
+    function onResize() {
+      syncViewport();
+      onScroll();
+      clearTimeout(resizeT);
+      // 尺寸穩定後才重排卡片，避免手機轉向途中抖動
+      resizeT = setTimeout(relayoutRails, 140);
+    }
+    window.addEventListener('resize', onResize, { passive: true });
+    window.addEventListener('orientationchange', function () { setTimeout(onResize, 200); });
+
+    // 字體載入完成後尺寸會變，重新量一次卡片位置
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { syncViewport(); relayoutRails(); });
+    }
+    window.addEventListener('load', function () { syncViewport(); relayoutRails(); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+/* ==========================================================================
+   CyberBiz 嵌入專用補強（接在主程式之後執行）
+   只處理「嵌在店家版型裡」才需要的事，單機版不會用到這個檔案。
+   ========================================================================== */
+(function () {
+  'use strict';
+  var root = document.getElementById('gx-root');
+  if (!root || root.dataset.gxReady) return;   // 同一頁貼兩次時只初始化一次
+  root.dataset.gxReady = '1';
+
+  /* ── 1. 滿版寬度 ────────────────────────────────────────────────
+     用 clientWidth（不含捲軸）而非 100vw，桌機才不會多出一條橫向捲軸。 */
+  function syncBleed() {
+    root.style.setProperty('--gx-vw', document.documentElement.clientWidth + 'px');
+  }
+
+  /* ── 2. 偵測 position:sticky 是否真的有效 ───────────────────────
+     店家版型的外層只要有 overflow:hidden/auto/scroll，sticky 就會失效，
+     首屏會變成一整片黑。這裡實際量測，失效就切換成靜態首屏。 */
+  function checkSticky() {
+    var sticky = root.querySelector('.gx-stage__sticky');
+    if (!sticky) return;
+
+    var broken = false;
+    for (var p = root.parentElement; p && p !== document.documentElement; p = p.parentElement) {
+      var ov = getComputedStyle(p);
+      if (/hidden|auto|scroll|clip/.test(ov.overflowY) || /hidden|auto|scroll|clip/.test(ov.overflow)) {
+        broken = true; break;
+      }
+    }
+    // 瀏覽器本身不支援 sticky（很舊的機型）也算失效
+    if (!CSS || !CSS.supports || !(CSS.supports('position', 'sticky') || CSS.supports('position', '-webkit-sticky'))) {
+      broken = true;
+    }
+    root.classList.toggle('gx-nostick', broken);
+    if (broken) console.warn('[goamazing] 外層容器使版面無法使用 sticky，已切換為靜態首屏。');
+  }
+
+  /* ── 3. 錨點平滑捲動 ───────────────────────────────────────────
+     scroll-behavior 必須設在捲動容器（html）上，嵌入時不該去動店家的全域樣式，
+     因此改用 JS 處理，並自動扣掉店家頁首與本頁導覽列的高度。 */
+  function offsetTop() {
+    var header = parseFloat(getComputedStyle(root).getPropertyValue('--gx-header-h')) || 0;
+    var nav = root.querySelector('.gx-nav');
+    return header + (nav ? nav.offsetHeight : 0) + 8;
+  }
+
+  root.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    var target = document.getElementById(id);
+    if (!target) return;                       // 不是本區塊的錨點就交還給瀏覽器
+    e.preventDefault();
+    var y = target.getBoundingClientRect().top + window.pageYOffset - offsetTop();
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+  });
+
+  syncBleed();
+  checkSticky();
+  window.addEventListener('resize', function () { syncBleed(); checkSticky(); }, { passive: true });
+  window.addEventListener('orientationchange', function () { setTimeout(function () { syncBleed(); checkSticky(); }, 200); });
+  window.addEventListener('load', function () { syncBleed(); checkSticky(); });
+})();
+
+(function(){var r=document.getElementById('gx-root');if(r)r.classList.add('gx-js');})();
+</script>
+</div>

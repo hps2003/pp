@@ -1,0 +1,89 @@
+/* ==========================================================================
+   CyberBiz 嵌入專用覆寫（此檔已自行加上 #gx-root 前綴，打包時不再二次限縮）
+   放在主樣式之後，只處理「嵌在店家版型裡」才會遇到的問題。
+   ========================================================================== */
+
+/* ---------- 1. 防止店家佈景主題的樣式滲進來 ----------
+   店家 CSS 常見 .btn / .card / .nav / .section 等泛用類別，
+   雖然我們的類別都改成 gx- 前綴，仍把常被覆寫的屬性明確歸零。 */
+#gx-root, #gx-root *, #gx-root *::before, #gx-root *::after { box-sizing: border-box; }
+/* 主題常對 img 下 border / float / 背景；我們沒有宣告的屬性就會被它吃掉，
+   所以這裡明確歸零（打包時會自動補上 !important）。 */
+#gx-root img, #gx-root svg { max-width: 100%; border: 0; float: none; background: none; }
+#gx-root h1, #gx-root h2, #gx-root h3, #gx-root h4, #gx-root h5, #gx-root h6,
+#gx-root p, #gx-root span, #gx-root li, #gx-root b, #gx-root label {
+  text-transform: none; text-indent: 0; float: none; text-shadow: none;
+}
+#gx-root ul, #gx-root ol { list-style: none; }
+#gx-root .gx-omo__text ul { list-style: disc; }
+#gx-root button { background: none; border: 0; border-radius: 0; text-transform: none; box-shadow: none; }
+#gx-root a { text-decoration: none; box-shadow: none; }
+#gx-root h1, #gx-root h2, #gx-root h3, #gx-root h4, #gx-root p,
+#gx-root ul, #gx-root ol, #gx-root figure { margin: 0; padding: 0; }
+#gx-root input, #gx-root textarea, #gx-root button, #gx-root label { max-width: 100%; }
+#gx-root::before, #gx-root::after { content: none; }
+
+/* ---------- 2. 滿版（跳出店家內容容器） ----------
+   CyberBiz 自訂頁面通常包在有 max-width 的容器裡，
+   --gx-vw 由 JS 寫入「不含捲軸的視窗寬度」，避免用 100vw 產生橫向捲動。
+   若不想滿版，把 <div id="gx-root"> 的 class="gx-full" 移除即可。 */
+#gx-root.gx-full {
+  width: var(--gx-vw, 100vw);
+  max-width: var(--gx-vw, 100vw);
+  margin-left: calc(50% - var(--gx-vw, 100vw) / 2);
+  margin-right: calc(50% - var(--gx-vw, 100vw) / 2);
+}
+
+/* ---------- 3. 本頁導覽列 ----------
+   店家版型已經有自己的頁首，這裡不能再用 position:fixed（會永遠蓋在店家頁首上），
+   改成 sticky 貼在區塊頂端。若店家頁首本身也是 sticky，
+   把 --gx-header-h 設成它的高度即可讓兩者不重疊。 */
+#gx-root { --gx-header-h: 0px; }
+#gx-root .gx-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--gx-header-h);
+  inset: auto;
+  z-index: 40;                       /* 壓低，不跟店家的下拉選單 / 購物車搶層級 */
+}
+/* 抽屜在打包時會被移進 .gx-nav 內，改用 absolute 掛在導覽列正下方，
+   不論導覽列有沒有進入 sticky 狀態，位置都會對齊。 */
+#gx-root .gx-nav__drawer {
+  position: absolute;
+  inset: auto 0 auto 0;
+  top: 100%;
+  z-index: -1;
+  max-height: 70vh;
+}
+#gx-root .gx-nav__drawer.gx-is-open { z-index: 1; }
+
+/* ---------- 4. 首屏 sticky 失效時的保底 ----------
+   店家版型的外層若設了 overflow:hidden/auto，position:sticky 會失效，
+   首屏就會變成一片黑。JS 偵測到這種情況會加上 .gx-nostick，
+   改用一般的滿版首屏，文字直接顯示，不做拆禮物動畫。 */
+#gx-root.gx-nostick .gx-stage { height: auto; }
+#gx-root.gx-nostick .gx-stage__sticky { position: relative; height: 100svh; min-height: 520px; }
+#gx-root.gx-nostick .gx-stage__panel,
+#gx-root.gx-nostick .gx-stage__ribbon,
+#gx-root.gx-nostick .gx-stage__veil,
+#gx-root.gx-nostick .gx-stage__hint { display: none !important; }
+#gx-root.gx-nostick .gx-hero {
+  opacity: 1 !important;
+  transform: none !important;
+}
+#gx-root.gx-nostick .gx-hero > * { opacity: 1 !important; transform: none !important; }
+
+/* ---------- 5. JS 沒跑起來時的保底 ----------
+   首屏文字預設 opacity:0 交給捲動動畫控制；若腳本被擋掉就永遠看不到，
+   因此只有在 JS 成功執行（加上 .gx-js）時才啟用動畫初始狀態。 */
+#gx-root:not(.gx-js) .gx-hero { opacity: 1; }
+#gx-root:not(.gx-js) .gx-stage { height: auto; }
+#gx-root:not(.gx-js) .gx-stage__sticky { position: relative; height: 100svh; min-height: 520px; }
+#gx-root:not(.gx-js) .gx-stage__panel,
+#gx-root:not(.gx-js) .gx-stage__ribbon,
+#gx-root:not(.gx-js) .gx-stage__veil { display: none; }
+
+/* ---------- 6. 頁尾 ----------
+   店家版型已有自己的頁尾，本頁頁尾留著當作區塊收尾；
+   若覺得重複，直接刪掉 HTML 裡 <!-- 頁尾 --> 那一段即可。 */
+#gx-root .gx-footer { margin-bottom: 0; }

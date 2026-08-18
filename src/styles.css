@@ -102,8 +102,10 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
   color: var(--ink);
   padding-inline: var(--gutter);
 }
-.section--pad-top    { padding-top: clamp(44px, 6vw, 88px); }
-.section--pad-bottom { padding-bottom: clamp(44px, 6vw, 86px); }
+.section--pad-top     { padding-top: clamp(44px, 6vw, 88px); }
+.section--pad-bottom  { padding-bottom: clamp(44px, 6vw, 86px); }
+.section--pad-contact { padding-bottom: clamp(40px, 5vw, 72px); }
+.section--pad-consult { padding-bottom: clamp(48px, 6.5vw, 96px); }
 
 /* 區塊標題 */
 .sec-head {
@@ -153,6 +155,7 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
 
 .nav__links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 34px); }
 .nav__link {
+  display: inline-flex; align-items: center; min-height: 44px;   /* 觸控最小點擊區 */
   color: #fff; font-size: 13px; font-weight: 600; letter-spacing: .04em;
   white-space: nowrap;
 }
@@ -284,6 +287,11 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
 .hero__eyebrow span {
   font-size: clamp(11px, 2.6vw, 12px); font-weight: 700; letter-spacing: .2em;
   color: var(--brand-gold); white-space: nowrap;
+}
+.hero__eyebrow--alt { color: rgba(255, 255, 255, .8); letter-spacing: .24em; }
+.stage__tagline {
+  font-family: var(--font-zh); font-size: clamp(12px, 1.1vw, 15px); font-weight: 500;
+  letter-spacing: .24em; color: rgba(255, 255, 255, .86); white-space: nowrap;
 }
 
 .hero__title {
@@ -493,6 +501,9 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
 }
 .card__badge--center { left: calc(50% - 13.5%); bottom: -19%; width: 27%; }
 .card__badge--left   { left: 4.8%; bottom: -26%; width: 33.5%; }
+/* 徽章內圖片各自的比例由 HTML 的 --badge-w 帶入；
+   用自訂屬性而非行內 width，主題的 img{width:…!important} 才蓋不掉。 */
+.card__badge img { width: var(--badge-w, 60%); height: auto; }
 .card__body {
   display: flex; flex-direction: column; gap: 8px;
   padding: clamp(18px, 1.8vw, 26px); text-align: center;
@@ -518,14 +529,14 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
 .card--scene p  { font-size: clamp(12.5px, 1vw, 14.5px); line-height: 1.8; }
 
 .rail__shadow {
-  position: absolute; left: 0; bottom: 2px; width: 300px; height: 34px;
+  position: absolute; left: 0; bottom: 2px; width: var(--rail-shadow-w, 300px); height: 34px;
   background: radial-gradient(ellipse at 50% 0%, rgba(32,30,29,.3), rgba(32,30,29,0) 70%);
   filter: blur(5px); pointer-events: none; opacity: 0; transition: opacity .3s ease;
 }
 
 /* 左右箭頭 */
 .rail-nav { display: flex; align-items: center; gap: 12px; }
-.rail-nav--center { justify-content: center; }
+.rail-nav--center { justify-content: center; margin-bottom: 6px; }
 .rail-nav__hint { font-family: var(--font-zh); font-size: 12px; letter-spacing: .12em; color: var(--ink-faint); }
 .rail-nav button {
   display: flex; align-items: center; justify-content: center;
@@ -733,6 +744,9 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
   background: none; border: 0; cursor: pointer; padding: 12px 4px; text-align: left;
 }
 .link-alt:hover { color: var(--brand-red); }
+
+/* 蜜罐欄位容器：移出畫面但仍可被機器人填寫 */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 .form-note {
   font-family: var(--font-zh); font-size: 13px; line-height: 1.7; color: var(--ink-soft);

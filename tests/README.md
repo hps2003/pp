@@ -3,21 +3,23 @@
 需求：`pip install playwright`（本機另需 `playwright install chromium`）。
 
 ```bash
-python3 src/build.py            # 先產生 Amazing-Homepage.html
-python3 tests/test_responsive.py   # 10 種裝置尺寸的版面檢查
-python3 tests/test_functional.py   # Gmail 寄信、表單驗證、選單、即時改變尺寸
+python3 src/build.py              # 先產生兩種成品
+python3 src/build_cyberbiz.py
+
+python3 tests/test_responsive.py      # 獨立版：10 種裝置尺寸的版面檢查
+python3 tests/test_functional.py      # 獨立版：Gmail 寄信、驗證、選單、即時改尺寸
+python3 tests/verify_cyberbiz.py      # CyberBiz 版：靜態結構檢查（不需瀏覽器）
+python3 tests/test_cyberbiz_embed.py  # CyberBiz 版：放進模擬店家版型實測
+python3 tests/test_api_mode.py        # API 模式：對真實端點收送與失敗退回
 ```
 
-`test_responsive.py` 針對每個尺寸檢查：
-- 頁面是否出現橫向捲動（破版最常見的徵兆）
-- 是否有元素超出畫面且未被容器裁切
-- 文字區塊之間是否互相重疊
-- 是否有小於 11px 的文字
-- 可點擊元素高度是否小於 40px
-- 是否有 JavaScript 例外
-
-`test_functional.py` 驗證表單必填與 email/電話格式、Gmail 撰寫網址與內文欄位、
-備用寄信與複製、手機選單開合，以及**不重新載入頁面**直接改變視窗尺寸時版面是否正確。
+| 檔案 | 檢查什麼 |
+|---|---|
+| `test_responsive.py` | 每個尺寸的橫向捲動、元素溢出、文字重疊、過小文字（<11px）、過小點擊區（<40px）、JS 例外 |
+| `test_functional.py` | 必填與 email/電話驗證、Gmail 網址與內文欄位、備用寄信與複製、手機選單開合、**不重新載入直接改視窗尺寸** |
+| `verify_cyberbiz.py` | 是純片段、所有選擇器都限縮在 `#gx-root`、class/id/keyframes 都有 `gx-` 前綴、錨點對得上、設計變數沒遺失、內嵌／外連版內容正確 |
+| `test_cyberbiz_embed.py` | 把片段放進**帶有惡意佈景主題**的模擬店家頁（固定頁首＋`max-width` 容器＋大量 `!important`）：版面正確、Gmail 寄信正常、`sticky` 失效時能切換保底模式、**沒有反過來污染店家版型** |
+| `test_api_mode.py` | 起一個本機伺服器當後端：送出的 `Content-Type` 與 JSON 欄位正確、成功後清空表單、**後端故障時自動退回 Gmail**、驗證仍生效 |
 
 > 指令碼中的 Chromium 路徑為此環境的預設值，本機執行請改成
 > `p.chromium.launch()` 讓 Playwright 自行尋找瀏覽器。
