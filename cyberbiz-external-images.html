@@ -1,10 +1,19 @@
-<!-- ═══ 購精彩 GOAMAZING 首頁 —— CyberBiz 可貼上片段 ═══
-     圖片模式：url（外連，請把下方 https://請換成你的圖片網址/ 換成你的圖片網址）
-     · 所有樣式限縮在 #gx-root 之下，不會影響店家其他頁面
-     · 所有 class / id 皆有 gx- 前綴，不會與佈景主題相撞
-     · 若不要滿版，把下一行的 class="gx-full" 刪掉即可
-     · 若店家頁首是固定的，把 style 裡的 --gx-header-h 改成頁首高度
-     ══════════════════════════════════════════════ -->
+<!-- ============================================================
+     GOAMAZING homepage - paste-in block for CyberBiz
+     replace https://YOUR-IMAGE-HOST/ with your own image URL prefix
+
+     This block is fully self-contained and isolated:
+       * every CSS rule is scoped under #gx-root
+       * every class / id is prefixed with gx-
+       * pure ASCII, so the text cannot turn into mojibake
+         no matter what charset the page is served with
+
+     Two optional switches on the <div> below:
+       * remove class="gx-full"  -> stay inside the theme container
+         (default is full-bleed, edge to edge)
+       * --gx-header-h:0px       -> set to your sticky header height,
+         e.g. 64px, so this block's own nav sits below it
+     ============================================================ -->
 <div id="gx-root" class="gx-full" style="--gx-header-h:0px">
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
@@ -350,60 +359,60 @@
 #gx-root .gx-footer{margin-bottom: 0 !important;}
 </style>
 
-<a class="gx-skip-link" href="#gx-features">跳至主要內容</a>
+<a class="gx-skip-link" href="#gx-features">&#x8DF3;&#x81F3;&#x4E3B;&#x8981;&#x5167;&#x5BB9;</a>
 
-<!-- ══════════ 導覽列 ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x5C0E;&#x89BD;&#x5217; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <header class="gx-nav">
-  <a class="gx-nav__logo" href="#gx-top" aria-label="GOAMAZING 購精彩 首頁">
-    <img src="https://請換成你的圖片網址/logo-wordmark.png" alt="Amazing 購精彩" width="1201" height="165">
+  <a class="gx-nav__logo" href="#gx-top" aria-label="GOAMAZING &#x8CFC;&#x7CBE;&#x5F69; &#x9996;&#x9801;">
+    <img src="https://YOUR-IMAGE-HOST/logo-wordmark.png" alt="Amazing &#x8CFC;&#x7CBE;&#x5F69;" width="1201" height="165">
   </a>
 
-  <nav class="gx-nav__links" aria-label="主選單">
-    <a class="gx-nav__link" href="#gx-resources">服務內容</a>
-    <a class="gx-nav__link" href="#gx-products">商品規劃</a>
-    <a class="gx-nav__link" href="#gx-scenes">福利場景</a>
-    <a class="gx-nav__cta" href="#gx-consult">預約諮詢</a>
+  <nav class="gx-nav__links" aria-label="&#x4E3B;&#x9078;&#x55AE;">
+    <a class="gx-nav__link" href="#gx-resources">&#x670D;&#x52D9;&#x5167;&#x5BB9;</a>
+    <a class="gx-nav__link" href="#gx-products">&#x5546;&#x54C1;&#x898F;&#x5283;</a>
+    <a class="gx-nav__link" href="#gx-scenes">&#x798F;&#x5229;&#x5834;&#x666F;</a>
+    <a class="gx-nav__cta" href="#gx-consult">&#x9810;&#x7D04;&#x8AEE;&#x8A62;</a>
   </nav>
 
   <button class="gx-nav__burger" type="button" data-burger aria-expanded="false"
-          aria-controls="gx-mobile-menu" aria-label="開啟選單"><span></span></button>
-<nav class="gx-nav__drawer" id="gx-mobile-menu" data-drawer aria-label="行動裝置選單">
-  <a href="#gx-resources">服務內容</a>
-  <a href="#gx-products">商品規劃</a>
-  <a href="#gx-scenes">福利場景</a>
-  <a href="#gx-omo">OMO 整合優勢</a>
-  <a href="#gx-consult">預約諮詢</a>
+          aria-controls="gx-mobile-menu" aria-label="&#x958B;&#x555F;&#x9078;&#x55AE;"><span></span></button>
+<nav class="gx-nav__drawer" id="gx-mobile-menu" data-drawer aria-label="&#x884C;&#x52D5;&#x88DD;&#x7F6E;&#x9078;&#x55AE;">
+  <a href="#gx-resources">&#x670D;&#x52D9;&#x5167;&#x5BB9;</a>
+  <a href="#gx-products">&#x5546;&#x54C1;&#x898F;&#x5283;</a>
+  <a href="#gx-scenes">&#x798F;&#x5229;&#x5834;&#x666F;</a>
+  <a href="#gx-omo">OMO &#x6574;&#x5408;&#x512A;&#x52E2;</a>
+  <a href="#gx-consult">&#x9810;&#x7D04;&#x8AEE;&#x8A62;</a>
 </nav>
 </header>
 
 
 
-<!-- ══════════ 首屏：拆禮物 ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x9996;&#x5C4F;&#xFF1A;&#x62C6;&#x79AE;&#x7269; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <div class="gx-stage" id="gx-top" data-stage>
   <div class="gx-stage__sticky">
 
     <div class="gx-stage__layer">
-      <img class="gx-stage__photo" data-photo src="https://請換成你的圖片網址/hero-gift.jpg" alt="" width="960" height="1200" fetchpriority="high">
+      <img class="gx-stage__photo" data-photo src="https://YOUR-IMAGE-HOST/hero-gift.jpg" alt="" width="960" height="1200" fetchpriority="high">
     </div>
     <div class="gx-stage__warm"></div>
     <div class="gx-stage__grain"></div>
     <div class="gx-stage__scrim"></div>
     <div class="gx-stage__veil" data-veil></div>
 
-    <!-- 首屏文案（捲動後淡入） -->
+    <!-- &#x9996;&#x5C4F;&#x6587;&#x6848;&#xFF08;&#x6372;&#x52D5;&#x5F8C;&#x6DE1;&#x5165;&#xFF09; -->
     <div class="gx-hero" data-hero>
       <div class="gx-hero__eyebrow">
-        <i></i><span>GOAMAZING 購精彩</span>
+        <i></i><span>GOAMAZING &#x8CFC;&#x7CBE;&#x5F69;</span>
       </div>
-      <h1 class="gx-hero__title" data-hero-title>把福利變成員工有感的生活體驗</h1>
-      <p class="gx-hero__sub" data-hero-sub>整合線上與實體資源，彈性規劃福利方案，快速提升員工滿意度，打造企業專屬的溫度福利體驗。</p>
+      <h1 class="gx-hero__title" data-hero-title>&#x628A;&#x798F;&#x5229;&#x8B8A;&#x6210;&#x54E1;&#x5DE5;&#x6709;&#x611F;&#x7684;&#x751F;&#x6D3B;&#x9AD4;&#x9A57;</h1>
+      <p class="gx-hero__sub" data-hero-sub>&#x6574;&#x5408;&#x7DDA;&#x4E0A;&#x8207;&#x5BE6;&#x9AD4;&#x8CC7;&#x6E90;&#xFF0C;&#x5F48;&#x6027;&#x898F;&#x5283;&#x798F;&#x5229;&#x65B9;&#x6848;&#xFF0C;&#x5FEB;&#x901F;&#x63D0;&#x5347;&#x54E1;&#x5DE5;&#x6EFF;&#x610F;&#x5EA6;&#xFF0C;&#x6253;&#x9020;&#x4F01;&#x696D;&#x5C08;&#x5C6C;&#x7684;&#x6EAB;&#x5EA6;&#x798F;&#x5229;&#x9AD4;&#x9A57;&#x3002;</p>
       <div class="gx-hero__btns" data-hero-btns>
-        <a class="gx-btn gx-btn--solid" href="#gx-resources">立即參考福利方案<i>→</i></a>
-        <a class="gx-btn gx-btn--outline" href="#gx-consult">聯繫您的專屬顧問<i>→</i></a>
+        <a class="gx-btn gx-btn--solid" href="#gx-resources">&#x7ACB;&#x5373;&#x53C3;&#x8003;&#x798F;&#x5229;&#x65B9;&#x6848;<i>&#x2192;</i></a>
+        <a class="gx-btn gx-btn--outline" href="#gx-consult">&#x806F;&#x7E6B;&#x60A8;&#x7684;&#x5C08;&#x5C6C;&#x9867;&#x554F;<i>&#x2192;</i></a>
       </div>
     </div>
 
-    <!-- 禮物包裝：上蓋 -->
+    <!-- &#x79AE;&#x7269;&#x5305;&#x88DD;&#xFF1A;&#x4E0A;&#x84CB; -->
     <div class="gx-stage__panel gx-stage__panel--top" data-panel="top">
       <i class="gx-l"></i><i class="gx-r"></i><u></u>
       <div class="gx-stage__wordmark">
@@ -415,35 +424,35 @@
       <div class="gx-stage__gift">GIFT / 01</div>
     </div>
 
-    <!-- 禮物包裝：下蓋 -->
+    <!-- &#x79AE;&#x7269;&#x5305;&#x88DD;&#xFF1A;&#x4E0B;&#x84CB; -->
     <div class="gx-stage__panel gx-stage__panel--bottom" data-panel="bottom">
       <i class="gx-l"></i><i class="gx-r"></i><u></u>
       <div class="gx-stage__zh">
-        <b>購精彩</b>
+        <b>&#x8CFC;&#x7CBE;&#x5F69;</b>
         <div class="gx-hero__eyebrow">
-          <span class="gx-stage__tagline">企業福利平台</span>
+          <span class="gx-stage__tagline">&#x4F01;&#x696D;&#x798F;&#x5229;&#x5E73;&#x53F0;</span>
           <i></i>
         </div>
       </div>
       <div class="gx-stage__hint" data-hint>
-        <b>SCROLL TO UNWRAP</b><i>↓</i>
+        <b>SCROLL TO UNWRAP</b><i>&#x2193;</i>
       </div>
     </div>
 
-    <!-- 緞帶 -->
+    <!-- &#x7DDE;&#x5E36; -->
     <div class="gx-stage__ribbon" aria-hidden="true">
       <div class="gx-line gx-l" data-line="l"></div>
       <div class="gx-line gx-r" data-line="r"></div>
       <div class="gx-stage__bow">
-        <img data-bow="l" src="https://請換成你的圖片網址/ribbon-bow-left.png" alt="" width="210" height="165">
-        <img data-bow="r" src="https://請換成你的圖片網址/ribbon-bow-right.png" alt="" width="210" height="165">
+        <img data-bow="l" src="https://YOUR-IMAGE-HOST/ribbon-bow-left.png" alt="" width="210" height="165">
+        <img data-bow="r" src="https://YOUR-IMAGE-HOST/ribbon-bow-right.png" alt="" width="210" height="165">
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════ 三大特色 ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x4E09;&#x5927;&#x7279;&#x8272; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <section class="gx-section gx-section--pad-top" id="gx-features">
   <div class="gx-features gx-shell">
     <div class="gx-feature">
@@ -454,8 +463,8 @@
         </svg>
       </div>
       <div class="gx-feature__text">
-        <h3>福利方案</h3>
-        <p>彈性規劃專屬方案，協助企業打造高效福利。</p>
+        <h3>&#x798F;&#x5229;&#x65B9;&#x6848;</h3>
+        <p>&#x5F48;&#x6027;&#x898F;&#x5283;&#x5C08;&#x5C6C;&#x65B9;&#x6848;&#xFF0C;&#x5354;&#x52A9;&#x4F01;&#x696D;&#x6253;&#x9020;&#x9AD8;&#x6548;&#x798F;&#x5229;&#x3002;</p>
       </div>
     </div>
 
@@ -467,8 +476,8 @@
         </svg>
       </div>
       <div class="gx-feature__text">
-        <h3>多樣亮點</h3>
-        <p>綜合多元福利商品，滿足不同企業與員工需求。</p>
+        <h3>&#x591A;&#x6A23;&#x4EAE;&#x9EDE;</h3>
+        <p>&#x7D9C;&#x5408;&#x591A;&#x5143;&#x798F;&#x5229;&#x5546;&#x54C1;&#xFF0C;&#x6EFF;&#x8DB3;&#x4E0D;&#x540C;&#x4F01;&#x696D;&#x8207;&#x54E1;&#x5DE5;&#x9700;&#x6C42;&#x3002;</p>
       </div>
     </div>
 
@@ -480,68 +489,68 @@
         </svg>
       </div>
       <div class="gx-feature__text">
-        <h3>專業執行效率</h3>
-        <p>流程化管理與專人支援，確保福利活動順利落實。</p>
+        <h3>&#x5C08;&#x696D;&#x57F7;&#x884C;&#x6548;&#x7387;</h3>
+        <p>&#x6D41;&#x7A0B;&#x5316;&#x7BA1;&#x7406;&#x8207;&#x5C08;&#x4EBA;&#x652F;&#x63F4;&#xFF0C;&#x78BA;&#x4FDD;&#x798F;&#x5229;&#x6D3B;&#x52D5;&#x9806;&#x5229;&#x843D;&#x5BE6;&#x3002;</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ 服務內容（橫向卡片） ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x670D;&#x52D9;&#x5167;&#x5BB9;&#xFF08;&#x6A6B;&#x5411;&#x5361;&#x7247;&#xFF09; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <section class="gx-section gx-section--pad-bottom" id="gx-resources">
   <div class="gx-sec-head gx-sec-head--split gx-shell">
-    <h2 class="gx-sec-title">一站式主題企福服務內容</h2>
+    <h2 class="gx-sec-title">&#x4E00;&#x7AD9;&#x5F0F;&#x4E3B;&#x984C;&#x4F01;&#x798F;&#x670D;&#x52D9;&#x5167;&#x5BB9;</h2>
     <div class="gx-rail-nav" data-rail-nav="services">
-      <span class="gx-rail-nav__hint">左右拖曳瀏覽</span>
-      <button type="button" data-dir="prev" aria-label="上一組服務">‹</button>
-      <button type="button" data-dir="next" aria-label="下一組服務">›</button>
+      <span class="gx-rail-nav__hint">&#x5DE6;&#x53F3;&#x62D6;&#x66F3;&#x700F;&#x89BD;</span>
+      <button type="button" data-dir="prev" aria-label="&#x4E0A;&#x4E00;&#x7D44;&#x670D;&#x52D9;">&#x2039;</button>
+      <button type="button" data-dir="next" aria-label="&#x4E0B;&#x4E00;&#x7D44;&#x670D;&#x52D9;">&#x203A;</button>
     </div>
   </div>
 
   <div class="gx-rail-wrap">
-    <div class="gx-rail gx-rail--wide" data-rail="services" role="region" aria-label="服務內容" tabindex="0">
+    <div class="gx-rail gx-rail--wide" data-rail="services" role="region" aria-label="&#x670D;&#x52D9;&#x5167;&#x5BB9;" tabindex="0">
 
       <article class="gx-card" data-card>
         <div class="gx-card__media">
-          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/svc-mall.jpg" alt="企業專屬福利商城" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
-          <div class="gx-card__badge gx-card__badge--center"><img src="https://請換成你的圖片網址/svc-mall-icon.png" alt="" style="--badge-w:59.1%" draggable="false" loading="lazy"></div>
+          <div class="gx-frame"><img class="gx-photo" src="https://YOUR-IMAGE-HOST/svc-mall.jpg" alt="&#x4F01;&#x696D;&#x5C08;&#x5C6C;&#x798F;&#x5229;&#x5546;&#x57CE;" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--center"><img src="https://YOUR-IMAGE-HOST/svc-mall-icon.png" alt="" style="--badge-w:59.1%" draggable="false" loading="lazy"></div>
         </div>
         <div class="gx-card__body gx-card__body--offset-center">
-          <h3>企業專屬福利商城</h3>
-          <p>打造企業專屬線上福利商城，商品多、更新快、體驗更方便。</p>
+          <h3>&#x4F01;&#x696D;&#x5C08;&#x5C6C;&#x798F;&#x5229;&#x5546;&#x57CE;</h3>
+          <p>&#x6253;&#x9020;&#x4F01;&#x696D;&#x5C08;&#x5C6C;&#x7DDA;&#x4E0A;&#x798F;&#x5229;&#x5546;&#x57CE;&#xFF0C;&#x5546;&#x54C1;&#x591A;&#x3001;&#x66F4;&#x65B0;&#x5FEB;&#x3001;&#x9AD4;&#x9A57;&#x66F4;&#x65B9;&#x4FBF;&#x3002;</p>
         </div>
       </article>
 
       <article class="gx-card" data-card>
         <div class="gx-card__media">
-          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/svc-promo.jpg" alt="企業限定優惠活動" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
-          <div class="gx-card__badge gx-card__badge--center"><img src="https://請換成你的圖片網址/svc-promo-icon.png" alt="" style="--badge-w:62.7%" draggable="false" loading="lazy"></div>
+          <div class="gx-frame"><img class="gx-photo" src="https://YOUR-IMAGE-HOST/svc-promo.jpg" alt="&#x4F01;&#x696D;&#x9650;&#x5B9A;&#x512A;&#x60E0;&#x6D3B;&#x52D5;" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--center"><img src="https://YOUR-IMAGE-HOST/svc-promo-icon.png" alt="" style="--badge-w:62.7%" draggable="false" loading="lazy"></div>
         </div>
         <div class="gx-card__body gx-card__body--offset-center">
-          <h3>企業限定優惠活動</h3>
-          <p>合作夥伴優惠專屬活動內容，讓員工享有更多超值福利。</p>
+          <h3>&#x4F01;&#x696D;&#x9650;&#x5B9A;&#x512A;&#x60E0;&#x6D3B;&#x52D5;</h3>
+          <p>&#x5408;&#x4F5C;&#x5925;&#x4F34;&#x512A;&#x60E0;&#x5C08;&#x5C6C;&#x6D3B;&#x52D5;&#x5167;&#x5BB9;&#xFF0C;&#x8B93;&#x54E1;&#x5DE5;&#x4EAB;&#x6709;&#x66F4;&#x591A;&#x8D85;&#x503C;&#x798F;&#x5229;&#x3002;</p>
         </div>
       </article>
 
       <article class="gx-card" data-card>
         <div class="gx-card__media">
-          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/svc-familyday.jpg" alt="企業家庭日與親子日" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
-          <div class="gx-card__badge gx-card__badge--center"><img src="https://請換成你的圖片網址/svc-familyday-icon.png" alt="" style="--badge-w:81.8%" draggable="false" loading="lazy"></div>
+          <div class="gx-frame"><img class="gx-photo" src="https://YOUR-IMAGE-HOST/svc-familyday.jpg" alt="&#x4F01;&#x696D;&#x5BB6;&#x5EAD;&#x65E5;&#x8207;&#x89AA;&#x5B50;&#x65E5;" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--center"><img src="https://YOUR-IMAGE-HOST/svc-familyday-icon.png" alt="" style="--badge-w:81.8%" draggable="false" loading="lazy"></div>
         </div>
         <div class="gx-card__body gx-card__body--offset-center">
-          <h3>企業家庭日／親子日</h3>
-          <p>打造員工與家人的美好互動時光，互動更緊密，向心力更提升。</p>
+          <h3>&#x4F01;&#x696D;&#x5BB6;&#x5EAD;&#x65E5;&#xFF0F;&#x89AA;&#x5B50;&#x65E5;</h3>
+          <p>&#x6253;&#x9020;&#x54E1;&#x5DE5;&#x8207;&#x5BB6;&#x4EBA;&#x7684;&#x7F8E;&#x597D;&#x4E92;&#x52D5;&#x6642;&#x5149;&#xFF0C;&#x4E92;&#x52D5;&#x66F4;&#x7DCA;&#x5BC6;&#xFF0C;&#x5411;&#x5FC3;&#x529B;&#x66F4;&#x63D0;&#x5347;&#x3002;</p>
         </div>
       </article>
 
       <article class="gx-card" data-card>
         <div class="gx-card__media">
-          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/svc-festival.jpg" alt="節慶福利一站式規劃" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
-          <div class="gx-card__badge gx-card__badge--center"><img src="https://請換成你的圖片網址/svc-festival-icon.png" alt="" style="--badge-w:64.5%" draggable="false" loading="lazy"></div>
+          <div class="gx-frame"><img class="gx-photo" src="https://YOUR-IMAGE-HOST/svc-festival.jpg" alt="&#x7BC0;&#x6176;&#x798F;&#x5229;&#x4E00;&#x7AD9;&#x5F0F;&#x898F;&#x5283;" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--center"><img src="https://YOUR-IMAGE-HOST/svc-festival-icon.png" alt="" style="--badge-w:64.5%" draggable="false" loading="lazy"></div>
         </div>
         <div class="gx-card__body gx-card__body--offset-center">
-          <h3>節慶福利，一站式規劃</h3>
-          <p>整合節慶禮品與活動規劃，省時、省力、傳遞溫暖心意。</p>
+          <h3>&#x7BC0;&#x6176;&#x798F;&#x5229;&#xFF0C;&#x4E00;&#x7AD9;&#x5F0F;&#x898F;&#x5283;</h3>
+          <p>&#x6574;&#x5408;&#x7BC0;&#x6176;&#x79AE;&#x54C1;&#x8207;&#x6D3B;&#x52D5;&#x898F;&#x5283;&#xFF0C;&#x7701;&#x6642;&#x3001;&#x7701;&#x529B;&#x3001;&#x50B3;&#x905E;&#x6EAB;&#x6696;&#x5FC3;&#x610F;&#x3002;</p>
         </div>
       </article>
 
@@ -550,10 +559,10 @@
   </div>
 </section>
 
-<!-- ══════════ OMO 線上線下整合 ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; OMO &#x7DDA;&#x4E0A;&#x7DDA;&#x4E0B;&#x6574;&#x5408; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <section class="gx-section gx-section--pad-bottom" id="gx-omo">
   <div class="gx-sec-head gx-sec-head--center gx-shell">
-    <h2 class="gx-sec-title">OMO 線上線下整合優勢</h2>
+    <h2 class="gx-sec-title">OMO &#x7DDA;&#x4E0A;&#x7DDA;&#x4E0B;&#x6574;&#x5408;&#x512A;&#x52E2;</h2>
     <svg class="gx-sec-rule" viewBox="0 0 400 20" fill="none" stroke="#c8a96a" stroke-width="1.2" aria-hidden="true">
       <circle cx="6" cy="10" r="3.2"></circle><path d="M12 10h168"></path>
       <path d="M176 5.5 186 10l-10 4.5z" fill="#c8a96a" stroke="none"></path>
@@ -565,28 +574,28 @@
 
   <div class="gx-omo">
     <div class="gx-omo__card gx-omo__card--online">
-      <img src="https://請換成你的圖片網址/omo-online.png" alt="" width="198" height="215" loading="lazy">
+      <img src="https://YOUR-IMAGE-HOST/omo-online.png" alt="" width="198" height="215" loading="lazy">
       <div class="gx-omo__text">
-        <h3>線上福利式選購</h3>
-        <ul><li>企福商城</li><li>企業員工專屬優惠</li><li>嚴選優質商品福利商城</li></ul>
+        <h3>&#x7DDA;&#x4E0A;&#x798F;&#x5229;&#x5F0F;&#x9078;&#x8CFC;</h3>
+        <ul><li>&#x4F01;&#x798F;&#x5546;&#x57CE;</li><li>&#x4F01;&#x696D;&#x54E1;&#x5DE5;&#x5C08;&#x5C6C;&#x512A;&#x60E0;</li><li>&#x56B4;&#x9078;&#x512A;&#x8CEA;&#x5546;&#x54C1;&#x798F;&#x5229;&#x5546;&#x57CE;</li></ul>
       </div>
     </div>
 
     <div class="gx-omo__cycle">
-      <img data-cycle src="https://請換成你的圖片網址/omo-cycle.png" alt="" width="162" height="173" loading="lazy">
+      <img data-cycle src="https://YOUR-IMAGE-HOST/omo-cycle.png" alt="" width="162" height="173" loading="lazy">
     </div>
 
     <div class="gx-omo__card gx-omo__card--offline">
       <div class="gx-omo__text">
-        <h3>線下實體體驗</h3>
-        <ul><li>歐洲風格生活體驗</li><li>企福市集／節慶市集</li><li>團隊凝聚創作藝術旅程</li></ul>
+        <h3>&#x7DDA;&#x4E0B;&#x5BE6;&#x9AD4;&#x9AD4;&#x9A57;</h3>
+        <ul><li>&#x6B50;&#x6D32;&#x98A8;&#x683C;&#x751F;&#x6D3B;&#x9AD4;&#x9A57;</li><li>&#x4F01;&#x798F;&#x5E02;&#x96C6;&#xFF0F;&#x7BC0;&#x6176;&#x5E02;&#x96C6;</li><li>&#x5718;&#x968A;&#x51DD;&#x805A;&#x5275;&#x4F5C;&#x85DD;&#x8853;&#x65C5;&#x7A0B;</li></ul>
       </div>
-      <img src="https://請換成你的圖片網址/omo-offline.png" alt="" width="194" height="182" loading="lazy">
+      <img src="https://YOUR-IMAGE-HOST/omo-offline.png" alt="" width="194" height="182" loading="lazy">
     </div>
   </div>
 </section>
 
-<!-- ══════════ 數據亮點 ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x6578;&#x64DA;&#x4EAE;&#x9EDE; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <section class="gx-section gx-section--pad-bottom" id="gx-scale">
   <div class="gx-stats">
     <div class="gx-stat">
@@ -595,8 +604,8 @@
         <path d="M16 4.5a3 3 0 0 1 0 5M17 14.6c2.4.7 4 2.7 4 5.4"></path>
       </svg>
       <div class="gx-stat__text">
-        <span class="gx-stat__num">30萬</span>
-        <p>企業員工<br>精準觸達企業福委會<br>員工福利需求明確</p>
+        <span class="gx-stat__num">30&#x842C;</span>
+        <p>&#x4F01;&#x696D;&#x54E1;&#x5DE5;<br>&#x7CBE;&#x6E96;&#x89F8;&#x9054;&#x4F01;&#x696D;&#x798F;&#x59D4;&#x6703;<br>&#x54E1;&#x5DE5;&#x798F;&#x5229;&#x9700;&#x6C42;&#x660E;&#x78BA;</p>
       </div>
     </div>
 
@@ -606,8 +615,8 @@
         <path d="M6 5.5h13a2 2 0 0 1 2 2v8"></path><path d="M5 13h4M5 15.5h2.5"></path>
       </svg>
       <div class="gx-stat__text">
-        <span class="gx-stat__num">700萬</span>
-        <p>信用卡友<br>持續穩定的消費<br>帶來可觀的市場價值</p>
+        <span class="gx-stat__num">700&#x842C;</span>
+        <p>&#x4FE1;&#x7528;&#x5361;&#x53CB;<br>&#x6301;&#x7E8C;&#x7A69;&#x5B9A;&#x7684;&#x6D88;&#x8CBB;<br>&#x5E36;&#x4F86;&#x53EF;&#x89C0;&#x7684;&#x5E02;&#x5834;&#x50F9;&#x503C;</p>
       </div>
     </div>
 
@@ -617,68 +626,68 @@
         <path d="M8 9h2M14 9h2M8 12.5h2M14 12.5h2"></path>
       </svg>
       <div class="gx-stat__text">
-        <span class="gx-stat__num">500家</span>
-        <p>企業客戶<br>上市櫃及外商企業<br>禮贈品與公關活動需求</p>
+        <span class="gx-stat__num">500&#x5BB6;</span>
+        <p>&#x4F01;&#x696D;&#x5BA2;&#x6236;<br>&#x4E0A;&#x5E02;&#x6AC3;&#x53CA;&#x5916;&#x5546;&#x4F01;&#x696D;<br>&#x79AE;&#x8D08;&#x54C1;&#x8207;&#x516C;&#x95DC;&#x6D3B;&#x52D5;&#x9700;&#x6C42;</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ 商品規劃（橫向卡片） ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x5546;&#x54C1;&#x898F;&#x5283;&#xFF08;&#x6A6B;&#x5411;&#x5361;&#x7247;&#xFF09; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <section class="gx-section gx-section--pad-bottom" id="gx-products">
   <div class="gx-sec-head gx-sec-head--split gx-shell">
-    <h2 class="gx-sec-title gx-sec-title--wide">整合員工福利的精選商品規劃</h2>
+    <h2 class="gx-sec-title gx-sec-title--wide">&#x6574;&#x5408;&#x54E1;&#x5DE5;&#x798F;&#x5229;&#x7684;&#x7CBE;&#x9078;&#x5546;&#x54C1;&#x898F;&#x5283;</h2>
     <div class="gx-rail-nav" data-rail-nav="goods">
-      <span class="gx-rail-nav__hint">左右拖曳瀏覽</span>
-      <button type="button" data-dir="prev" aria-label="上一組商品">‹</button>
-      <button type="button" data-dir="next" aria-label="下一組商品">›</button>
+      <span class="gx-rail-nav__hint">&#x5DE6;&#x53F3;&#x62D6;&#x66F3;&#x700F;&#x89BD;</span>
+      <button type="button" data-dir="prev" aria-label="&#x4E0A;&#x4E00;&#x7D44;&#x5546;&#x54C1;">&#x2039;</button>
+      <button type="button" data-dir="next" aria-label="&#x4E0B;&#x4E00;&#x7D44;&#x5546;&#x54C1;">&#x203A;</button>
     </div>
   </div>
 
   <div class="gx-rail-wrap">
-    <div class="gx-rail gx-rail--wide" data-rail="goods" role="region" aria-label="商品規劃" tabindex="0">
+    <div class="gx-rail gx-rail--wide" data-rail="goods" role="region" aria-label="&#x5546;&#x54C1;&#x898F;&#x5283;" tabindex="0">
 
       <article class="gx-card" data-card>
         <div class="gx-card__media">
-          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/goods-appliance.jpg" alt="小家電" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
-          <div class="gx-card__badge gx-card__badge--left"><img src="https://請換成你的圖片網址/goods-appliance-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
+          <div class="gx-frame"><img class="gx-photo" src="https://YOUR-IMAGE-HOST/goods-appliance.jpg" alt="&#x5C0F;&#x5BB6;&#x96FB;" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--left"><img src="https://YOUR-IMAGE-HOST/goods-appliance-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
         </div>
         <div class="gx-card__body gx-card__body--offset-left">
-          <h3>小家電</h3>
-          <p>實用家電，提升生活便利性與居家幸福感。</p>
+          <h3>&#x5C0F;&#x5BB6;&#x96FB;</h3>
+          <p>&#x5BE6;&#x7528;&#x5BB6;&#x96FB;&#xFF0C;&#x63D0;&#x5347;&#x751F;&#x6D3B;&#x4FBF;&#x5229;&#x6027;&#x8207;&#x5C45;&#x5BB6;&#x5E78;&#x798F;&#x611F;&#x3002;</p>
         </div>
       </article>
 
       <article class="gx-card" data-card>
         <div class="gx-card__media">
-          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/goods-coffee.jpg" alt="咖啡與食品" draggable="false" width="852" height="610" loading="lazy" decoding="async"></div>
-          <div class="gx-card__badge gx-card__badge--left"><img src="https://請換成你的圖片網址/goods-coffee-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
+          <div class="gx-frame"><img class="gx-photo" src="https://YOUR-IMAGE-HOST/goods-coffee.jpg" alt="&#x5496;&#x5561;&#x8207;&#x98DF;&#x54C1;" draggable="false" width="852" height="610" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--left"><img src="https://YOUR-IMAGE-HOST/goods-coffee-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
         </div>
         <div class="gx-card__body gx-card__body--offset-left">
-          <h3>咖啡與食品</h3>
-          <p>嚴選美味食品與飲品，滿足味蕾與日常需求。</p>
+          <h3>&#x5496;&#x5561;&#x8207;&#x98DF;&#x54C1;</h3>
+          <p>&#x56B4;&#x9078;&#x7F8E;&#x5473;&#x98DF;&#x54C1;&#x8207;&#x98F2;&#x54C1;&#xFF0C;&#x6EFF;&#x8DB3;&#x5473;&#x857E;&#x8207;&#x65E5;&#x5E38;&#x9700;&#x6C42;&#x3002;</p>
         </div>
       </article>
 
       <article class="gx-card" data-card>
         <div class="gx-card__media">
-          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/goods-sport.jpg" alt="運動健康" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
-          <div class="gx-card__badge gx-card__badge--left"><img src="https://請換成你的圖片網址/goods-sport-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
+          <div class="gx-frame"><img class="gx-photo" src="https://YOUR-IMAGE-HOST/goods-sport.jpg" alt="&#x904B;&#x52D5;&#x5065;&#x5EB7;" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--left"><img src="https://YOUR-IMAGE-HOST/goods-sport-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
         </div>
         <div class="gx-card__body gx-card__body--offset-left">
-          <h3>運動健康</h3>
-          <p>關注身心健康，提供運動與保健相關好物。</p>
+          <h3>&#x904B;&#x52D5;&#x5065;&#x5EB7;</h3>
+          <p>&#x95DC;&#x6CE8;&#x8EAB;&#x5FC3;&#x5065;&#x5EB7;&#xFF0C;&#x63D0;&#x4F9B;&#x904B;&#x52D5;&#x8207;&#x4FDD;&#x5065;&#x76F8;&#x95DC;&#x597D;&#x7269;&#x3002;</p>
         </div>
       </article>
 
       <article class="gx-card" data-card>
         <div class="gx-card__media">
-          <div class="gx-frame"><img class="gx-photo" src="https://請換成你的圖片網址/goods-living.jpg" alt="生活美學" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
-          <div class="gx-card__badge gx-card__badge--left"><img src="https://請換成你的圖片網址/goods-living-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
+          <div class="gx-frame"><img class="gx-photo" src="https://YOUR-IMAGE-HOST/goods-living.jpg" alt="&#x751F;&#x6D3B;&#x7F8E;&#x5B78;" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="gx-card__badge gx-card__badge--left"><img src="https://YOUR-IMAGE-HOST/goods-living-icon.png" alt="" style="--badge-w:93%" draggable="false" loading="lazy"></div>
         </div>
         <div class="gx-card__body gx-card__body--offset-left">
-          <h3>生活美學</h3>
-          <p>美感生活用品，提升日常品味與質感。</p>
+          <h3>&#x751F;&#x6D3B;&#x7F8E;&#x5B78;</h3>
+          <p>&#x7F8E;&#x611F;&#x751F;&#x6D3B;&#x7528;&#x54C1;&#xFF0C;&#x63D0;&#x5347;&#x65E5;&#x5E38;&#x54C1;&#x5473;&#x8207;&#x8CEA;&#x611F;&#x3002;</p>
         </div>
       </article>
 
@@ -687,10 +696,10 @@
   </div>
 </section>
 
-<!-- ══════════ 適用福利場景 ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x9069;&#x7528;&#x798F;&#x5229;&#x5834;&#x666F; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <section class="gx-section gx-section--pad-bottom" id="gx-scenes">
   <div class="gx-sec-head gx-sec-head--center gx-shell">
-    <h2 class="gx-sec-title">適用企業福利場景</h2>
+    <h2 class="gx-sec-title">&#x9069;&#x7528;&#x4F01;&#x696D;&#x798F;&#x5229;&#x5834;&#x666F;</h2>
     <svg class="gx-sec-rule" viewBox="0 0 400 20" fill="none" stroke="#c8a96a" stroke-width="1.2" aria-hidden="true">
       <circle cx="6" cy="10" r="3.2"></circle><path d="M12 10h168"></path>
       <path d="M176 5.5 186 10l-10 4.5z" fill="#c8a96a" stroke="none"></path>
@@ -701,13 +710,13 @@
   </div>
 
   <div class="gx-rail-nav gx-rail-nav--center gx-shell" data-rail-nav="scenes">
-    <span class="gx-rail-nav__hint">左右拖曳瀏覽</span>
-    <button type="button" data-dir="prev" aria-label="上一個場景">‹</button>
-    <button type="button" data-dir="next" aria-label="下一個場景">›</button>
+    <span class="gx-rail-nav__hint">&#x5DE6;&#x53F3;&#x62D6;&#x66F3;&#x700F;&#x89BD;</span>
+    <button type="button" data-dir="prev" aria-label="&#x4E0A;&#x4E00;&#x500B;&#x5834;&#x666F;">&#x2039;</button>
+    <button type="button" data-dir="next" aria-label="&#x4E0B;&#x4E00;&#x500B;&#x5834;&#x666F;">&#x203A;</button>
   </div>
 
   <div class="gx-rail-wrap">
-    <div class="gx-rail gx-rail--narrow" data-rail="scenes" role="region" aria-label="適用福利場景" tabindex="0">
+    <div class="gx-rail gx-rail--narrow" data-rail="scenes" role="region" aria-label="&#x9069;&#x7528;&#x798F;&#x5229;&#x5834;&#x666F;" tabindex="0">
 
       <article class="gx-card gx-card--scene" data-card>
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -716,8 +725,8 @@
           <path d="M8 10V8M12 10V7M16 10V8"></path>
           <circle cx="8" cy="6" r=".7"></circle><circle cx="12" cy="5" r=".7"></circle><circle cx="16" cy="6" r=".7"></circle>
         </svg>
-        <h3>員工生日禮</h3>
-        <p>傳遞心意，讓員工感受到企業關懷。</p>
+        <h3>&#x54E1;&#x5DE5;&#x751F;&#x65E5;&#x79AE;</h3>
+        <p>&#x50B3;&#x905E;&#x5FC3;&#x610F;&#xFF0C;&#x8B93;&#x54E1;&#x5DE5;&#x611F;&#x53D7;&#x5230;&#x4F01;&#x696D;&#x95DC;&#x61F7;&#x3002;</p>
       </article>
 
       <article class="gx-card gx-card--scene" data-card>
@@ -725,8 +734,8 @@
           <rect x="3" y="8" width="18" height="13" rx="1"></rect><path d="M12 8v13M3 12h18"></path>
           <path d="M12 8c-1.5-3-6-4-6-1.2 0 1 1 1.9 2.4 2.2M12 8c1.5-3 6-4 6-1.2 0 1-1 1.9-2.4 2.2"></path>
         </svg>
-        <h3>節慶福利品</h3>
-        <p>中秋、端午、春節等節慶禮品，傳遞祝福與感謝。</p>
+        <h3>&#x7BC0;&#x6176;&#x798F;&#x5229;&#x54C1;</h3>
+        <p>&#x4E2D;&#x79CB;&#x3001;&#x7AEF;&#x5348;&#x3001;&#x6625;&#x7BC0;&#x7B49;&#x7BC0;&#x6176;&#x79AE;&#x54C1;&#xFF0C;&#x50B3;&#x905E;&#x795D;&#x798F;&#x8207;&#x611F;&#x8B1D;&#x3002;</p>
       </article>
 
       <article class="gx-card gx-card--scene" data-card>
@@ -736,8 +745,8 @@
           <path d="M12 13v4M9 20h6"></path>
           <path d="m12 6 .7 1.4 1.5.2-1.1 1 .3 1.5-1.4-.8-1.4.8.3-1.5-1.1-1 1.5-.2z"></path>
         </svg>
-        <h3>部門獎勵方案</h3>
-        <p>獎勵團隊與個人，提升士氣與工作動力。</p>
+        <h3>&#x90E8;&#x9580;&#x734E;&#x52F5;&#x65B9;&#x6848;</h3>
+        <p>&#x734E;&#x52F5;&#x5718;&#x968A;&#x8207;&#x500B;&#x4EBA;&#xFF0C;&#x63D0;&#x5347;&#x58EB;&#x6C23;&#x8207;&#x5DE5;&#x4F5C;&#x52D5;&#x529B;&#x3002;</p>
       </article>
 
       <article class="gx-card gx-card--scene" data-card>
@@ -747,8 +756,8 @@
           <circle cx="16" cy="11" r="2"></circle>
           <path d="M12.8 20c0-2.4 1.4-4 3.2-4s3.2 1.6 3.2 4"></path>
         </svg>
-        <h3>家庭日／親子日</h3>
-        <p>不只是家庭日，更是企業與員工一起留下的溫暖記憶。</p>
+        <h3>&#x5BB6;&#x5EAD;&#x65E5;&#xFF0F;&#x89AA;&#x5B50;&#x65E5;</h3>
+        <p>&#x4E0D;&#x53EA;&#x662F;&#x5BB6;&#x5EAD;&#x65E5;&#xFF0C;&#x66F4;&#x662F;&#x4F01;&#x696D;&#x8207;&#x54E1;&#x5DE5;&#x4E00;&#x8D77;&#x7559;&#x4E0B;&#x7684;&#x6EAB;&#x6696;&#x8A18;&#x61B6;&#x3002;</p>
       </article>
 
       <article class="gx-card gx-card--scene" data-card>
@@ -756,8 +765,8 @@
           <path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9z"></path>
           <path d="M4 13h3l1.5-2.5L10.5 15l2-4 1.5 2h3"></path>
         </svg>
-        <h3>企業健康月</h3>
-        <p>推廣健康生活，關懷員工身心健康。</p>
+        <h3>&#x4F01;&#x696D;&#x5065;&#x5EB7;&#x6708;</h3>
+        <p>&#x63A8;&#x5EE3;&#x5065;&#x5EB7;&#x751F;&#x6D3B;&#xFF0C;&#x95DC;&#x61F7;&#x54E1;&#x5DE5;&#x8EAB;&#x5FC3;&#x5065;&#x5EB7;&#x3002;</p>
       </article>
 
     </div>
@@ -765,17 +774,17 @@
   </div>
 </section>
 
-<!-- ══════════ 聯絡我們 ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x806F;&#x7D61;&#x6211;&#x5011; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <section class="gx-section gx-section--pad-contact" id="gx-contact">
   <div class="gx-contact">
     <div class="gx-contact__top">
       <div class="gx-contact__copy">
-        <h2>讓員工福利，成為企業最有感的投資</h2>
-        <p>從商品到活動，從線上到線下，購精彩陪伴企業打造更有溫度的福利體驗。</p>
-        <a class="gx-btn gx-btn--white" href="#gx-consult">聯絡專屬企福顧問<i>›</i></a>
+        <h2>&#x8B93;&#x54E1;&#x5DE5;&#x798F;&#x5229;&#xFF0C;&#x6210;&#x70BA;&#x4F01;&#x696D;&#x6700;&#x6709;&#x611F;&#x7684;&#x6295;&#x8CC7;</h2>
+        <p>&#x5F9E;&#x5546;&#x54C1;&#x5230;&#x6D3B;&#x52D5;&#xFF0C;&#x5F9E;&#x7DDA;&#x4E0A;&#x5230;&#x7DDA;&#x4E0B;&#xFF0C;&#x8CFC;&#x7CBE;&#x5F69;&#x966A;&#x4F34;&#x4F01;&#x696D;&#x6253;&#x9020;&#x66F4;&#x6709;&#x6EAB;&#x5EA6;&#x7684;&#x798F;&#x5229;&#x9AD4;&#x9A57;&#x3002;</p>
+        <a class="gx-btn gx-btn--white" href="#gx-consult">&#x806F;&#x7D61;&#x5C08;&#x5C6C;&#x4F01;&#x798F;&#x9867;&#x554F;<i>&#x203A;</i></a>
       </div>
       <div class="gx-contact__photo">
-        <img src="https://請換成你的圖片網址/contact-team.jpg" alt="購精彩企福顧問團隊" width="635" height="367" loading="lazy" decoding="async">
+        <img src="https://YOUR-IMAGE-HOST/contact-team.jpg" alt="&#x8CFC;&#x7CBE;&#x5F69;&#x4F01;&#x798F;&#x9867;&#x554F;&#x5718;&#x968A;" width="635" height="367" loading="lazy" decoding="async">
       </div>
     </div>
 
@@ -786,101 +795,101 @@
           <circle cx="5" cy="9.5" r="1.8"></circle><circle cx="19" cy="9.5" r="1.8"></circle>
           <path d="M2.5 17c0-2 1-3.4 2.5-3.8M21.5 17c0-2-1-3.4-2.5-3.8"></path>
         </svg>
-        <span>專業企福團隊<br>一對一服務</span>
+        <span>&#x5C08;&#x696D;&#x4F01;&#x798F;&#x5718;&#x968A;<br>&#x4E00;&#x5C0D;&#x4E00;&#x670D;&#x52D9;</span>
       </div>
       <div class="gx-pill">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="3" y="6" width="18" height="14" rx="1.5"></rect>
           <path d="M7 15V11M11 15V9M15 15v-3"></path><path d="M3 6l3-3h12l3 3"></path>
         </svg>
-        <span>彈性預算規劃<br>滿足企業需求</span>
+        <span>&#x5F48;&#x6027;&#x9810;&#x7B97;&#x898F;&#x5283;<br>&#x6EFF;&#x8DB3;&#x4F01;&#x696D;&#x9700;&#x6C42;</span>
       </div>
       <div class="gx-pill">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M4 10h16v10H4z"></path><path d="M3 10 5 5h14l2 5"></path>
           <path d="M8 20v-4h3v4"></path><path d="M14 14h3v3h-3z"></path>
         </svg>
-        <span>線上企福商城<br>線下實體活動</span>
+        <span>&#x7DDA;&#x4E0A;&#x4F01;&#x798F;&#x5546;&#x57CE;<br>&#x7DDA;&#x4E0B;&#x5BE6;&#x9AD4;&#x6D3B;&#x52D5;</span>
       </div>
       <div class="gx-pill">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"></path>
           <path d="M9.5 11.5a1.8 1.8 0 0 1 2.5-1.2 1.8 1.8 0 0 1 2.5 1.2c0 1.5-2.5 3-2.5 3s-2.5-1.5-2.5-3z"></path>
         </svg>
-        <span>完善售後服務<br>安心有保障</span>
+        <span>&#x5B8C;&#x5584;&#x552E;&#x5F8C;&#x670D;&#x52D9;<br>&#x5B89;&#x5FC3;&#x6709;&#x4FDD;&#x969C;</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ 諮詢表單 → Gmail ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x8AEE;&#x8A62;&#x8868;&#x55AE; &#x2192; Gmail &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <section class="gx-section gx-section--pad-consult" id="gx-consult">
   <div class="gx-consult">
     <div class="gx-consult__intro">
-      <h2>聯繫您的專屬顧問</h2>
-      <p>留下聯絡資訊，專屬企福顧問將與您聯繫，為您的團隊規劃合適的福利方案。</p>
+      <h2>&#x806F;&#x7E6B;&#x60A8;&#x7684;&#x5C08;&#x5C6C;&#x9867;&#x554F;</h2>
+      <p>&#x7559;&#x4E0B;&#x806F;&#x7D61;&#x8CC7;&#x8A0A;&#xFF0C;&#x5C08;&#x5C6C;&#x4F01;&#x798F;&#x9867;&#x554F;&#x5C07;&#x8207;&#x60A8;&#x806F;&#x7E6B;&#xFF0C;&#x70BA;&#x60A8;&#x7684;&#x5718;&#x968A;&#x898F;&#x5283;&#x5408;&#x9069;&#x7684;&#x798F;&#x5229;&#x65B9;&#x6848;&#x3002;</p>
       <span class="gx-consult__mail">
-        直接來信：<a href="mailto:service@goamazing.com.tw">service@goamazing.com.tw</a>
+        &#x76F4;&#x63A5;&#x4F86;&#x4FE1;&#xFF1A;<a href="mailto:service@goamazing.com.tw">service@goamazing.com.tw</a>
       </span>
     </div>
 
-    <!-- novalidate：改用自訂驗證，訊息才能統一為繁體中文 -->
+    <!-- novalidate&#xFF1A;&#x6539;&#x7528;&#x81EA;&#x8A02;&#x9A57;&#x8B49;&#xFF0C;&#x8A0A;&#x606F;&#x624D;&#x80FD;&#x7D71;&#x4E00;&#x70BA;&#x7E41;&#x9AD4;&#x4E2D;&#x6587; -->
     <form class="gx-consult__form" data-consult-form novalidate>
       <div class="gx-field-row">
         <label class="gx-field">
-          <span>公司名稱<em>*</em></span>
-          <input type="text" name="company" data-field="公司名稱" data-required
-                 autocomplete="organization" enterkeyhint="next" placeholder="例：購精彩股份有限公司">
+          <span>&#x516C;&#x53F8;&#x540D;&#x7A31;<em>*</em></span>
+          <input type="text" name="company" data-field="&#x516C;&#x53F8;&#x540D;&#x7A31;" data-required
+                 autocomplete="organization" enterkeyhint="next" placeholder="&#x4F8B;&#xFF1A;&#x8CFC;&#x7CBE;&#x5F69;&#x80A1;&#x4EFD;&#x6709;&#x9650;&#x516C;&#x53F8;">
           <span class="gx-field__err"></span>
         </label>
         <label class="gx-field">
-          <span>聯絡人<em>*</em></span>
-          <input type="text" name="contact" data-field="聯絡人" data-required
-                 autocomplete="name" enterkeyhint="next" placeholder="例：王小明">
+          <span>&#x806F;&#x7D61;&#x4EBA;<em>*</em></span>
+          <input type="text" name="contact" data-field="&#x806F;&#x7D61;&#x4EBA;" data-required
+                 autocomplete="name" enterkeyhint="next" placeholder="&#x4F8B;&#xFF1A;&#x738B;&#x5C0F;&#x660E;">
           <span class="gx-field__err"></span>
         </label>
       </div>
 
       <div class="gx-field-row">
         <label class="gx-field">
-          <span>電子郵件<em>*</em></span>
-          <!-- inputmode=email 讓手機鍵盤直接切到含 @ 的版面 -->
-          <input type="email" name="email" data-field="電子郵件" data-required
+          <span>&#x96FB;&#x5B50;&#x90F5;&#x4EF6;<em>*</em></span>
+          <!-- inputmode=email &#x8B93;&#x624B;&#x6A5F;&#x9375;&#x76E4;&#x76F4;&#x63A5;&#x5207;&#x5230;&#x542B; @ &#x7684;&#x7248;&#x9762; -->
+          <input type="email" name="email" data-field="&#x96FB;&#x5B50;&#x90F5;&#x4EF6;" data-required
                  inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false"
                  enterkeyhint="next" placeholder="name@company.com">
           <span class="gx-field__err"></span>
         </label>
         <label class="gx-field">
-          <span>聯絡電話</span>
-          <input type="tel" name="phone" data-field="聯絡電話"
-                 inputmode="tel" autocomplete="tel" enterkeyhint="next" placeholder="例：02-1234-5678">
+          <span>&#x806F;&#x7D61;&#x96FB;&#x8A71;</span>
+          <input type="tel" name="phone" data-field="&#x806F;&#x7D61;&#x96FB;&#x8A71;"
+                 inputmode="tel" autocomplete="tel" enterkeyhint="next" placeholder="&#x4F8B;&#xFF1A;02-1234-5678">
           <span class="gx-field__err"></span>
         </label>
       </div>
 
       <label class="gx-field">
-        <span>需求說明</span>
-        <textarea name="message" data-field="需求說明" rows="4" maxlength="2000"
-                  placeholder="例：約 300 位員工，想規劃中秋節慶禮品與家庭日活動，預算範圍…"></textarea>
+        <span>&#x9700;&#x6C42;&#x8AAA;&#x660E;</span>
+        <textarea name="message" data-field="&#x9700;&#x6C42;&#x8AAA;&#x660E;" rows="4" maxlength="2000"
+                  placeholder="&#x4F8B;&#xFF1A;&#x7D04; 300 &#x4F4D;&#x54E1;&#x5DE5;&#xFF0C;&#x60F3;&#x898F;&#x5283;&#x4E2D;&#x79CB;&#x7BC0;&#x6176;&#x79AE;&#x54C1;&#x8207;&#x5BB6;&#x5EAD;&#x65E5;&#x6D3B;&#x52D5;&#xFF0C;&#x9810;&#x7B97;&#x7BC4;&#x570D;&#x2026;"></textarea>
         <span class="gx-field__err"></span>
       </label>
 
-      <!-- 蜜罐欄位：真人看不到也 tab 不到，只有機器人會填，後端據此擋垃圾訊息 -->
+      <!-- &#x871C;&#x7F50;&#x6B04;&#x4F4D;&#xFF1A;&#x771F;&#x4EBA;&#x770B;&#x4E0D;&#x5230;&#x4E5F; tab &#x4E0D;&#x5230;&#xFF0C;&#x53EA;&#x6709;&#x6A5F;&#x5668;&#x4EBA;&#x6703;&#x586B;&#xFF0C;&#x5F8C;&#x7AEF;&#x64DA;&#x6B64;&#x64CB;&#x5783;&#x573E;&#x8A0A;&#x606F; -->
       <div class="gx-hp" aria-hidden="true">
-        <label>請勿填寫此欄<input type="text" data-hp name="website" tabindex="-1" autocomplete="off"></label>
+        <label>&#x8ACB;&#x52FF;&#x586B;&#x5BEB;&#x6B64;&#x6B04;<input type="text" data-hp name="website" tabindex="-1" autocomplete="off"></label>
       </div>
 
       <div class="gx-consult__actions">
         <button type="submit" class="gx-btn gx-btn--submit" data-submit>
-          以 Gmail 送出諮詢<i>→</i>
+          &#x4EE5; Gmail &#x9001;&#x51FA;&#x8AEE;&#x8A62;<i>&#x2192;</i>
         </button>
-        <button type="button" class="gx-link-alt" data-send-mailto>改用預設郵件軟體</button>
-        <button type="button" class="gx-link-alt" data-copy>複製信件內容</button>
+        <button type="button" class="gx-link-alt" data-send-mailto>&#x6539;&#x7528;&#x9810;&#x8A2D;&#x90F5;&#x4EF6;&#x8EDF;&#x9AD4;</button>
+        <button type="button" class="gx-link-alt" data-copy>&#x8907;&#x88FD;&#x4FE1;&#x4EF6;&#x5167;&#x5BB9;</button>
       </div>
 
       <p class="gx-form-note">
-        送出後會開啟 Gmail 撰寫視窗，並自動帶入您填寫的內容，收件人為
-        <strong>service@goamazing.com.tw</strong>，確認無誤後按「傳送」即可寄出。
+        &#x9001;&#x51FA;&#x5F8C;&#x6703;&#x958B;&#x555F; Gmail &#x64B0;&#x5BEB;&#x8996;&#x7A97;&#xFF0C;&#x4E26;&#x81EA;&#x52D5;&#x5E36;&#x5165;&#x60A8;&#x586B;&#x5BEB;&#x7684;&#x5167;&#x5BB9;&#xFF0C;&#x6536;&#x4EF6;&#x4EBA;&#x70BA;
+        <strong>service@goamazing.com.tw</strong>&#xFF0C;&#x78BA;&#x8A8D;&#x7121;&#x8AA4;&#x5F8C;&#x6309;&#x300C;&#x50B3;&#x9001;&#x300D;&#x5373;&#x53EF;&#x5BC4;&#x51FA;&#x3002;
       </p>
 
       <p class="gx-form-status" data-form-status role="status" aria-live="polite"></p>
@@ -888,42 +897,27 @@
   </div>
 </section>
 
-<!-- ══════════ 頁尾 ══════════ -->
+<!-- &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; &#x9801;&#x5C3E; &#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550; -->
 <footer class="gx-footer">
-  <span>© 2026 GOAMAZING 購精彩</span>
-  <nav aria-label="頁尾選單">
-    <a href="#gx-resources">服務內容</a>
-    <a href="#gx-products">商品規劃</a>
-    <a href="#gx-omo">OMO 整合優勢</a>
-    <a href="#gx-consult">聯繫顧問</a>
+  <span>&#xA9; 2026 GOAMAZING &#x8CFC;&#x7CBE;&#x5F69;</span>
+  <nav aria-label="&#x9801;&#x5C3E;&#x9078;&#x55AE;">
+    <a href="#gx-resources">&#x670D;&#x52D9;&#x5167;&#x5BB9;</a>
+    <a href="#gx-products">&#x5546;&#x54C1;&#x898F;&#x5283;</a>
+    <a href="#gx-omo">OMO &#x6574;&#x5408;&#x512A;&#x52E2;</a>
+    <a href="#gx-consult">&#x806F;&#x7E6B;&#x9867;&#x554F;</a>
   </nav>
 </footer>
 
 <script>
-/* ==========================================================================
-   GOAMAZING 購精彩 — 首頁互動邏輯
-   1. 首屏拆禮物捲動動畫
-   2. 導覽列（固定 / 手機抽屜）
-   3. 橫向卡片軌道
-   4. 諮詢表單 → Gmail 寄信
-   ========================================================================== */
 (function () {
   'use strict';
 
-  /* ── 設定 ────────────────────────────────────────────────────────
-     apiEndpoint 留空  → 按下送出時開啟 Gmail 撰寫視窗（預設）
-     apiEndpoint 有填  → 直接 POST 到你的後端，由伺服器寄信，
-                         使用者不需再按一次「傳送」。設定方式見 README。 */
   var CONFIG = {
     recipient:   'service@goamazing.com.tw',
     apiEndpoint: ''
   };
   var RECIPIENT = CONFIG.recipient;
 
-  /* 同一份程式碼同時服務兩種輸出：
-       單機版      → 沒有 #gx-root，退回 document / documentElement
-       CyberBiz 版 → 所有查詢與 CSS 變數都限縮在 #gx-root 之內，
-                     不會抓到店家版型的元素，也不會污染全站樣式 */
   var ROOT  = document.getElementById('gx-root');
   var SCOPE = ROOT || document;
   var VARS  = ROOT || document.documentElement;
@@ -933,21 +927,15 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── 1. 視窗尺寸變數 ───────────────────────────────────────────────
-     用 JS 同步真實視窗高度到 CSS 變數，解決 iOS Safari 網址列
-     伸縮時 100vh 會跳動、造成首屏文字被切掉的問題。            */
   function syncViewport() {
     var doc = VARS;
     doc.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
-    // 緞帶蝴蝶結尺寸：同時受寬度與高度限制，橫置手機也不會爆版
     var bow = Math.max(96, Math.min(190, window.innerWidth * 0.125, window.innerHeight * 0.2));
     doc.style.setProperty('--bow-w', bow.toFixed(0) + 'px');
-    // 導覽列實際高度回寫，錨點捲動位移永遠正確
     var nav = $('.gx-nav');
     if (nav) doc.style.setProperty('--nav-h', nav.offsetHeight + 'px');
   }
 
-  /* ── 2. 首屏拆禮物動畫 ───────────────────────────────────────── */
   var stage = {
     wrap:    $('[data-stage]'),
     photo:   $('[data-photo]'),
@@ -997,7 +985,6 @@
       setStyle(el, { transform: 'translateY(' + ((1 - t) * 34) + 'px)', opacity: String(t) });
     });
 
-    // 循環箭頭隨捲動微幅旋轉
     if (stage.cycle) {
       var r = stage.cycle.getBoundingClientRect();
       if (r.bottom > 0 && r.top < vh) {
@@ -1029,7 +1016,6 @@
     });
   }
 
-  /* ── 3. 導覽列抽屜 ───────────────────────────────────────────── */
   function initNav() {
     var burger = $('[data-burger]'), drawer = $('[data-drawer]');
     if (!burger || !drawer) return;
@@ -1041,9 +1027,7 @@
     burger.addEventListener('click', function () {
       setOpen(burger.getAttribute('aria-expanded') !== 'true');
     });
-    // 點選單項目後自動收合
     $$('a', drawer).forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
-    // 點外面 / 按 Esc / 放大到桌機寬度 → 收合，避免殘留擋住畫面
     document.addEventListener('click', function (e) {
       if (!drawer.contains(e.target) && !burger.contains(e.target)) setOpen(false);
     });
@@ -1051,7 +1035,6 @@
     window.matchMedia('(min-width: 900px)').addEventListener('change', function (e) { if (e.matches) setOpen(false); });
   }
 
-  /* ── 4. 橫向卡片軌道 ─────────────────────────────────────────── */
   function railCards(track) { return $$('[data-card]', track); }
 
   function markCenter(track) {
@@ -1074,7 +1057,6 @@
         c.style.boxShadow = '0 ' + (8 + 24 * e).toFixed(0) + 'px ' + (22 + 34 * e).toFixed(0) +
                             'px rgba(32,30,29,' + (0.04 + 0.13 * e).toFixed(3) + ')';
       } else {
-        // 觸控裝置不做 3D 變形：省效能，也避免卡片邊緣被裁切
         c.style.transform = '';
         c.style.opacity = (0.68 + 0.32 * e).toFixed(3);
         c.style.boxShadow = '';
@@ -1087,7 +1069,6 @@
     if (sh && best) {
       if (!fancy) { sh.style.opacity = '0'; return; }
       var w = best.offsetWidth * 0.78;
-      // 用自訂屬性而非 style.width：CyberBiz 版會把 width 標成 !important 防主題污染
       sh.style.setProperty('--rail-shadow-w', w.toFixed(0) + 'px');
       sh.style.transform = 'translateX(' + (best.offsetLeft + best.offsetWidth / 2 - track.scrollLeft - w / 2).toFixed(1) + 'px)';
       sh.style.opacity = String(Math.max(0, 1 - bestD));
@@ -1097,7 +1078,6 @@
   function restRail(track) {
     var cards = railCards(track);
     if (!cards.length) return;
-    // 起始停在第二張，暗示左右都還有內容；窄螢幕只放得下一張時就停在第一張
     var card = cards[Math.min(1, cards.length - 1)];
     var max = track.scrollWidth - track.clientWidth;
     track.scrollLeft = Math.max(0, Math.min(max, card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2));
@@ -1115,7 +1095,6 @@
     $$('[data-rail]').forEach(function (track) {
       var down = false, sx = 0, sl = 0, moved = 0, hoverT = null, raf = null;
 
-      // 滑鼠拖曳（觸控交給瀏覽器原生捲動，體驗最順）
       track.addEventListener('pointerdown', function (e) {
         track.dataset.touched = '1';
         if (e.pointerType === 'touch') return;
@@ -1144,8 +1123,6 @@
         raf = requestAnimationFrame(function () { markCenter(track); });
       }, { passive: true });
 
-      // 只攔截「明確的橫向」滾輪手勢；垂直滾動一律讓頁面自己捲，
-      // 否則在 Windows 觸控板 / 觸控筆電上滑到卡片區會卡住整頁。
       track.addEventListener('wheel', function (e) {
         if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
         var max = track.scrollWidth - track.clientWidth;
@@ -1186,16 +1163,6 @@
     $$('[data-rail]').forEach(function (t) { t.dataset.touched ? markCenter(t) : restRail(t); });
   }
 
-  /* ── 5. 諮詢表單 → Gmail ─────────────────────────────────────────
-     點「送出諮詢需求」時，把表單內容組成信件主旨與內文，
-     直接開啟 Gmail 撰寫視窗，收件人固定為 service@goamazing.com.tw。
-
-     跨平台策略（不做不可靠的瀏覽器偵測）：
-       · Windows / macOS 桌機 → 新分頁開啟 Gmail 網頁版撰寫畫面
-       · iOS / iPadOS        → mail.google.com 是 Gmail App 的 Universal Link，
-                               裝了 App 會直接跳 App，沒裝則開 Gmail 行動網頁
-       · Android             → 同上，由系統 App Links 接手
-     另備兩條退路：改用系統預設郵件軟體（mailto:）、或一鍵複製內容。   */
   function initForm() {
     var form = $('[data-consult-form]');
     if (!form) return;
@@ -1226,32 +1193,30 @@
         var val = (input.value || '').trim();
         var msg = '';
         if (input.hasAttribute('data-required') && !val) {
-          msg = '請填寫' + label;
+          msg = '\u8acb\u586b\u5beb' + label;
         } else if (val && input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) {
-          msg = '請輸入正確的電子郵件格式';
+          msg = '\u8acb\u8f38\u5165\u6b63\u78ba\u7684\u96fb\u5b50\u90f5\u4ef6\u683c\u5f0f';
         } else if (val && input.type === 'tel' && !/^[\d+\-()#*\s]{6,}$/.test(val)) {
-          msg = '請輸入正確的電話號碼';
+          msg = '\u8acb\u8f38\u5165\u6b63\u78ba\u7684\u96fb\u8a71\u865f\u78bc';
         }
         if (!showError(input, msg)) { ok = false; if (!firstBad) firstBad = input; }
       });
       if (firstBad) {
         firstBad.focus();
         firstBad.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
-        setStatus('請確認標示的欄位後再送出。', 'warn');
+        setStatus('\u8acb\u78ba\u8a8d\u6a19\u793a\u7684\u6b04\u4f4d\u5f8c\u518d\u9001\u51fa\u3002', 'warn');
       }
       return ok;
     }
 
-    // 把畫面上填寫的資料組成信件內容
     function compose() {
       var company = '', lines = [];
       fields().forEach(function (input) {
         var label = input.getAttribute('data-field');
         var val = (input.value || '').trim();
-        if (label === '公司名稱') company = val;
+        if (label === '\u516c\u53f8\u540d\u7a31') company = val;
         if (!val) return;
-        // 多行欄位（需求說明）另起一段，維持信件可讀性
-        lines.push(input.tagName === 'TEXTAREA' ? label + '：\n' + val : label + '：' + val);
+        lines.push(input.tagName === 'TEXTAREA' ? label + '\uff1a\n' + val : label + '\uff1a' + val);
       });
 
       var now = new Date();
@@ -1259,14 +1224,14 @@
       var stamp = now.getFullYear() + '/' + pad(now.getMonth() + 1) + '/' + pad(now.getDate()) +
                   ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
 
-      var body = '【企業福利方案諮詢】\n\n' + lines.join('\n') +
-                 '\n\n──────────────────\n' +
-                 '來源：GOAMAZING 購精彩 官網諮詢表單\n' +
-                 '填寫時間：' + stamp + '\n';
+      var body = '\u3010\u4f01\u696d\u798f\u5229\u65b9\u6848\u8aee\u8a62\u3011\n\n' + lines.join('\n') +
+                 '\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n' +
+                 '\u4f86\u6e90\uff1aGOAMAZING \u8cfc\u7cbe\u5f69 \u5b98\u7db2\u8aee\u8a62\u8868\u55ae\n' +
+                 '\u586b\u5beb\u6642\u9593\uff1a' + stamp + '\n';
 
       return {
         to: RECIPIENT,
-        subject: '企業福利方案諮詢' + (company ? '｜' + company : ''),
+        subject: '\u4f01\u696d\u798f\u5229\u65b9\u6848\u8aee\u8a62' + (company ? '\uff5c' + company : ''),
         body: body
       };
     }
@@ -1283,28 +1248,22 @@
              '&body=' + encodeURIComponent(m.body);
     }
 
-    // 把欄位整理成 API 用的 JSON
     function payload(m) {
       var data = { to: m.to, subject: m.subject, body: m.body, source: 'goamazing-homepage' };
-      // 同時給英文欄位名（company/contact/…）與中文標籤（公司名稱/聯絡人/…），
-      // 後端用哪一種寫法都接得到。
       fields().forEach(function (input) {
         var v = (input.value || '').trim();
         var en = input.getAttribute('name'), zh = input.getAttribute('data-field');
         if (en) data[en] = v;
         if (zh) data[zh] = v;
       });
-      var hp = $('[data-hp]', form);      // 蜜罐欄位：真人看不到，只有機器人會填
+      var hp = $('[data-hp]', form);      // \u871c\u7f50\u6b04\u4f4d\uff1a\u771f\u4eba\u770b\u4e0d\u5230\uff0c\u53ea\u6709\u6a5f\u5668\u4eba\u6703\u586b
       if (hp) data.hp = hp.value || '';
       return data;
     }
 
-    // 模式二：POST 到後端，由伺服器直接寄信
     function sendViaApi(m) {
       if (submitBtn) { submitBtn.disabled = true; }
-      setStatus('傳送中…', 'ok');
-      // 用 text/plain 送出 JSON 字串，屬於「簡單請求」不會觸發 CORS 預檢，
-      // Google Apps Script 之類的端點才收得到（詳見 README）。
+      setStatus('\u50b3\u9001\u4e2d\u2026', 'ok');
       fetch(CONFIG.apiEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -1314,22 +1273,20 @@
       .then(function (r) {
         var okFlag = r.ok;
         try { var j = JSON.parse(r.t); if (j && typeof j.ok === 'boolean') okFlag = j.ok; } catch (e) {}
-        if (!okFlag) throw new Error(r.t || '伺服器回應失敗');
+        if (!okFlag) throw new Error(r.t || '\u4f3a\u670d\u5668\u56de\u61c9\u5931\u6557');
         form.reset();
-        setStatus('已送出，感謝您的來信！專屬企福顧問將盡快與您聯繫。', 'ok');
+        setStatus('\u5df2\u9001\u51fa\uff0c\u611f\u8b1d\u60a8\u7684\u4f86\u4fe1\uff01\u5c08\u5c6c\u4f01\u798f\u9867\u554f\u5c07\u76e1\u5feb\u8207\u60a8\u806f\u7e6b\u3002', 'ok');
       })
       .catch(function (err) {
-        // 後端掛掉時不要讓使用者白填一次，退回 Gmail
-        setStatus('系統寄送失敗（' + (err.message || err) + '），已為您改開 Gmail，請直接按「傳送」。', 'warn');
+        setStatus('\u7cfb\u7d71\u5bc4\u9001\u5931\u6557\uff08' + (err.message || err) + '\uff09\uff0c\u5df2\u70ba\u60a8\u6539\u958b Gmail\uff0c\u8acb\u76f4\u63a5\u6309\u300c\u50b3\u9001\u300d\u3002', 'warn');
         var w = window.open(gmailUrl(m), '_blank', 'noopener,noreferrer');
         if (!w) window.location.href = gmailUrl(m);
       })
       .then(function () { if (submitBtn) submitBtn.disabled = false; });
     }
 
-    // 送出
     form.addEventListener('submit', function (e) {
-      e.preventDefault();                 // 不做傳統表單送出
+      e.preventDefault();                 // \u4e0d\u505a\u50b3\u7d71\u8868\u55ae\u9001\u51fa
       setStatus('');
       if (!validate()) return;
 
@@ -1337,34 +1294,28 @@
 
       if (CONFIG.apiEndpoint) { sendViaApi(m); return; }
 
-      // 模式一（預設）：開 Gmail 撰寫視窗
       var url = gmailUrl(m);
 
-      // window.open 必須在使用者點擊的同一個事件內同步呼叫，
-      // 否則 iOS Safari 會當成彈出視窗擋掉。
       var win = window.open(url, '_blank', 'noopener,noreferrer');
       if (!win || win.closed || typeof win.closed === 'undefined') {
-        // 被封鎖彈出視窗 → 直接在本頁跳轉，確保一定送得出去
         window.location.href = url;
       }
-      setStatus('已為您開啟 Gmail 撰寫視窗，內容已自動帶入，確認後按「傳送」即可寄出。若沒有跳出，請改用下方的備用方式。', 'ok');
+      setStatus('\u5df2\u70ba\u60a8\u958b\u555f Gmail \u64b0\u5beb\u8996\u7a97\uff0c\u5167\u5bb9\u5df2\u81ea\u52d5\u5e36\u5165\uff0c\u78ba\u8a8d\u5f8c\u6309\u300c\u50b3\u9001\u300d\u5373\u53ef\u5bc4\u51fa\u3002\u82e5\u6c92\u6709\u8df3\u51fa\uff0c\u8acb\u6539\u7528\u4e0b\u65b9\u7684\u5099\u7528\u65b9\u5f0f\u3002', 'ok');
     });
 
-    // 備用一：系統預設郵件軟體（Outlook / Apple Mail 等）
     var altBtn = $('[data-send-mailto]', form);
     if (altBtn) altBtn.addEventListener('click', function () {
       if (!validate()) return;
       window.location.href = mailtoUrl(compose());
-      setStatus('已呼叫您裝置的預設郵件軟體。', 'ok');
+      setStatus('\u5df2\u547c\u53eb\u60a8\u88dd\u7f6e\u7684\u9810\u8a2d\u90f5\u4ef6\u8edf\u9ad4\u3002', 'ok');
     });
 
-    // 備用二：複製信件內容，貼到任何信箱都能寄
     var copyBtn = $('[data-copy]', form);
     if (copyBtn) copyBtn.addEventListener('click', function () {
       if (!validate()) return;
       var m = compose();
-      var text = '收件人：' + m.to + '\n主旨：' + m.subject + '\n\n' + m.body;
-      function done() { setStatus('信件內容已複製，可直接貼到任何郵件軟體寄給 ' + RECIPIENT + '。', 'ok'); }
+      var text = '\u6536\u4ef6\u4eba\uff1a' + m.to + '\n\u4e3b\u65e8\uff1a' + m.subject + '\n\n' + m.body;
+      function done() { setStatus('\u4fe1\u4ef6\u5167\u5bb9\u5df2\u8907\u88fd\uff0c\u53ef\u76f4\u63a5\u8cbc\u5230\u4efb\u4f55\u90f5\u4ef6\u8edf\u9ad4\u5bc4\u7d66 ' + RECIPIENT + '\u3002', 'ok'); }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(done, function () { legacyCopy(text, done); });
       } else {
@@ -1378,13 +1329,12 @@
       ta.setAttribute('readonly', '');
       ta.style.cssText = 'position:absolute;left:-9999px;top:0';
       document.body.appendChild(ta);
-      ta.select(); ta.setSelectionRange(0, text.length);   // iOS 需要明確選取範圍
+      ta.select(); ta.setSelectionRange(0, text.length);   // iOS \u9700\u8981\u660e\u78ba\u9078\u53d6\u7bc4\u570d
       try { document.execCommand('copy'); done(); }
-      catch (err) { setStatus('複製失敗，請手動寄信至 ' + RECIPIENT + '。', 'warn'); }
+      catch (err) { setStatus('\u8907\u88fd\u5931\u6557\uff0c\u8acb\u624b\u52d5\u5bc4\u4fe1\u81f3 ' + RECIPIENT + '\u3002', 'warn'); }
       document.body.removeChild(ta);
     }
 
-    // 邊打字邊清除錯誤提示
     fields().forEach(function (input) {
       input.addEventListener('input', function () {
         if (input.getAttribute('aria-invalid') === 'true') showError(input, '');
@@ -1392,7 +1342,6 @@
     });
   }
 
-  /* ── 6. 啟動 ─────────────────────────────────────────────────── */
   function init() {
     syncViewport();
     initNav();
@@ -1407,13 +1356,11 @@
       syncViewport();
       onScroll();
       clearTimeout(resizeT);
-      // 尺寸穩定後才重排卡片，避免手機轉向途中抖動
       resizeT = setTimeout(relayoutRails, 140);
     }
     window.addEventListener('resize', onResize, { passive: true });
     window.addEventListener('orientationchange', function () { setTimeout(onResize, 200); });
 
-    // 字體載入完成後尺寸會變，重新量一次卡片位置
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(function () { syncViewport(); relayoutRails(); });
     }
@@ -1427,25 +1374,16 @@
   }
 })();
 
-/* ==========================================================================
-   CyberBiz 嵌入專用補強（接在主程式之後執行）
-   只處理「嵌在店家版型裡」才需要的事，單機版不會用到這個檔案。
-   ========================================================================== */
 (function () {
   'use strict';
   var root = document.getElementById('gx-root');
-  if (!root || root.dataset.gxReady) return;   // 同一頁貼兩次時只初始化一次
+  if (!root || root.dataset.gxReady) return;   // \u540c\u4e00\u9801\u8cbc\u5169\u6b21\u6642\u53ea\u521d\u59cb\u5316\u4e00\u6b21
   root.dataset.gxReady = '1';
 
-  /* ── 1. 滿版寬度 ────────────────────────────────────────────────
-     用 clientWidth（不含捲軸）而非 100vw，桌機才不會多出一條橫向捲軸。 */
   function syncBleed() {
     root.style.setProperty('--gx-vw', document.documentElement.clientWidth + 'px');
   }
 
-  /* ── 2. 偵測 position:sticky 是否真的有效 ───────────────────────
-     店家版型的外層只要有 overflow:hidden/auto/scroll，sticky 就會失效，
-     首屏會變成一整片黑。這裡實際量測，失效就切換成靜態首屏。 */
   function checkSticky() {
     var sticky = root.querySelector('.gx-stage__sticky');
     if (!sticky) return;
@@ -1457,17 +1395,13 @@
         broken = true; break;
       }
     }
-    // 瀏覽器本身不支援 sticky（很舊的機型）也算失效
     if (!CSS || !CSS.supports || !(CSS.supports('position', 'sticky') || CSS.supports('position', '-webkit-sticky'))) {
       broken = true;
     }
     root.classList.toggle('gx-nostick', broken);
-    if (broken) console.warn('[goamazing] 外層容器使版面無法使用 sticky，已切換為靜態首屏。');
+    if (broken) console.warn('[goamazing] \u5916\u5c64\u5bb9\u5668\u4f7f\u7248\u9762\u7121\u6cd5\u4f7f\u7528 sticky\uff0c\u5df2\u5207\u63db\u70ba\u975c\u614b\u9996\u5c4f\u3002');
   }
 
-  /* ── 3. 錨點平滑捲動 ───────────────────────────────────────────
-     scroll-behavior 必須設在捲動容器（html）上，嵌入時不該去動店家的全域樣式，
-     因此改用 JS 處理，並自動扣掉店家頁首與本頁導覽列的高度。 */
   function offsetTop() {
     var header = parseFloat(getComputedStyle(root).getPropertyValue('--gx-header-h')) || 0;
     var nav = root.querySelector('.gx-nav');
@@ -1480,7 +1414,7 @@
     var id = a.getAttribute('href').slice(1);
     if (!id) return;
     var target = document.getElementById(id);
-    if (!target) return;                       // 不是本區塊的錨點就交還給瀏覽器
+    if (!target) return;                       // \u4e0d\u662f\u672c\u5340\u584a\u7684\u9328\u9ede\u5c31\u4ea4\u9084\u7d66\u700f\u89bd\u5668
     e.preventDefault();
     var y = target.getBoundingClientRect().top + window.pageYOffset - offsetTop();
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

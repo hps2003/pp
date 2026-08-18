@@ -168,18 +168,115 @@ async def functional(b, url):
     return bad
 
 
+async def images_ok(b, url):
+    """圖片檢查：全部載入成功，且顯示比例沒有被拉扁／壓縮。"""
+    bad = []
+    ctx = await b.new_context(viewport={"width": 1280, "height": 900})
+    pg = await ctx.new_page()
+    await pg.goto(url, wait_until="load"); await pg.wait_for_timeout(600)
+    # 逐段捲過整頁，讓所有 lazy 圖片都有機會進入視窗
+    h = await pg.evaluate("document.body.scrollHeight")
+    for y in range(0, h, 700):
+        await pg.evaluate(f"window.scrollTo(0,{y})"); await pg.wait_for_timeout(120)
+    await pg.evaluate("window.scrollTo(0,0)"); await pg.wait_for_timeout(400)
+    await pg.evaluate("""()=>Promise.all([...document.querySelectorAll('#gx-root img')]
+        .map(i=>i.decode?i.decode().catch(()=>{}):null))""")
+    res = await pg.evaluate("""()=>{
+      const root=document.getElementById('gx-root');
+      return [...root.querySelectorAll('img')].map(im=>{
+        const r=im.getBoundingClientRect(), cs=getComputedStyle(im);
+        return {src:(im.currentSrc||im.src||'').slice(0,40),
+                complete:im.complete, nw:im.naturalWidth, nh:im.naturalHeight,
+                w:r.width, h:r.height, fit:cs.objectFit,
+                hidden:cs.display==='none'||cs.visibility==='hidden'};
+      });
+    }""")
+    await ctx.close()
+    for im in res:
+        if not im["complete"] or im["nw"] == 0:
+            bad.append(f"圖片載入失敗 {im['src']}"); continue
+        if im["hidden"] or im["w"] < 2 or im["h"] < 2:
+            continue
+        # object-fit:cover 本來就會裁切，不比對比例
+        if im["fit"] in ("cover", "contain", "fill"):
+            continue
+        want = im["nw"] / im["nh"]
+        got = im["w"] / im["h"]
+        if abs(got - want) / want > 0.04:
+            bad.append(f"圖片變形 {im['src']} 原始比例 {want:.3f} → 顯示 {got:.3f}")
+    if not res:
+        bad.append("找不到任何圖片")
+    return bad, len(res)
+
+
+async def no_disruption(b, plain_url, with_url):
+    """把「沒貼片段」與「貼了片段」的同一頁做比對，確認店家版型完全沒被動到。"""
+    bad = []
+    SNAP = """()=>{
+      const out={html:{}, body:{}, nodes:0, els:[]};
+      const de=document.documentElement, bd=document.body;
+      const hs=getComputedStyle(de), bs=getComputedStyle(bd);
+      ['overflow','overflowX','overflowY','position','margin','padding','fontSize',
+       'fontFamily','color','backgroundColor','lineHeight'].forEach(k=>{
+        out.html[k]=hs[k]; out.body[k]=bs[k];
+      });
+      out.htmlClass=de.className; out.bodyClass=bd.className;
+      out.htmlStyle=de.getAttribute('style')||''; out.bodyStyle=bd.getAttribute('style')||'';
+      // 只看店家自己的元素（片段之外）
+      document.querySelectorAll('.shop-header, .shop-container>h2, .shop-foot').forEach(e=>{
+        const r=e.getBoundingClientRect(), cs=getComputedStyle(e);
+        out.els.push({sel:e.className||e.tagName, x:Math.round(r.x), y:Math.round(r.y),
+                      w:Math.round(r.width), h:Math.round(r.height),
+                      color:cs.color, size:cs.fontSize, pos:cs.position, z:cs.zIndex});
+        out.nodes++;
+      });
+      return out;
+    }"""
+    snaps = {}
+    for key, url in (("plain", plain_url), ("with", with_url)):
+        ctx = await b.new_context(viewport={"width": 1280, "height": 900})
+        pg = await ctx.new_page()
+        await pg.goto(url, wait_until="domcontentloaded"); await pg.wait_for_timeout(700)
+        snaps[key] = await pg.evaluate(SNAP)
+        await ctx.close()
+
+    a, c = snaps["plain"], snaps["with"]
+    for k in a["html"]:
+        if a["html"][k] != c["html"][k]:
+            bad.append(f"<html> 的 {k} 被改動：{a['html'][k]} → {c['html'][k]}")
+        if a["body"][k] != c["body"][k]:
+            bad.append(f"<body> 的 {k} 被改動：{a['body'][k]} → {c['body'][k]}")
+    for k in ("htmlClass", "bodyClass", "htmlStyle", "bodyStyle"):
+        if a[k] != c[k]:
+            bad.append(f"{k} 被改動：{a[k]!r} → {c[k]!r}")
+    if a["nodes"] != c["nodes"]:
+        bad.append(f"店家元素數量改變：{a['nodes']} → {c['nodes']}")
+    else:
+        for x, y in zip(a["els"], c["els"]):
+            # 片段插在頁尾之前，頁尾本來就會被往下推 —— 那是「加了內容」而不是
+            # 「破壞版型」。因此頁尾只比對水平幾何與樣式，不比對 y。
+            keys = ("x", "w", "color", "size", "pos", "z")
+            if "foot" not in str(x["sel"]):
+                keys = keys + ("y", "h")
+            for k in keys:
+                if x[k] != y[k]:
+                    bad.append(f"店家元素 {x['sel']} 的 {k} 改變：{x[k]} → {y[k]}")
+    return bad
+
+
 async def main():
-    frag = (ROOT/"cyberbiz-內嵌圖片.html").read_text(encoding="utf-8")
+    frag = (ROOT/"cyberbiz.html").read_text(encoding="utf-8")
     tmp = pathlib.Path(tempfile.mkdtemp())
-    def write(nm, o, c):
+    def write(nm, o, c, frag=frag):
         p = tmp/nm
         p.write_text(f"""<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"><title>t</title>{THEME}</head><body>
 <header class="shop-header">模擬店家頁首</header>{o}<div class="shop-container">
-<h2>店家自訂頁面</h2>{frag}</div>{c}<footer>店家頁尾</footer></body></html>""", encoding="utf-8")
+<h2>店家自訂頁面</h2>{frag}</div>{c}<footer class="shop-foot">店家頁尾</footer></body></html>""", encoding="utf-8")
         return p.as_uri()
 
     normal = write("normal.html", "", "")
+    plain = write("plain.html", "", "", frag="")
     overflow = write("overflow.html", '<div style="overflow-x:hidden">', "</div>")
 
     fails = 0
@@ -193,13 +290,25 @@ async def main():
                 print(("  PASS  " if not bad else "  ISSUE ")+name)
                 for x in bad: print("          -", x)
                 fails += bool(bad)
+        print("\n── 圖片：載入與比例 ──")
+        ibad, n = await images_ok(b, normal)
+        for x in ibad: print("          -", x)
+        print(f"  PASS  {n} 張圖片全部載入且未變形" if not ibad else "  ISSUE 圖片有問題")
+        fails += bool(ibad)
+
+        print("\n── 不破壞店家頁面結構（貼片段前 vs 後） ──")
+        dbad = await no_disruption(b, plain, normal)
+        for x in dbad: print("          -", x)
+        print("  PASS  店家版型與元素位置完全未改變" if not dbad else "  ISSUE 店家版型被影響")
+        fails += bool(dbad)
+
         print("\n── 功能：Gmail 寄信 / 選單 / 隔離性 ──")
         fbad = await functional(b, normal)
         for x in fbad: print("          -", x)
         print("  PASS  嵌入後功能正常" if not fbad else "  ISSUE 嵌入後功能異常")
         fails += bool(fbad)
         await b.close()
-    total = len(DEVICES)*2 + 1
+    total = len(DEVICES)*2 + 3
     print(f"\n{total-fails}/{total} 通過")
     return 1 if fails else 0
 

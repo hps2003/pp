@@ -7,8 +7,8 @@
 | 路徑 | 說明 |
 |---|---|
 | `Amazing-Homepage.html` | **獨立網站版**。單一檔案、圖片已內嵌，可直接雙擊開啟或上傳任何主機 |
-| `cyberbiz-內嵌圖片.html` | **CyberBiz 版（建議）**。可貼上的片段，圖片已內嵌，不必上傳圖片 |
-| `cyberbiz-外連圖片.html` | CyberBiz 版，圖片改外連（約 97 KB），需先把 `src/assets/` 上傳到圖床 |
+| `cyberbiz.html` | **CyberBiz 版 —— 就是這一份**。整份複製貼上即可，圖片已內嵌 |
+| `cyberbiz-external-images.html` | 備用：編輯器若會過濾 `data:` 圖片才用（99 KB，需自行上傳圖片） |
 | `api/google-apps-script.gs` | 後端收信 API（選用），讓表單由伺服器直接寄出 |
 | `src/index.src.html` | 原始 HTML（圖片以 `{{ASSET:檔名}}` 標記） |
 | `src/styles.css` | 樣式表（行動優先，含完整斷點） |
@@ -26,7 +26,7 @@
 
 ```bash
 python3 src/build.py            # 獨立網站版
-python3 src/build_cyberbiz.py   # CyberBiz 版（兩個檔案）
+python3 src/build_cyberbiz.py   # CyberBiz 版（cyberbiz.html）
 ```
 
 兩種版本共用同一份 `styles.css` 與 `app.js`，改一次兩邊都會更新。
@@ -114,12 +114,24 @@ python3 src/build_cyberbiz.py   # CyberBiz 版（兩個檔案）
 
 ## 貼進 CyberBiz
 
-用 `cyberbiz-內嵌圖片.html`（圖片已內嵌，不必另外上傳）。
+**只需要 `cyberbiz.html` 這一個檔案。**
 
 1. CyberBiz 後台 →「網路商店」→「頁面管理」→ 新增或編輯頁面
 2. 內容編輯器切到 **HTML／原始碼模式**（`<>` 按鈕）
-3. 打開 `cyberbiz-內嵌圖片.html`，**整個檔案全選複製**，貼上後存檔
+3. 用純文字編輯器打開 `cyberbiz.html`，**整份全選（Ctrl/Cmd + A）複製**，貼上後存檔
 4. 預覽確認
+
+> 不要用 Word 開啟再複製 —— 會插入額外的格式標記。
+> 用記事本、VS Code、Sublime 等純文字編輯器。
+
+### 不會有亂碼
+
+整份檔案是**純 ASCII**（0 個非 ASCII 位元組），中文全部寫成 HTML 數值字元參照
+（`&#x8CFC;`）與 JS 逸出（`\u8CFC`）。因此不論 CyberBiz 的編輯器、資料庫或頁面
+用哪一種字元集載入，中文都會正確顯示。
+
+已實測：頁面故意宣告 `big5`、`iso-8859-1`、以及完全不宣告字元集，
+渲染出來的 88 段文字、6 個 placeholder、24 個 alt 全部與 UTF-8 版**逐字相同**。
 
 ### 這個版本和獨立版差在哪
 
@@ -135,6 +147,8 @@ python3 src/build_cyberbiz.py   # CyberBiz 版（兩個檔案）
 | 外層容器有 `overflow` 導致 `sticky` 失效、首屏變全黑 | JS 會偵測並自動切換成靜態首屏 |
 | 腳本被擋掉 | CSS 保底樣式讓首屏文字直接顯示 |
 | 錨點捲動 | 改由 JS 處理，不去動店家的全域 `scroll-behavior` |
+| 中文變亂碼 | 整份輸出轉成純 ASCII，中文以字元參照／JS 逸出表示 |
+| 圖片延遲載入造成短暫空白 | 內嵌版移除 `loading="lazy"`（圖片已在文件內，沒有網路請求可延後） |
 
 ### 兩個常用調整
 
@@ -149,12 +163,14 @@ python3 src/build_cyberbiz.py   # CyberBiz 版（兩個檔案）
 
 頁尾如果和店家頁尾重複，刪掉 HTML 裡 `<!-- 頁尾 -->` 那一段即可。
 
-### 想改成外連圖片
+### 萬一貼上後不正常
 
-`cyberbiz-外連圖片.html` 只有約 97 KB，適合 CMS 欄位有長度限制時使用：
-
-1. 把 `src/assets/` 裡 24 個檔案上傳到 CyberBiz 檔案管理或任何圖床
-2. 把檔案裡的 `https://請換成你的圖片網址/` 全部取代成你的網址前綴（結尾要有 `/`）
+| 症狀 | 原因與處理 |
+|---|---|
+| 圖片全部不見 | 編輯器過濾掉了 `data:` 圖片 → 改用 `cyberbiz-external-images.html`（99 KB），先把 `src/assets/` 的 24 個檔案上傳到 CyberBiz 檔案管理或圖床，再把檔案裡的 `https://YOUR-IMAGE-HOST/` 取代成你的網址前綴（結尾要有 `/`） |
+| 內容只顯示一半 | 欄位有長度上限、貼上時被截斷 → 同樣改用 `cyberbiz-external-images.html` |
+| 完全沒有樣式 | 編輯器把 `<style>` 濾掉了 → 改用「自訂 CSS／頁尾程式碼」欄位貼入樣式 |
+| 首屏是一片黑 | 外層容器的 `overflow` 讓 `sticky` 失效 → 程式會自動偵測並切成靜態首屏；若沒生效，把最外層的 `class="gx-full"` 移除 |
 
 ## 設定 API（選用）
 

@@ -30,13 +30,19 @@ def walk(css, found):
                 if part:
                     found["selectors"].append(part)
 
-for name in ["cyberbiz-內嵌圖片.html", "cyberbiz-外連圖片.html"]:
+for name in ["cyberbiz.html", "cyberbiz-external-images.html"]:
     path = ROOT / name
     print(f"\n=== {name} ({path.stat().st_size//1024} KB) ===")
     doc = path.read_text(encoding="utf-8")
 
     chk("<html" not in doc.lower() and "<body" not in doc.lower() and "<!doctype" not in doc.lower(),
         "是純片段，沒有 html/body/doctype")
+
+    raw = path.read_bytes()
+    bad = [i for i, b in enumerate(raw) if b > 127]
+    chk(not bad, f"整份檔案都是 ASCII（{len(bad)} 個非 ASCII 位元組）",
+        raw[max(0, bad[0]-40):bad[0]+40] if bad else "")
+    chk(raw[:3] != b"\xef\xbb\xbf", "沒有 BOM")
 
     style = re.search(r"<style>(.*?)</style>", doc, re.S).group(1)
     body = doc.split("</style>", 1)[1]
@@ -81,12 +87,12 @@ for name in ["cyberbiz-內嵌圖片.html", "cyberbiz-外連圖片.html"]:
     chk(doc.count("<style>") == 1 and doc.count("<script>") == 1, "只有一組 style/script")
 
     # 外連版必須沒有 data URI，內嵌版必須沒有佔位網址
-    if "外連" in name:
+    if "external" in name:
         chk("data:image/png;base64" not in doc and "data:image/jpeg;base64" not in doc,
             "外連版沒有內嵌圖片")
-        chk("請換成你的圖片網址" in doc, "外連版有圖片網址佔位提示")
+        chk("https://YOUR-IMAGE-HOST/" in doc, "外連版有圖片網址佔位提示")
     else:
-        chk("請換成你的圖片網址" not in doc, "內嵌版沒有佔位網址")
+        chk("YOUR-IMAGE-HOST" not in doc, "內嵌版沒有佔位網址")
         chk(doc.count("data:image/") >= 24, "內嵌版圖片齊全")
 
 print("\n" + ("VERIFY PASSED" if ok else "VERIFY FAILED"))

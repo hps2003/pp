@@ -157,6 +157,62 @@ def scope_css(css, keyframes, _top=True):
     return "\n".join(x for x in out if x)
 
 
+# ── 純 ASCII 化 ──────────────────────────────────────────────────────
+# CyberBiz 的編輯器 / 資料庫 / 頁面宣告的字元集若不是 UTF-8，中文就會變亂碼。
+# 最保險的作法是讓整個片段只含 ASCII 字元：
+#   HTML 文字與屬性 → &#xXXXX;   （瀏覽器一定會解回中文）
+#   <script> 內      → \uXXXX     （HTML 實體在 script 裡不會被解碼，必須用 JS 逸出）
+#   <style>  內      → 本來就只有 ASCII（註解已在 scope_css 移除）
+# 這樣不論頁面用哪種編碼載入，文字都不會壞。
+
+def strip_js_line_comments(js):
+    """保守地移除「整行都是註解」的行。
+
+    不碰含有程式碼的行——JS 的正規表示式字面量與除法很難分辨，
+    只處理整行註解可以完全避免誤判，又能拿掉絕大多數的中文註解。
+    """
+    out, in_block = [], False
+    for line in js.split("\n"):
+        t = line.strip()
+        if in_block:
+            if "*/" in t:
+                in_block = False
+                after = t.split("*/", 1)[1].strip()
+                if after:
+                    out.append(line[: len(line) - len(line.lstrip())] + after)
+            continue
+        if t.startswith("/*"):
+            if "*/" in t[2:]:
+                after = t.split("*/", 1)[1].strip()
+                if after:
+                    out.append(line[: len(line) - len(line.lstrip())] + after)
+            else:
+                in_block = True
+            continue
+        if t.startswith("//"):
+            continue
+        out.append(line)
+    return "\n".join(out)
+
+
+def to_ascii_js(js):
+    r"""把 JS 內所有非 ASCII 字元換成 \uXXXX。
+
+    字串、樣板字面量、註解、正規表示式裡都是合法的逸出寫法，
+    因此不需要判斷所在語境，是純文字層級的安全轉換。
+    """
+    return "".join(ch if ord(ch) < 128 else "\\u%04x" % ord(ch) for ch in js)
+
+
+def to_ascii_html(html):
+    """把 HTML 的文字與屬性值中的非 ASCII 換成數值字元參照。
+
+    只能用在不含 <style> / <script> 的片段（實體在那兩個元素內不會被解碼）；
+    本專案是分開組裝的，符合這個前提。
+    """
+    return "".join(ch if ord(ch) < 128 else "&#x%X;" % ord(ch) for ch in html)
+
+
 # 字串與 url() 內容不可以被當成選擇器處理（例如 data URI 裡的 www.w3.org）
 # 注意順序：先吃「帶引號的 url()」，否則 data URI 內含的 ")"（例如 filter='url(%23n)'）
 # 會讓比對提前結束，後面的引號再吞掉大段 CSS。
@@ -241,7 +297,7 @@ def collect_classes(css):
 
 # ─────────────────────────── 主流程 ───────────────────────────
 
-def build(mode, out_name, img_base="https://請換成你的圖片網址/"):
+def build(mode, out_name, img_base="https://YOUR-IMAGE-HOST/"):
     html = (SRC / "index.src.html").read_text(encoding="utf-8")
     css = (SRC / "styles.css").read_text(encoding="utf-8")
     overrides = (SRC / "cyberbiz-overrides.css").read_text(encoding="utf-8")
@@ -312,6 +368,7 @@ def build(mode, out_name, img_base="https://請換成你的圖片網址/"):
     js_all = (js + "\n" + extra +
               "\n(function(){var r=document.getElementById('gx-root');"
               "if(r)r.classList.add('gx-js');})();\n")
+    js_all = to_ascii_js(strip_js_line_comments(js_all))
 
     # ── 5. 圖片 ──
     missing = []
@@ -329,15 +386,34 @@ def build(mode, out_name, img_base="https://請換成你的圖片網址/"):
     if missing:
         print("ERROR 找不到資產：" + ", ".join(sorted(set(missing))), file=sys.stderr); return 1
 
+    img_note = ("images are embedded as data URIs - nothing else to upload"
+                if mode == "inline" else
+                "replace " + img_base + " with your own image URL prefix")
     head_note = (
-        "<!-- ═══ 購精彩 GOAMAZING 首頁 —— CyberBiz 可貼上片段 ═══\n"
-        f"     圖片模式：{'inline（已內嵌，無需上傳圖片）' if mode=='inline' else 'url（外連，請把下方 ' + img_base + ' 換成你的圖片網址）'}\n"
-        "     · 所有樣式限縮在 #gx-root 之下，不會影響店家其他頁面\n"
-        "     · 所有 class / id 皆有 gx- 前綴，不會與佈景主題相撞\n"
-        "     · 若不要滿版，把下一行的 class=\"gx-full\" 刪掉即可\n"
-        "     · 若店家頁首是固定的，把 style 裡的 --gx-header-h 改成頁首高度\n"
-        "     ══════════════════════════════════════════════ -->\n"
+        "<!-- ============================================================\n"
+        "     GOAMAZING homepage - paste-in block for CyberBiz\n"
+        "     " + img_note + "\n"
+        "\n"
+        "     This block is fully self-contained and isolated:\n"
+        "       * every CSS rule is scoped under #gx-root\n"
+        "       * every class / id is prefixed with gx-\n"
+        "       * pure ASCII, so the text cannot turn into mojibake\n"
+        "         no matter what charset the page is served with\n"
+        "\n"
+        "     Two optional switches on the <div> below:\n"
+        "       * remove class=\"gx-full\"  -> stay inside the theme container\n"
+        "         (default is full-bleed, edge to edge)\n"
+        "       * --gx-header-h:0px       -> set to your sticky header height,\n"
+        "         e.g. 64px, so this block's own nav sits below it\n"
+        "     ============================================================ -->\n"
     )
+
+    if mode == "inline":
+        # 圖片已經內嵌在文件裡，沒有網路請求可以延後；留著 lazy 只會讓
+        # 捲動到才解碼，出現短暫空白。外連版才需要 lazy。
+        body = body.replace(' loading="lazy"', "")
+
+    body = to_ascii_html(body)
 
     out = (head_note
            + '<div id="gx-root" class="gx-full" style="--gx-header-h:0px">\n'
@@ -353,6 +429,8 @@ def build(mode, out_name, img_base="https://請換成你的圖片網址/"):
 
 
 if __name__ == "__main__":
-    rc = build("inline", "cyberbiz-內嵌圖片.html")
-    rc |= build("url", "cyberbiz-外連圖片.html")
+    # 主要成品：單一檔案，複製整份貼上即可
+    rc = build("inline", "cyberbiz.html")
+    # 備用：編輯器若會過濾 data: 圖片，改用這份並自行上傳圖片
+    rc |= build("url", "cyberbiz-external-images.html")
     raise SystemExit(rc)
