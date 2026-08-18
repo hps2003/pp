@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover：iPhone 瀏海 / 動態島機型可用到整個畫面，再由 safe-area-inset 保護內容 -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#c8161d">
+<meta name="format-detection" content="telephone=no">
+<title>GOAMAZING 購精彩｜企業福利平台</title>
+<meta name="description" content="購精彩 GOAMAZING 企業福利平台：一站式整合線上企福商城與線下實體活動，為企業規劃節慶禮品、員工生日禮、家庭日與部門獎勵等專屬福利方案。">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="GOAMAZING 購精彩｜企業福利平台">
+<meta property="og:description" content="把福利變成員工有感的生活體驗。整合線上與實體資源，彈性規劃福利方案。">
+<meta property="og:locale" content="zh_TW">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+
+<style>/*{{STYLES}}*/</style>
+</head>
+
+<body>
+<a class="skip-link" href="#features">跳至主要內容</a>
+
+<!-- ══════════ 導覽列 ══════════ -->
+<header class="nav">
+  <a class="nav__logo" href="#top" aria-label="GOAMAZING 購精彩 首頁">
+    <img src="{{ASSET:logo-wordmark.png}}" alt="Amazing 購精彩" width="1201" height="165">
+  </a>
+
+  <nav class="nav__links" aria-label="主選單">
+    <a class="nav__link" href="#resources">服務內容</a>
+    <a class="nav__link" href="#products">商品規劃</a>
+    <a class="nav__link" href="#scenes">福利場景</a>
+    <a class="nav__cta" href="#consult">預約諮詢</a>
+  </nav>
+
+  <button class="nav__burger" type="button" data-burger aria-expanded="false"
+          aria-controls="mobile-menu" aria-label="開啟選單"><span></span></button>
+</header>
+
+<nav class="nav__drawer" id="mobile-menu" data-drawer aria-label="行動裝置選單">
+  <a href="#resources">服務內容</a>
+  <a href="#products">商品規劃</a>
+  <a href="#scenes">福利場景</a>
+  <a href="#omo">OMO 整合優勢</a>
+  <a href="#consult">預約諮詢</a>
+</nav>
+
+<!-- ══════════ 首屏：拆禮物 ══════════ -->
+<div class="stage" id="top" data-stage>
+  <div class="stage__sticky">
+
+    <div class="stage__layer">
+      <img class="stage__photo" data-photo src="{{ASSET:hero-gift.jpg}}" alt="" width="960" height="1200" fetchpriority="high">
+    </div>
+    <div class="stage__warm"></div>
+    <div class="stage__grain"></div>
+    <div class="stage__scrim"></div>
+    <div class="stage__veil" data-veil></div>
+
+    <!-- 首屏文案（捲動後淡入） -->
+    <div class="hero" data-hero>
+      <div class="hero__eyebrow">
+        <i></i><span>GOAMAZING 購精彩</span>
+      </div>
+      <h1 class="hero__title" data-hero-title>把福利變成員工有感的生活體驗</h1>
+      <p class="hero__sub" data-hero-sub>整合線上與實體資源，彈性規劃福利方案，快速提升員工滿意度，打造企業專屬的溫度福利體驗。</p>
+      <div class="hero__btns" data-hero-btns>
+        <a class="btn btn--solid" href="#resources">立即參考福利方案<i>→</i></a>
+        <a class="btn btn--outline" href="#consult">聯繫您的專屬顧問<i>→</i></a>
+      </div>
+    </div>
+
+    <!-- 禮物包裝：上蓋 -->
+    <div class="stage__panel stage__panel--top" data-panel="top">
+      <i class="l"></i><i class="r"></i><u></u>
+      <div class="stage__wordmark">
+        <div class="hero__eyebrow">
+          <i></i><span style="color:rgba(255,255,255,.8);letter-spacing:.24em">EMPLOYEE BENEFITS</span>
+        </div>
+        <b>GOAMAZING</b>
+      </div>
+      <div class="stage__gift">GIFT / 01</div>
+    </div>
+
+    <!-- 禮物包裝：下蓋 -->
+    <div class="stage__panel stage__panel--bottom" data-panel="bottom">
+      <i class="l"></i><i class="r"></i><u></u>
+      <div class="stage__zh">
+        <b>購精彩</b>
+        <div class="hero__eyebrow">
+          <span style="font-family:var(--font-zh);font-size:clamp(12px,1.1vw,15px);font-weight:500;letter-spacing:.24em;color:rgba(255,255,255,.86)">企業福利平台</span>
+          <i></i>
+        </div>
+      </div>
+      <div class="stage__hint" data-hint>
+        <b>SCROLL TO UNWRAP</b><i>↓</i>
+      </div>
+    </div>
+
+    <!-- 緞帶 -->
+    <div class="stage__ribbon" aria-hidden="true">
+      <div class="line l" data-line="l"></div>
+      <div class="line r" data-line="r"></div>
+      <div class="stage__bow">
+        <img data-bow="l" src="{{ASSET:ribbon-bow-left.png}}" alt="" width="210" height="165">
+        <img data-bow="r" src="{{ASSET:ribbon-bow-right.png}}" alt="" width="210" height="165">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ 三大特色 ══════════ -->
+<section class="section section--pad-top" id="features">
+  <div class="features shell">
+    <div class="feature">
+      <div class="feature__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="8" width="18" height="13" rx="1"></rect><path d="M12 8v13M3 12h18"></path>
+          <path d="M12 8c-1.5-3-6-4-6-1.2 0 1 1 1.9 2.4 2.2M12 8c1.5-3 6-4 6-1.2 0 1-1 1.9-2.4 2.2"></path>
+        </svg>
+      </div>
+      <div class="feature__text">
+        <h3>福利方案</h3>
+        <p>彈性規劃專屬方案，協助企業打造高效福利。</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 18h18"></path><path d="M5 15a7 7 0 0 1 14 0z"></path>
+          <circle cx="12" cy="6" r="1.4"></circle><path d="M12 7.4V8"></path>
+        </svg>
+      </div>
+      <div class="feature__text">
+        <h3>多樣亮點</h3>
+        <p>綜合多元福利商品，滿足不同企業與員工需求。</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="13" rx="1.5"></rect><path d="M6 9l6 4 6-4"></path>
+          <path d="M9 21h6M12 17v4"></path>
+        </svg>
+      </div>
+      <div class="feature__text">
+        <h3>專業執行效率</h3>
+        <p>流程化管理與專人支援，確保福利活動順利落實。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 服務內容（橫向卡片） ══════════ -->
+<section class="section section--pad-bottom" id="resources">
+  <div class="sec-head sec-head--split shell">
+    <h2 class="sec-title">一站式主題企福服務內容</h2>
+    <div class="rail-nav" data-rail-nav="services">
+      <span class="rail-nav__hint">左右拖曳瀏覽</span>
+      <button type="button" data-dir="prev" aria-label="上一組服務">‹</button>
+      <button type="button" data-dir="next" aria-label="下一組服務">›</button>
+    </div>
+  </div>
+
+  <div class="rail-wrap">
+    <div class="rail rail--wide" data-rail="services" role="region" aria-label="服務內容" tabindex="0">
+
+      <article class="card" data-card>
+        <div class="card__media">
+          <div class="frame"><img class="photo" src="{{ASSET:svc-mall.jpg}}" alt="企業專屬福利商城" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="card__badge card__badge--center"><img src="{{ASSET:svc-mall-icon.png}}" alt="" style="width:59.1%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="card__body card__body--offset-center">
+          <h3>企業專屬福利商城</h3>
+          <p>打造企業專屬線上福利商城，商品多、更新快、體驗更方便。</p>
+        </div>
+      </article>
+
+      <article class="card" data-card>
+        <div class="card__media">
+          <div class="frame"><img class="photo" src="{{ASSET:svc-promo.jpg}}" alt="企業限定優惠活動" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="card__badge card__badge--center"><img src="{{ASSET:svc-promo-icon.png}}" alt="" style="width:62.7%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="card__body card__body--offset-center">
+          <h3>企業限定優惠活動</h3>
+          <p>合作夥伴優惠專屬活動內容，讓員工享有更多超值福利。</p>
+        </div>
+      </article>
+
+      <article class="card" data-card>
+        <div class="card__media">
+          <div class="frame"><img class="photo" src="{{ASSET:svc-familyday.jpg}}" alt="企業家庭日與親子日" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="card__badge card__badge--center"><img src="{{ASSET:svc-familyday-icon.png}}" alt="" style="width:81.8%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="card__body card__body--offset-center">
+          <h3>企業家庭日／親子日</h3>
+          <p>打造員工與家人的美好互動時光，互動更緊密，向心力更提升。</p>
+        </div>
+      </article>
+
+      <article class="card" data-card>
+        <div class="card__media">
+          <div class="frame"><img class="photo" src="{{ASSET:svc-festival.jpg}}" alt="節慶福利一站式規劃" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="card__badge card__badge--center"><img src="{{ASSET:svc-festival-icon.png}}" alt="" style="width:64.5%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="card__body card__body--offset-center">
+          <h3>節慶福利，一站式規劃</h3>
+          <p>整合節慶禮品與活動規劃，省時、省力、傳遞溫暖心意。</p>
+        </div>
+      </article>
+
+    </div>
+    <div class="rail__shadow" data-rail-shadow aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ══════════ OMO 線上線下整合 ══════════ -->
+<section class="section section--pad-bottom" id="omo">
+  <div class="sec-head sec-head--center shell">
+    <h2 class="sec-title">OMO 線上線下整合優勢</h2>
+    <svg class="sec-rule" viewBox="0 0 400 20" fill="none" stroke="#c8a96a" stroke-width="1.2" aria-hidden="true">
+      <circle cx="6" cy="10" r="3.2"></circle><path d="M12 10h168"></path>
+      <path d="M176 5.5 186 10l-10 4.5z" fill="#c8a96a" stroke="none"></path>
+      <path d="M200 3.5 206.5 10 200 16.5 193.5 10z" fill="#c8a96a" stroke="none"></path>
+      <path d="M224 5.5 214 10l10 4.5z" fill="#c8a96a" stroke="none"></path>
+      <path d="M220 10h168"></path><circle cx="394" cy="10" r="3.2"></circle>
+    </svg>
+  </div>
+
+  <div class="omo">
+    <div class="omo__card omo__card--online">
+      <img src="{{ASSET:omo-online.png}}" alt="" width="198" height="215" loading="lazy">
+      <div class="omo__text">
+        <h3>線上福利式選購</h3>
+        <ul><li>企福商城</li><li>企業員工專屬優惠</li><li>嚴選優質商品福利商城</li></ul>
+      </div>
+    </div>
+
+    <div class="omo__cycle">
+      <img data-cycle src="{{ASSET:omo-cycle.png}}" alt="" width="162" height="173" loading="lazy">
+    </div>
+
+    <div class="omo__card omo__card--offline">
+      <div class="omo__text">
+        <h3>線下實體體驗</h3>
+        <ul><li>歐洲風格生活體驗</li><li>企福市集／節慶市集</li><li>團隊凝聚創作藝術旅程</li></ul>
+      </div>
+      <img src="{{ASSET:omo-offline.png}}" alt="" width="194" height="182" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 數據亮點 ══════════ -->
+<section class="section section--pad-bottom" id="scale">
+  <div class="stats">
+    <div class="stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="7" r="3"></circle><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"></path>
+        <path d="M16 4.5a3 3 0 0 1 0 5M17 14.6c2.4.7 4 2.7 4 5.4"></path>
+      </svg>
+      <div class="stat__text">
+        <span class="stat__num">30萬</span>
+        <p>企業員工<br>精準觸達企業福委會<br>員工福利需求明確</p>
+      </div>
+    </div>
+
+    <div class="stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2.5" y="8.5" width="15" height="10" rx="1.5"></rect>
+        <path d="M6 5.5h13a2 2 0 0 1 2 2v8"></path><path d="M5 13h4M5 15.5h2.5"></path>
+      </svg>
+      <div class="stat__text">
+        <span class="stat__num">700萬</span>
+        <p>信用卡友<br>持續穩定的消費<br>帶來可觀的市場價值</p>
+      </div>
+    </div>
+
+    <div class="stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 21V6l7-3 7 3v15"></path><path d="M9 21v-5h6v5"></path>
+        <path d="M8 9h2M14 9h2M8 12.5h2M14 12.5h2"></path>
+      </svg>
+      <div class="stat__text">
+        <span class="stat__num">500家</span>
+        <p>企業客戶<br>上市櫃及外商企業<br>禮贈品與公關活動需求</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 商品規劃（橫向卡片） ══════════ -->
+<section class="section section--pad-bottom" id="products">
+  <div class="sec-head sec-head--split shell">
+    <h2 class="sec-title sec-title--wide">整合員工福利的精選商品規劃</h2>
+    <div class="rail-nav" data-rail-nav="goods">
+      <span class="rail-nav__hint">左右拖曳瀏覽</span>
+      <button type="button" data-dir="prev" aria-label="上一組商品">‹</button>
+      <button type="button" data-dir="next" aria-label="下一組商品">›</button>
+    </div>
+  </div>
+
+  <div class="rail-wrap">
+    <div class="rail rail--wide" data-rail="goods" role="region" aria-label="商品規劃" tabindex="0">
+
+      <article class="card" data-card>
+        <div class="card__media">
+          <div class="frame"><img class="photo" src="{{ASSET:goods-appliance.jpg}}" alt="小家電" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="card__badge card__badge--left"><img src="{{ASSET:goods-appliance-icon.png}}" alt="" style="width:93%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="card__body card__body--offset-left">
+          <h3>小家電</h3>
+          <p>實用家電，提升生活便利性與居家幸福感。</p>
+        </div>
+      </article>
+
+      <article class="card" data-card>
+        <div class="card__media">
+          <div class="frame"><img class="photo" src="{{ASSET:goods-coffee.jpg}}" alt="咖啡與食品" draggable="false" width="852" height="610" loading="lazy" decoding="async"></div>
+          <div class="card__badge card__badge--left"><img src="{{ASSET:goods-coffee-icon.png}}" alt="" style="width:93%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="card__body card__body--offset-left">
+          <h3>咖啡與食品</h3>
+          <p>嚴選美味食品與飲品，滿足味蕾與日常需求。</p>
+        </div>
+      </article>
+
+      <article class="card" data-card>
+        <div class="card__media">
+          <div class="frame"><img class="photo" src="{{ASSET:goods-sport.jpg}}" alt="運動健康" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="card__badge card__badge--left"><img src="{{ASSET:goods-sport-icon.png}}" alt="" style="width:93%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="card__body card__body--offset-left">
+          <h3>運動健康</h3>
+          <p>關注身心健康，提供運動與保健相關好物。</p>
+        </div>
+      </article>
+
+      <article class="card" data-card>
+        <div class="card__media">
+          <div class="frame"><img class="photo" src="{{ASSET:goods-living.jpg}}" alt="生活美學" draggable="false" width="426" height="305" loading="lazy" decoding="async"></div>
+          <div class="card__badge card__badge--left"><img src="{{ASSET:goods-living-icon.png}}" alt="" style="width:93%" draggable="false" loading="lazy"></div>
+        </div>
+        <div class="card__body card__body--offset-left">
+          <h3>生活美學</h3>
+          <p>美感生活用品，提升日常品味與質感。</p>
+        </div>
+      </article>
+
+    </div>
+    <div class="rail__shadow" data-rail-shadow aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ══════════ 適用福利場景 ══════════ -->
+<section class="section section--pad-bottom" id="scenes">
+  <div class="sec-head sec-head--center shell">
+    <h2 class="sec-title">適用企業福利場景</h2>
+    <svg class="sec-rule" viewBox="0 0 400 20" fill="none" stroke="#c8a96a" stroke-width="1.2" aria-hidden="true">
+      <circle cx="6" cy="10" r="3.2"></circle><path d="M12 10h168"></path>
+      <path d="M176 5.5 186 10l-10 4.5z" fill="#c8a96a" stroke="none"></path>
+      <path d="M200 3.5 206.5 10 200 16.5 193.5 10z" fill="#c8a96a" stroke="none"></path>
+      <path d="M224 5.5 214 10l10 4.5z" fill="#c8a96a" stroke="none"></path>
+      <path d="M220 10h168"></path><circle cx="394" cy="10" r="3.2"></circle>
+    </svg>
+  </div>
+
+  <div class="rail-nav rail-nav--center shell" data-rail-nav="scenes" style="margin-bottom:6px">
+    <span class="rail-nav__hint">左右拖曳瀏覽</span>
+    <button type="button" data-dir="prev" aria-label="上一個場景">‹</button>
+    <button type="button" data-dir="next" aria-label="下一個場景">›</button>
+  </div>
+
+  <div class="rail-wrap">
+    <div class="rail rail--narrow" data-rail="scenes" role="region" aria-label="適用福利場景" tabindex="0">
+
+      <article class="card card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 20h16v-6H4z"></path>
+          <path d="M4 14c1.5-2 3-2 4 0s2.5 2 4 0 2.5-2 4 0 2.5 2 4 0"></path>
+          <path d="M8 10V8M12 10V7M16 10V8"></path>
+          <circle cx="8" cy="6" r=".7"></circle><circle cx="12" cy="5" r=".7"></circle><circle cx="16" cy="6" r=".7"></circle>
+        </svg>
+        <h3>員工生日禮</h3>
+        <p>傳遞心意，讓員工感受到企業關懷。</p>
+      </article>
+
+      <article class="card card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="8" width="18" height="13" rx="1"></rect><path d="M12 8v13M3 12h18"></path>
+          <path d="M12 8c-1.5-3-6-4-6-1.2 0 1 1 1.9 2.4 2.2M12 8c1.5-3 6-4 6-1.2 0 1-1 1.9-2.4 2.2"></path>
+        </svg>
+        <h3>節慶福利品</h3>
+        <p>中秋、端午、春節等節慶禮品，傳遞祝福與感謝。</p>
+      </article>
+
+      <article class="card card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 4h8v5a4 4 0 0 1-8 0z"></path>
+          <path d="M8 6H5.5a2.5 2.5 0 0 0 2.5 4M16 6h2.5a2.5 2.5 0 0 1-2.5 4"></path>
+          <path d="M12 13v4M9 20h6"></path>
+          <path d="m12 6 .7 1.4 1.5.2-1.1 1 .3 1.5-1.4-.8-1.4.8.3-1.5-1.1-1 1.5-.2z"></path>
+        </svg>
+        <h3>部門獎勵方案</h3>
+        <p>獎勵團隊與個人，提升士氣與工作動力。</p>
+      </article>
+
+      <article class="card card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="8" cy="6.5" r="2.6"></circle>
+          <path d="M3.5 20c0-3.3 2-5.6 4.5-5.6s4.5 2.3 4.5 5.6"></path>
+          <circle cx="16" cy="11" r="2"></circle>
+          <path d="M12.8 20c0-2.4 1.4-4 3.2-4s3.2 1.6 3.2 4"></path>
+        </svg>
+        <h3>家庭日／親子日</h3>
+        <p>不只是家庭日，更是企業與員工一起留下的溫暖記憶。</p>
+      </article>
+
+      <article class="card card--scene" data-card>
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9z"></path>
+          <path d="M4 13h3l1.5-2.5L10.5 15l2-4 1.5 2h3"></path>
+        </svg>
+        <h3>企業健康月</h3>
+        <p>推廣健康生活，關懷員工身心健康。</p>
+      </article>
+
+    </div>
+    <div class="rail__shadow" data-rail-shadow aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ══════════ 聯絡我們 ══════════ -->
+<section class="section" id="contact" style="padding-bottom:clamp(40px,5vw,72px)">
+  <div class="contact">
+    <div class="contact__top">
+      <div class="contact__copy">
+        <h2>讓員工福利，成為企業最有感的投資</h2>
+        <p>從商品到活動，從線上到線下，購精彩陪伴企業打造更有溫度的福利體驗。</p>
+        <a class="btn btn--white" href="#consult">聯絡專屬企福顧問<i>›</i></a>
+      </div>
+      <div class="contact__photo">
+        <img src="{{ASSET:contact-team.jpg}}" alt="購精彩企福顧問團隊" width="635" height="367" loading="lazy" decoding="async">
+      </div>
+    </div>
+
+    <div class="pills">
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="6" r="2.4"></circle><path d="M7 20c0-3 2.2-5.2 5-5.2s5 2.2 5 5.2"></path>
+          <circle cx="5" cy="9.5" r="1.8"></circle><circle cx="19" cy="9.5" r="1.8"></circle>
+          <path d="M2.5 17c0-2 1-3.4 2.5-3.8M21.5 17c0-2-1-3.4-2.5-3.8"></path>
+        </svg>
+        <span>專業企福團隊<br>一對一服務</span>
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="6" width="18" height="14" rx="1.5"></rect>
+          <path d="M7 15V11M11 15V9M15 15v-3"></path><path d="M3 6l3-3h12l3 3"></path>
+        </svg>
+        <span>彈性預算規劃<br>滿足企業需求</span>
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 10h16v10H4z"></path><path d="M3 10 5 5h14l2 5"></path>
+          <path d="M8 20v-4h3v4"></path><path d="M14 14h3v3h-3z"></path>
+        </svg>
+        <span>線上企福商城<br>線下實體活動</span>
+      </div>
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"></path>
+          <path d="M9.5 11.5a1.8 1.8 0 0 1 2.5-1.2 1.8 1.8 0 0 1 2.5 1.2c0 1.5-2.5 3-2.5 3s-2.5-1.5-2.5-3z"></path>
+        </svg>
+        <span>完善售後服務<br>安心有保障</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 諮詢表單 → Gmail ══════════ -->
+<section class="section" id="consult" style="padding-bottom:clamp(48px,6.5vw,96px)">
+  <div class="consult">
+    <div class="consult__intro">
+      <h2>聯繫您的專屬顧問</h2>
+      <p>留下聯絡資訊，專屬企福顧問將與您聯繫，為您的團隊規劃合適的福利方案。</p>
+      <span class="consult__mail">
+        直接來信：<a href="mailto:service@goamazing.com.tw">service@goamazing.com.tw</a>
+      </span>
+    </div>
+
+    <!-- novalidate：改用自訂驗證，訊息才能統一為繁體中文 -->
+    <form class="consult__form" data-consult-form novalidate>
+      <div class="field-row">
+        <label class="field">
+          <span>公司名稱<em>*</em></span>
+          <input type="text" name="company" data-field="公司名稱" data-required
+                 autocomplete="organization" enterkeyhint="next" placeholder="例：購精彩股份有限公司">
+          <span class="field__err"></span>
+        </label>
+        <label class="field">
+          <span>聯絡人<em>*</em></span>
+          <input type="text" name="contact" data-field="聯絡人" data-required
+                 autocomplete="name" enterkeyhint="next" placeholder="例：王小明">
+          <span class="field__err"></span>
+        </label>
+      </div>
+
+      <div class="field-row">
+        <label class="field">
+          <span>電子郵件<em>*</em></span>
+          <!-- inputmode=email 讓手機鍵盤直接切到含 @ 的版面 -->
+          <input type="email" name="email" data-field="電子郵件" data-required
+                 inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false"
+                 enterkeyhint="next" placeholder="name@company.com">
+          <span class="field__err"></span>
+        </label>
+        <label class="field">
+          <span>聯絡電話</span>
+          <input type="tel" name="phone" data-field="聯絡電話"
+                 inputmode="tel" autocomplete="tel" enterkeyhint="next" placeholder="例：02-1234-5678">
+          <span class="field__err"></span>
+        </label>
+      </div>
+
+      <label class="field">
+        <span>需求說明</span>
+        <textarea name="message" data-field="需求說明" rows="4" maxlength="2000"
+                  placeholder="例：約 300 位員工，想規劃中秋節慶禮品與家庭日活動，預算範圍…"></textarea>
+        <span class="field__err"></span>
+      </label>
+
+      <div class="consult__actions">
+        <button type="submit" class="btn btn--submit" data-submit>
+          以 Gmail 送出諮詢<i>→</i>
+        </button>
+        <button type="button" class="link-alt" data-send-mailto>改用預設郵件軟體</button>
+        <button type="button" class="link-alt" data-copy>複製信件內容</button>
+      </div>
+
+      <p class="form-note">
+        送出後會開啟 Gmail 撰寫視窗，並自動帶入您填寫的內容，收件人為
+        <strong>service@goamazing.com.tw</strong>，確認無誤後按「傳送」即可寄出。
+      </p>
+
+      <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════ 頁尾 ══════════ -->
+<footer class="footer">
+  <span>© 2026 GOAMAZING 購精彩</span>
+  <nav aria-label="頁尾選單">
+    <a href="#resources">服務內容</a>
+    <a href="#products">商品規劃</a>
+    <a href="#omo">OMO 整合優勢</a>
+    <a href="#consult">聯繫顧問</a>
+  </nav>
+</footer>
+
+<script>/*{{SCRIPT}}*/</script>
+</body>
+</html>
