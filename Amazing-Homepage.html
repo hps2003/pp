@@ -1342,8 +1342,9 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
       </div>
 
       <p class="form-note">
-        送出後會開啟 Gmail 撰寫視窗，並自動帶入您填寫的內容，收件人為
-        <strong>service@goamazing.com.tw</strong>，確認無誤後按「傳送」即可寄出。
+        送出後會開啟郵件程式並自動帶入您填寫的內容，收件人為
+        <strong>service@goamazing.com.tw</strong>，確認無誤後按「傳送」即可寄出。<br>
+        手機會直接開啟 Gmail App（未安裝則使用您預設的郵件軟體），電腦則開啟 Gmail 網頁版。
       </p>
 
       <p class="form-status" data-form-status role="status" aria-live="polite"></p>
@@ -1394,6 +1395,15 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
   var $$ = function (s, r) { return Array.prototype.slice.call((r || SCOPE).querySelectorAll(s)); };
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 平台判斷：只用來決定寄信要走哪一條路，版面完全靠 CSS 斷點，不看 UA。
+     iPadOS 13 之後 Safari 的 UA 會偽裝成 Mac，因此補上觸控點數判斷。 */
+  var UA = navigator.userAgent || '';
+  var IS_IOS = /iPad|iPhone|iPod/.test(UA) ||
+               (/Mac/.test(navigator.platform || '') && navigator.maxTouchPoints > 1);
+  var IS_ANDROID = /Android/.test(UA);
+  var IS_MOBILE = IS_IOS || IS_ANDROID ||
+                  /Mobile|IEMobile|Opera Mini|Windows Phone/.test(UA);
 
   /* ── 1. 視窗尺寸變數 ───────────────────────────────────────────────
      用 JS 同步真實視窗高度到 CSS 變數，解決 iOS Safari 網址列
@@ -1733,16 +1743,66 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
       };
     }
 
+    var E = encodeURIComponent;
+
+    // 電腦版：Gmail 網頁版撰寫畫面
     function gmailUrl(m) {
       return 'https://mail.google.com/mail/?view=cm&fs=1&tf=1' +
-             '&to=' + encodeURIComponent(m.to) +
-             '&su=' + encodeURIComponent(m.subject) +
-             '&body=' + encodeURIComponent(m.body);
+             '&to=' + E(m.to) + '&su=' + E(m.subject) + '&body=' + E(m.body);
     }
+    // iOS 的 Gmail App 深層連結（官方 URL scheme）
+    function gmailAppUrl(m) {
+      return 'googlegmail:///co?to=' + E(m.to) +
+             '&subject=' + E(m.subject) + '&body=' + E(m.body);
+    }
+    // 系統預設郵件軟體。收件人不編碼，部分郵件程式看到 %40 會解析失敗
     function mailtoUrl(m) {
-      return 'mailto:' + encodeURIComponent(m.to) +
-             '?subject=' + encodeURIComponent(m.subject) +
-             '&body=' + encodeURIComponent(m.body);
+      return 'mailto:' + m.to +
+             '?subject=' + E(m.subject) + '&body=' + E(m.body);
+    }
+
+    // 換頁。__gxNavigate 是測試用掛勾，正式環境不存在，行為就是直接換頁
+    function go(url) {
+      if (typeof window.__gxNavigate === 'function') { window.__gxNavigate(url); return; }
+      window.location.href = url;
+    }
+
+    /* 手機的寄信流程和電腦不一樣，必須分開處理：
+       · Gmail 網頁版的 ?view=cm 撰寫網址是給桌機用的，手機瀏覽器開啟後
+         會被導去行動版收件匣，帶入的主旨與內文整個消失
+       · window.open('_blank') 在 iOS Safari 常被當成彈出視窗擋掉，
+         就算沒被擋，開出來的也只是要重新登入的 Gmail 網頁
+       · iOS 的 Universal Link 不吃 JS 觸發的換頁，所以連到 mail.google.com
+         不會喚起 Gmail App
+       因此手機改走 App 深層連結與 mailto，兩者都能把內容完整帶進去。 */
+    function openOnMobile(m) {
+      var mt = mailtoUrl(m);
+
+      if (!IS_IOS) {
+        // Android：mailto 交給系統處理，多數人的預設郵件程式就是 Gmail，
+        // 主旨與內文會完整帶入，不會跳出新分頁
+        setStatus('已開啟郵件程式，內容已帶入，確認後按「傳送」即可寄出。', 'ok');
+        go(mt);
+        return;
+      }
+
+      // iOS：先試著直接喚起 Gmail App；沒安裝就在短暫等待後
+      // 退回系統預設郵件軟體，內容一樣完整帶入
+      var handed = false;
+      function cancel() { handed = true; }
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) cancel();
+      });
+      window.addEventListener('pagehide', cancel);
+      window.addEventListener('blur', cancel);
+
+      setTimeout(function () {
+        if (!handed && !document.hidden) go(mt);
+      }, 700);
+
+      setStatus('正在開啟 Gmail，內容已帶入，確認後按「傳送」即可寄出。' +
+                '若裝置沒有安裝 Gmail App，會自動改用您預設的郵件軟體。', 'ok');
+      go(gmailAppUrl(m));
     }
 
     // 把欄位整理成 API 用的 JSON
@@ -1781,10 +1841,16 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
         setStatus('已送出，感謝您的來信！專屬企福顧問將盡快與您聯繫。', 'ok');
       })
       .catch(function (err) {
-        // 後端掛掉時不要讓使用者白填一次，退回 Gmail
-        setStatus('系統寄送失敗（' + (err.message || err) + '），已為您改開 Gmail，請直接按「傳送」。', 'warn');
+        // 後端掛掉時不要讓使用者白填一次，退回原本的寄信方式
+        var reason = '系統寄送失敗（' + (err.message || err) + '）';
+        if (IS_MOBILE) {
+          openOnMobile(m);   // 會自己設一次狀態，所以在它之後才覆寫成完整說明
+          setStatus(reason + '，已改開郵件程式並帶入內容，請直接按「傳送」。', 'warn');
+          return;
+        }
         var w = window.open(gmailUrl(m), '_blank', 'noopener,noreferrer');
-        if (!w) window.location.href = gmailUrl(m);
+        if (!w) go(gmailUrl(m));
+        setStatus(reason + '，已為您改開 Gmail，請直接按「傳送」。', 'warn');
       })
       .then(function () { if (submitBtn) submitBtn.disabled = false; });
     }
@@ -1799,15 +1865,14 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
 
       if (CONFIG.apiEndpoint) { sendViaApi(m); return; }
 
-      // 模式一（預設）：開 Gmail 撰寫視窗
-      var url = gmailUrl(m);
+      // 模式一（預設）：開 Gmail
+      if (IS_MOBILE) { openOnMobile(m); return; }
 
-      // window.open 必須在使用者點擊的同一個事件內同步呼叫，
-      // 否則 iOS Safari 會當成彈出視窗擋掉。
+      // 電腦版：Gmail 網頁版撰寫畫面，另開分頁
+      var url = gmailUrl(m);
       var win = window.open(url, '_blank', 'noopener,noreferrer');
       if (!win || win.closed || typeof win.closed === 'undefined') {
-        // 被封鎖彈出視窗 → 直接在本頁跳轉，確保一定送得出去
-        window.location.href = url;
+        go(url);            // 彈出視窗被擋 → 同頁跳轉，確保一定送得出去
       }
       setStatus('已為您開啟 Gmail 撰寫視窗，內容已自動帶入，確認後按「傳送」即可寄出。若沒有跳出，請改用下方的備用方式。', 'ok');
     });
@@ -1816,7 +1881,7 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
     var altBtn = $('[data-send-mailto]', form);
     if (altBtn) altBtn.addEventListener('click', function () {
       if (!validate()) return;
-      window.location.href = mailtoUrl(compose());
+      go(mailtoUrl(compose()));
       setStatus('已呼叫您裝置的預設郵件軟體。', 'ok');
     });
 

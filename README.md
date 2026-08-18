@@ -92,16 +92,31 @@ python3 src/build_cyberbiz.py   # CyberBiz 版（cyberbiz.html）
 
 ### 跨平台方式
 
-不做不可靠的瀏覽器偵測，一律開啟 Gmail 網頁版撰寫網址
-（`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=…&su=…&body=…`）：
+手機與電腦走**不同路徑**，因為 Gmail 網頁版的撰寫網址在手機上會失效：
 
-- **Windows / macOS 桌機** — 新分頁開啟 Gmail 撰寫畫面
-- **iOS / iPadOS** — `mail.google.com` 是 Gmail App 的 Universal Link，
-  裝了 App 會直接跳進 App，沒裝則開 Gmail 行動網頁
-- **Android** — 同上，由系統 App Links 接手
+| 平台 | 行為 | 網址 |
+|---|---|---|
+| Windows／macOS 桌機 | 另開分頁進 Gmail 網頁版撰寫畫面 | `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=…&su=…&body=…` |
+| iOS／iPadOS | 直接喚起 **Gmail App**；未安裝則於 0.7 秒後自動改用系統預設郵件軟體 | `googlegmail:///co?to=…&subject=…&body=…` → 退回 `mailto:` |
+| Android | 交給系統的預設郵件程式（多數人就是 Gmail） | `mailto:…?subject=…&body=…` |
 
-`window.open` 在使用者點擊的同一個事件內同步呼叫（否則 iOS Safari 會當成彈出視窗擋掉）；
-若仍被封鎖則改用同頁跳轉，確保一定送得出去。
+三種路徑都會把表單內容完整帶進主旨與內文。
+
+#### 為什麼手機不能用 Gmail 網頁版的撰寫網址
+
+1. `?view=cm` 是**桌機版**的撰寫網址。手機瀏覽器開啟後 Gmail 會導向行動版收件匣，
+   **帶入的主旨與內文整個消失** —— 這就是「手機無法把填的字帶進信裡」的原因。
+2. `window.open('_blank')` 在 iOS Safari 常被當成彈出視窗擋掉；即使開得起來，
+   看到的也只是要重新登入的 Gmail 網頁。
+3. iOS 的 **Universal Link 不吃 JS 觸發的換頁**，所以用程式連到 `mail.google.com`
+   並不會喚起 Gmail App，只會停在 Safari。
+
+因此手機改用 App 深層連結與 `mailto:`，兩者都是作業系統層級的交接，
+內容一定帶得進去，而且是同頁跳轉，不會多開分頁。
+
+> iOS 若沒有安裝 Gmail App，喚起自訂 scheme 時 Safari 可能會先閃一個提示，
+> 0.7 秒後會自動改用預設郵件軟體，內容一樣完整。
+> 想完全避開這個提示，把 `openOnMobile()` 裡的 iOS 分支改成直接 `go(mt)` 即可。
 
 另備兩條退路，供沒有 Gmail 帳號的使用者：
 - **改用預設郵件軟體** — `mailto:`，交給 Outlook／Apple Mail 等
