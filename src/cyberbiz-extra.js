@@ -14,26 +14,84 @@
     root.style.setProperty('--gx-vw', document.documentElement.clientWidth + 'px');
   }
 
-  /* ── 2. 偵測 position:sticky 是否真的有效 ───────────────────────
-     店家版型的外層只要有 overflow:hidden/auto/scroll，sticky 就會失效，
-     首屏會變成一整片黑。這裡實際量測，失效就切換成靜態首屏。 */
-  function checkSticky() {
-    var sticky = root.querySelector('.gx-stage__sticky');
-    if (!sticky) return;
+  /* ── 2. 首屏定位模式 ───────────────────────────────────────────
+     店家版型的外層只要有 overflow（很常見：overflow-x:hidden 會讓
+     overflow-y 計算成 auto），position:sticky 就會失效，首屏動畫會壞掉。
 
-    var broken = false;
+     但 position:fixed 不受祖先 overflow 影響，所以不必放棄動畫：
+       native → 沒有阻礙，直接用 CSS sticky（最順）
+       fix    → 有 overflow 擋住 sticky，改用 JS 模擬（動畫完整保留）
+       static → 祖先有 transform/filter/perspective，連 fixed 都會被綁住，
+                才退回靜態首屏
+     判斷順序由好到壞，只有真的無計可施才會失去動畫。 */
+  function ancestorBreaksSticky() {
     for (var p = root.parentElement; p && p !== document.documentElement; p = p.parentElement) {
-      var ov = getComputedStyle(p);
-      if (/hidden|auto|scroll|clip/.test(ov.overflowY) || /hidden|auto|scroll|clip/.test(ov.overflow)) {
-        broken = true; break;
-      }
+      var cs = getComputedStyle(p);
+      if (/hidden|auto|scroll|clip/.test(cs.overflowY) || /hidden|auto|scroll|clip/.test(cs.overflow)) return true;
     }
-    // 瀏覽器本身不支援 sticky（很舊的機型）也算失效
-    if (!CSS || !CSS.supports || !(CSS.supports('position', 'sticky') || CSS.supports('position', '-webkit-sticky'))) {
-      broken = true;
+    return false;
+  }
+
+  // transform / filter / perspective / contain 會讓祖先變成 fixed 的包含區塊
+  function ancestorBreaksFixed() {
+    for (var p = root.parentElement; p && p !== document.documentElement; p = p.parentElement) {
+      var cs = getComputedStyle(p);
+      if ((cs.transform && cs.transform !== 'none') ||
+          (cs.filter && cs.filter !== 'none') ||
+          (cs.perspective && cs.perspective !== 'none') ||
+          (cs.backdropFilter && cs.backdropFilter !== 'none') ||
+          /paint|layout|strict|content/.test(cs.contain || '') ||
+          /transform|filter|perspective/.test(cs.willChange || '')) return true;
     }
-    root.classList.toggle('gx-nostick', broken);
-    if (broken) console.warn('[goamazing] 外層容器使版面無法使用 sticky，已切換為靜態首屏。');
+    return false;
+  }
+
+  function supportsSticky() {
+    return !!(window.CSS && CSS.supports &&
+      (CSS.supports('position', 'sticky') || CSS.supports('position', '-webkit-sticky')));
+  }
+
+  var mode = 'native';
+
+  function chooseMode() {
+    var next = 'native';
+    if (!supportsSticky() || ancestorBreaksSticky()) {
+      next = ancestorBreaksFixed() ? 'static' : 'fix';
+    }
+    if (next === mode && root.classList.contains('gx-' + (next === 'native' ? 'js' : next + 'stick'))) return;
+    mode = next;
+    root.classList.toggle('gx-fixstick', mode === 'fix');
+    root.classList.toggle('gx-nostick', mode === 'static');
+    if (mode === 'fix') {
+      console.info('[goamazing] 外層 overflow 使 sticky 失效，已改用 fixed 模擬，動畫保留。');
+    } else if (mode === 'static') {
+      console.warn('[goamazing] 外層有 transform/filter，首屏改為靜態顯示。');
+    }
+    positionStage();
+  }
+
+  /* fixed 模擬：依捲動位置在 absolute(頂) → fixed → absolute(底) 之間切換。
+     用 class 切換而非行內樣式，因為打包時 position 會被加上 !important。 */
+  function positionStage() {
+    var stage = root.querySelector('.gx-stage');
+    var sticky = root.querySelector('.gx-stage__sticky');
+    if (!stage || !sticky) return;
+    if (mode !== 'fix') {
+      sticky.classList.remove('gx-fx-on', 'gx-fx-end');
+      return;
+    }
+    var r = stage.getBoundingClientRect(), vh = window.innerHeight;
+    // fixed 之後會脫離文件流，左右位置要自己補回來
+    root.style.setProperty('--gx-stage-l', Math.round(r.left) + 'px');
+    root.style.setProperty('--gx-stage-w', Math.round(r.width) + 'px');
+    sticky.classList.toggle('gx-fx-on', r.top <= 0 && r.bottom >= vh);
+    sticky.classList.toggle('gx-fx-end', r.bottom < vh);
+  }
+
+  var stageRaf = null;
+  function onStageScroll() {
+    if (stageRaf) return;
+    stageRaf = requestAnimationFrame(function () { stageRaf = null; positionStage(); });
   }
 
   /* ── 3. 錨點平滑捲動 ───────────────────────────────────────────
@@ -59,8 +117,11 @@
   });
 
   syncBleed();
-  checkSticky();
-  window.addEventListener('resize', function () { syncBleed(); checkSticky(); }, { passive: true });
-  window.addEventListener('orientationchange', function () { setTimeout(function () { syncBleed(); checkSticky(); }, 200); });
-  window.addEventListener('load', function () { syncBleed(); checkSticky(); });
+  chooseMode();
+  window.addEventListener('scroll', onStageScroll, { passive: true });
+  window.addEventListener('resize', function () { syncBleed(); chooseMode(); positionStage(); }, { passive: true });
+  window.addEventListener('orientationchange', function () {
+    setTimeout(function () { syncBleed(); chooseMode(); positionStage(); }, 200);
+  });
+  window.addEventListener('load', function () { syncBleed(); chooseMode(); positionStage(); });
 })();

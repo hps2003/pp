@@ -57,10 +57,26 @@
 }
 #gx-root .gx-nav__drawer.gx-is-open { z-index: 1; }
 
-/* ---------- 4. 首屏 sticky 失效時的保底 ----------
-   店家版型的外層若設了 overflow:hidden/auto，position:sticky 會失效，
-   首屏就會變成一片黑。JS 偵測到這種情況會加上 .gx-nostick，
-   改用一般的滿版首屏，文字直接顯示，不做拆禮物動畫。 */
+/* ---------- 4a. sticky 失效時用 fixed 模擬（動畫完整保留） ----------
+   祖先只要有 overflow，position:sticky 就會失效；但 position:fixed 不受
+   overflow 影響，所以改由 JS 依捲動位置切換三種狀態，拆禮物動畫照常運作。
+   選擇器比基礎樣式多一個 class，才蓋得過打包時加上的 !important。 */
+#gx-root.gx-fixstick .gx-stage { position: relative; }
+#gx-root.gx-fixstick .gx-stage__sticky {
+  position: absolute; top: 0; left: 0; width: 100%;
+}
+#gx-root.gx-fixstick .gx-stage__sticky.gx-fx-on {
+  position: fixed; top: 0;
+  left: var(--gx-stage-l, 0px);
+  width: var(--gx-stage-w, 100%);
+  z-index: 0;                       /* 壓在本頁導覽列（z-index 40）之下 */
+}
+#gx-root.gx-fixstick .gx-stage__sticky.gx-fx-end {
+  position: absolute; top: auto; bottom: 0; left: 0; width: 100%;
+}
+
+/* ---------- 4b. 最後手段：連 fixed 都被祖先的 transform 綁住 ----------
+   這時才放棄動畫，改用一般的滿版首屏，文字直接顯示。 */
 #gx-root.gx-nostick .gx-stage { height: auto; }
 #gx-root.gx-nostick .gx-stage__sticky { position: relative; height: 100svh; min-height: 520px; }
 #gx-root.gx-nostick .gx-stage__panel,

@@ -80,14 +80,16 @@ PROBE = """() => {
   return out;
 }"""
 
-async def run(b, url, name, w, h, touch, expect_nostick):
+async def run(b, url, name, w, h, touch, expect_mode):
     ctx = await b.new_context(viewport={"width":w,"height":h}, is_mobile=touch, has_touch=touch)
     pg = await ctx.new_page()
     errs=[]; pg.on("pageerror", lambda e: errs.append(str(e)))
     await pg.goto(url, wait_until="domcontentloaded"); await pg.wait_for_timeout(500)
     await pg.evaluate("window.scrollTo(0,document.body.scrollHeight)"); await pg.wait_for_timeout(500)
     r = await pg.evaluate(PROBE)
-    nostick = await pg.evaluate("document.getElementById('gx-root').classList.contains('gx-nostick')")
+    mode = await pg.evaluate("""()=>{const r=document.getElementById('gx-root');
+      return r.classList.contains('gx-fixstick')?'fix'
+           : r.classList.contains('gx-nostick')?'static':'native';}""")
     hasjs = await pg.evaluate("document.getElementById('gx-root').classList.contains('gx-js')")
     await ctx.close()
     bad=[]
@@ -98,8 +100,8 @@ async def run(b, url, name, w, h, touch, expect_nostick):
     bad += ["TINY     "+x for x in r["tiny"][:2]]
     bad += ["JS-ERR   "+e[:70] for e in errs[:2]]
     if not hasjs: bad.append("gx-js 未加上（腳本沒跑）")
-    if nostick != expect_nostick:
-        bad.append(f"gx-nostick={nostick} 但預期 {expect_nostick}")
+    if mode != expect_mode:
+        bad.append(f"首屏定位模式為 {mode}，但預期 {expect_mode}")
     return name, bad
 
 async def functional(b, url):
@@ -282,8 +284,11 @@ async def main():
     fails = 0
     async with async_playwright() as p:
         b = await p.chromium.launch(executable_path=CHROME)
-        for label, url, expect in [("一般店家版型", normal, False),
-                                   ("外層 overflow:hidden（sticky 失效）", overflow, True)]:
+        for label, url, expect in [
+                ("一般店家版型（原生 sticky）", normal, "native"),
+                # overflow 會讓 sticky 失效 —— 這時必須改用 fixed 模擬並「保留動畫」，
+                # 而不是退成沒有動畫的靜態首屏
+                ("外層 overflow:hidden（改用 fixed 模擬）", overflow, "fix")]:
             print(f"\n── {label} ──")
             res = await asyncio.gather(*[run(b, url, *d, expect) for d in DEVICES])
             for name, bad in res:

@@ -159,7 +159,7 @@ python3 src/build_cyberbiz.py   # CyberBiz 版（cyberbiz.html）
 | 佈景用 `h2{…!important}` 這類**元素選擇器**硬蓋 | class 前綴擋不住這種寫法，因此片段內的宣告也都加上 `!important`；同為 `!important` 時比特異性，我們的選擇器都含 `#gx-root`，一定贏過裸元素 |
 | 固定導覽列蓋住店家頁首 | 改成 `sticky` 並壓低 `z-index` |
 | 內容被包在有 `max-width` 的容器裡 | 自動滿版跳出容器（寬度用 JS 量測，不含捲軸，不會多出橫向捲軸） |
-| 外層容器有 `overflow` 導致 `sticky` 失效、首屏變全黑 | JS 會偵測並自動切換成靜態首屏 |
+| 外層容器有 `overflow` 導致 `sticky` 失效 | 自動改用 `position:fixed` 模擬（`overflow` 不影響 fixed），**拆禮物動畫完整保留**；只有祖先另有 `transform`／`filter` 讓 fixed 也失效時，才退成靜態首屏 |
 | 腳本被擋掉 | CSS 保底樣式讓首屏文字直接顯示 |
 | 錨點捲動 | 改由 JS 處理，不去動店家的全域 `scroll-behavior` |
 | 中文變亂碼 | 整份輸出轉成純 ASCII，中文以字元參照／JS 逸出表示 |
@@ -185,7 +185,7 @@ python3 src/build_cyberbiz.py   # CyberBiz 版（cyberbiz.html）
 | 圖片全部不見 | 編輯器過濾掉了 `data:` 圖片 → 改用 `cyberbiz-external-images.html`（99 KB），先把 `src/assets/` 的 24 個檔案上傳到 CyberBiz 檔案管理或圖床，再把檔案裡的 `https://YOUR-IMAGE-HOST/` 取代成你的網址前綴（結尾要有 `/`） |
 | 內容只顯示一半 | 欄位有長度上限、貼上時被截斷 → 同樣改用 `cyberbiz-external-images.html` |
 | 完全沒有樣式 | 編輯器把 `<style>` 濾掉了 → 改用「自訂 CSS／頁尾程式碼」欄位貼入樣式 |
-| 首屏是一片黑 | 外層容器的 `overflow` 讓 `sticky` 失效 → 程式會自動偵測並切成靜態首屏；若沒生效，把最外層的 `class="gx-full"` 移除 |
+| 首屏動畫不會動 | 外層容器的 `overflow` 讓 `sticky` 失效 → 程式會自動改用 `fixed` 模擬，動畫仍會保留（主控台會顯示 `已改用 fixed 模擬`）。只有在祖先另外有 `transform`／`filter` 時才會退成靜態首屏 |
 
 ## 設定 API（選用）
 

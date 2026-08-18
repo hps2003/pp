@@ -289,8 +289,11 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
   display: flex; flex-direction: column;
   justify-content: flex-end;                    /* 手機：靠下 */
   gap: clamp(14px, 2.4vw, 30px);
-  padding: calc(var(--nav-h) + 16px) var(--gutter) 14vh;
-  padding-bottom: max(14vh, calc(14vh + env(safe-area-inset-bottom)));
+  /* 手機首屏文字的底部留白。往上抬約一行（14vh → 19vh），
+     讓開頭文案更靠近畫面中央；桌機不受影響（下方 780px 斷點會改為置中）。 */
+  --hero-bottom: 19vh;
+  padding: calc(var(--nav-h) + 16px) var(--gutter) var(--hero-bottom);
+  padding-bottom: max(var(--hero-bottom), calc(var(--hero-bottom) + env(safe-area-inset-bottom)));
   opacity: 0; pointer-events: none;
 }
 .hero > * { pointer-events: auto; }
@@ -299,7 +302,7 @@ section[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
 }
 /* 手機橫式：畫面很矮，壓縮留白避免文字被切掉 */
 @media (max-height: 520px) and (orientation: landscape) {
-  .hero { justify-content: center; padding-bottom: 0; gap: 10px; }
+  .hero { justify-content: center; --hero-bottom: 0px; padding-bottom: 0; gap: 10px; }
 }
 
 .hero__eyebrow { display: flex; align-items: center; gap: 14px; }
