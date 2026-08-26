@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&amp;family=Climate+Crisis&amp;family=DM+Sans:wght@300;400;500;700&amp;family=Pacifico&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;family=Noto+Sans+TC:wght@400;500;700;900&amp;family=Noto+Serif+TC:wght@700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:hidden;background:#F0FFDD;color:#2D1F16;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#B35840;text-decoration:none}
+a:hover{color:#2A4B9E}
+::selection{background:#F2C832}
+@keyframes om-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes om-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes om-glow{0%,100%{transform:scale(1);filter:blur(2px)}45%{transform:scale(1.14);filter:blur(3px)}}
+@keyframes aboutMeBounceIn{0%{opacity:0;transform:translateY(48px) scale(.96)}55%{opacity:1;transform:translateY(-12px) scale(1.01)}75%{transform:translateY(6px) scale(.995)}90%{transform:translateY(-3px) scale(1.002)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes aboutMeBounceInSm{0%{opacity:0;transform:translateY(24px) scale(.98)}55%{opacity:1;transform:translateY(-6px) scale(1.005)}75%{transform:translateY(3px) scale(.998)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes aboutMeFadeIn{from{opacity:0}to{opacity:1}}
+@media (max-width:768px),(pointer:coarse){#blank{height:100dvh}#catChasePos{bottom:clamp(8px,2vh,20px);height:clamp(140px,28vh,250px)}#contactSign{top:clamp(115px,18vh,190px);width:min(86vw,420px);max-height:30dvh}#treeLayer{bottom:clamp(170px,27vh,270px);height:clamp(170px,25vh,250px)}}
+@media (prefers-reduced-motion:reduce){#blank{height:100dvh}#catTunnel{opacity:0}}
+@keyframes cakeArrowBounce{0%,100%{transform:translate(0,0) scale(1)}45%{transform:translate(var(--arrow-bounce-x,0px),var(--arrow-bounce-y,0px)) scale(1.025)}70%{transform:translate(calc(var(--arrow-bounce-x,0px) * -0.2),calc(var(--arrow-bounce-y,0px) * -0.2)) scale(.995)}}
+@media (max-width:768px),(pointer:coarse){#cakeArrowHint{display:none}}
+@media (prefers-reduced-motion:reduce){#cakeArrowBounce{animation:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+#tarotTrack::-webkit-scrollbar{display:none;width:0;height:0}
+</style>
+</helmet>
+
+<div id="hpsRoot" style="position:relative;--accent:#C8706F;--font-scale:1;--space-scale:1">
+
+<nav id="siteNav" style="position:fixed;top:0;left:0;right:0;z-index:200;background:#FFF491;border-bottom:3px solid #2A4B9E;transition:box-shadow .3s ease">
+  <div style="max-width:1160px;margin:0 auto;padding:.7rem clamp(1rem,4vw,2.5rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.4rem clamp(1rem,4vw,2.4rem);min-height:56px">
+    <div style="display:flex;align-items:center;gap:.4rem;flex:1 1 0;min-width:150px;justify-content:flex-end">
+      <a href="#home" style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2A4B9E;padding:.42rem .8rem;border-radius:999px;border:1.5px solid transparent;transition:background .2s,border-color .2s" style-hover="background:#F2C832;border-color:#2A4B9E;color:#2A4B9E">Home</a>
+      <a href="#about" style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2A4B9E;padding:.42rem .8rem;border-radius:999px;border:1.5px solid transparent;transition:background .2s,border-color .2s" style-hover="background:#F2C832;border-color:#2A4B9E;color:#2A4B9E">About</a>
+    </div>
+    <a href="#home" style="text-align:center;text-decoration:none;flex:0 0 auto">
+      <b style="display:block;font-family:'Climate Crisis',cursive;font-size:1.22rem;font-weight:400;letter-spacing:.04em;color:#2A4B9E;line-height:1">HONG PENG SYUN</b>
+      <small style="display:block;margin-top:3px;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#2A4B9E;opacity:.6">Portfolio</small>
+    </a>
+    <div style="display:flex;align-items:center;gap:.4rem;flex:1 1 0;min-width:150px;justify-content:flex-start">
+      <a href="#works" style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2A4B9E;padding:.42rem .8rem;border-radius:999px;border:1.5px solid transparent;transition:background .2s,border-color .2s" style-hover="background:#F2C832;border-color:#2A4B9E;color:#2A4B9E">Works</a>
+      <a href="#contact" style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2A4B9E;padding:.42rem .8rem;border-radius:999px;border:1.5px solid transparent;transition:background .2s,border-color .2s" style-hover="background:#F2C832;border-color:#2A4B9E;color:#2A4B9E">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section id="home" style="scroll-margin-top:66px;min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;background:#12414d">
+  <div id="heroVisual" style="position:absolute;top:-2px;left:-2px;width:calc(100% + 4px);height:calc(100% + 4px);z-index:0;will-change:transform,opacity">
+    <iframe src="./assets/hero-sea.html" title="Peng Syun — Shimmering Sea" loading="eager" style="width:100%;height:100%;border:0;display:block"></iframe>
+  </div>
+  <div style="flex:1"></div>
+
+  <div style="position:relative;z-index:2;background:var(--accent,#C8706F);height:44px;overflow:hidden;display:flex;align-items:center;border-top:2px solid #2D1F16">
+    <div style="display:inline-flex;animation:om-marquee 30s linear infinite;white-space:nowrap">
+      <span style="font-family:'Pacifico',cursive;font-size:.9rem;color:#FFFDF8;padding-right:2rem">Welcome to HONG PENG SYUN’s resume. ✦ Welcome to HONG PENG SYUN’s resume. ✦ Welcome to HONG PENG SYUN’s resume. ✦&nbsp;</span>
+      <span style="font-family:'Pacifico',cursive;font-size:.9rem;color:#FFFDF8;padding-right:2rem">Welcome to HONG PENG SYUN’s resume. ✦ Welcome to HONG PENG SYUN’s resume. ✦ Welcome to HONG PENG SYUN’s resume. ✦&nbsp;</span>
+    </div>
+  </div>
+</section>
+
+<div id="welcome" style="height:220vh">
+  <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;-webkit-mask-image:linear-gradient(to bottom,black 84%,transparent 99%);mask-image:linear-gradient(to bottom,black 84%,transparent 99%)">
+    <div style="position:absolute;inset:0;background-image:url(&quot;./assets/welcome-bg.webp&quot;);background-size:cover;background-position:center"></div>
+    <div id="welcomeDim" style="position:absolute;inset:0;z-index:1;opacity:.3;background:linear-gradient(to bottom,rgba(0,0,0,.82) 0%,rgba(0,0,0,.5) 35%,rgba(0,0,0,.52) 65%,rgba(0,0,0,.82) 100%)"></div>
+
+    <div id="welcomeStage" style="position:absolute;z-index:2;width:min(700px,86vw,74vh);display:flex;flex-direction:column;align-items:center;will-change:transform,opacity">
+      <div id="welcomeArc" style="position:relative;z-index:5;width:100%;margin-bottom:-22%;pointer-events:none">
+        <svg viewBox="0 150 700 210" width="100%" height="auto" style="display:block;overflow:visible">
+          <defs><path id="hpsArc" d="M 60,330 A 620,620 0 0,1 640,330"></path></defs>
+          <text font-size="82" letter-spacing="0.18em" fill="rgba(0,0,0,0.5)" dx="4" dy="7" font-family="'Climate Crisis', cursive">
+            <textPath href="#hpsArc" startOffset="50%" text-anchor="middle">Welcome</textPath>
+          </text>
+          <text font-size="82" letter-spacing="0.18em" fill="#F2E04A" paint-order="stroke" stroke="#1A3A7A" stroke-width="7" stroke-linejoin="round" font-family="'Climate Crisis', cursive">
+            <textPath href="#hpsArc" startOffset="50%" text-anchor="middle">Welcome</textPath>
+          </text>
+        </svg>
+      </div>
+
+      <div id="cakeWrap" style="position:relative;width:100%;aspect-ratio:1/1;animation:om-bob 6s ease-in-out infinite;will-change:transform">
+        <div id="welcomeCake" style="position:absolute;inset:0;background-image:url(&quot;./assets/welcome-cake.webp&quot;);background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 14px 44px rgba(0,0,0,.55));cursor:pointer;z-index:2" role="button" tabindex="0" aria-label="點擊蛋糕有驚喜"></div>
+
+        <div id="candles" style="position:absolute;inset:0;pointer-events:none;z-index:3;mix-blend-mode:screen">
+          <span data-flame="" style="position:absolute;left:34.3%;top:22.2%;width:15%;height:15%;margin:-7.5% 0 0 -7.5%;background:radial-gradient(closest-side,rgba(255,246,214,.95) 0%,rgba(255,205,90,.55) 26%,rgba(255,150,50,.22) 52%,rgba(255,140,40,0) 100%);opacity:0;transition:opacity .6s ease;animation:om-glow 2.2s ease-in-out infinite"></span>
+          <span data-flame="" style="position:absolute;left:40.3%;top:21%;width:15%;height:15%;margin:-7.5% 0 0 -7.5%;background:radial-gradient(closest-side,rgba(255,246,214,.95) 0%,rgba(255,205,90,.55) 26%,rgba(255,150,50,.22) 52%,rgba(255,140,40,0) 100%);opacity:0;transition:opacity .6s ease;animation:om-glow 2.6s ease-in-out infinite"></span>
+          <span data-flame="" style="position:absolute;left:48%;top:20%;width:15%;height:15%;margin:-7.5% 0 0 -7.5%;background:radial-gradient(closest-side,rgba(255,246,214,.95) 0%,rgba(255,205,90,.55) 26%,rgba(255,150,50,.22) 52%,rgba(255,140,40,0) 100%);opacity:0;transition:opacity .6s ease;animation:om-glow 1.9s ease-in-out infinite"></span>
+          <span data-flame="" style="position:absolute;left:55.3%;top:21.2%;width:15%;height:15%;margin:-7.5% 0 0 -7.5%;background:radial-gradient(closest-side,rgba(255,246,214,.95) 0%,rgba(255,205,90,.55) 26%,rgba(255,150,50,.22) 52%,rgba(255,140,40,0) 100%);opacity:0;transition:opacity .6s ease;animation:om-glow 2.4s ease-in-out infinite"></span>
+          <span data-flame="" style="position:absolute;left:61.7%;top:22.2%;width:15%;height:15%;margin:-7.5% 0 0 -7.5%;background:radial-gradient(closest-side,rgba(255,246,214,.95) 0%,rgba(255,205,90,.55) 26%,rgba(255,150,50,.22) 52%,rgba(255,140,40,0) 100%);opacity:0;transition:opacity .6s ease;animation:om-glow 2.8s ease-in-out infinite"></span>
+        </div>
+
+        <div id="cakeArrowHint" aria-hidden="true" style="position:absolute;left:calc(100% + 38px);top:36%;width:clamp(150px,44%,205px);aspect-ratio:1.478;pointer-events:none;z-index:5;--arrow-bounce-x:-8px;--arrow-bounce-y:0px">
+          <div id="cakeArrowBounce" style="position:relative;width:100%;height:100%;animation:cakeArrowBounce 1.5s cubic-bezier(.34,1.56,.64,1) infinite;will-change:transform">
+            <img id="cakeArrowImg" src="./assets/arrow-hint.png" alt="" style="position:absolute;left:50%;top:50%;width:67.66%;transform:translate(-50%,-50%) rotate(-90deg)">
+            <span id="cakeArrowText" style="position: absolute; left: 67px; top: 66px; display: grid; place-items: center; white-space: nowrap; line-height: 1; font-size: clamp(14px,1.3vw,20px); font-weight: 700; color: #4A3036; font-family: 'Playfair Display',Georgia,serif">Click me</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="welcomeHint" style="position:absolute;z-index:4;bottom:44px;left:0;right:0;text-align:center;font-family:'Caveat',cursive;font-size:1.1rem;color:rgba(255,253,248,.85);letter-spacing:.05em">點一下蛋糕，繼續往下捲動 ↓</div>
+  </div>
+</div>
+
+<section id="about" style="scroll-margin-top:66px;background:linear-gradient(to bottom,#F0FFDD 0%,#FFE5EE 16%);padding:calc(clamp(4rem,9vw,7.5rem) * var(--space-scale)) 16px;position:relative;overflow:hidden">
+  <div id="aboutPanel" style="width:min(1200px,calc(100vw - 32px));margin:0 auto;background:#FFFDF8;border-radius:24px;padding:clamp(1.5rem,3.5vw,3rem) clamp(1rem,2.5vw,2.5rem);box-shadow:0 18px 50px rgba(45,31,22,.13);will-change:transform,opacity">
+    <div data-about-item="" style="text-align:center;margin-bottom:clamp(2rem,4vw,3.5rem)">
+      <h2 style="font-family:'Climate Crisis',cursive;font-weight:400;font-size:calc(clamp(1.9rem,4.5vw,3.2rem) * var(--font-scale));margin:0;color:#2D1F16">ABOUT ME</h2>
+      <svg viewBox="0 0 200 12" width="170" style="display:block;margin:.6rem auto 0;max-width:60%" aria-hidden="true"><path d="M4 8 Q50 2 100 7 Q150 12 196 6" stroke="var(--accent,#C8706F)" stroke-width="3.5" fill="none" stroke-linecap="round"></path></svg>
+    </div>
+
+    <div data-about-item="" style="display:flex;flex-direction:column;align-items:center;gap:clamp(1.5rem,3vw,2.5rem);width:100%">
+      <x-import component-from-global-scope="ppt-resume-slide" from="./assets/ppt/resume-slide.js" hint-size="100%,700px"></x-import>
+    </div>
+  </div>
+</section>
+
+<section id="works" style="scroll-margin-top:66px;background:linear-gradient(to bottom,#FFE5EE 0%,#F0FFDD 14%);position:relative;overflow:hidden;padding-bottom:1rem">
+  <div data-reveal="" style="text-align:center;padding:calc(clamp(3rem,7vw,5rem) * var(--space-scale)) clamp(1.2rem,4vw,3rem) 1.5rem">
+    <h2 style="font-family:'Pacifico',cursive;font-weight:400;font-size:calc(clamp(1.9rem,4.5vw,3.2rem) * var(--font-scale));margin:0;color:#2D1F16"><p><strong>My Strengths</strong></p></h2><p style="font-family:'Caveat',cursive;font-size:1.15rem;color:#8A7060;margin:.7rem 0 0">Selected Projects ✦</p>
+    
+    <svg viewBox="0 0 200 12" width="170" style="display: block; margin: .5rem auto 0; position: absolute; left: 644px; top: 242px" aria-hidden="true"><path d="M4 7 Q50 2 100 8 Q150 12 196 6" stroke="#7BBFB5" stroke-width="3.5" fill="none" stroke-linecap="round"></path></svg>
+  </div>
+
+  <div id="tarotStage" style="display:flex;align-items:center;justify-content:center;width:100%;padding:1.5rem 0 1rem">
+    <div id="tarotTrack" tabindex="0" role="list" aria-label="作品列表，可用左右方向鍵瀏覽" onKeyDown="{{ onStripKey }}" style="position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,52px);width:min(1120px,90vw);margin-inline:auto;align-items:end;justify-items:center;outline:none;scrollbar-width:none;-ms-overflow-style:none">
+      <sc-for list="{{ works }}" as="w" hint-placeholder-count="4">
+        <div role="listitem" tabindex="0" data-card="{{ w.i }}" onClick="{{ w.open }}" onKeyDown="{{ w.onKey }}" style="width:clamp(210px,68vw,300px);cursor:pointer;outline:none;touch-action:manipulation;will-change:transform;transform-origin:50% 100%">
+          <div data-card-face="" style="position:relative;width:100%;aspect-ratio:760/1142;border-radius:12px;overflow:hidden;border:2px solid #2D1F16;box-shadow:4px 6px 0 rgba(45,31,22,.85);background:#EDE7D6;background-image:{{ w.bg }};background-size:cover;background-position:center;transition:box-shadow .35s ease">
+            <div style="position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:1.1rem;opacity:0;transition:opacity .3s ease;background:linear-gradient(to top,rgba(20,12,8,.8) 0%,rgba(20,12,8,0) 55%);pointer-events:none" style-hover="opacity:1">
+              <span style="font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F2C832">✦ {{ w.counter }} ✦</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <p style="text-align:center;font-family:'Caveat',cursive;font-size:1.05rem;color:rgba(138,112,96,.85);letter-spacing:.04em;margin:0 0 2.2rem">點一張塔羅牌，探索不同介紹&nbsp;</p>
+</section>
+
+<div style="text-align:center;padding:2.5rem 0;background:linear-gradient(to bottom,#F0FFDD,#BAFFEE)">
+  <a href="#works" style="display:inline-block;font-family:'Pacifico',cursive;font-size:.85rem;letter-spacing:.05em;color:#FFFDF8;background:var(--accent,#C8706F);padding:.85rem 2.5rem;border-radius:999px;border:2px solid #2D1F16;box-shadow:3px 3px 0 #2D1F16;transition:transform .2s,box-shadow .2s" style-hover="transform:translate(-2px,-2px);box-shadow:5px 5px 0 #2D1F16;color:#FFFDF8">View All Works ✦</a>
+</div>
+
+<section id="blank" style="scroll-margin-top:66px;background:#BAFFEE;height:220vh;margin:0;padding:0;position:relative">
+  <div id="catSticky" style="position:sticky;top:0;width:100%;height:100dvh;margin:0;padding:0;overflow:clip;contain:layout paint;background:linear-gradient(to bottom,#BAFFEE 0%,#BAFFEE 52%,#E09493 100%)">
+
+    <div id="catBackdrop" style="position:absolute;inset:0;opacity:0;visibility:hidden;background:#BAFFEE;will-change:opacity">
+      <div style="position:absolute;inset:-6%;background-image:url(&quot;./assets/cat-backdrop.jpeg&quot;);background-size:cover;background-position:center;filter:blur(22px);transform:scale(1.1)"></div>
+      <div style="position:absolute;inset:0;background-image:url(&quot;./assets/cat-backdrop.jpeg&quot;);background-size:cover;background-position:center"></div>
+      <div style="position:absolute;inset:0;background:rgba(160,205,235,.32)"></div>
+    </div>
+
+    <canvas id="catTunnel" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
+
+    <div id="treeLayer" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:clamp(220px,32vh,380px);height:clamp(220px,31vh,350px);overflow:hidden;pointer-events:none;z-index:2;opacity:0;will-change:opacity">
+      <div id="treeTrack" style="position:absolute;left:0;top:0;height:100%;display:flex;will-change:transform"></div>
+    </div>
+
+    <div id="contactSign" style="position:absolute;left:50%;top:clamp(150px,22vh,260px);width:clamp(320px,36vw,580px);transform:translate(-50%,12px) scale(.98);opacity:0;transition:opacity .82s cubic-bezier(.22,1,.36,1),transform .82s cubic-bezier(.22,1,.36,1);z-index:30;pointer-events:none;will-change:opacity,transform">
+      <div style="position:absolute;inset:0;background:#FBF3C6;opacity:.7;border-radius:clamp(16px,3vw,28px);z-index:0"></div>
+      <div style="position:relative;width:100%;aspect-ratio:965/481;filter:drop-shadow(0 10px 18px rgba(45,31,22,.28));z-index:1">
+        <img src="./assets/contact-card.png" alt="聯絡資訊：LinkedIn、電話、Email" style="position:absolute;inset:0;width:100%;height:100%;display:block">
+        <button type="button" aria-label="複製 LinkedIn 網址" onClick="{{ copyLinkedIn }}" style="position:absolute;left:6%;top:7%;width:88%;height:27%;cursor:pointer;background:none;border:0;padding:0;margin:0;appearance:none;border-radius:6px" style-hover="background:rgba(255,255,255,.08)" style-focus="outline:2px solid #2A4B9E;outline-offset:3px"></button>
+        <button type="button" aria-label="複製 Gmail 地址" onClick="{{ copyGmail }}" style="position:absolute;left:6%;top:66%;width:88%;height:27%;cursor:pointer;background:none;border:0;padding:0;margin:0;appearance:none;border-radius:6px" style-hover="background:rgba(255,255,255,.08)" style-focus="outline:2px solid #2A4B9E;outline-offset:3px"></button>
+      </div>
+      <div id="contactToast" style="position:absolute;left:50%;bottom:-14px;transform:translate(-50%,8px);opacity:0;pointer-events:none;z-index:60;background:#2D1F16;color:#FFFDF8;font-size:.78rem;font-weight:600;padding:.5rem 1rem;border-radius:999px;white-space:nowrap;transition:opacity .28s ease,transform .28s ease;box-shadow:0 6px 16px rgba(45,31,22,.3)"></div>
+    </div>
+
+    <div id="catChasePos" style="position:absolute;left:0;right:0;top:auto;bottom:clamp(12px,3vh,36px);height:clamp(180px,32vh,360px);pointer-events:none;z-index:4">
+    <div id="catChase" style="position:absolute;inset:0;pointer-events:none;opacity:0;visibility:hidden">
+      <div id="dogTrack" style="position:absolute;left:0;top:0;width:clamp(104px,14vw,182px);aspect-ratio:657/703;opacity:0;will-change:transform,opacity">
+        <div id="dogFlip" style="width:100%;height:100%;will-change:transform">
+          <img src="./assets/balloon-dog.png" alt="氣球狗" style="display:block;width:100%;height:100%;object-fit:contain">
+        </div>
+      </div>
+
+      <div id="catTrack" style="position:absolute;left:0;top:0;width:clamp(110px,17vw,196px);aspect-ratio:1/1;opacity:0;will-change:transform,opacity">
+        <div id="catFlip" style="width:100%;height:100%;will-change:transform">
+        <div id="catSprite" role="img" aria-label="追逐氣球狗的貓咪" style="position:relative;width:100%;height:100%;user-select:none">
+          <img data-catframe="" src="./assets/cat-1.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:1">
+          <img data-catframe="" src="./assets/cat-2.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+          <img data-catframe="" src="./assets/cat-3.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+          <img data-catframe="" src="./assets/cat-4.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+          <img data-catframe="" src="./assets/cat-5.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+          <img data-catframe="" src="./assets/cat-6.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div id="catBgContinuation" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:-28vh;height:42vh;z-index:0;pointer-events:none;background:linear-gradient(to bottom,rgba(172,205,199,0) 0%,#ACCDC7 35%,#E09493 100%)"></div>
+</section><section id="contact" style="scroll-margin-top:66px;background:linear-gradient(to bottom,#ACCDC7 0%,#E09493 28vh,#E09493 45vh);padding:calc(clamp(3.5rem,8vw,7rem) * var(--space-scale)) clamp(1.2rem,4vw,3rem) 0;position:relative;z-index:1;margin:0;border:0;box-shadow:none;overflow:hidden">
+  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1">
+    <div data-reveal="" style="text-align:center;margin-bottom:clamp(2.2rem,5vw,3.5rem)">
+      <h2 style="font-family:'Pacifico',cursive;font-weight:400;font-size:calc(clamp(2rem,4.5vw,3.2rem) * var(--font-scale));margin:0;color:#FFFDF8"><p><strong>Contact Me!!</strong></p></h2>
+      <p style="font-family:'Caveat',cursive;font-size:1.2rem;color:rgba(255,253,248,.9);margin:.5rem 0 0">Let’s create something beautiful together ✦</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(2rem,4vw,4rem);align-items:start">
+      
+
+      <div data-reveal="" style="position:relative;background:#FFFDF8;border:2.5px solid #2D1F16;border-radius:20px;padding:2.2rem;box-shadow:6px 6px 0 #2D1F16">
+        <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-1.5deg);width:56px;height:18px;border-radius:2px;background:rgba(210,195,165,.75)"></div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;margin:0 0 1.5rem;color:#2D1F16">Send a Message</h3>
+
+        <sc-if value="{{ notice }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0 0 1rem;font-size:.85rem;color:#2D6A4F;background:rgba(123,191,181,.16);border:1.5px solid #7BBFB5;border-radius:10px;padding:.7rem .9rem">{{ notice }}</p>
+        </sc-if>
+
+        <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:1.1rem" novalidate="">
+            <div>
+              <label for="hpsName" style="display:block;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:#8A7060;margin-bottom:.4rem">聯絡人</label>
+              <input id="hpsName" name="contactPerson" type="text" placeholder="請輸入聯絡人" required="" autocomplete="name" aria-label="聯絡人" style="width:100%;padding:.7rem .9rem;border:1.5px solid #D9CFC0;border-radius:10px;font-size:.88rem;font-family:inherit;background:#F5F0E4;color:#2D1F16;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:var(--accent,#C8706F);box-shadow:0 0 0 3px rgba(200,112,111,.18)">
+            </div>
+            <div>
+              <label for="hpsEmail" style="display:block;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:#8A7060;margin-bottom:.4rem">Email</label>
+              <input id="hpsEmail" name="email" type="email" placeholder="your@email.com" required="" style="width:100%;padding:.7rem .9rem;border:1.5px solid #D9CFC0;border-radius:10px;font-size:.88rem;font-family:inherit;background:#F5F0E4;color:#2D1F16;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:var(--accent,#C8706F);box-shadow:0 0 0 3px rgba(200,112,111,.18)">
+            </div>
+            <div>
+              <label for="hpsSubject" style="display:block;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:#8A7060;margin-bottom:.4rem">Subject</label>
+              <input id="hpsSubject" name="subject" type="text" placeholder="合作邀約／面試邀請" style="width:100%;padding:.7rem .9rem;border:1.5px solid #D9CFC0;border-radius:10px;font-size:.88rem;font-family:inherit;background:#F5F0E4;color:#2D1F16;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:var(--accent,#C8706F);box-shadow:0 0 0 3px rgba(200,112,111,.18)">
+            </div>
+            <div>
+              <label for="hpsMsg" style="display:block;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:#8A7060;margin-bottom:.4rem">Message</label>
+              <textarea id="hpsMsg" name="message" rows="4" placeholder="內容" required="" style="width:100%;padding:.7rem .9rem;border:1.5px solid #D9CFC0;border-radius:10px;font-size:.88rem;font-family:inherit;background:#F5F0E4;color:#2D1F16;outline:none;resize:vertical;transition:border-color .2s,box-shadow .2s" style-focus="border-color:var(--accent,#C8706F);box-shadow:0 0 0 3px rgba(200,112,111,.18)"></textarea>
+            </div>
+            <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;font-size:.78rem;color:#B35840">{{ error }}</p>
+            </sc-if>
+            <button type="submit" style="font-family:'Pacifico',cursive;font-size:.92rem;color:#FFFDF8;background:var(--accent,#C8706F);padding:.85rem;border-radius:999px;border:2px solid #2D1F16;box-shadow:3px 3px 0 #2D1F16;cursor:pointer;transition:transform .18s,box-shadow .18s" style-hover="transform:translate(-2px,-2px);box-shadow:5px 5px 0 #2D1F16">submit ✦</button>
+        </form>
+      </div>
+    </div>
+
+    <div style="margin-top:clamp(3rem,6vw,5rem);border-top:1px solid rgba(255,255,255,.28);padding:1.6rem 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem">
+      <div style="font-family:'Noto Serif TC',serif;font-size:.9rem;font-weight:700;color:rgba(255,253,248,.75);letter-spacing:.12em">洪芃薰</div>
+      <div style="font-size:.68rem;color:rgba(255,253,248,.55);letter-spacing:.08em">© 2026 Hong Peng Syun — All rights reserved</div>
+      
+    </div>
+  </div>
+</section>
+
+<div id="tarotIntroOverlay" role="dialog" aria-modal="true" aria-label="三折頁介紹" style="position:fixed;inset:0;width:100vw;height:100dvh;z-index:1000;display:grid;place-items:center;overflow:hidden;opacity:0;visibility:hidden;background:rgba(24,17,22,.78);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);pointer-events:none;transition:opacity .28s ease">
+  <div id="trifoldHost1" style="position:absolute;inset:0;opacity:0;pointer-events:none;transform:translate3d(0,14px,0) scale(.97);transition:opacity .32s ease,transform .52s cubic-bezier(.22,1,.36,1)"></div>
+  <div id="trifoldHost2" style="position:absolute;inset:0;opacity:0;pointer-events:none;transform:translate3d(0,14px,0) scale(.97);transition:opacity .32s ease,transform .52s cubic-bezier(.22,1,.36,1)"></div>
+  <div id="trifoldHost3" style="position:absolute;inset:0;opacity:0;pointer-events:none;transform:translate3d(0,14px,0) scale(.97);transition:opacity .32s ease,transform .52s cubic-bezier(.22,1,.36,1)"></div>
+  <div id="trifoldHost4" style="position:absolute;inset:0;opacity:0;pointer-events:none;transform:translate3d(0,14px,0) scale(.97);transition:opacity .32s ease,transform .52s cubic-bezier(.22,1,.36,1)"></div>
+  <button type="button" id="trifoldBack" aria-label="返回塔羅牌" onClick="{{ closeTarotIntro }}" style="position:absolute;top:max(20px,env(safe-area-inset-top));right:max(22px,env(safe-area-inset-right));z-index:1100;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:#FBF3C6;border:1.5px solid #0A0A0A;border-radius:999px;box-shadow:2px 3px 0 rgba(10,10,10,.28);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .18s ease" style-hover="transform:translateX(-2px) scale(1.04)" style-focus="outline:2px solid #ED7D31;outline-offset:3px">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  </button>
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#C8706F&quot;, &quot;options&quot;: [&quot;#C8706F&quot;, &quot;#7BBFB5&quot;, &quot;#2A4B9E&quot;, &quot;#D9A441&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;視覺設計&quot;},
+  &quot;fontScale&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 0.85, &quot;max&quot;: 1.25, &quot;step&quot;: 0.05, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;文字大小間距&quot;},
+  &quot;sectionSpacing&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 0.75, &quot;max&quot;: 1.4, &quot;step&quot;: 0.05, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;文字大小間距&quot;},
+  &quot;worksCardStyle&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;tilted&quot;, &quot;options&quot;: [&quot;tilted&quot;, &quot;flat&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;圖面排版&quot;},
+  &quot;revealAnimation&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;使用者互動&quot;},
+  &quot;showCatEasterEgg&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;使用者互動&quot;}
+}">
+class Component extends DCLogic {
+  state = { error: '', notice: '' };
+
+  works() {
+    const rots = ['-4deg', '2deg', '-2deg', '3.5deg'];
+    return rots.map((rot, i) => ({
+      i,
+      rot,
+      bg: "url('./assets/tarot.webp')",
+      counter: (i + 1) + ' / ' + rots.length
+    }));
+  }
+
+  applyTweaks() {
+    const root = document.getElementById('hpsRoot');
+    if (!root) return;
+    const accent = this.props.accentColor ?? '#C8706F';
+    const fontScale = this.props.fontScale ?? 1;
+    const spaceScale = this.props.sectionSpacing ?? 1;
+    root.style.setProperty('--accent', accent);
+    root.style.setProperty('--font-scale', String(fontScale));
+    root.style.setProperty('--space-scale', String(spaceScale));
+
+    const cat = document.getElementById('blank');
+    if (cat) cat.style.display = this.props.showCatEasterEgg === false ? 'none' : '';
+
+    if (this.paintTarot) this.paintTarot();
+  }
+
+  componentDidMount() {
+    const root = this.rootEl || document;
+    this.root = root;
+    this.applyTweaks();
+
+    // scroll reveal
+    const revealOn = this.props.revealAnimation !== false;
+    this.reveals = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (revealOn) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      this.reveals.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(22px)';
+        el.style.transition = 'opacity .7s ease ' + (i % 3) * 0.08 + 's, transform .7s cubic-bezier(.22,1,.36,1) ' + (i % 3) * 0.08 + 's';
+        io.observe(el);
+      });
+      this.io = io;
+      // fallback: never leave content stuck at opacity 0 if IO doesn't fire
+      this.showReveals = () => {
+        this.reveals.forEach(el => {
+          if (el.style.opacity === '0' && el.getBoundingClientRect().top < innerHeight * 0.94) {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          }
+        });
+      };
+      this.revealTimer = setTimeout(() => this.reveals.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; }), 2500);
+    } else {
+      this.reveals.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    }
+
+    this.nav = document.getElementById('siteNav');
+    this.prog = document.getElementById('navProgress');
+    this.welcome = document.getElementById('welcome');
+    this.stage = document.getElementById('welcomeStage');
+    this.hint = document.getElementById('welcomeHint');
+    this.flames = Array.from(document.querySelectorAll('[data-flame]'));
+    this.heroVisual = document.getElementById('heroVisual');
+    this.dim = document.getElementById('welcomeDim');
+    this.sections = [];
+    this.navLinks = [];
+
+    this.onScroll = () => {
+      const y = scrollY;
+      if (this.showReveals) this.showReveals();
+      if (this.nav) this.nav.style.boxShadow = y > 40 ? '0 4px 20px rgba(42,75,158,.22)' : 'none';
+      if (this.prog) {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        this.prog.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+      }
+      // interface 1: sea + floating text fades and lifts away
+      if (this.heroVisual) {
+        const hp = Math.max(0, Math.min(1, y / (innerHeight * 0.85)));
+        this.heroVisual.style.opacity = String(Math.max(0, 1 - hp * 1.15));
+        this.heroVisual.style.transform = 'translateY(' + (-140 * hp) + 'px)';
+        // the sea iframe runs three.js continuously; hide it once it is fully
+        // faded so the browser stops its render loop and frees the main thread
+        this.heroVisual.style.display = hp >= 1 ? 'none' : '';
+      }
+      // interface 2: cake rises in, sea darkens, candles light up
+      if (this.welcome && this.stage) {
+        const denom = this.welcome.offsetHeight - innerHeight;
+        if (denom > 0) {
+          const p = Math.max(0, Math.min(1, (y - this.welcome.offsetTop) / denom));
+          const inT = Math.max(0, Math.min(1, p / 0.26));
+          const outT = Math.max(0, Math.min(1, (p - 0.62) / 0.3));
+          const ease = 1 - Math.pow(1 - inT, 3);
+          this.stage.style.opacity = String(ease * (1 - outT));
+          this.stage.style.transform = 'translateY(' + ((1 - ease) * 140 - 170 * outT) + 'px) scale(' + (1 - 0.06 * outT) + ')';
+          if (this.dim) this.dim.style.opacity = String(0.3 + 0.7 * Math.max(0, Math.min(1, p / 0.38)));
+          if (this.flames && this.flames.length) {
+            const lit = Math.max(0, Math.min(1, (p - 0.14) / 0.26)) * (1 - outT);
+            this.flames.forEach(f => { f.style.opacity = String(lit); });
+          }
+          if (this.hint) this.hint.style.opacity = String(Math.max(0, Math.min(1, (p - 0.05) / 0.15)) * (1 - Math.max(0, Math.min(1, (p - 0.45) / 0.2))));
+        }
+      }
+      // nav scroll spy
+      let active = null;
+      this.sections.forEach(s => { if (s && s.getBoundingClientRect().top <= innerHeight * 0.35) active = s.id; });
+      this.navLinks.forEach(a => {
+        const on = a.dataset.nav === active;
+        a.style.background = on ? '#F2C832' : 'transparent';
+        a.style.boxShadow = on ? 'inset 0 0 0 1.5px #2A4B9E' : 'none';
+      });
+    };
+    addEventListener('scroll', this.onScroll, { passive: true });
+    addEventListener('resize', this.onScroll);
+    this.onScroll();
+
+    // cake pointer tilt + click sparkle
+    this.cake = document.getElementById('welcomeCake');
+    this.cakeWrap = document.getElementById('cakeWrap');
+    this.onMove = e => {
+      if (!this.cakeWrap) return;
+      const r = this.cakeWrap.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+      this.cakeWrap.style.rotate = (dx * 3).toFixed(2) + 'deg';
+      this.cakeWrap.style.translate = (dx * 12).toFixed(1) + 'px ' + (dy * 8).toFixed(1) + 'px';
+    };
+    addEventListener('pointermove', this.onMove, { passive: true });
+    if (this.cake) {
+      this.onCake = () => {
+        this.cakeWrap.animate(
+          [{ transform: 'scale(1)' }, { transform: 'scale(1.06) rotate(-2deg)' }, { transform: 'scale(1)' }],
+          { duration: 520, easing: 'cubic-bezier(.34,1.56,.64,1)' }
+        );
+        for (let i = 0; i < 10; i++) this.spark();
+      };
+      this.cake.addEventListener('click', this.onCake);
+      // same surprise via keyboard; the click listener above stays the only handler
+      this.onCakeKey = e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.cake.click(); }
+      };
+      this.cake.addEventListener('keydown', this.onCakeKey);
+    }
+
+    // arrow hint idles only while the cake section is on screen
+    const arrow = document.getElementById('cakeArrowHint');
+    const arrowBounce = document.getElementById('cakeArrowBounce');
+    if (arrow && arrowBounce) {
+      this.arrowIO = new IntersectionObserver(es => {
+        es.forEach(e => { arrowBounce.style.animationPlayState = e.isIntersecting ? 'running' : 'paused'; });
+      }, { threshold: 0 });
+      this.arrowIO.observe(arrow);
+    }
+
+    this.initTarot();
+    this.initAbout();
+    this.initCat();
+    this.initTarotIntro();
+  }
+
+  componentDidUpdate() {
+    this.applyTweaks();
+  }
+
+  spark() {
+    const stage = document.getElementById('welcomeStage');
+    if (!stage) return;
+    const s = document.createElement('span');
+    const size = 6 + Math.random() * 10;
+    s.style.cssText = 'position:absolute;left:' + (20 + Math.random() * 60) + '%;top:' + (10 + Math.random() * 45) + '%;width:' + size + 'px;height:' + size + 'px;background:#F2E04A;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);pointer-events:none;z-index:5';
+    stage.appendChild(s);
+    s.animate(
+      [{ opacity: 0, transform: 'translateY(0) scale(.4)' }, { opacity: 1, transform: 'translateY(-30px) scale(1)', offset: 0.35 }, { opacity: 0, transform: 'translateY(-90px) scale(.5)' }],
+      { duration: 900 + Math.random() * 700, easing: 'ease-out' }
+    ).onfinish = () => s.remove();
+  }
+
+  // Cat scene: a time-warp tunnel on canvas, with the cat chasing the balloon dog.
+  // One progress value (0-1) drives everything — scroll on desktop, a timer on touch.
+  initCat() {
+    const section = document.getElementById('blank');
+    const sticky = document.getElementById('catSticky');
+    const cv = document.getElementById('catTunnel');
+    const dogTrack = document.getElementById('dogTrack');
+    const catTrack = document.getElementById('catTrack');
+    const backdrop = document.getElementById('catBackdrop');
+    const chaseLayer = document.getElementById('catChase');
+    const chasePos = document.getElementById('catChasePos');
+    const dogFlip = document.getElementById('dogFlip');
+    const catFlip = document.getElementById('catFlip');
+    const treeLayer = document.getElementById('treeLayer');
+    const treeTrack = document.getElementById('treeTrack');
+    const sign = document.getElementById('contactSign');
+    if (!section || !sticky || !cv || !dogTrack || !catTrack || !backdrop || !chaseLayer) return;
+    const CAT_SCENE_DURATION = 3000;
+    const FRAMES = Array.from(document.querySelectorAll('[data-catframe]'));
+    const ctx = cv.getContext('2d', { alpha: true });
+    const glowCv = document.createElement('canvas');
+    const gctx = glowCv.getContext('2d', { alpha: true });
+
+    const coarse = matchMedia('(max-width:768px), (pointer:coarse)').matches;
+    const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const mode = reduced ? 'reduced' : (coarse ? 'auto' : 'scroll');
+
+    // palette lifted from this section only: mint -> rose, with the page's warm whites
+    const C = { mint: [186, 255, 238], pale: [240, 255, 221], rose: [224, 148, 147], accent: [200, 112, 111], hot: [255, 253, 248] };
+    const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+    const css = (c, a) => 'rgba(' + (c[0] | 0) + ',' + (c[1] | 0) + ',' + (c[2] | 0) + ',' + a.toFixed(3) + ')';
+
+    // fixed seed: the same progress always paints the same frame, so a paused
+    // scroll never shimmers
+    const seeded = s0 => { let s = s0 >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; };
+    const COUNT = coarse ? 150 : 380;
+    const PT = (() => {
+      const r = seeded(1977042), out = [];
+      for (let i = 0; i < COUNT; i++) {
+        const a = r() * Math.PI * 2, tier = r();
+        out.push({
+          cos: Math.cos(a), sin: Math.sin(a), z0: r(), sp: 0.72 + r() * 0.72,
+          size: 0.55 + r() * 1.8, bright: 0.35 + r() * 0.65,
+          col: tier > 0.86 ? C.hot : tier > 0.6 ? C.pale : tier > 0.3 ? C.rose : C.accent,
+          wob: 0.9 + r() * 0.25
+        });
+      }
+      return out;
+    })();
+
+    const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+    const smooth = (e0, e1, v) => { const t = clamp((v - e0) / (e1 - e0), 0, 1); return t * t * (3 - 2 * t); };
+    const seg = (p, stops) => {
+      for (let i = 0; i < stops.length - 1; i++) {
+        const a = stops[i], b = stops[i + 1];
+        if (p <= b[0]) return a[1] + (b[1] - a[1]) * smooth(a[0], b[0], p);
+      }
+      return stops[stops.length - 1][1];
+    };
+    const speed = p => seg(p, [[0, 0.04], [0.10, 0.20], [0.25, 0.80], [0.70, 3.35], [0.85, 4.10], [1, 0.70]]);
+    const warp = p => seg(p, [[0, 0.02], [0.10, 0.06], [0.25, 0.30], [0.70, 1.00], [0.85, 1.18], [1, 0.50]]);
+    const fade = p => seg(p, [[0, 1], [0.89, 1], [1, 0]]);
+    const born = p => seg(p, [[0, 0], [0.10, 0.30], [0.25, 0.66], [0.55, 1], [1, 1]]);
+    const alive = p => seg(p, [[0, 0.14], [0.10, 0.30], [0.25, 0.68], [0.50, 1], [1, 1]]);
+    const halo = p => seg(p, [[0, 0], [0.25, 0.12], [0.70, 0.90], [0.89, 1], [0.99, 0]]);
+    const zoom = p => seg(p, [[0, 1], [0.25, 1.02], [0.70, 1.12], [0.85, 1.22], [1, 1.28]]);
+
+    const LUT = (() => { const n = 1000, out = new Float32Array(n + 1); let t = 0; for (let i = 1; i <= n; i++) { t += speed((i - 0.5) / n) / n; out[i] = t; } return out; })();
+    const travel = p => { const x = clamp(p, 0, 1) * 1000, i = Math.floor(x), f = x - i; return i >= 1000 ? LUT[1000] : LUT[i] + (LUT[i + 1] - LUT[i]) * f; };
+
+    let W = 0, H = 0, CX = 0, CY = 0, D = 0, DPR = 1, BLUR = 1, shown = -1;
+
+    const drawTunnel = p => {
+      p = clamp(p, 0, 1);
+      const F = fade(p);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      if (F <= 0.002 || reduced) return;
+
+      const tv = travel(p), wp = warp(p), sp = speed(p), bn = born(p), hl = halo(p);
+      const n = Math.max(6, Math.round(PT.length * alive(p)));
+      const f = 0.055 * D * zoom(p);
+      const maxR = Math.hypot(W, H) * 0.62;
+
+      // the section's own gradient stays visible underneath: only a soft tint is
+      // laid over it, so frame zero is the original background, never black
+      const tint = ctx.createRadialGradient(CX, CY, 0, CX, CY, D * 0.9);
+      tint.addColorStop(0, css(mix(C.mint, C.hot, 0.45), 0.42 * hl * F));
+      tint.addColorStop(0.5, css(C.rose, 0.16 * hl * F));
+      tint.addColorStop(1, css(C.accent, 0.30 * hl * F));
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = tint;
+      ctx.fillRect(0, 0, W, H);
+
+      const g = gctx, gs = 0.5;
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.clearRect(0, 0, glowCv.width, glowCv.height);
+      g.globalCompositeOperation = 'lighter';
+      if (hl > 0.004) {
+        for (let j = 0; j < 5; j++) {
+          const q = ((tv * 0.22 + j / 5) % 1 + 1) % 1;
+          const rad = D * 0.085 * Math.exp(2.55 * q) * gs;
+          const op = hl * 0.46 * Math.min(1, q * 5) * Math.pow(1 - q, 1.15);
+          if (op < 0.006) continue;
+          g.beginPath();
+          g.arc(CX * gs, CY * gs, rad, 0, Math.PI * 2);
+          g.lineWidth = (1.6 + q * 7) * DPR * gs;
+          g.strokeStyle = css(mix(C.rose, C.hot, 0.35 + 0.4 * q), op);
+          g.setLineDash([rad * 0.34, rad * 0.16]);
+          g.lineDashOffset = -(tv * 90 + j * 37);
+          g.stroke();
+        }
+        g.setLineDash([]);
+      }
+
+      ctx.globalCompositeOperation = 'lighter';
+      for (let i = 0; i < n; i++) {
+        const pt = PT[i];
+        const ph = ((pt.z0 + tv * pt.sp) % 1 + 1) % 1;
+        const z = 0.014 + (1 - ph) * 0.986;
+        const r = f / z;
+        if (r > maxR * 1.5) continue;
+        const dz = clamp(sp * 0.030 * pt.sp * wp, 0, z * 0.92);
+        let len = (f / (z - dz) - r) * pt.wob;
+        if (len > maxR * 0.9) len = maxR * 0.9;
+        const rOut = r + len, near = clamp((1 - z) * 1.05, 0, 1);
+        const a = F * bn * pt.bright * Math.min(1, r / (D * 0.035)) * (1 - smooth(0.85, 1.35, rOut / maxR)) * (0.35 + 0.65 * near);
+        if (a < 0.006) continue;
+        const x1 = CX + pt.cos * r, y1 = CY + pt.sin * r;
+        const x2 = CX + pt.cos * rOut, y2 = CY + pt.sin * rOut;
+        const lw = pt.size * DPR * (0.55 + 2.6 * near);
+        g.beginPath(); g.moveTo(x1 * gs, y1 * gs); g.lineTo(x2 * gs, y2 * gs);
+        g.lineWidth = lw * gs * 3.1; g.lineCap = 'round';
+        g.strokeStyle = css(pt.col, a * 0.42); g.stroke();
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+        ctx.lineWidth = lw; ctx.lineCap = 'round';
+        ctx.strokeStyle = css(pt.col, a); ctx.stroke();
+      }
+
+      ctx.globalAlpha = 1;
+      ctx.filter = 'blur(' + BLUR.toFixed(1) + 'px)';
+      ctx.drawImage(glowCv, 0, 0, W, H);
+      ctx.filter = 'none';
+
+      if (hl > 0.004) {
+        const cr = D * (0.10 + 0.40 * hl);
+        const cg = ctx.createRadialGradient(CX, CY, 0, CX, CY, cr);
+        cg.addColorStop(0, css(C.hot, 0.62 * hl));
+        cg.addColorStop(0.22, css(C.pale, 0.38 * hl));
+        cg.addColorStop(0.58, css(C.rose, 0.16 * hl));
+        cg.addColorStop(1, css(C.accent, 0));
+        ctx.globalAlpha = F;
+        ctx.fillStyle = cg;
+        ctx.beginPath(); ctx.arc(CX, CY, cr, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+      ctx.globalCompositeOperation = 'source-over';
+    };
+
+    // Continuous chase: its own clock, independent of scroll progress, so the
+    // pair keeps running back and forth for as long as the section is on screen.
+    // A cosine path eases them to a stop at each end instead of snapping back.
+    const CHASE_LOOP_DURATION = coarse ? 7500 : 6500;
+    const LEAD = 15;   // % of stage width the dog stays ahead by
+    const AMP = coarse ? 22 : 26;
+    let chaseRAF = null, chaseStartedAt = null, chasePausedAt = 0, chaseActive = false;
+    let sectionVisible = false;
+
+    // tree wheel: one tile of the supplied image, repeated and translated with
+    // a modulo offset so the loop point is pixel-identical — no reflow jump
+    const TREE_AR = 1740 / 478;
+    const TREE_SPEED = coarse ? 34 : 55; // px/s
+    let treeImgW = 0, treeOffset = 0, treeLast = 0;
+    const buildTrees = () => {
+      if (!treeLayer || !treeTrack) return;
+      const h = treeLayer.clientHeight;
+      if (!h) return;
+      treeImgW = h * TREE_AR;
+      const need = Math.max(4, Math.ceil((innerWidth * 3) / treeImgW) + 2);
+      if (treeTrack.childElementCount !== need) {
+        treeTrack.innerHTML = '';
+        for (let i = 0; i < need; i++) {
+          const im = document.createElement('img');
+          im.src = './assets/tree-row.png';
+          im.alt = '';
+          im.style.cssText = 'height:100%;width:auto;flex:0 0 auto;display:block;user-select:none';
+          treeTrack.appendChild(im);
+        }
+      }
+      treeTrack.style.transform = 'translate3d(' + (-treeOffset).toFixed(2) + 'px,0,0)';
+    };
+    this.catFrame = 0; this.catFrameAcc = 0; this.catFacing = -1; this.chaseLast = 0;
+
+    const renderChaseAt = elapsed => {
+      // the chase band is the positioning box; Y values are relative to it, so
+      // the pair sits low in the scene without any extra page height
+      const w = chasePos.clientWidth, h = chasePos.clientHeight;
+      // start off a turning point, so the pair fades in already mid-run with a
+      // full lead rather than stacked on top of each other
+      const angle = Math.PI * 0.35 + ((elapsed % CHASE_LOOP_DURATION) / CHASE_LOOP_DURATION) * Math.PI * 2;
+      const dogX = 50 + AMP * Math.cos(angle);
+      // signed travel direction, softened through the turn: the lead collapses
+      // to zero exactly at the turning point, so the cat is never in front
+      const dir = clamp(-Math.sin(angle) / 0.4, -1, 1);
+      const turn = 1 - Math.abs(dir);
+      const catX = dogX - dir * LEAD;
+      const dogY = 30 + 5 * Math.sin(angle * 2) - (coarse ? 5 : 7) * turn;
+      const bob = (coarse ? 3.5 : 5) * Math.abs(Math.sin(elapsed / 150)) * Math.abs(dir);
+      const catY = 64;
+      const dw = dogTrack.offsetWidth, dh = dogTrack.offsetHeight;
+      const cw = catTrack.offsetWidth, ch = catTrack.offsetHeight;
+      dogTrack.style.transform = 'translate3d(' + (w * dogX / 100 - dw / 2).toFixed(1) + 'px,' + (h * dogY / 100 - dh / 2).toFixed(1) + 'px,0)';
+      catTrack.style.transform = 'translate3d(' + (w * catX / 100 - cw / 2).toFixed(1) + 'px,' + (h * catY / 100 - ch - bob).toFixed(1) + 'px,0)';
+      // dog fades in first, the cat about 150ms later
+      dogTrack.style.opacity = smooth(0, 300, elapsed).toFixed(3);
+      catTrack.style.opacity = smooth(150, 450, elapsed).toFixed(3);
+
+      // art faces left, so flip only once the turn has actually committed
+      if (Math.abs(dir) > 0.35) {
+        const facing = dir > 0 ? 1 : -1;
+        if (facing !== this.catFacing) {
+          this.catFacing = facing;
+          const t = facing > 0 ? 'scaleX(-1)' : 'none';
+          if (catFlip) catFlip.style.transform = t;
+          if (dogFlip) dogFlip.style.transform = t;
+        }
+      }
+
+      if (FRAMES.length) {
+        const dt = this.chaseLast ? Math.min(64, elapsed - this.chaseLast) : 16;
+        this.catFrameAcc += dt * Math.abs(dir);
+        const stepMs = 105;
+        while (this.catFrameAcc >= stepMs) {
+          this.catFrameAcc -= stepMs;
+          const next = (this.catFrame + 1) % FRAMES.length;
+          FRAMES[this.catFrame].style.opacity = '0';
+          FRAMES[next].style.opacity = '1';
+          this.catFrame = next;
+        }
+      }
+      this.chaseLast = elapsed;
+    };
+
+    const chaseStep = ts => {
+      if (!chaseActive) return;
+      if (chaseStartedAt === null) chaseStartedAt = ts - chasePausedAt;
+      renderChaseAt(ts - chaseStartedAt);
+      if (treeImgW > 0) {
+        const dt = treeLast ? Math.min(64, ts - treeLast) : 16;
+        treeOffset = (treeOffset + TREE_SPEED * dt / 1000) % treeImgW;
+        if (treeTrack) treeTrack.style.transform = 'translate3d(' + (-treeOffset).toFixed(2) + 'px,0,0)';
+      }
+      treeLast = ts;
+      chaseRAF = requestAnimationFrame(chaseStep);
+    };
+    const startChase = () => {
+      if (chaseActive || reduced) return;
+      chaseActive = true;
+      chaseStartedAt = null;      // resumes from chasePausedAt, never jumps
+      treeLast = 0;               // avoids a huge dt on the first resumed frame
+      chaseRAF = requestAnimationFrame(chaseStep);
+    };
+    const pauseChase = () => {
+      if (!chaseActive) return;
+      chaseActive = false;
+      if (chaseStartedAt !== null) chasePausedAt = performance.now() - chaseStartedAt;
+      if (chaseRAF) cancelAnimationFrame(chaseRAF);
+      chaseRAF = null;
+    };
+    this.pauseCatChase = pauseChase;
+
+    // one function owns every layer's state for a given scroll progress
+    const renderCatScene = p => {
+      p = clamp(p, 0, 1);
+      const warpP = clamp(p / 0.72, 0, 1);
+      const bgP = smooth(0.72, 0.78, p);
+      drawTunnel(warpP);
+      backdrop.style.opacity = bgP.toFixed(3);
+      backdrop.style.visibility = bgP > 0.002 ? 'visible' : 'hidden';
+      // trees fade in together with the backdrop, just above the chase band
+      if (treeLayer) treeLayer.style.opacity = bgP.toFixed(3);
+      const signIn = p >= 0.78;
+      if (sign) {
+        sign.style.opacity = signIn ? '1' : '0';
+        sign.style.transform = signIn ? 'translate(-50%,0) scale(1)' : 'translate(-50%,12px) scale(.98)';
+        sign.style.pointerEvents = signIn ? 'auto' : 'none';
+      }
+      // hard gate: no trace of the chase until the warp has finished
+      if (p < 0.78) {
+        pauseChase();
+        chaseLayer.style.visibility = 'hidden';
+        chaseLayer.style.opacity = '0';
+        dogTrack.style.opacity = '0';
+        catTrack.style.opacity = '0';
+        return;
+      }
+      chaseLayer.style.visibility = 'visible';
+      chaseLayer.style.opacity = '1';
+      if (reduced) { renderChaseAt(CHASE_LOOP_DURATION * 0.25); return; }
+      if (sectionVisible) startChase();
+    };
+    this.setCatSectionVisible = v => { sectionVisible = v; };
+
+    const resize = () => {
+      DPR = Math.min(devicePixelRatio || 1, coarse ? 1.25 : 2);
+      W = Math.max(1, Math.round((cv.clientWidth || innerWidth) * DPR));
+      H = Math.max(1, Math.round((cv.clientHeight || innerHeight) * DPR));
+      cv.width = W; cv.height = H;
+      glowCv.width = Math.max(1, Math.round(W * 0.5));
+      glowCv.height = Math.max(1, Math.round(H * 0.5));
+      CX = W / 2; CY = H / 2; D = Math.min(W, H);
+      BLUR = (coarse ? 7 : 13) * DPR * 0.5;
+      shown = -1;
+      buildTrees();
+      renderCatScene(this.catP || 0);
+    };
+    this.onCatResize = resize;
+    addEventListener('resize', resize, { passive: true });
+    addEventListener('orientationchange', () => setTimeout(resize, 120), { passive: true });
+
+    const scrollProgress = () => {
+      const max = section.offsetHeight - innerHeight;
+      return max > 0 ? clamp((scrollY - section.offsetTop) / max, 0, 1) : 0;
+    };
+    this.catP = mode === 'scroll' ? scrollProgress() : 0;
+    let cur = this.catP, last = 0, autoT0 = null;
+    this.catFrame = 0;
+
+    const step = now => {
+      this.catRAF = requestAnimationFrame(step);
+      last = now;
+
+      let p;
+      if (mode === 'scroll') {
+        const target = scrollProgress();
+        const d = target - cur;
+        cur += Math.abs(d) < 0.0006 ? d : d * 0.18;
+        p = cur;
+      } else {
+        if (autoT0 === null) autoT0 = now;
+        p = clamp((now - autoT0) / CAT_SCENE_DURATION, 0, 1);
+      }
+      this.catP = p;
+
+      if (Math.abs(p - shown) > 0.0003 || shown < 0) {
+        shown = p;
+        renderCatScene(p);
+      }
+    };
+
+    const start = () => {
+      if (this.catRAF) return;
+      last = 0;
+      if (mode === 'auto') autoT0 = null;   // touch: replay from zero on re-entry
+      this.catRAF = requestAnimationFrame(step);
+    };
+    const stop = () => {
+      if (!this.catRAF) return;
+      cancelAnimationFrame(this.catRAF);
+      this.catRAF = 0;
+    };
+
+    resize();
+    if (reduced) {
+      // static end state — full backdrop, dog still ahead of the cat, still trees, no tunnel/motion
+      this.catP = 1;
+      sectionVisible = true;
+      renderCatScene(1);
+      return;
+    }
+    renderCatScene(this.catP);
+
+    // scroll mode drives itself: the loop runs from the start and the observer
+    // only parks it while the section is away, so a late/never IO callback can
+    // never leave the scene frozen at zero
+    if (mode === 'scroll') {
+      start();
+      this.onCatScroll = () => {
+        if (!this.catRAF) { cur = scrollProgress(); this.catP = cur; renderCatScene(cur); }
+      };
+      addEventListener('scroll', this.onCatScroll, { passive: true });
+    }
+
+    let inView = mode === 'scroll', canReplay = mode !== 'scroll';
+    this.catIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const visible = e.intersectionRatio >= 0.1;
+        this.setCatSectionVisible(visible);
+        // the chase keeps running through the whole hand-off to the next
+        // section, and only parks once the scene is genuinely gone
+        if (visible && this.catP >= 0.78) startChase(); else pauseChase();
+        if (mode === 'scroll') { if (visible || e.isIntersecting) start(); else stop(); return; }
+        if (e.intersectionRatio >= 0.4 && canReplay) { start(); inView = true; canReplay = false; }
+        if (e.intersectionRatio <= 0.1 && inView) { stop(); inView = false; canReplay = true; }
+      });
+    }, { threshold: [0, 0.1, 0.4, 0.78] });
+    this.catIO.observe(sticky);
+  }
+
+  initAbout() {
+    const section = document.getElementById('about');
+    const panel = document.getElementById('aboutPanel');
+    if (!section || !panel) return;
+    const items = Array.from(panel.querySelectorAll('[data-about-item]'));
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const smallScreen = () => innerWidth <= 768;
+
+    // the panel bounces first, its contents follow on a short stagger
+    const armed = el => { el.style.animation = 'none'; el.style.opacity = '0'; };
+    const fire = (el, delay) => {
+      const name = reduced ? 'aboutMeFadeIn' : (smallScreen() ? 'aboutMeBounceInSm' : 'aboutMeBounceIn');
+      const dur = reduced ? 360 : 920;
+      el.style.opacity = '';
+      el.style.animation = name + ' ' + dur + 'ms cubic-bezier(.22,1.12,.36,1) ' + delay + 'ms both';
+    };
+
+    const playAbout = () => {
+      armed(panel);
+      items.forEach(armed);
+      void panel.offsetWidth;
+      fire(panel, 0);
+      items.forEach((el, i) => fire(el, 90 + i * 80));
+    };
+    // reset runs only once the section is off screen, so the snap back is unseen
+    const resetAbout = () => { armed(panel); items.forEach(armed); };
+
+    armed(panel);
+    items.forEach(armed);
+
+    let inView = false, canReplay = true;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio >= 0.4 && canReplay) { playAbout(); inView = true; canReplay = false; }
+        if (entry.intersectionRatio <= 0.1 && inView) { resetAbout(); inView = false; canReplay = true; }
+      });
+    }, { threshold: [0.1, 0.4] });
+    io.observe(section);
+    this.aboutIO = io;
+    // tall sections can never reach 40% on short viewports — fall back to a band test
+    if (section.offsetHeight > innerHeight * 0.9) {
+      io.disconnect();
+      const io2 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && canReplay) { playAbout(); inView = true; canReplay = false; }
+          if (!entry.isIntersecting && inView) { resetAbout(); inView = false; canReplay = true; }
+        });
+      }, { rootMargin: '-25% 0px -25% 0px', threshold: 0 });
+      io2.observe(section);
+      this.aboutIO = io2;
+    }
+  }
+
+  initTarot() {
+    const track = document.getElementById('tarotTrack');
+    if (!track) return;
+    const cards = Array.from(track.querySelectorAll('[data-card]'));
+    if (!cards.length) return;
+    this.tarotCards = cards;
+    this.tarotActive = -1;
+    this.tarotPlaying = false;
+    this.tarotMobileScroll = false;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const EASE = 'cubic-bezier(.22,1,.36,1)';
+    const DUR = 1350, STAGGER = 100, HOLD = 200;
+    // barely-there stack offsets: you can tell it's four cards, without pre-fanning
+    const STACK = [{ x: -7, r: -2.4 }, { x: -2.5, r: -0.8 }, { x: 2.5, r: 0.8 }, { x: 7, r: 2.4 }];
+    const isMobile = () => innerWidth <= 768;
+    const stage = document.getElementById('tarotStage');
+
+    // desktop = equidistant 4-col grid (0deg, no overlap); mobile = snap-scroll row
+    const layout = () => {
+      const mobile = isMobile();
+      this.tarotMobileScroll = mobile;
+      track.style.height = 'auto';
+      if (mobile) {
+        const w = cards[0].offsetWidth || 240;
+        const pad = Math.max(16, (track.clientWidth - w) / 2);
+        track.style.display = 'flex';
+        track.style.gridTemplateColumns = '';
+        track.style.width = '100%';
+        track.style.marginInline = '0';
+        track.style.gap = '20px';
+        track.style.alignItems = 'flex-end';
+        track.style.justifyContent = 'flex-start';
+        track.style.overflowX = 'auto';
+        track.style.overflowY = 'visible';
+        track.style.scrollSnapType = 'x mandatory';
+        track.style.webkitOverflowScrolling = 'touch';
+        track.style.touchAction = 'pan-x';
+        track.style.paddingLeft = pad + 'px';
+        track.style.paddingRight = pad + 'px';
+        cards.forEach(c => {
+          c.style.flex = '0 0 auto';
+          c.style.width = 'clamp(210px,68vw,280px)';
+          c.style.scrollSnapAlign = 'center';
+        });
+      } else {
+        track.style.display = 'grid';
+        track.style.gridTemplateColumns = 'repeat(4, minmax(0, 1fr))';
+        track.style.gap = 'clamp(20px,3vw,52px)';
+        track.style.width = 'min(1120px, 90vw)';
+        track.style.marginInline = 'auto';
+        track.style.alignItems = 'end';
+        track.style.justifyItems = 'center';
+        track.style.overflowX = 'visible';
+        track.style.scrollSnapType = 'none';
+        track.style.touchAction = '';
+        track.style.paddingLeft = '0px';
+        track.style.paddingRight = '0px';
+        cards.forEach(c => {
+          c.style.flex = '';
+          c.style.width = '100%';
+          c.style.scrollSnapAlign = '';
+        });
+      }
+      cards.forEach((c, i) => {
+        c.style.position = 'relative';
+        c.style.left = 'auto';
+        c.style.top = 'auto';
+        c.style.marginLeft = '0';
+        c.style.zIndex = String(cards.length - i);
+      });
+    };
+
+    // resting transform: identity (0deg, equidistant), plus the lift when active
+    const restTransform = i => (i === this.tarotActive ? 'translateY(-12px) scale(1.04)' : 'none');
+
+    const applyRest = () => {
+      if (this.tarotPlaying) return;   // never overwrite the choreography mid-flight
+      cards.forEach((c, i) => {
+        c.style.transition = reduced ? 'none' : 'transform .4s ' + EASE;
+        c.style.transform = restTransform(i);
+        const face = c.querySelector('[data-card-face]');
+        if (face) face.style.boxShadow = i === this.tarotActive
+          ? '10px 14px 26px rgba(45,31,22,.45), 4px 6px 0 rgba(45,31,22,.85)'
+          : '4px 6px 0 rgba(45,31,22,.85)';
+      });
+    };
+    this.paintTarot = applyRest;
+
+    // FLIP: measure the final equidistant positions, then invert every card onto
+    // the group's centre, so the spread animates out of a genuine stack
+    const stackNow = () => {
+      cards.forEach(c => { c.style.transition = 'none'; c.style.transform = 'none'; });
+      void track.offsetWidth;
+      const rects = cards.map(c => c.getBoundingClientRect());
+      const groupCentre = (rects[0].left + rects[rects.length - 1].right) / 2;
+      const flat = this.props.worksCardStyle === 'flat';
+      cards.forEach((c, i) => {
+        const s = STACK[i] || STACK[0];
+        const dx = groupCentre - (rects[i].left + rects[i].width / 2) + s.x;
+        c.style.transform = 'translateX(' + dx.toFixed(2) + 'px) rotate(' + (flat ? 0 : s.r) + 'deg)';
+      });
+      void track.offsetWidth;
+    };
+
+    const play = () => {
+      if (this.tarotPlaying) return;
+      this.tarotActive = -1;
+      layout();
+      if (this.tarotMobileScroll) {
+        track.scrollLeft = 0;              // first card centred on every re-entry
+        track.style.overflowX = 'hidden';  // no swiping mid-flight
+      }
+      stackNow();
+      if (reduced) {
+        if (this.tarotMobileScroll) track.style.overflowX = 'auto';
+        applyRest();
+        return;
+      }
+      this.tarotPlaying = true;
+      this.fanTimer = setTimeout(() => {
+        cards.forEach((c, i) => {
+          c.style.transition = 'transform ' + DUR + 'ms ' + EASE + ' ' + (i * STAGGER) + 'ms';
+          c.style.transform = restTransform(i);
+        });
+        this.fanTimer2 = setTimeout(() => {
+          this.tarotPlaying = false;
+          if (this.tarotMobileScroll) track.style.overflowX = 'auto';
+          applyRest();
+        }, DUR + cards.length * STAGGER + 40);
+      }, HOLD);
+    };
+
+    // reset only runs once the section is off screen, so the snap back is unseen
+    const reset = () => {
+      clearTimeout(this.fanTimer);
+      clearTimeout(this.fanTimer2);
+      this.tarotPlaying = false;
+      this.tarotActive = -1;
+      layout();
+      stackNow();
+    };
+
+    layout();
+    stackNow();
+
+    // replayable: never unobserve; in-view + can-replay flags stop re-triggering
+    // while the user is just nudging up and down inside the section
+    let isTarotInView = false, canReplayTarot = true;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio >= 0.45 && canReplayTarot) {
+          play();
+          isTarotInView = true;
+          canReplayTarot = false;
+        }
+        if (entry.intersectionRatio <= 0.1 && isTarotInView) {
+          reset();
+          isTarotInView = false;
+          canReplayTarot = true;
+        }
+      });
+    }, { threshold: [0.1, 0.45] });
+    io.observe(stage);
+    this.tarotIO = io;
+
+    this.centerCard = i => {
+      if (!this.tarotMobileScroll) return;
+      const c = cards[i];
+      if (!c) return;
+      track.scrollTo({ left: c.offsetLeft - (track.clientWidth - c.offsetWidth) / 2, behavior: 'smooth' });
+    };
+
+    this.setTarotActive = i => {
+      if (this.tarotPlaying) return;
+      this.tarotActive = this.tarotActive === i ? -1 : i;
+      applyRest();
+      if (this.tarotActive >= 0) this.centerCard(this.tarotActive);
+    };
+
+    // geometry is viewport-relative, so re-lay out on resize; mid-play we restart
+    this.onTarotResize = () => {
+      if (this.tarotPlaying) {
+        this.tarotPlaying = false;
+        clearTimeout(this.fanTimer);
+        clearTimeout(this.fanTimer2);
+        play();
+      } else {
+        layout();
+        applyRest();
+      }
+    };
+    addEventListener('resize', this.onTarotResize);
+    if (window.ResizeObserver) {
+      this.tarotRO = new ResizeObserver(() => applyRest());
+      this.tarotRO.observe(track);
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!this.tarotPlaying) { layout(); applyRest(); } });
+  }
+
+  componentWillUnmount() {
+    removeEventListener('scroll', this.onScroll);
+    removeEventListener('resize', this.onScroll);
+    removeEventListener('pointermove', this.onMove);
+    removeEventListener('keydown', this.onKeyDown);
+    clearTimeout(this.revealTimer);
+    clearTimeout(this.fanTimer);
+    removeEventListener('resize', this.onTarotResize);
+    if (this.catRAF) cancelAnimationFrame(this.catRAF);
+    if (this.io) this.io.disconnect();
+    if (this.tarotIO) this.tarotIO.disconnect();
+    if (this.aboutIO) this.aboutIO.disconnect();
+    if (this.arrowIO) this.arrowIO.disconnect();
+    if (this.catIO) this.catIO.disconnect();
+    document.removeEventListener('keydown', this.onIntroKeyDown);
+    if (this.pauseCatChase) this.pauseCatChase();
+    removeEventListener('resize', this.onCatResize);
+    removeEventListener('scroll', this.onCatScroll);
+  }
+
+  showContactToast(text) {
+    const toast = document.getElementById('contactToast');
+    if (!toast) return;
+    clearTimeout(this.contactToastTimer);
+    toast.textContent = text;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translate(-50%,0)';
+    this.contactToastTimer = setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translate(-50%,8px)';
+    }, 1800);
+  }
+
+  copyGmail() {
+    const GMAIL_ADDRESS = 'hps20030302@gmail.com';
+    const show = () => this.showContactToast('Gmail 已複製：' + GMAIL_ADDRESS);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(GMAIL_ADDRESS).then(show).catch(() => this.fallbackCopy(GMAIL_ADDRESS, show));
+    } else {
+      this.fallbackCopy(GMAIL_ADDRESS, show);
+    }
+  }
+
+  // Tarot cards 0/1 open a pre-built tri-fold, mounted straight into this same
+  // document via Shadow DOM (its own <style>+markup+script, scoped — no
+  // iframe, no navigation, no new tab; the URL never changes).
+  initTarotIntro() {
+    this.introBusy = false;
+    this.introClosing = false;
+    this.introOverlayOpen = false;
+    this.trifoldControllers = {};
+    this.trifoldLoading = {};
+    // pre-warm during idle time: fetch the mount script AND actually mount it
+    // into its (opacity:0, non-interactive) host now, so the expensive one-time
+    // image-decode/layout cost for the ~1-3MB of inline artwork happens in the
+    // background — a click later just flips opacity/transform, no stall.
+    const idle = window.requestIdleCallback || (fn => setTimeout(fn, 300));
+    idle(() => this.preloadTrifoldScript(0).then(() => this.getTrifoldController(0)));
+    idle(() => this.preloadTrifoldScript(1).then(() => this.getTrifoldController(1)));
+    idle(() => this.preloadTrifoldScript(2).then(() => this.getTrifoldController(2)));
+    idle(() => this.preloadTrifoldScript(3).then(() => this.getTrifoldController(3)));
+    this.onIntroKeyDown = e => {
+      if (e.key === 'Escape' && this.introOverlayOpen) { e.preventDefault(); this.closeTarotIntro(); }
+    };
+    document.addEventListener('keydown', this.onIntroKeyDown);
+  }
+
+  // Fetches+defines window.mountTrifold1/2 ahead of any click, so opening
+  // never has to wait on a network request (the tri-folds' artwork is inline
+  // base64 inside that script, so this is the only asset fetch involved).
+  preloadTrifoldScript(i) {
+    const key = 'mountTrifold' + (i + 1);
+    if (window[key] || this.trifoldLoading[i]) return this.trifoldLoading[i] || Promise.resolve();
+    this.trifoldLoading[i] = new Promise(resolve => {
+      const s = document.createElement('script');
+      s.src = './assets/trifold-' + (i + 1) + '.mount.js';
+      s.onload = resolve;
+      s.onerror = resolve;
+      document.head.appendChild(s);
+    });
+    return this.trifoldLoading[i];
+  }
+
+  getTrifoldController(i) {
+    if (this.trifoldControllers[i]) return this.trifoldControllers[i];
+    const hostEl = document.getElementById('trifoldHost' + (i + 1));
+    const key = 'mountTrifold' + (i + 1);
+    if (!hostEl || typeof window[key] !== 'function') return null;
+    if (!hostEl.shadowRoot) hostEl.attachShadow({ mode: 'open' });
+    const controller = window[key](hostEl.shadowRoot);
+    this.trifoldControllers[i] = controller;
+    return controller;
+  }
+
+  openTarotIntro(i) {
+    if (this.introBusy) return;
+    this.introBusy = true;
+    this.introOverlayOpen = true;
+    this.introReturnIdx = i;
+    this.introReturnScrollY = window.scrollY;
+
+    const overlay = document.getElementById('tarotIntroOverlay');
+    const host = document.getElementById('trifoldHost' + (i + 1));
+    const back = document.getElementById('trifoldBack');
+    if (!overlay || !host || !back) { this.introBusy = false; return; }
+
+    document.body.style.overflow = 'hidden';
+    overlay.style.pointerEvents = 'auto';
+    overlay.style.visibility = 'visible';
+    back.style.opacity = '0';
+    back.style.pointerEvents = 'none';
+    for (let n = 1; n <= 4; n++) {
+      if (n === i + 1) continue;
+      const otherHost = document.getElementById('trifoldHost' + n);
+      if (otherHost) otherHost.style.pointerEvents = 'none';
+    }
+    host.style.willChange = 'transform,opacity';
+    // the fold is a read-only auto-playing intro now — no drag/click/keyboard
+    // affordance inside it, the return icon is the only control
+    host.style.pointerEvents = 'none';
+
+    // once-guarded race: whichever fires first (the fold's own completion
+    // hook, or this hard cap) wins, so a stalled hook can never leave the
+    // user stuck looking at an unresponsive overlay
+    const once = fn => { let done = false; return (...a) => { if (done) return; done = true; fn(...a); }; };
+    const settle = once(() => {
+      back.style.opacity = '1';
+      back.style.pointerEvents = 'auto';
+      back.focus();
+      host.style.willChange = '';
+      this.introBusy = false;
+    });
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const proceed = () => {
+      const controller = this.getTrifoldController(i);
+      if (controller) controller.reset();   // always start from the fully collapsed cover
+      requestAnimationFrame(() => {
+        overlay.style.opacity = '1';
+        if (reduced) {
+          // reduced motion: skip the hold + unfold, jump straight to the open state
+          host.style.opacity = '1';
+          host.style.transform = 'translate3d(0,0,0) scale(1)';
+          setTimeout(settle, 400);
+          if (controller) controller.open(settle); else settle();
+          return;
+        }
+        // reveal the collapsed cover ~140ms after the mask starts, hold it briefly,
+        // then auto-play the unfold — never wait on the user to click/drag/swipe it
+        setTimeout(() => {
+          host.style.opacity = '1';
+          host.style.transform = 'translate3d(0,0,0) scale(1)';
+          setTimeout(() => {
+            setTimeout(settle, 1900);
+            if (controller) controller.open(settle);
+            else setTimeout(settle, 1500);
+          }, 160);
+        }, 140);
+      });
+    };
+    if (typeof window['mountTrifold' + (i + 1)] === 'function') proceed();
+    else this.preloadTrifoldScript(i).then(proceed);
+  }
+
+  closeTarotIntro() {
+    if (this.introClosing || !this.introOverlayOpen) return;
+    this.introClosing = true;
+    const overlay = document.getElementById('tarotIntroOverlay');
+    const back = document.getElementById('trifoldBack');
+    const i = this.introReturnIdx;
+    const host = document.getElementById('trifoldHost' + (i + 1));
+    if (!overlay || !back) { this.introClosing = false; return; }
+
+    // fast, synchronous fade-out: no reverse-unfold, no per-panel wait —
+    // overlay + fold fade together in one short transition
+    const CLOSE_DURATION = matchMedia('(prefers-reduced-motion: reduce)').matches ? 80 : 140;
+    back.style.transition = 'opacity 60ms linear';
+    back.style.opacity = '0';
+    back.style.pointerEvents = 'none';
+    overlay.style.transition = 'opacity ' + CLOSE_DURATION + 'ms ease-out';
+    overlay.style.opacity = '0';
+    if (host) {
+      host.style.willChange = 'opacity';
+      host.style.transition = 'opacity ' + CLOSE_DURATION + 'ms ease-out';
+      host.style.opacity = '0';
+    }
+
+    const once = fn => { let done = false; return (...a) => { if (done) return; done = true; fn(...a); }; };
+    const finish = once(() => {
+      overlay.style.visibility = 'hidden';
+      overlay.style.pointerEvents = 'none';
+      if (host) { host.style.pointerEvents = 'none'; host.style.willChange = ''; }
+      document.body.style.overflow = '';
+      window.scrollTo(0, this.introReturnScrollY || 0);
+      const card = i != null ? document.querySelector('[data-card="' + i + '"]') : null;
+      if (card) card.focus();
+      this.introOverlayOpen = false;
+      this.introClosing = false;
+      this.introBusy = false;
+    });
+    // fallback only guards against a missed transitionend — never delays the start
+    overlay.addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, CLOSE_DURATION + 40);
+  }
+
+  copyLinkedIn() {
+    const LINKEDIN_URL = 'https://www.linkedin.com/in/%E8%8A%83%E8%96%B0-%E6%B4%AA-ab29b8428/?trk=public-profile-join-page';
+    const show = () => this.showContactToast('LinkedIn 網址已複製');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(LINKEDIN_URL).then(show).catch(() => this.fallbackCopy(LINKEDIN_URL, show));
+    } else {
+      this.fallbackCopy(LINKEDIN_URL, show);
+    }
+  }
+
+  fallbackCopy(text, done) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    done();
+  }
+
+  scrollCards(d) {
+    const n = this.works().length;
+    const cur = this.tarotActive >= 0 ? this.tarotActive : (d > 0 ? -1 : 0);
+    const next = (cur + d + n) % n;
+    if (this.setTarotActive) {
+      this.tarotActive = next === this.tarotActive ? -1 : next - d;
+      this.setTarotActive(next);
+    }
+  }
+
+  renderVals() {
+    const works = this.works();
+    return {
+      works: works.map(w => ({
+        ...w,
+        // all four cards open their tri-fold intro on a single click/tap —
+        // no select-then-open two-step, no separate lightbox
+        open: () => {
+          if (this.setTarotActive) this.setTarotActive(w.i);
+          this.openTarotIntro(w.i);
+        },
+        onKey: e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (this.setTarotActive) this.setTarotActive(w.i);
+            this.openTarotIntro(w.i);
+          }
+        }
+      })),
+      closeTarotIntro: () => this.closeTarotIntro(),
+      onStripKey: e => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); this.scrollCards(1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); this.scrollCards(-1); }
+      },
+      notice: this.state.notice,
+      error: this.state.error,
+      copyGmail: () => this.copyGmail(),
+      copyLinkedIn: () => this.copyLinkedIn(),
+      onSubmit: e => {
+        e.preventDefault();
+        const f = e.target;
+        const contactPerson = f.contactPerson.value.trim();
+        const email = f.email.value.trim();
+        const subject = f.subject.value.trim();
+        const msg = f.message.value.trim();
+        if (!contactPerson || !email || !msg) return this.setState({ error: '請填寫聯絡人、Email 與訊息內容。', notice: '' });
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return this.setState({ error: 'Email 格式看起來不太對，再檢查一下。', notice: '' });
+        if (msg.length > 3000) return this.setState({ error: '訊息內容請控制在 3000 字以內。', notice: '' });
+
+        const RECIPIENT_EMAIL = 'hps20030302@gmail.com';
+        const finalSubject = subject || ('作品集網站聯絡｜' + contactPerson);
+        const emailBody = [
+          '聯絡人：' + contactPerson,
+          '聯絡信箱：' + email,
+          subject ? '主旨：' + subject : '',
+          '',
+          '想聊什麼：',
+          msg
+        ].filter(Boolean).join('\n');
+        const gmailUrl = 'https://mail.google.com/mail/?' + new URLSearchParams({
+          view: 'cm', fs: '1', to: RECIPIENT_EMAIL, su: finalSubject, body: emailBody
+        }).toString();
+
+        let newWindow = null;
+        try { newWindow = window.open(gmailUrl, '_blank', 'noopener,noreferrer'); } catch (err) {}
+        if (!newWindow) window.location.assign(gmailUrl);
+        this.setState({ error: '', notice: 'Gmail 草稿已建立，請確認後寄送' });
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>
