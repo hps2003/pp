@@ -1,3 +1,9 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Local mobile-QA tooling (not part of the published site)
+node_modules/
+package.json
+package-lock.json
+scripts/
