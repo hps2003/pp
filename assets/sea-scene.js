@@ -410,6 +410,15 @@ class SeaScene extends HTMLElement {
       this.reflection = refl;
       this.reflGlyphs = rg.children;
       this.pivot.add(refl);
+
+      // Measure the word's world-space extents (main glyphs only, not the
+      // reflection) so resize() can guarantee the full text always fits.
+      this.scene.updateMatrixWorld(true);
+      const fitBox = new THREE.Box3().setFromObject(glyphs);
+      const fitSize = fitBox.getSize(new THREE.Vector3());
+      this._fit = { w: fitSize.x, h: fitSize.y };
+      this.resize();
+
       this.render(this.time || 0);
     }).catch((e) => console.error('model load failed', e));
 
@@ -445,6 +454,21 @@ class SeaScene extends HTMLElement {
     const h = this.clientHeight || 720;
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;
+    // Keep the whole 3D word inside the frustum at any aspect ratio. The camera
+    // is dollied back only when the current aspect can't already frame the text,
+    // so a wide/desktop viewport stays at the design distance (z = 6) and its
+    // framing is unchanged, while a narrow/portrait phone pulls back just enough
+    // that "PENG SYUN" is never cropped at the sides. This scales the entire word
+    // uniformly — glyphs, spacing and animation are untouched.
+    if (this._fit) {
+      const fovV = this.camera.fov * Math.PI / 180;
+      const fovH = 2 * Math.atan(Math.tan(fovV / 2) * (w / h));
+      const margin = 1.12;
+      const distV = (this._fit.h * margin / 2) / Math.tan(fovV / 2);
+      const distH = (this._fit.w * margin / 2) / Math.tan(fovH / 2);
+      this.camera.position.z = Math.max(6, distH, distV);
+      this.camera.lookAt(0, 0, 0);
+    }
     this.camera.updateProjectionMatrix();
     const ia = this._imgAspect || 16 / 9;
     const va = w / h;
