@@ -123,7 +123,12 @@ a:hover{color:#2A4B9E}
    use a solid dark backdrop instead so the fold can be zoomed safely. Desktop
    keeps the blur. !important overrides the element's inline style. */
 @media (max-width:768px){
-  #tarotIntroOverlay{background:rgba(20,14,18,.965) !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important}
+  #tarotIntroOverlay{background:rgba(20,14,18,.965) !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;
+    /* Do NOT let the browser pinch-zoom this heavy overlay — that re-rasterises
+       several MB of fold artwork and can OOM-crash the tab (the reload-to-top).
+       A lightweight JS zoom (transform) on the fold replaces it instead. */
+    touch-action:none}
+  #trifoldHost1,#trifoldHost2,#trifoldHost3,#trifoldHost4{touch-action:none}
 }
 </style>
 </helmet>
@@ -1386,6 +1391,87 @@ class Component extends DCLogic {
       if (e.key === 'Escape' && this.introOverlayOpen) { e.preventDefault(); this.closeTarotIntro(); }
     };
     document.addEventListener('keydown', this.onIntroKeyDown);
+    this.initTrifoldZoom();
+  }
+
+  // Lightweight pinch-zoom + pan for the open tri-fold. The overlay has
+  // touch-action:none on mobile (native pinch disabled to avoid the OOM crash),
+  // so we drive zoom ourselves by transforming just the active fold host — one
+  // cheap composited layer, not a full-page re-raster. Touch pointers only, so
+  // desktop is completely unaffected.
+  initTrifoldZoom() {
+    const overlay = document.getElementById('tarotIntroOverlay');
+    if (!overlay) return;
+    const HOST_TRANS = 'opacity .32s ease,transform .52s cubic-bezier(.22,1,.36,1)';
+    const z = this._z = { s: 1, x: 0, y: 0, ptrs: new Map(), d0: 0, s0: 1, x0: 0, y0: 0, mx: 0, my: 0, lastTap: 0 };
+    const activeHost = () => document.getElementById('trifoldHost' + ((this.introReturnIdx || 0) + 1));
+    const isBack = t => { const b = document.getElementById('trifoldBack'); return b && (t === b || b.contains(t)); };
+    const clamp = () => {
+      const maxX = Math.max(0, (z.s - 1) * window.innerWidth / 2);
+      const maxY = Math.max(0, (z.s - 1) * window.innerHeight / 2);
+      z.x = Math.max(-maxX, Math.min(maxX, z.x));
+      z.y = Math.max(-maxY, Math.min(maxY, z.y));
+    };
+    const apply = anim => {
+      const host = activeHost();
+      if (!host) return;
+      host.style.transition = anim ? 'transform .2s ease-out' : 'none';
+      host.style.transform = 'translate3d(' + z.x + 'px,' + z.y + 'px,0) scale(' + z.s + ')';
+    };
+    this._resetZoom = () => {
+      z.ptrs.clear(); z.s = 1; z.x = 0; z.y = 0;
+      const host = activeHost();
+      if (host) { host.style.transform = 'translate3d(0,0,0) scale(1)'; host.style.transition = HOST_TRANS; }
+    };
+    const down = e => {
+      if (e.pointerType !== 'touch' || !this.introOverlayOpen || this.introBusy || isBack(e.target)) return;
+      z.ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      const pts = [...z.ptrs.values()];
+      if (z.ptrs.size === 2) {
+        z.d0 = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1;
+        z.s0 = z.s; z.x0 = z.x; z.y0 = z.y;
+        z.mx = (pts[0].x + pts[1].x) / 2; z.my = (pts[0].y + pts[1].y) / 2;
+      } else if (z.ptrs.size === 1) {
+        z.mx = pts[0].x; z.my = pts[0].y; z.x0 = z.x; z.y0 = z.y;
+      }
+      try { overlay.setPointerCapture(e.pointerId); } catch (err) {}
+    };
+    const move = e => {
+      if (!z.ptrs.has(e.pointerId)) return;
+      z.ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      const pts = [...z.ptrs.values()];
+      if (z.ptrs.size >= 2) {
+        const d = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1;
+        const mx = (pts[0].x + pts[1].x) / 2, my = (pts[0].y + pts[1].y) / 2;
+        z.s = Math.max(1, Math.min(4, z.s0 * (d / z.d0)));
+        z.x = z.x0 + (mx - z.mx); z.y = z.y0 + (my - z.my);
+        clamp(); apply(false);
+      } else if (z.s > 1.01) {
+        z.x = z.x0 + (pts[0].x - z.mx); z.y = z.y0 + (pts[0].y - z.my);
+        clamp(); apply(false);
+      }
+    };
+    const up = e => {
+      if (!z.ptrs.has(e.pointerId)) return;
+      z.ptrs.delete(e.pointerId);
+      try { overlay.releasePointerCapture(e.pointerId); } catch (err) {}
+      if (z.ptrs.size === 0) {
+        if (z.s <= 1.01) {
+          // double-tap toggles a 2.4x zoom
+          const now = Date.now();
+          if (now - z.lastTap < 300 && !isBack(e.target)) { z.s = 2.4; z.x = 0; z.y = 0; clamp(); apply(true); z.lastTap = 0; }
+          else { z.lastTap = now; }
+        }
+        if (z.s <= 1.02 && z.s !== 2.4) { z.s = 1; z.x = 0; z.y = 0; apply(true); }
+      } else if (z.ptrs.size === 1) {
+        const p = [...z.ptrs.values()][0];
+        z.mx = p.x; z.my = p.y; z.x0 = z.x; z.y0 = z.y;
+      }
+    };
+    overlay.addEventListener('pointerdown', down, { passive: true });
+    overlay.addEventListener('pointermove', move, { passive: true });
+    overlay.addEventListener('pointerup', up, { passive: true });
+    overlay.addEventListener('pointercancel', up, { passive: true });
   }
 
   // Fetches+defines window.mountTrifold1/2 ahead of any click, so opening
@@ -1421,6 +1507,7 @@ class Component extends DCLogic {
     this.introOverlayOpen = true;
     this.introReturnIdx = i;
     this.introReturnScrollY = window.scrollY;
+    if (this._z) { this._z.ptrs.clear(); this._z.s = 1; this._z.x = 0; this._z.y = 0; }
 
     const overlay = document.getElementById('tarotIntroOverlay');
     const host = document.getElementById('trifoldHost' + (i + 1));
@@ -1513,6 +1600,7 @@ class Component extends DCLogic {
       overlay.style.visibility = 'hidden';
       overlay.style.pointerEvents = 'none';
       if (host) { host.style.pointerEvents = 'none'; host.style.willChange = ''; }
+      if (this._resetZoom) this._resetZoom();
       document.body.style.overflow = '';
       window.scrollTo(0, this.introReturnScrollY || 0);
       const card = i != null ? document.querySelector('[data-card="' + i + '"]') : null;
