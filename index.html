@@ -323,8 +323,8 @@ a:hover{color:#2A4B9E}
       <div style="position:absolute;inset:0;background:#FBF3C6;opacity:.7;border-radius:clamp(16px,3vw,28px);z-index:0"></div>
       <div style="position:relative;width:100%;aspect-ratio:965/481;filter:drop-shadow(0 10px 18px rgba(45,31,22,.28));z-index:1">
         <img src="./assets/contact-card.png" alt="聯絡資訊：LinkedIn、電話、Email" style="position:absolute;inset:0;width:100%;height:100%;display:block">
-        <button type="button" aria-label="複製 LinkedIn 網址" onClick="{{ copyLinkedIn }}" style="position:absolute;left:6%;top:7%;width:88%;height:27%;cursor:pointer;background:none;border:0;padding:0;margin:0;appearance:none;border-radius:6px" style-hover="background:rgba(255,255,255,.08)" style-focus="outline:2px solid #2A4B9E;outline-offset:3px"></button>
-        <button type="button" aria-label="複製 Gmail 地址" onClick="{{ copyGmail }}" style="position:absolute;left:6%;top:66%;width:88%;height:27%;cursor:pointer;background:none;border:0;padding:0;margin:0;appearance:none;border-radius:6px" style-hover="background:rgba(255,255,255,.08)" style-focus="outline:2px solid #2A4B9E;outline-offset:3px"></button>
+        <button type="button" aria-label="開啟 LinkedIn 頁面" onClick="{{ openLinkedIn }}" style="position:absolute;left:6%;top:7%;width:88%;height:27%;cursor:pointer;background:none;border:0;padding:0;margin:0;appearance:none;border-radius:6px" style-hover="background:rgba(255,255,255,.08)" style-focus="outline:2px solid #2A4B9E;outline-offset:3px"></button>
+        <button type="button" aria-label="用 Gmail 寄信給我" onClick="{{ openGmail }}" style="position:absolute;left:6%;top:66%;width:88%;height:27%;cursor:pointer;background:none;border:0;padding:0;margin:0;appearance:none;border-radius:6px" style-hover="background:rgba(255,255,255,.08)" style-focus="outline:2px solid #2A4B9E;outline-offset:3px"></button>
       </div>
       <div id="contactToast" style="position:absolute;left:50%;bottom:-14px;transform:translate(-50%,8px);opacity:0;pointer-events:none;z-index:60;background:#2D1F16;color:#FFFDF8;font-size:.78rem;font-weight:600;padding:.5rem 1rem;border-radius:999px;white-space:nowrap;transition:opacity .28s ease,transform .28s ease;box-shadow:0 6px 16px rgba(45,31,22,.3)"></div>
     </div>
@@ -1308,14 +1308,31 @@ class Component extends DCLogic {
     }, 1800);
   }
 
-  copyGmail() {
-    const GMAIL_ADDRESS = 'hps20030302@gmail.com';
-    const show = () => this.showContactToast('Gmail 已複製：' + GMAIL_ADDRESS);
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(GMAIL_ADDRESS).then(show).catch(() => this.fallbackCopy(GMAIL_ADDRESS, show));
-    } else {
-      this.fallbackCopy(GMAIL_ADDRESS, show);
+  // Open a URL in a new tab via a real anchor click (a user-gesture
+  // navigation that mobile browsers don't block the way window.open often is),
+  // falling back to same-tab navigation only if the new tab can't open.
+  openExternal(url) {
+    try {
+      const a = document.createElement('a');
+      a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      return true;
+    } catch (e) {
+      try { window.location.assign(url); } catch (e2) {}
+      return false;
     }
+  }
+
+  openGmail() {
+    const GMAIL_ADDRESS = 'hps20030302@gmail.com';
+    // open Gmail's compose window pre-addressed to me
+    const url = 'https://mail.google.com/mail/?' + new URLSearchParams({
+      view: 'cm', fs: '1', to: GMAIL_ADDRESS
+    }).toString();
+    this.openExternal(url);
+    this.showContactToast('已開啟 Gmail 撰寫視窗');
   }
 
   // Tarot cards 0/1 open a pre-built tri-fold, mounted straight into this same
@@ -1480,14 +1497,10 @@ class Component extends DCLogic {
     setTimeout(finish, CLOSE_DURATION + 40);
   }
 
-  copyLinkedIn() {
+  openLinkedIn() {
     const LINKEDIN_URL = 'https://www.linkedin.com/in/%E8%8A%83%E8%96%B0-%E6%B4%AA-ab29b8428/?trk=public-profile-join-page';
-    const show = () => this.showContactToast('LinkedIn 網址已複製');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(LINKEDIN_URL).then(show).catch(() => this.fallbackCopy(LINKEDIN_URL, show));
-    } else {
-      this.fallbackCopy(LINKEDIN_URL, show);
-    }
+    this.openExternal(LINKEDIN_URL);
+    this.showContactToast('已開啟 LinkedIn');
   }
 
   fallbackCopy(text, done) {
@@ -1538,8 +1551,8 @@ class Component extends DCLogic {
       },
       notice: this.state.notice,
       error: this.state.error,
-      copyGmail: () => this.copyGmail(),
-      copyLinkedIn: () => this.copyLinkedIn(),
+      openGmail: () => this.openGmail(),
+      openLinkedIn: () => this.openLinkedIn(),
       onSubmit: e => {
         e.preventDefault();
         const f = e.target;

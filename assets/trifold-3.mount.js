@@ -77,6 +77,9 @@ window.mountTrifold3 = function (root) {
   /* ---------- 5. 響應式：只縮放整個舞台 ---------- */
 
   function resize() {
+    // While the user is pinch-zoomed in to read the fold, don't re-fit it to
+    // the screen — that would snap their zoom away. Resume once zoom returns to 1.
+    if (window.visualViewport && window.visualViewport.scale > 1.01) return;
     var availW = (section.clientWidth || window.innerWidth) - 48;
     var availH = window.innerHeight - 48;
     var scale = Math.min(availW / PPT_W, availH / PPT_H);
