@@ -51,7 +51,7 @@ a:hover{color:#2A4B9E}
    and free the vertical axis + add bottom room so card shadow/lift shows. */
 @media (max-width:768px){
   #tarotStage{padding-bottom:clamp(20px,4vw,34px)}
-  #tarotTrack{display:flex;grid-template-columns:none;width:auto;max-width:100%;margin-inline:0;justify-content:flex-start;overflow-x:auto;overflow-y:visible;scroll-snap-type:x proximity;padding:6px clamp(16px,8vw,40px) 14px;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}
+  #tarotTrack{display:flex;grid-template-columns:none;width:auto;max-width:100%;margin-inline:0;justify-content:flex-start;overflow-x:auto;overflow-y:visible;scroll-snap-type:x proximity;padding:6px clamp(16px,8vw,40px) 14px;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom}
   #tarotTrack>*{flex:0 0 auto;scroll-snap-align:center;min-width:0}
 }
 /* #3 About Me on mobile: the résumé is one indivisible PPT block that only
@@ -506,6 +506,11 @@ class Component extends DCLogic {
     this.navLinks = [];
 
     this.onScroll = () => {
+      // While the user is pinch-zoomed in, mobile browsers fire scroll events as
+      // the visual viewport pans. Recomputing the scroll-driven hero/cake
+      // transforms on those events makes the page flicker/jump, so freeze them
+      // until the zoom returns to 1 (desktop is always scale 1 — unaffected).
+      if (window.visualViewport && window.visualViewport.scale > 1.01) return;
       const y = scrollY;
       if (this.showReveals) this.showReveals();
       if (this.nav) this.nav.style.boxShadow = y > 40 ? '0 4px 20px rgba(42,75,158,.22)' : 'none';
@@ -946,6 +951,9 @@ class Component extends DCLogic {
     const step = now => {
       this.catRAF = requestAnimationFrame(step);
       last = now;
+      // hold the current frame while pinch-zoomed so the scene doesn't drift
+      // with the visual-viewport pan (prevents flicker during zoom)
+      if (mode === 'scroll' && window.visualViewport && window.visualViewport.scale > 1.01) return;
 
       let p;
       if (mode === 'scroll') {
@@ -993,6 +1001,7 @@ class Component extends DCLogic {
     if (mode === 'scroll') {
       start();
       this.onCatScroll = () => {
+        if (window.visualViewport && window.visualViewport.scale > 1.01) return;
         if (!this.catRAF) { cur = scrollProgress(); this.catP = cur; renderCatScene(cur); }
       };
       addEventListener('scroll', this.onCatScroll, { passive: true });
@@ -1556,9 +1565,22 @@ class Component extends DCLogic {
           view: 'cm', fs: '1', to: RECIPIENT_EMAIL, su: finalSubject, body: emailBody
         }).toString();
 
-        let newWindow = null;
-        try { newWindow = window.open(gmailUrl, '_blank', 'noopener,noreferrer'); } catch (err) {}
-        if (!newWindow) window.location.assign(gmailUrl);
+        // Open Gmail's pre-filled compose reliably on every device. A real
+        // anchor click made inside this submit gesture is treated as a
+        // user-initiated navigation, so it opens smoothly instead of being
+        // swallowed as a blocked popup the way window.open() often is on
+        // mobile. Only if that new tab can't open do we redirect the current
+        // tab, so it always reaches Gmail without ever double-navigating.
+        let opened = null;
+        try {
+          const a = document.createElement('a');
+          a.href = gmailUrl; a.target = '_blank'; a.rel = 'noopener noreferrer';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          opened = true;
+        } catch (err) { opened = false; }
+        if (!opened) { try { window.location.assign(gmailUrl); } catch (e2) {} }
         this.setState({ error: '', notice: 'Gmail 草稿已建立，請確認後寄送' });
       }
     };
