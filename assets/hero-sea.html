@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peng Syun — Shimmering Sea</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #071b21; overflow: hidden; }
+  #stage { position: fixed; inset: 0; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.157.0/build/three.module.js" } }
+</script>
+<script type="module" src="./sea-scene.js"></script>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+  var el = document.createElement('sea-scene');
+  el.setAttribute('image', './hero-sea.jpg');
+  el.setAttribute('model', './hero-text.glb');
+  el.setAttribute('ripple', '0.012');
+  el.setAttribute('sparkle', '0.35');
+  el.setAttribute('glitter', '0.9');
+  document.getElementById('stage').appendChild(el);
+</script>
+</body></html>
