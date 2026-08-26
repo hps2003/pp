@@ -116,6 +116,9 @@ window.mountTrifold2 = function (root) {
   function clamp01(v) { return Math.max(0, Math.min(1, v)); }
 
   function computeScale() {
+    // While the user is pinch-zoomed in to read the fold, don't re-fit it to
+    // the screen — that would snap their zoom away. Resume once zoom returns to 1.
+    if (window.visualViewport && window.visualViewport.scale > 1.01) return;
     var vw = window.innerWidth, vh = window.innerHeight;
     state.scale = Math.min((vw * 0.92) / W, (vh * 0.9) / H, 1);
     render();
