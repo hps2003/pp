@@ -117,6 +117,14 @@ a:hover{color:#2A4B9E}
   .am-soft span{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;font-weight:700;
     color:rgb(112,62,71);font-size:clamp(.86rem,3.8vw,.96rem);letter-spacing:.06em;line-height:1.4}
 }
+/* Tri-fold overlay on mobile: a full-screen backdrop-filter blur re-rasterises
+   continuously while pinch-zooming and can crash the mobile WebKit compositor
+   (the tab reloads to the top — the "閃退到首頁"). Drop the blur on phones and
+   use a solid dark backdrop instead so the fold can be zoomed safely. Desktop
+   keeps the blur. !important overrides the element's inline style. */
+@media (max-width:768px){
+  #tarotIntroOverlay{background:rgba(20,14,18,.965) !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important}
+}
 </style>
 </helmet>
 
@@ -1325,14 +1333,35 @@ class Component extends DCLogic {
     }
   }
 
+  // Open a compose window pre-filled with recipient / subject / body.
+  // On a phone the Gmail *web* compose URL is unreliable — the browser often
+  // hands the tap to the Gmail app, which drops the su/body params, so the
+  // draft opens empty (or not at all). A mailto: link instead launches the
+  // phone's own mail app (Gmail on Android) with the subject and body already
+  // filled in. On desktop we keep the richer Gmail web compose in a new tab.
+  composeEmail(to, subject, body) {
+    const ua = navigator.userAgent || '';
+    const isMobile = /Android|iPhone|iPad|iPod|IEMobile|BlackBerry|Opera Mini|Mobile/i.test(ua)
+      || ((navigator.maxTouchPoints > 0) && window.matchMedia && matchMedia('(pointer:coarse)').matches);
+    if (isMobile) {
+      let url = 'mailto:' + to;
+      const q = [];
+      if (subject) q.push('subject=' + encodeURIComponent(subject));
+      if (body) q.push('body=' + encodeURIComponent(body));
+      if (q.length) url += '?' + q.join('&');
+      try { window.location.href = url; } catch (e) {}
+      return;
+    }
+    const params = { view: 'cm', fs: '1', to: to };
+    if (subject) params.su = subject;
+    if (body) params.body = body;
+    this.openExternal('https://mail.google.com/mail/?' + new URLSearchParams(params).toString());
+  }
+
   openGmail() {
-    const GMAIL_ADDRESS = 'hps20030302@gmail.com';
-    // open Gmail's compose window pre-addressed to me
-    const url = 'https://mail.google.com/mail/?' + new URLSearchParams({
-      view: 'cm', fs: '1', to: GMAIL_ADDRESS
-    }).toString();
-    this.openExternal(url);
-    this.showContactToast('已開啟 Gmail 撰寫視窗');
+    // compose a new mail to me (recipient pre-filled; empty subject/body)
+    this.composeEmail('hps20030302@gmail.com', '', '');
+    this.showContactToast('已開啟寄信畫面');
   }
 
   // Tarot cards 0/1 open a pre-built tri-fold, mounted straight into this same
@@ -1574,27 +1603,11 @@ class Component extends DCLogic {
           '想聊什麼：',
           msg
         ].filter(Boolean).join('\n');
-        const gmailUrl = 'https://mail.google.com/mail/?' + new URLSearchParams({
-          view: 'cm', fs: '1', to: RECIPIENT_EMAIL, su: finalSubject, body: emailBody
-        }).toString();
-
-        // Open Gmail's pre-filled compose reliably on every device. A real
-        // anchor click made inside this submit gesture is treated as a
-        // user-initiated navigation, so it opens smoothly instead of being
-        // swallowed as a blocked popup the way window.open() often is on
-        // mobile. Only if that new tab can't open do we redirect the current
-        // tab, so it always reaches Gmail without ever double-navigating.
-        let opened = null;
-        try {
-          const a = document.createElement('a');
-          a.href = gmailUrl; a.target = '_blank'; a.rel = 'noopener noreferrer';
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          opened = true;
-        } catch (err) { opened = false; }
-        if (!opened) { try { window.location.assign(gmailUrl); } catch (e2) {} }
-        this.setState({ error: '', notice: 'Gmail 草稿已建立，請確認後寄送' });
+        // Open the mail compose pre-filled with subject + body. On a phone this
+        // launches the mail app (Gmail) via mailto so the content is carried in
+        // reliably; on desktop it opens Gmail's web compose in a new tab.
+        this.composeEmail(RECIPIENT_EMAIL, finalSubject, emailBody);
+        this.setState({ error: '', notice: '已為你開啟寄信畫面，內容已帶入，請確認後寄送' });
       }
     };
   }
