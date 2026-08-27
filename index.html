@@ -542,9 +542,11 @@ class Component extends DCLogic {
       }
       // interface 2: cake rises in, sea darkens, candles light up
       if (this.welcome && this.stage) {
-        const denom = this.welcome.offsetHeight - innerHeight;
+        // welcome height/top are cached in measureScroll() (load + resize) so
+        // reading them here never forces a reflow after the style writes above
+        const denom = this._welcomeH - innerHeight;
         if (denom > 0) {
-          const p = Math.max(0, Math.min(1, (y - this.welcome.offsetTop) / denom));
+          const p = Math.max(0, Math.min(1, (y - this._welcomeTop) / denom));
           const inT = Math.max(0, Math.min(1, p / 0.26));
           const outT = Math.max(0, Math.min(1, (p - 0.62) / 0.3));
           const ease = 1 - Math.pow(1 - inT, 3);
@@ -567,8 +569,16 @@ class Component extends DCLogic {
         a.style.boxShadow = on ? 'inset 0 0 0 1.5px #2A4B9E' : 'none';
       });
     };
+    // Measure the welcome band once (and only again on real size changes), so
+    // the scroll handler reads cached numbers instead of forcing a reflow.
+    this.measureScroll = () => {
+      this._welcomeH = this.welcome ? this.welcome.offsetHeight : 0;
+      this._welcomeTop = this.welcome ? this.welcome.offsetTop : 0;
+    };
+    this.measureScroll();
     addEventListener('scroll', this.onScroll, { passive: true });
-    addEventListener('resize', this.onScroll);
+    addEventListener('resize', () => { this.measureScroll(); this.onScroll(); }, { passive: true });
+    addEventListener('load', () => { this.measureScroll(); this.onScroll(); });
     this.onScroll();
 
     // cake pointer tilt + click sparkle
@@ -704,6 +714,10 @@ class Component extends DCLogic {
     const travel = p => { const x = clamp(p, 0, 1) * 1000, i = Math.floor(x), f = x - i; return i >= 1000 ? LUT[1000] : LUT[i] + (LUT[i + 1] - LUT[i]) * f; };
 
     let W = 0, H = 0, CX = 0, CY = 0, D = 0, DPR = 1, BLUR = 1, shown = -1;
+    // Layout metrics measured once per resize (never per scroll/frame) so the
+    // scroll and chase loops never force a synchronous reflow.
+    let chaseW = 0, chaseH = 0, dogW = 0, dogH = 0, catW = 0, catH = 0;
+    let secH = 0, secTop = 0, vpH = innerHeight;
 
     const drawTunnel = p => {
       p = clamp(p, 0, 1);
@@ -829,7 +843,7 @@ class Component extends DCLogic {
     const renderChaseAt = elapsed => {
       // the chase band is the positioning box; Y values are relative to it, so
       // the pair sits low in the scene without any extra page height
-      const w = chasePos.clientWidth, h = chasePos.clientHeight;
+      const w = chaseW, h = chaseH;   // cached in resize() — no per-frame reflow
       // start off a turning point, so the pair fades in already mid-run with a
       // full lead rather than stacked on top of each other
       const angle = Math.PI * 0.35 + ((elapsed % CHASE_LOOP_DURATION) / CHASE_LOOP_DURATION) * Math.PI * 2;
@@ -842,8 +856,7 @@ class Component extends DCLogic {
       const dogY = 30 + 5 * Math.sin(angle * 2) - (coarse ? 5 : 7) * turn;
       const bob = (coarse ? 3.5 : 5) * Math.abs(Math.sin(elapsed / 150)) * Math.abs(dir);
       const catY = 64;
-      const dw = dogTrack.offsetWidth, dh = dogTrack.offsetHeight;
-      const cw = catTrack.offsetWidth, ch = catTrack.offsetHeight;
+      const dw = dogW, dh = dogH, cw = catW, ch = catH;   // cached in resize()
       dogTrack.style.transform = 'translate3d(' + (w * dogX / 100 - dw / 2).toFixed(1) + 'px,' + (h * dogY / 100 - dh / 2).toFixed(1) + 'px,0)';
       catTrack.style.transform = 'translate3d(' + (w * catX / 100 - cw / 2).toFixed(1) + 'px,' + (h * catY / 100 - ch - bob).toFixed(1) + 'px,0)';
       // dog fades in first, the cat about 150ms later
@@ -938,8 +951,16 @@ class Component extends DCLogic {
 
     const resize = () => {
       DPR = Math.min(devicePixelRatio || 1, coarse ? 1.25 : 2);
-      W = Math.max(1, Math.round((cv.clientWidth || innerWidth) * DPR));
-      H = Math.max(1, Math.round((cv.clientHeight || innerHeight) * DPR));
+      // --- read phase: batch every layout query here, once per resize ---
+      vpH = innerHeight;
+      const cvW = cv.clientWidth || innerWidth, cvH = cv.clientHeight || innerHeight;
+      chaseW = chasePos.clientWidth; chaseH = chasePos.clientHeight;
+      dogW = dogTrack.offsetWidth; dogH = dogTrack.offsetHeight;
+      catW = catTrack.offsetWidth; catH = catTrack.offsetHeight;
+      secH = section.offsetHeight; secTop = section.offsetTop;
+      // --- write phase ---
+      W = Math.max(1, Math.round(cvW * DPR));
+      H = Math.max(1, Math.round(cvH * DPR));
       cv.width = W; cv.height = H;
       glowCv.width = Math.max(1, Math.round(W * 0.5));
       glowCv.height = Math.max(1, Math.round(H * 0.5));
@@ -954,29 +975,32 @@ class Component extends DCLogic {
     addEventListener('orientationchange', () => setTimeout(resize, 120), { passive: true });
 
     const scrollProgress = () => {
-      const max = section.offsetHeight - innerHeight;
-      return max > 0 ? clamp((scrollY - section.offsetTop) / max, 0, 1) : 0;
+      const max = secH - vpH;   // secH / secTop / vpH cached in resize()
+      return max > 0 ? clamp((scrollY - secTop) / max, 0, 1) : 0;
     };
     this.catP = mode === 'scroll' ? scrollProgress() : 0;
     let cur = this.catP, last = 0, autoT0 = null;
     this.catFrame = 0;
 
     const step = now => {
-      this.catRAF = requestAnimationFrame(step);
       last = now;
       // hold the current frame while pinch-zoomed so the scene doesn't drift
       // with the visual-viewport pan (prevents flicker during zoom)
-      if (mode === 'scroll' && window.visualViewport && window.visualViewport.scale > 1.01) return;
+      if (mode === 'scroll' && window.visualViewport && window.visualViewport.scale > 1.01) {
+        this.catRAF = requestAnimationFrame(step); return;
+      }
 
-      let p;
+      let p, settled = false;
       if (mode === 'scroll') {
         const target = scrollProgress();
         const d = target - cur;
-        cur += Math.abs(d) < 0.0006 ? d : d * 0.18;
+        if (Math.abs(d) < 0.0006) { cur = target; settled = true; }
+        else cur += d * 0.18;
         p = cur;
       } else {
         if (autoT0 === null) autoT0 = now;
         p = clamp((now - autoT0) / CAT_SCENE_DURATION, 0, 1);
+        settled = p >= 1;   // auto-play finished
       }
       this.catP = p;
 
@@ -984,6 +1008,11 @@ class Component extends DCLogic {
         shown = p;
         renderCatScene(p);
       }
+      // Idle with no RAF once the progress has settled — the separate chase loop
+      // keeps the cats moving; a scroll restarts this via onCatScroll. This keeps
+      // only one animation loop alive when the scene is being viewed, not two.
+      if (settled) this.catRAF = 0;
+      else this.catRAF = requestAnimationFrame(step);
     };
 
     const start = () => {
@@ -1015,7 +1044,8 @@ class Component extends DCLogic {
       start();
       this.onCatScroll = () => {
         if (window.visualViewport && window.visualViewport.scale > 1.01) return;
-        if (!this.catRAF) { cur = scrollProgress(); this.catP = cur; renderCatScene(cur); }
+        // restart the settled interpolation loop so it eases to the new target
+        if (!this.catRAF) start();
       };
       addEventListener('scroll', this.onCatScroll, { passive: true });
     }
@@ -1034,6 +1064,16 @@ class Component extends DCLogic {
       });
     }, { threshold: [0, 0.1, 0.4, 0.78] });
     this.catIO.observe(sticky);
+
+    // Background tab: park the continuous chase loop and record its elapsed time
+    // so it resumes from the same point (RAF is already throttled while hidden;
+    // this stops the chase clock from jumping forward on return). The scroll
+    // step recomputes from scroll position, so it needs no special handling.
+    this.onCatVisibility = () => {
+      if (document.hidden) { pauseChase(); }
+      else if (sectionVisible && this.catP >= 0.78 && !reduced) { startChase(); }
+    };
+    document.addEventListener('visibilitychange', this.onCatVisibility, { passive: true });
   }
 
   initAbout() {
