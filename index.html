@@ -41,6 +41,16 @@ a:hover{color:#2A4B9E}
 @keyframes aboutMeFadeIn{from{opacity:0}to{opacity:1}}
 @media (max-width:768px),(pointer:coarse){#blank{height:100dvh}#catChasePos{bottom:clamp(8px,2vh,20px);height:clamp(140px,28vh,250px)}#contactSign{top:clamp(115px,18vh,190px);width:min(86vw,420px);max-height:30dvh}#treeLayer{bottom:clamp(170px,27vh,270px);height:clamp(170px,25vh,250px)}}
 @media (prefers-reduced-motion:reduce){#blank{height:100dvh}#catTunnel{opacity:0}}
+/* Mobile cat-scene seam removal — joins the previous page, the time-warp and the
+   next page into one continuous wash. Mask/gradient overlays only: they never add
+   page height, never lock scroll, and don't touch the animation's own timing. */
+@media (max-width:768px),(pointer:coarse){
+  /* works divider hands off a solid mint edge, but the backdrop image begins on a
+     hard line against it. Fade the backdrop's top into that mint over ~15svh so
+     entering the scene is seamless. This mask is independent of the backdrop's
+     opacity fade-in, so the time-warp crossfade is unchanged. */
+  #catBackdrop{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 15svh);mask-image:linear-gradient(to bottom,transparent 0,#000 15svh)}
+}
 @keyframes cakeArrowBounce{0%,100%{transform:translate(0,0) scale(1)}45%{transform:translate(var(--arrow-bounce-x,0px),var(--arrow-bounce-y,0px)) scale(1.025)}70%{transform:translate(calc(var(--arrow-bounce-x,0px) * -0.2),calc(var(--arrow-bounce-y,0px) * -0.2)) scale(.995)}}
 @media (max-width:768px),(pointer:coarse){#cakeArrowHint{display:none}}
 @media (prefers-reduced-motion:reduce){#cakeArrowBounce{animation:none}}
@@ -378,7 +388,7 @@ a:hover{color:#2A4B9E}
     </div>
   </div>
 
-  <div id="catBgContinuation" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:-28vh;height:42vh;z-index:0;pointer-events:none;background:linear-gradient(to bottom,rgba(172,205,199,0) 0%,#ACCDC7 35%,#E09493 100%)"></div>
+  <div id="catBgContinuation" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:-28dvh;height:42dvh;z-index:0;pointer-events:none;background:linear-gradient(to bottom,rgba(172,205,199,0) 0%,#ACCDC7 35%,#E09493 100%)"></div>
 </section><section id="contact" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#ACCDC7 0%,#E09493 28vh,#E09493 45vh);padding:calc(clamp(3.5rem,8vw,7rem) * var(--space-scale)) clamp(1.2rem,4vw,3rem) 0;position:relative;z-index:1;margin:0;border:0;box-shadow:none;overflow:hidden">
   <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1">
     <div data-reveal="" style="text-align:center;margin-bottom:clamp(2.2rem,5vw,3.5rem)">
