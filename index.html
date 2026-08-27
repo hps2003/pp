@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -16,8 +17,19 @@
 <script src="./image-slot.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* Cross-platform baseline: lock the light design so OS dark mode can't recolour
+   controls, stop mobile browsers inflating text, and keep the Mac font metrics. */
+:root{color-scheme:only light}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{margin:0;overflow-x:hidden;background:#F0FFDD;color:#2D1F16;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+/* Normalise only the contact-form controls (not a global reset) so Safari/Edge
+   don't add their own chrome; keep the design's own border/radius/background. */
+#hpsName,#hpsEmail,#hpsSubject,#hpsMsg{-webkit-appearance:none;appearance:none}
+/* iOS Safari zooms the page when a focused input is under 16px — pin these to
+   16px on touch phones so focusing the form never yanks the layout. */
+@media (max-width:768px){
+  #hpsName,#hpsEmail,#hpsSubject,#hpsMsg{font-size:16px!important}
+}
 a{color:#B35840;text-decoration:none}
 a:hover{color:#2A4B9E}
 ::selection{background:#F2C832}
@@ -418,7 +430,7 @@ a:hover{color:#2A4B9E}
   </div>
 </section>
 
-<div id="tarotIntroOverlay" role="dialog" aria-modal="true" aria-label="三折頁介紹" style="position:fixed;inset:0;width:100vw;height:100dvh;z-index:1000;display:grid;place-items:center;overflow:hidden;opacity:0;visibility:hidden;background:rgba(24,17,22,.78);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);pointer-events:none;transition:opacity .28s ease">
+<div id="tarotIntroOverlay" role="dialog" aria-modal="true" aria-label="三折頁介紹" style="position:fixed;inset:0;width:100%;height:100dvh;z-index:1000;display:grid;place-items:center;overflow:hidden;opacity:0;visibility:hidden;background:rgba(24,17,22,.78);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);pointer-events:none;transition:opacity .28s ease">
   <div id="trifoldHost1" style="position:absolute;inset:0;opacity:0;pointer-events:none;transform:translate3d(0,14px,0) scale(.97);transition:opacity .32s ease,transform .52s cubic-bezier(.22,1,.36,1)"></div>
   <div id="trifoldHost2" style="position:absolute;inset:0;opacity:0;pointer-events:none;transform:translate3d(0,14px,0) scale(.97);transition:opacity .32s ease,transform .52s cubic-bezier(.22,1,.36,1)"></div>
   <div id="trifoldHost3" style="position:absolute;inset:0;opacity:0;pointer-events:none;transform:translate3d(0,14px,0) scale(.97);transition:opacity .32s ease,transform .52s cubic-bezier(.22,1,.36,1)"></div>
@@ -1554,6 +1566,11 @@ class Component extends DCLogic {
     const back = document.getElementById('trifoldBack');
     if (!overlay || !host || !back) { this.introBusy = false; return; }
 
+    // Locking body scroll removes a classic scrollbar (Windows/Linux), which
+    // would otherwise widen the page and shift it right. Reserve that width so
+    // the layout stays put. Mac/mobile overlay scrollbars are 0-width → no shift.
+    const sbw = window.innerWidth - document.documentElement.clientWidth;
+    if (sbw > 0) document.body.style.paddingRight = sbw + 'px';
     document.body.style.overflow = 'hidden';
     overlay.style.pointerEvents = 'auto';
     overlay.style.visibility = 'visible';
@@ -1642,6 +1659,7 @@ class Component extends DCLogic {
       if (host) { host.style.pointerEvents = 'none'; host.style.willChange = ''; }
       if (this._resetZoom) this._resetZoom();
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
       window.scrollTo(0, this.introReturnScrollY || 0);
       const card = i != null ? document.querySelector('[data-card="' + i + '"]') : null;
       if (card) card.focus();
