@@ -216,6 +216,38 @@ a:hover{color:#2A4B9E}
 .tools-chips span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.78rem,1vw,.86rem);
   color:#6B5749;background:rgba(255,253,248,.7);border:1px solid #E3D8C4;border-radius:8px;padding:.28rem .6rem;line-height:1.3}
 @media (max-width:768px){ .tools-groups{grid-template-columns:1fr;gap:16px} }
+/* §11 Selected-project business info (sits under the tarot cards) */
+.proj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,22px);max-width:1120px;margin:.4rem auto 2.2rem;padding:0 clamp(1.2rem,4vw,3rem)}
+.proj-card{background:#FFFDF8;border:2px solid #2D1F16;border-radius:14px;box-shadow:4px 6px 0 rgba(45,31,22,.85);
+  padding:clamp(1rem,1.8vw,1.35rem);display:flex;flex-direction:column;gap:.38rem;text-align:left;min-width:0}
+.proj-no{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;color:#B08968}
+.proj-title-en{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;font-size:clamp(.92rem,1.25vw,1.05rem);color:#2D1F16;line-height:1.2}
+.proj-title-zh{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;font-size:clamp(.84rem,1.05vw,.94rem);color:var(--accent,#C8706F)}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.1rem 0}
+.proj-tags span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:.68rem;color:#7A6252;
+  background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.16rem .5rem;line-height:1.3}
+.proj-value{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;font-size:clamp(.8rem,1.05vw,.87rem);line-height:1.6;color:#5C4A3D}
+.proj-link{margin-top:auto;padding-top:.55rem;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.8rem;
+  color:var(--accent,#C8706F);text-decoration:none;display:inline-flex;align-items:center;gap:.25rem;align-self:flex-start}
+.proj-link:hover{color:#2A4B9E}
+.proj-link.muted{color:#B0A090;font-weight:600}
+@media (max-width:768px){ .proj-grid{grid-template-columns:1fr;gap:12px;margin:.2rem auto 1.8rem} }
+/* §12–13 Case study (Project 01) */
+.case-panel{max-width:960px;margin:0 auto;background:#FFFDF8;border:2.5px solid #2D1F16;border-radius:20px;box-shadow:6px 8px 0 rgba(45,31,22,.85);padding:clamp(1.6rem,3.5vw,2.8rem)}
+.case-eyebrow{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:#B08968}
+.case-name{margin:.3rem 0 0;font-family:'Climate Crisis',cursive;font-weight:400;font-size:calc(clamp(1.3rem,3vw,2rem) * var(--font-scale));color:#2D1F16;line-height:1.15}
+.case-name small{display:block;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;font-size:.5em;color:var(--accent,#C8706F);letter-spacing:.02em;margin-top:.4rem}
+.case-blocks{display:flex;flex-direction:column;gap:clamp(1rem,2.2vw,1.5rem);margin-top:clamp(1.4rem,3vw,2rem)}
+.case-block{display:grid;grid-template-columns:118px 1fr;gap:clamp(.8rem,2vw,1.6rem);align-items:start}
+.case-label{font-family:'DM Sans',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent,#C8706F);padding-top:.15rem}
+.case-text{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;font-size:clamp(.9rem,1.2vw,.99rem);line-height:1.8;color:#3A2C22}
+.case-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.case-chips span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.76rem,1vw,.85rem);color:#7A6252;background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.22rem .6rem;line-height:1.4}
+.case-result{display:flex;flex-direction:column;gap:.6rem}
+.case-result-num{font-family:'DM Sans',sans-serif;font-weight:800;font-size:calc(clamp(2rem,4.5vw,2.8rem) * var(--font-scale));line-height:1;color:var(--accent,#C8706F)}
+.case-result-num small{font-size:.3em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A7060;display:block;margin-top:.4rem}
+.case-block.divide{border-top:1.5px dashed #E3D8C4;padding-top:clamp(1rem,2.2vw,1.5rem)}
+@media (max-width:768px){ .case-block{grid-template-columns:1fr;gap:.4rem} .case-label{padding-top:0} }
 /* Tri-fold overlay on mobile: a full-screen backdrop-filter blur re-rasterises
    continuously while pinch-zooming and can crash the mobile WebKit compositor
    (the tab reloads to the top — the "閃退到首頁"). Drop the blur on phones and
@@ -618,7 +650,69 @@ a:hover{color:#2A4B9E}
     </div>
   </div>
 
-  <p style="text-align:center;font-family:'Caveat',cursive;font-size:1.05rem;color:rgba(138,112,96,.85);letter-spacing:.04em;margin:0 0 2.2rem">點一張塔羅牌，探索不同介紹&nbsp;</p>
+  <p style="text-align:center;font-family:'Caveat',cursive;font-size:1.05rem;color:rgba(138,112,96,.85);letter-spacing:.04em;margin:0 0 1.4rem">點一張塔羅牌，探索不同介紹&nbsp;</p>
+
+  <div class="proj-grid">
+    <article class="proj-card" data-reveal="">
+      <p class="proj-no">PROJECT 01</p>
+      <p class="proj-title-en">CORPORATE SUMMIT</p>
+      <p class="proj-title-zh">企業高峰論壇</p>
+      <div class="proj-tags"><span>60 Participants</span><span>Project Coordination</span><span>Event Execution</span></div>
+      <p class="proj-value">整合講師、報名、活動內容、供應商與現場流程，協助企業活動依時程完成執行。</p>
+      <a class="proj-link" href="#case">VIEW CASE →</a>
+    </article>
+    <article class="proj-card" data-reveal="">
+      <p class="proj-no">PROJECT 02</p>
+      <p class="proj-title-en">BRAND EVENT</p>
+      <p class="proj-title-zh">微醺生活節</p>
+      <div class="proj-tags"><span>Event Coordination</span><span>On-site Operations</span></div>
+      <p class="proj-value">整合場地、物資、合作方與活動流程，並參與來賓接待與現場執行。</p>
+      <span class="proj-link muted">Case coming ✦</span>
+    </article>
+    <article class="proj-card" data-reveal="">
+      <p class="proj-no">PROJECT 03</p>
+      <p class="proj-title-en">BRAND EXPERIENCE</p>
+      <p class="proj-title-zh">品牌體驗活動</p>
+      <div class="proj-tags"><span>Partner Communication</span><span>Event Coordination</span></div>
+      <p class="proj-value">協助品牌與合作方整理活動需求，將內容、物資與執行條件整合為可落地流程。</p>
+      <span class="proj-link muted">Case coming ✦</span>
+    </article>
+    <article class="proj-card" data-reveal="">
+      <p class="proj-no">PROJECT 04</p>
+      <p class="proj-title-en">LARGE-SCALE EVENT</p>
+      <p class="proj-title-zh">百人規模大型活動</p>
+      <div class="proj-tags"><span>Event Planning</span><span>Project Coordination</span></div>
+      <p class="proj-value">從前期企劃、人員分工與外部資源，到活動現場執行，參與完整活動流程。</p>
+      <span class="proj-link muted">Case coming ✦</span>
+    </article>
+  </div>
+</section>
+
+<section id="case" style="scroll-margin-top:84px;background:#F0FFDD;padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
+  <div class="sec-wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="sec-title">CASE STUDY</h2>
+      <p class="sec-sub">案例研究 ✦</p>
+    </div>
+  </div>
+  <div class="case-panel" data-reveal="">
+    <p class="case-eyebrow">Project 01</p>
+    <h2 class="case-name">CORPORATE SUMMIT<small>企業高峰論壇 · Corporate Summit</small></h2>
+    <div class="case-blocks">
+      <div class="case-block"><div class="case-label">Objective</div><p class="case-text">完成約 60 人企業論壇籌備與現場執行，整合講師、參與者、活動內容與外部供應商。</p></div>
+      <div class="case-block"><div class="case-label">Role</div><div class="case-chips"><span>Project Coordination</span><span>Event Execution</span></div></div>
+      <div class="case-block"><div class="case-label">Scope</div><div class="case-chips"><span>Accupass 報名頁與資訊管理</span><span>講師聯繫與資訊確認</span><span>活動流程整理</span><span>EDM 與活動資訊</span><span>外燴與供應商溝通</span><span>報名進度追蹤</span><span>活動前 Checklist</span><span>現場活動執行</span></div></div>
+      <div class="case-block"><div class="case-label">Challenge</div><p class="case-text">講師、報名、餐飲、參與者資訊與現場流程需同步推進，任何一個環節延遲都可能影響後續活動安排。</p></div>
+      <div class="case-block"><div class="case-label">Action</div><p class="case-text">透過持續更新活動資訊、確認窗口與工作狀態，將不同執行項目整理成一致版本，並於活動前逐項確認執行事項。</p></div>
+      <div class="case-block divide"><div class="case-label">Result</div>
+        <div class="case-result">
+          <div class="case-result-num">60<small>Corporate Event Participants</small></div>
+          <p class="case-text">完成企業論壇籌備與現場執行。</p>
+          <div class="case-chips"><span>Registration</span><span>Speaker Coordination</span><span>Vendor Communication</span><span>Event Flow</span><span>On-site Execution</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div style="text-align:center;padding:2.5rem 0;background:linear-gradient(to bottom,#F0FFDD,#BAFFEE)">
