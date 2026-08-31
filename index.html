@@ -248,6 +248,23 @@ a:hover{color:#2A4B9E}
 .case-result-num small{font-size:.3em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A7060;display:block;margin-top:.4rem}
 .case-block.divide{border-top:1.5px dashed #E3D8C4;padding-top:clamp(1rem,2.2vw,1.5rem)}
 @media (max-width:768px){ .case-block{grid-template-columns:1fr;gap:.4rem} .case-label{padding-top:0} }
+/* §02 Hero tagline + CTAs — a compact band over the sea, below the 3D name.
+   Sits above the marquee; a scrim behind keeps it legible over bright water. */
+.hero-tag-en{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;font-size:clamp(.74rem,1.4vw,1rem);
+  letter-spacing:.03em;color:#FFFDF8;text-shadow:0 2px 12px rgba(0,0,0,.5);line-height:1.35}
+.hero-tag-zh{margin:.35rem 0 0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:800;
+  font-size:clamp(.92rem,1.7vw,1.18rem);letter-spacing:.1em;color:#F2E04A;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.hero-sub{margin:.65rem auto 0;max-width:600px;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;
+  font-size:clamp(.8rem,1.15vw,.92rem);line-height:1.7;color:rgba(255,253,248,.95);text-shadow:0 1px 10px rgba(0,0,0,.55)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:clamp(.9rem,2.2vh,1.4rem)}
+.hero-btn{font-family:'DM Sans',sans-serif;font-weight:800;font-size:clamp(.76rem,1.1vw,.9rem);letter-spacing:.06em;
+  text-transform:uppercase;padding:.68rem 1.6rem;border-radius:999px;border:2px solid #2D1F16;text-decoration:none;
+  transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.hero-btn.primary{background:var(--accent,#C8706F);color:#FFFDF8;box-shadow:3px 3px 0 #2D1F16}
+.hero-btn.primary:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 #2D1F16;color:#FFFDF8}
+.hero-btn.ghost{background:rgba(255,253,248,.94);color:#2A4B9E;box-shadow:3px 3px 0 #2D1F16}
+.hero-btn.ghost:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 #2D1F16;color:#2A4B9E}
+@media (max-width:768px){ .hero-sub{font-size:.8rem;max-width:94%} .hero-btn{padding:.58rem 1.3rem} }
 /* Tri-fold overlay on mobile: a full-screen backdrop-filter blur re-rasterises
    continuously while pinch-zooming and can crash the mobile WebKit compositor
    (the tab reloads to the top — the "閃退到首頁"). Drop the blur on phones and
@@ -286,6 +303,17 @@ a:hover{color:#2A4B9E}
     <iframe src="./assets/hero-sea.html" title="Peng Syun — Shimmering Sea" loading="eager" style="width:100%;height:100%;border:0;display:block"></iframe>
   </div>
   <div style="flex:1"></div>
+
+  <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:44px;height:min(42%,340px);z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(18,65,77,0) 0%,rgba(18,65,77,.42) 48%,rgba(18,65,77,.72) 100%)"></div>
+  <div id="heroContent" style="position:relative;z-index:2;padding:0 clamp(1.2rem,5vw,3rem) clamp(1.3rem,3.2vh,2.4rem);text-align:center">
+    <p class="hero-tag-en">Project Planning × Event Execution × Stakeholder Coordination</p>
+    <p class="hero-tag-zh">專案企劃｜活動執行｜跨方協作</p>
+    <p class="hero-sub">從需求釐清、流程規劃、合作方溝通，到活動現場執行，將分散資訊整理成能真正落地的專案。</p>
+    <div class="hero-cta">
+      <a href="#works" class="hero-btn primary">VIEW PROJECTS</a>
+      <a href="#about" class="hero-btn ghost">ABOUT ME</a>
+    </div>
+  </div>
 
   <div style="position:relative;z-index:2;background:var(--accent,#C8706F);height:44px;overflow:hidden;display:flex;align-items:center;border-top:2px solid #2D1F16">
     <div style="display:inline-flex;animation:om-marquee 30s linear infinite;white-space:nowrap">
