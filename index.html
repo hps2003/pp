@@ -108,6 +108,8 @@ a:hover{color:#2A4B9E}
   font-size:calc(clamp(.8rem,1.15vw,.9rem) * var(--font-scale));line-height:1.6;color:#6B5749}
 .impact-cap{margin:.6rem 0 0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;
   font-size:clamp(.66rem,1vw,.74rem);letter-spacing:.04em;text-transform:uppercase;color:#B08968}
+.impact-kicker{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:800;letter-spacing:.01em;
+  font-size:calc(clamp(1.15rem,2.4vw,1.6rem) * var(--font-scale));line-height:1.1;color:var(--accent,#C8706F)}
 .impact-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
 .impact-tags span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.68rem,1vw,.76rem);
   color:#7A6252;background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.2rem .55rem;line-height:1.3;white-space:nowrap}
@@ -246,6 +248,7 @@ a:hover{color:#2A4B9E}
 .case-result{display:flex;flex-direction:column;gap:.6rem}
 .case-result-num{font-family:'DM Sans',sans-serif;font-weight:800;font-size:calc(clamp(2rem,4.5vw,2.8rem) * var(--font-scale));line-height:1;color:var(--accent,#C8706F)}
 .case-result-num small{font-size:.3em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A7060;display:block;margin-top:.4rem}
+.case-deliver-label{margin:0 0 .5rem;font-family:'DM Sans',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#B08968}
 .case-block.divide{border-top:1.5px dashed #E3D8C4;padding-top:clamp(1rem,2.2vw,1.5rem)}
 @media (max-width:768px){ .case-block{grid-template-columns:1fr;gap:.4rem} .case-label{padding-top:0} }
 /* §02 Hero tagline + CTAs — a compact band over the sea, below the 3D name.
@@ -405,13 +408,12 @@ a:hover{color:#2A4B9E}
       </div>
       <div class="impact-card" data-reveal="">
         <p class="impact-num">2.5<span class="impact-unit">Y</span></p>
-        <p class="impact-label">Frontline Operations Experience</p>
-        <p class="impact-desc">第一線營運、現場協調與突發問題處理經驗</p>
+        <p class="impact-label">On-site Operations Experience</p>
+        <p class="impact-desc">現場營運｜人員協作｜即時問題處理</p>
       </div>
       <div class="impact-card" data-reveal="">
-        <p class="impact-num">6<span class="impact-unit">+</span></p>
-        <p class="impact-label">Stakeholder Types Coordinated</p>
-        <p class="impact-desc">跨角色協作經驗</p>
+        <p class="impact-kicker">MULTI-STAKEHOLDER</p>
+        <p class="impact-label">Cross-functional Coordination</p>
         <div class="impact-tags">
           <span>企業窗口</span><span>品牌</span><span>供應商</span><span>講師</span><span>場地方</span><span>內部團隊</span>
         </div>
@@ -423,28 +425,28 @@ a:hover{color:#2A4B9E}
 <section id="scope" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#FFE5EE 0%,#F0FFDD 62%);padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
   <div class="sec-wrap">
     <div class="sec-head" data-reveal="">
-      <h2 class="sec-title">END-TO-END PROJECT SCOPE</h2>
-      <p class="sec-sub">從需求釐清到落地執行的完整專案視角 ✦</p>
+      <h2 class="sec-title">PROJECT EXECUTION SCOPE</h2>
+      <p class="sec-sub">專案參與與執行範圍 ✦</p>
     </div>
     <div class="scope-flow">
       <div class="scope-step" data-reveal="">
         <span class="scope-badge">01</span>
-        <p class="scope-en">REQUIREMENT</p>
-        <p class="scope-zh">需求釐清</p>
-        <p class="scope-desc">理解目標、對象、限制與執行條件</p>
+        <p class="scope-en">REQUIREMENT ALIGNMENT</p>
+        <p class="scope-zh">需求確認</p>
+        <p class="scope-desc">整理目標、對象與執行條件</p>
       </div>
       <span class="scope-arrow" aria-hidden="true">→</span>
       <div class="scope-step" data-reveal="">
         <span class="scope-badge">02</span>
-        <p class="scope-en">PLANNING</p>
-        <p class="scope-zh">企劃與流程拆解</p>
-        <p class="scope-desc">工作項目、時程、責任與執行流程</p>
+        <p class="scope-en">PLANNING SUPPORT</p>
+        <p class="scope-zh">企劃與執行拆解</p>
+        <p class="scope-desc">整理工作項目、時程與待確認事項</p>
       </div>
       <span class="scope-arrow" aria-hidden="true">→</span>
       <div class="scope-step" data-reveal="">
         <span class="scope-badge">03</span>
         <p class="scope-en">COORDINATION</p>
-        <p class="scope-zh">跨方協調</p>
+        <p class="scope-zh">跨方協作</p>
         <p class="scope-desc">企業窗口、合作方、供應商與內部團隊</p>
       </div>
       <span class="scope-arrow" aria-hidden="true">→</span>
@@ -452,7 +454,7 @@ a:hover{color:#2A4B9E}
         <span class="scope-badge">04</span>
         <p class="scope-en">EXECUTION</p>
         <p class="scope-zh">活動與現場執行</p>
-        <p class="scope-desc">流程確認、資源調度、現場應變</p>
+        <p class="scope-desc">流程確認、資源協作與現場應變</p>
       </div>
       <span class="scope-arrow" aria-hidden="true">→</span>
       <div class="scope-step" data-reveal="">
@@ -474,31 +476,23 @@ a:hover{color:#2A4B9E}
     <div class="value-grid">
       <div class="value-card" data-reveal="">
         <span class="value-num">01</span>
-        <h3 class="value-title">Structured Planning</h3>
-        <p class="value-headline">把模糊需求變成可執行工作。</p>
-        <p class="value-body">能從目標、時程、角色與限制條件拆解需求，協助團隊建立清楚的下一步。</p>
-        <p class="value-biz"><b>企業價值</b>　降低資訊模糊造成的執行落差。</p>
+        <h3 class="value-title">Structured Coordination</h3>
+        <p class="value-body">面對資訊分散或多方窗口的專案，習慣先整理需求、責任窗口與待確認事項，再持續追蹤執行進度。</p>
       </div>
       <div class="value-card" data-reveal="">
         <span class="value-num">02</span>
-        <h3 class="value-title">Stakeholder Coordination</h3>
-        <p class="value-headline">讓不同角色在同一套資訊上合作。</p>
-        <p class="value-body">具企業窗口、品牌、供應商、講師、場地方與內部團隊溝通經驗。</p>
-        <p class="value-biz"><b>企業價值</b>　降低多方協作中的資訊斷層與溝通成本。</p>
+        <h3 class="value-title">Stakeholder Communication</h3>
+        <p class="value-body">依照不同合作角色整理資訊與確認事項，維持外部窗口與內部執行端資訊一致。</p>
       </div>
       <div class="value-card" data-reveal="">
         <span class="value-num">03</span>
-        <h3 class="value-title">Execution &amp; Adaptability</h3>
-        <p class="value-headline">計畫能做，也能處理現場變化。</p>
-        <p class="value-body">具活動現場與第一線營運經驗，能依照流程、時間與現場狀況調整執行優先順序。</p>
-        <p class="value-biz"><b>企業價值</b>　在變動環境中維持專案正常推進。</p>
+        <h3 class="value-title">On-site Execution</h3>
+        <p class="value-body">具現場營運與活動執行經驗，能依照流程與現場狀況調整工作優先順序。</p>
       </div>
       <div class="value-card" data-reveal="">
         <span class="value-num">04</span>
         <h3 class="value-title">Business Communication</h3>
-        <p class="value-headline">理解企業需求，也理解執行端限制。</p>
-        <p class="value-body">具企業開發與客戶窗口接觸經驗，能將外部需求整理成內部與合作方可理解、可執行的資訊。</p>
-        <p class="value-biz"><b>企業價值</b>　縮短「客戶想要什麼」與「團隊實際怎麼做」之間的距離。</p>
+        <p class="value-body">具企業開發與企業窗口接觸經驗，能理解外部需求，並整理成合作方與內部團隊可執行的資訊。</p>
       </div>
     </div>
   </div>
@@ -605,7 +599,7 @@ a:hover{color:#2A4B9E}
         <p class="exp-desc">參與企業開發、品牌與供應商合作、企業活動及專案執行。工作涵蓋企業窗口溝通、需求整理、合作追蹤、活動籌備與現場執行，需持續在外部合作方與內部團隊之間確認資訊與推進工作。</p>
         <div class="exp-scope">
           <span class="exp-scope-label">Scope</span>
-          <div class="exp-chips"><span>Corporate Development</span><span>Client Communication</span><span>Project Coordination</span><span>Vendor Coordination</span><span>Event Execution</span><span>CRM &amp; Follow-up</span></div>
+          <div class="exp-chips"><span>Business Development</span><span>Client Communication</span><span>Project Coordination</span><span>Vendor Coordination</span><span>Event Execution</span><span>CRM &amp; Follow-up</span></div>
         </div>
       </article>
       <article class="exp-card" data-reveal="">
@@ -616,15 +610,16 @@ a:hover{color:#2A4B9E}
         <p class="exp-desc">第一線營運與管理經驗，長期處理人員協作、現場流程、顧客需求與突發狀況。這段經驗建立了我在高節奏工作環境中的判斷力、溝通能力、責任意識與現場應變能力。</p>
         <div class="exp-scope">
           <span class="exp-scope-label">Scope</span>
-          <div class="exp-chips"><span>Frontline Operations</span><span>Team Coordination</span><span>On-site Problem Solving</span></div>
+          <div class="exp-chips"><span>On-site Operations</span><span>Team Coordination</span><span>On-site Problem Solving</span></div>
         </div>
       </article>
       <article class="exp-card" data-reveal="">
         <div class="exp-top">
           <p class="exp-role">LARGE-SCALE EVENT PLANNING</p>
-          <span class="exp-badge alt">4 Projects · 100+ Scale</span>
+          <span class="exp-badge alt">4 Event Projects · Up to 100+</span>
         </div>
-        <p class="exp-desc">參與多場百人規模大型活動，涵蓋企劃、預算、招商、場地、設備、宣傳、人員分工與現場執行。其中具跨團隊活動統籌經驗，需整合不同工作組與外部合作資源，確保活動依照時程推進。</p>
+        <p class="exp-meta">Campus Event Planning &amp; Execution</p>
+        <p class="exp-desc">參與多場大型活動（最高達百人規模），涵蓋企劃、預算、招商、場地、設備、宣傳、人員分工與現場執行。其中具跨團隊活動統籌協作經驗，需整合不同工作組與外部合作資源，協助活動依照時程推進。</p>
         <div class="exp-scope">
           <span class="exp-scope-label">Scope</span>
           <div class="exp-chips"><span>Event Planning</span><span>Resource Coordination</span><span>On-site Execution</span></div>
@@ -650,7 +645,7 @@ a:hover{color:#2A4B9E}
         <div class="tools-chips"><span>PowerPoint</span><span>Figma</span><span>Canva</span></div>
       </div>
       <div class="tools-group">
-        <p class="tools-label">Digital Productivity</p>
+        <p class="tools-label">Productivity Tools</p>
         <div class="tools-chips"><span>ChatGPT</span><span>Claude</span><span>Midjourney</span></div>
       </div>
     </div>
@@ -678,7 +673,8 @@ a:hover{color:#2A4B9E}
     </div>
   </div>
 
-  <p style="text-align:center;font-family:'Caveat',cursive;font-size:1.05rem;color:rgba(138,112,96,.85);letter-spacing:.04em;margin:0 0 1.4rem">點一張塔羅牌，探索不同介紹&nbsp;</p>
+  <p style="text-align:center;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:.98rem;color:#6B5749;letter-spacing:.01em;margin:0 0 .4rem">選擇專案，查看角色與執行範圍。</p>
+  <p style="text-align:center;font-family:'Caveat',cursive;font-size:1.02rem;color:rgba(138,112,96,.8);letter-spacing:.03em;margin:0 0 1.4rem">Select a project to explore role, scope and execution.</p>
 
   <div class="proj-grid">
     <article class="proj-card" data-reveal="">
@@ -694,25 +690,19 @@ a:hover{color:#2A4B9E}
       <p class="proj-title-en">BRAND EVENT</p>
       <p class="proj-title-zh">微醺生活節</p>
       <div class="proj-tags"><span>Event Coordination</span><span>On-site Operations</span></div>
-      <p class="proj-value">整合場地、物資、合作方與活動流程，並參與來賓接待與現場執行。</p>
-      <span class="proj-link muted">Case coming ✦</span>
-    </article>
+      <p class="proj-value">整合場地、物資、合作方與活動流程，並參與來賓接待與現場執行。</p>    </article>
     <article class="proj-card" data-reveal="">
       <p class="proj-no">PROJECT 03</p>
       <p class="proj-title-en">BRAND EXPERIENCE</p>
       <p class="proj-title-zh">品牌體驗活動</p>
       <div class="proj-tags"><span>Partner Communication</span><span>Event Coordination</span></div>
-      <p class="proj-value">協助品牌與合作方整理活動需求，將內容、物資與執行條件整合為可落地流程。</p>
-      <span class="proj-link muted">Case coming ✦</span>
-    </article>
+      <p class="proj-value">協助品牌與合作方整理活動需求，將內容、物資與執行條件整合為可落地流程。</p>    </article>
     <article class="proj-card" data-reveal="">
       <p class="proj-no">PROJECT 04</p>
       <p class="proj-title-en">LARGE-SCALE EVENT</p>
       <p class="proj-title-zh">百人規模大型活動</p>
       <div class="proj-tags"><span>Event Planning</span><span>Project Coordination</span></div>
-      <p class="proj-value">從前期企劃、人員分工與外部資源，到活動現場執行，參與完整活動流程。</p>
-      <span class="proj-link muted">Case coming ✦</span>
-    </article>
+      <p class="proj-value">從前期企劃、人員分工與外部資源，到活動現場執行，參與活動整體執行流程。</p>    </article>
   </div>
 </section>
 
@@ -730,13 +720,15 @@ a:hover{color:#2A4B9E}
       <div class="case-block"><div class="case-label">Objective</div><p class="case-text">完成約 60 人企業論壇籌備與現場執行，整合講師、參與者、活動內容與外部供應商。</p></div>
       <div class="case-block"><div class="case-label">Role</div><div class="case-chips"><span>Project Coordination</span><span>Event Execution</span></div></div>
       <div class="case-block"><div class="case-label">Scope</div><div class="case-chips"><span>Accupass 報名頁與資訊管理</span><span>講師聯繫與資訊確認</span><span>活動流程整理</span><span>EDM 與活動資訊</span><span>外燴與供應商溝通</span><span>報名進度追蹤</span><span>活動前 Checklist</span><span>現場活動執行</span></div></div>
-      <div class="case-block"><div class="case-label">Challenge</div><p class="case-text">講師、報名、餐飲、參與者資訊與現場流程需同步推進，任何一個環節延遲都可能影響後續活動安排。</p></div>
-      <div class="case-block"><div class="case-label">Action</div><p class="case-text">透過持續更新活動資訊、確認窗口與工作狀態，將不同執行項目整理成一致版本，並於活動前逐項確認執行事項。</p></div>
-      <div class="case-block divide"><div class="case-label">Result</div>
+      <div class="case-block"><div class="case-label">Coordination Complexity</div><p class="case-text">講師、報名、餐飲、參與者資訊與現場流程需同步更新，各項資訊具有連動關係，需要持續確認窗口與執行狀態。</p></div>
+      <div class="case-block"><div class="case-label">Action</div><p class="case-text">持續整理活動資訊、確認窗口與待辦狀態，並於活動前逐項核對執行事項。</p></div>
+      <div class="case-block divide"><div class="case-label">Delivery</div>
         <div class="case-result">
-          <div class="case-result-num">60<small>Corporate Event Participants</small></div>
-          <p class="case-text">完成企業論壇籌備與現場執行。</p>
-          <div class="case-chips"><span>Registration</span><span>Speaker Coordination</span><span>Vendor Communication</span><span>Event Flow</span><span>On-site Execution</span></div>
+          <div class="case-result-num">60<small>Event Scale · 約 60 位參與者</small></div>
+          <div>
+            <p class="case-deliver-label">Execution Coverage</p>
+            <div class="case-chips"><span>Registration</span><span>Speaker Coordination</span><span>Vendor Communication</span><span>Event Flow</span><span>On-site Execution</span></div>
+          </div>
         </div>
       </div>
     </div>
