@@ -116,6 +116,82 @@ a:hover{color:#2A4B9E}
   .impact-card{padding:1rem .9rem}
   .impact-tags span{font-size:.7rem}
 }
+/* Enterprise content sections (phase 2) — shared heading + card patterns. */
+.sec-wrap{max-width:1120px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:clamp(1.8rem,4vw,2.8rem)}
+.sec-title{margin:0;font-family:'Climate Crisis',cursive;font-weight:400;
+  font-size:calc(clamp(1.35rem,3.3vw,2.2rem) * var(--font-scale));color:#2D1F16;letter-spacing:.02em;line-height:1.18}
+.sec-sub{margin:.55rem 0 0;font-family:'Caveat',cursive;font-size:1.15rem;color:#8A7060}
+/* §04 End-to-end project scope */
+.scope-flow{display:flex;align-items:stretch;justify-content:center;gap:10px;flex-wrap:nowrap}
+.scope-step{flex:1 1 0;min-width:0;background:#FFFDF8;border:2px solid #2D1F16;border-radius:14px;
+  box-shadow:3px 4px 0 rgba(45,31,22,.85);padding:clamp(.9rem,1.6vw,1.3rem) clamp(.7rem,1.2vw,1rem);
+  display:flex;flex-direction:column;gap:.28rem}
+.scope-badge{display:inline-flex;align-items:center;justify-content:center;width:1.9rem;height:1.9rem;border-radius:999px;
+  background:var(--accent,#C8706F);color:#FFFDF8;font-family:'DM Sans',sans-serif;font-weight:800;font-size:.84rem}
+.scope-en{margin:.3rem 0 0;font-family:'DM Sans',sans-serif;font-weight:800;
+  font-size:clamp(.78rem,1.15vw,.92rem);letter-spacing:.03em;color:#2D1F16}
+.scope-zh{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;
+  font-size:clamp(.9rem,1.3vw,1rem);color:var(--accent,#C8706F)}
+.scope-desc{margin:.15rem 0 0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;
+  font-size:clamp(.76rem,1vw,.86rem);line-height:1.55;color:#6B5749}
+.scope-arrow{display:flex;align-items:center;justify-content:center;color:var(--accent,#C8706F);font-size:1.3rem;font-weight:800;flex:0 0 auto}
+@media (max-width:768px){
+  .scope-flow{flex-direction:column;align-items:stretch;gap:6px}
+  .scope-arrow{transform:rotate(90deg);padding:1px 0}
+}
+/* §06 What I bring — value cards */
+.value-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,24px)}
+.value-card{background:#FFFDF8;border:2px solid #2D1F16;border-radius:16px;box-shadow:4px 6px 0 rgba(45,31,22,.85);
+  padding:clamp(1.3rem,2.4vw,1.9rem);display:flex;flex-direction:column;gap:.45rem;min-width:0}
+.value-num{font-family:'DM Sans',sans-serif;font-weight:800;font-size:1.05rem;color:var(--accent,#C8706F)}
+.value-title{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;
+  font-size:calc(clamp(1.05rem,1.8vw,1.25rem) * var(--font-scale));color:#2D1F16;letter-spacing:.01em}
+.value-headline{margin:.1rem 0 0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;
+  font-size:clamp(.95rem,1.4vw,1.05rem);color:#2D1F16;line-height:1.5}
+.value-body{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;
+  font-size:clamp(.9rem,1.2vw,.98rem);line-height:1.75;color:#5C4A3D}
+.value-biz{margin:.4rem 0 0;padding-top:.65rem;border-top:1.5px dashed #E3D8C4;
+  font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.84rem,1.1vw,.92rem);line-height:1.55;color:var(--accent,#C8706F)}
+.value-biz b{color:#8A5A52;font-weight:800}
+@media (max-width:768px){ .value-grid{grid-template-columns:1fr} }
+/* §07 Core competencies */
+.comp-list{display:flex;flex-direction:column;gap:clamp(14px,2vw,20px)}
+.comp-item{background:#FFFDF8;border:2px solid #2D1F16;border-radius:16px;box-shadow:4px 6px 0 rgba(45,31,22,.85);
+  padding:clamp(1.2rem,2.4vw,1.8rem);display:grid;grid-template-columns:minmax(190px,270px) 1fr;gap:clamp(1rem,2.5vw,2rem);align-items:start}
+.comp-head-l{display:flex;flex-direction:column;gap:.3rem}
+.comp-num{font-family:'DM Sans',sans-serif;font-weight:800;font-size:1rem;color:var(--accent,#C8706F)}
+.comp-en{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;
+  font-size:clamp(1rem,1.7vw,1.18rem);color:#2D1F16;line-height:1.25}
+.comp-zh{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;
+  font-size:clamp(.92rem,1.3vw,1rem);color:var(--accent,#C8706F)}
+.comp-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.7rem}
+.comp-tags span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.76rem,1vw,.86rem);
+  color:#7A6252;background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.25rem .6rem;line-height:1.3}
+.comp-desc{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;
+  font-size:clamp(.9rem,1.2vw,.98rem);line-height:1.7;color:#5C4A3D}
+@media (max-width:768px){ .comp-item{grid-template-columns:1fr;gap:.9rem} }
+/* §15 Value matrix */
+.matrix-head-row,.matrix-row{display:grid;grid-template-columns:1fr 40px 1fr;gap:clamp(.5rem,1.4vw,1.1rem)}
+.matrix-head-row{margin-bottom:.7rem}
+.matrix-colhead{font-family:'DM Sans',sans-serif;font-weight:800;font-size:clamp(.8rem,1.2vw,.95rem);
+  letter-spacing:.06em;text-transform:uppercase;text-align:center}
+.matrix-colhead.l{color:#8A5A52}
+.matrix-colhead.r{color:var(--accent,#C8706F)}
+.matrix-list{display:flex;flex-direction:column;gap:10px}
+.matrix-row{align-items:stretch}
+.matrix-cell{border:2px solid #2D1F16;border-radius:12px;box-shadow:3px 4px 0 rgba(45,31,22,.85);
+  padding:clamp(.8rem,1.6vw,1.05rem) clamp(.9rem,1.8vw,1.25rem);display:flex;align-items:center;min-width:0;
+  font-family:'DM Sans','Noto Sans TC',sans-serif;font-size:clamp(.9rem,1.2vw,1rem);line-height:1.5}
+.matrix-cell.challenge{font-weight:700;color:#2D1F16;background:#FFF0F4}
+.matrix-cell.contribute{font-weight:600;color:#2D1F16;background:#FFFDF8}
+.matrix-mid{display:flex;align-items:center;justify-content:center;color:var(--accent,#C8706F);font-size:1.15rem;font-weight:800}
+@media (max-width:768px){
+  .matrix-head-row{display:none}
+  .matrix-row{grid-template-columns:1fr;gap:5px}
+  .matrix-mid{transform:rotate(90deg);padding:1px 0}
+  .matrix-row + .matrix-row{margin-top:.5rem;padding-top:.6rem;border-top:1.5px dashed #E3D8C4}
+}
 /* Tri-fold overlay on mobile: a full-screen backdrop-filter blur re-rasterises
    continuously while pinch-zooming and can crash the mobile WebKit compositor
    (the tab reloads to the top — the "閃退到首頁"). Drop the blur on phones and
@@ -255,6 +331,175 @@ a:hover{color:#2A4B9E}
         <div class="impact-tags">
           <span>企業窗口</span><span>品牌</span><span>供應商</span><span>講師</span><span>場地方</span><span>內部團隊</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="scope" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#FFE5EE 0%,#F0FFDD 62%);padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
+  <div class="sec-wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="sec-title">END-TO-END PROJECT SCOPE</h2>
+      <p class="sec-sub">從需求釐清到落地執行的完整專案視角 ✦</p>
+    </div>
+    <div class="scope-flow">
+      <div class="scope-step" data-reveal="">
+        <span class="scope-badge">01</span>
+        <p class="scope-en">REQUIREMENT</p>
+        <p class="scope-zh">需求釐清</p>
+        <p class="scope-desc">理解目標、對象、限制與執行條件</p>
+      </div>
+      <span class="scope-arrow" aria-hidden="true">→</span>
+      <div class="scope-step" data-reveal="">
+        <span class="scope-badge">02</span>
+        <p class="scope-en">PLANNING</p>
+        <p class="scope-zh">企劃與流程拆解</p>
+        <p class="scope-desc">工作項目、時程、責任與執行流程</p>
+      </div>
+      <span class="scope-arrow" aria-hidden="true">→</span>
+      <div class="scope-step" data-reveal="">
+        <span class="scope-badge">03</span>
+        <p class="scope-en">COORDINATION</p>
+        <p class="scope-zh">跨方協調</p>
+        <p class="scope-desc">企業窗口、合作方、供應商與內部團隊</p>
+      </div>
+      <span class="scope-arrow" aria-hidden="true">→</span>
+      <div class="scope-step" data-reveal="">
+        <span class="scope-badge">04</span>
+        <p class="scope-en">EXECUTION</p>
+        <p class="scope-zh">活動與現場執行</p>
+        <p class="scope-desc">流程確認、資源調度、現場應變</p>
+      </div>
+      <span class="scope-arrow" aria-hidden="true">→</span>
+      <div class="scope-step" data-reveal="">
+        <span class="scope-badge">05</span>
+        <p class="scope-en">FOLLOW-UP</p>
+        <p class="scope-zh">專案後續</p>
+        <p class="scope-desc">資料整理、合作追蹤與後續溝通</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="value" style="scroll-margin-top:84px;background:#F0FFDD;padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
+  <div class="sec-wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="sec-title">WHAT I BRING TO A PROJECT</h2>
+      <p class="sec-sub">我能為專案帶來什麼 ✦</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card" data-reveal="">
+        <span class="value-num">01</span>
+        <h3 class="value-title">Structured Planning</h3>
+        <p class="value-headline">把模糊需求變成可執行工作。</p>
+        <p class="value-body">能從目標、時程、角色與限制條件拆解需求，協助團隊建立清楚的下一步。</p>
+        <p class="value-biz"><b>企業價值</b>　降低資訊模糊造成的執行落差。</p>
+      </div>
+      <div class="value-card" data-reveal="">
+        <span class="value-num">02</span>
+        <h3 class="value-title">Stakeholder Coordination</h3>
+        <p class="value-headline">讓不同角色在同一套資訊上合作。</p>
+        <p class="value-body">具企業窗口、品牌、供應商、講師、場地方與內部團隊溝通經驗。</p>
+        <p class="value-biz"><b>企業價值</b>　降低多方協作中的資訊斷層與溝通成本。</p>
+      </div>
+      <div class="value-card" data-reveal="">
+        <span class="value-num">03</span>
+        <h3 class="value-title">Execution &amp; Adaptability</h3>
+        <p class="value-headline">計畫能做，也能處理現場變化。</p>
+        <p class="value-body">具活動現場與第一線營運經驗，能依照流程、時間與現場狀況調整執行優先順序。</p>
+        <p class="value-biz"><b>企業價值</b>　在變動環境中維持專案正常推進。</p>
+      </div>
+      <div class="value-card" data-reveal="">
+        <span class="value-num">04</span>
+        <h3 class="value-title">Business Communication</h3>
+        <p class="value-headline">理解企業需求，也理解執行端限制。</p>
+        <p class="value-body">具企業開發與客戶窗口接觸經驗，能將外部需求整理成內部與合作方可理解、可執行的資訊。</p>
+        <p class="value-biz"><b>企業價值</b>　縮短「客戶想要什麼」與「團隊實際怎麼做」之間的距離。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="competencies" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#F0FFDD 0%,#FFE5EE 62%);padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
+  <div class="sec-wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="sec-title">CORE COMPETENCIES</h2>
+      <p class="sec-sub">核心能力 ✦</p>
+    </div>
+    <div class="comp-list">
+      <div class="comp-item" data-reveal="">
+        <div class="comp-head-l">
+          <span class="comp-num">01</span>
+          <p class="comp-en">PROJECT PLANNING &amp; COORDINATION</p>
+          <p class="comp-zh">專案企劃與跨方協作</p>
+        </div>
+        <div>
+          <div class="comp-tags"><span>需求釐清</span><span>專案拆解</span><span>時程管理</span><span>責任分工</span><span>進度追蹤</span><span>資訊整合</span></div>
+          <p class="comp-desc">將需求、角色與時程整理成清楚的執行架構，並持續推進專案進度。</p>
+        </div>
+      </div>
+      <div class="comp-item" data-reveal="">
+        <div class="comp-head-l">
+          <span class="comp-num">02</span>
+          <p class="comp-en">EVENT EXECUTION &amp; OPERATIONS</p>
+          <p class="comp-zh">活動執行與現場管理</p>
+        </div>
+        <div>
+          <div class="comp-tags"><span>活動流程</span><span>供應商協調</span><span>現場執行</span><span>人員協作</span><span>資源調度</span><span>突發處理</span></div>
+          <p class="comp-desc">不只參與前期規劃，也具備第一線執行與現場調整能力。</p>
+        </div>
+      </div>
+      <div class="comp-item" data-reveal="">
+        <div class="comp-head-l">
+          <span class="comp-num">03</span>
+          <p class="comp-en">CLIENT &amp; PARTNER COMMUNICATION</p>
+          <p class="comp-zh">客戶與合作方溝通</p>
+        </div>
+        <div>
+          <div class="comp-tags"><span>企業開發</span><span>企業窗口溝通</span><span>需求確認</span><span>合作追蹤</span><span>CRM</span><span>提案協作</span></div>
+          <p class="comp-desc">能在企業需求、合作條件與實際執行之間建立有效溝通。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="matrix" style="scroll-margin-top:84px;background:#FFE5EE;padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
+  <div class="sec-wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="sec-title">VALUE MATRIX</h2>
+      <p class="sec-sub">進團隊能解決的專案問題 ✦</p>
+    </div>
+    <div class="matrix-head-row" data-reveal="">
+      <div class="matrix-colhead l">Project Challenge</div>
+      <div></div>
+      <div class="matrix-colhead r">What I Contribute</div>
+    </div>
+    <div class="matrix-list">
+      <div class="matrix-row" data-reveal="">
+        <div class="matrix-cell challenge">需求模糊</div>
+        <div class="matrix-mid" aria-hidden="true">→</div>
+        <div class="matrix-cell contribute">需求拆解與資訊整理</div>
+      </div>
+      <div class="matrix-row" data-reveal="">
+        <div class="matrix-cell challenge">多方窗口</div>
+        <div class="matrix-mid" aria-hidden="true">→</div>
+        <div class="matrix-cell contribute">跨方協調與資訊同步</div>
+      </div>
+      <div class="matrix-row" data-reveal="">
+        <div class="matrix-cell challenge">時程交錯</div>
+        <div class="matrix-mid" aria-hidden="true">→</div>
+        <div class="matrix-cell contribute">進度確認與優先順序管理</div>
+      </div>
+      <div class="matrix-row" data-reveal="">
+        <div class="matrix-cell challenge">現場變動</div>
+        <div class="matrix-mid" aria-hidden="true">→</div>
+        <div class="matrix-cell contribute">即時判斷與執行調整</div>
+      </div>
+      <div class="matrix-row" data-reveal="">
+        <div class="matrix-cell challenge">客戶需求與執行端存在落差</div>
+        <div class="matrix-mid" aria-hidden="true">→</div>
+        <div class="matrix-cell contribute">企業需求與執行資訊轉譯</div>
       </div>
     </div>
   </div>
