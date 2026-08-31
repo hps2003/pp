@@ -76,68 +76,45 @@ a:hover{color:#2A4B9E}
   #tarotTrack{display:flex;grid-template-columns:none;width:auto;max-width:100%;margin-inline:0;justify-content:flex-start;overflow-x:auto;overflow-y:visible;scroll-snap-type:x proximity;padding:6px clamp(16px,8vw,40px) 14px;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom}
   #tarotTrack>*{flex:0 0 auto;scroll-snap-align:center;min-width:0}
 }
-/* #3 About Me on mobile: the résumé is one indivisible PPT block that only
-   scales as a whole (unreadable on a phone). On <=768px hide it and show the
-   readable normal-flow version (.about-mobile) instead — same verbatim text,
-   PPT font-family/weight/colour/line-height carried over. Desktop shows only
-   the résumé; .about-mobile is display:none above 768px. */
-.about-mobile{display:none}
+/* About Me — native, professional copy shown identically on desktop and mobile
+   (the old PPT résumé export was removed in the enterprise content rebuild). */
+.about-native{max-width:760px;margin-inline:auto}
+.about-lead{margin:0;text-align:center;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;
+  font-size:calc(clamp(1.3rem,3vw,1.75rem) * var(--font-scale));line-height:1.45;color:#2D1F16}
+.about-lead-sub{margin:.7rem auto 0;text-align:center;max-width:640px;font-family:'DM Sans','Noto Sans TC',sans-serif;
+  font-weight:600;font-size:calc(clamp(1rem,2.1vw,1.18rem) * var(--font-scale));line-height:1.5;color:var(--accent,#C8706F)}
+.about-body{margin-top:clamp(1.8rem,4vw,2.6rem);display:flex;flex-direction:column;gap:clamp(1rem,2.2vw,1.25rem)}
+.about-body p{margin:0;text-align:left;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;
+  font-size:calc(clamp(1rem,1.6vw,1.09rem) * var(--font-scale));line-height:1.9;color:#3A2C22;overflow-wrap:anywhere}
 @media (max-width:768px){
-  .about-desktop-resume{display:none !important}
-  .about-mobile{display:block}
   #about{overflow:visible}
-  #aboutPanel{padding-left:0;padding-right:0}
-  .about-mobile-content{display:flex;flex-direction:column;width:100%;min-width:0;text-align:left;
-    padding-inline:clamp(22px,7vw,36px);padding-bottom:clamp(24px,6vw,44px);
-    gap:clamp(34px,9vw,60px)}
-  .am-section{display:flex;flex-direction:column;min-width:0;
-    gap:clamp(18px,4.5vw,24px);
-    border-top:2px solid rgba(143,191,135,.55);padding-top:clamp(22px,5.5vw,30px)}
-  .am-intro{display:flex;flex-direction:column;min-width:0}
-  /* intro */
-  .am-name{margin:0;font-family:'Arial Rounded MT Bold','Noto Sans TC',sans-serif;font-weight:700;
-    color:rgb(207,115,131);font-size:clamp(1.35rem,6.4vw,1.7rem);line-height:1.2}
-  .am-name .am-slash{font-weight:400}
-  .am-name .am-name-en{font-size:.62em}
-  .am-tagline{margin:.55rem 0 0;font-family:'Arial Rounded MT Bold','Noto Sans TC',sans-serif;font-weight:700;
-    color:rgb(112,62,71);font-size:clamp(1rem,4.6vw,1.15rem);line-height:1.3}
-  .am-body{margin:.75rem 0 0;font-family:'Arial Rounded MT Bold','Noto Sans TC',sans-serif;font-weight:400;
-    color:#090909;font-size:clamp(.94rem,4vw,1.02rem);line-height:1.8;overflow-wrap:anywhere}
-  .am-body strong{font-weight:700}
-  /* experience */
-  .am-exp-heading{margin:0;font-family:'Arial Black','Noto Sans TC',sans-serif;font-weight:700;
-    color:rgb(207,115,131);font-size:clamp(1.06rem,4.8vw,1.2rem);letter-spacing:.02em;line-height:1.2}
-  .am-exp-item{display:flex;flex-direction:column;min-width:0;gap:.28rem}
-  .am-exp-label{margin:0;font-family:Arial,'Noto Sans TC',sans-serif;font-weight:700;
-    color:rgb(233,113,50);font-size:clamp(.92rem,4vw,1.02rem);line-height:1.4}
-  .am-exp-line{margin:0;font-family:Arial,'Noto Sans TC',sans-serif;font-weight:700;
-    color:#090909;font-size:clamp(.9rem,3.9vw,1rem);line-height:1.55}
-  .am-exp-keywords{margin:.15rem 0 0;font-family:Arial,'Noto Sans TC',sans-serif;font-weight:700;
-    color:rgb(112,62,71);font-size:clamp(.88rem,3.8vw,.98rem);line-height:1.6}
-  /* skills */
-  .about-mobile-skills{gap:clamp(30px,7.5vw,50px)}
-  .about-mobile-skill-item{display:flex;flex-direction:column;min-width:0;gap:.42rem}
-  .am-skill-cat{margin:0;font-family:'Arial Black','Noto Sans TC',sans-serif;font-weight:700;
-    color:rgb(233,113,50);font-size:clamp(1.08rem,4.9vw,1.24rem);line-height:1.25}
-  .am-skill-title{margin:0;font-family:'Arial Rounded MT Bold','Noto Sans TC',sans-serif;font-weight:700;
-    color:#090909;font-size:clamp(1rem,4.3vw,1.1rem);line-height:1.45}
-  .am-skill-keywords{margin:0;font-family:'Arial Rounded MT Bold','Noto Sans TC',sans-serif;font-weight:700;
-    color:rgb(112,62,71);font-size:clamp(.92rem,4vw,1.02rem);line-height:1.65}
-  .am-skill-desc{margin:.2rem 0 0;font-family:'Arial Rounded MT Bold','Noto Sans TC',sans-serif;font-weight:400;
-    color:#090909;font-size:clamp(.92rem,4vw,1.02rem);line-height:1.8;overflow-wrap:anywhere}
-  /* keyword lines: wrap only after the ｜ separators, never mid-word */
-  .about-keywords{max-width:100%;white-space:normal;word-break:keep-all;overflow-wrap:normal}
-  /* tool / knowledge tags */
-  .am-tags{gap:.65rem}
-  .am-tag{margin:0;padding:.6rem .85rem;border-radius:12px;background:rgb(249,240,225);
-    font-family:Arial,'Noto Sans TC',sans-serif;font-weight:700;font-size:clamp(.84rem,3.7vw,.94rem);
-    line-height:1.55;text-align:center;overflow-wrap:anywhere}
-  .am-tag-green{border:1.5px solid rgb(2,160,85);color:rgb(2,160,85)}
-  .am-tag-orange{border:1.5px solid rgb(247,103,7);color:rgb(247,103,7)}
-  .am-tag-pink{border:1.5px solid rgb(253,163,224);color:rgb(253,163,224)}
-  .am-soft{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem .9rem;margin-top:.2rem}
-  .am-soft span{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;font-weight:700;
-    color:rgb(112,62,71);font-size:clamp(.86rem,3.8vw,.96rem);letter-spacing:.06em;line-height:1.4}
+  .about-native{max-width:100%}
+}
+/* Business Impact — enterprise-readable data cards (desktop 4-col, mobile 2×2). */
+.impact-wrap{max-width:1120px;margin:0 auto}
+.impact-head{text-align:center;margin-bottom:clamp(1.8rem,4vw,2.6rem)}
+.impact-title{margin:0;font-family:'Climate Crisis',cursive;font-weight:400;
+  font-size:calc(clamp(1.5rem,3.6vw,2.4rem) * var(--font-scale));color:#2D1F16;letter-spacing:.02em}
+.impact-sub{margin:.5rem 0 0;font-family:'Caveat',cursive;font-size:1.15rem;color:#8A7060}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,24px)}
+.impact-card{background:#FFFDF8;border:2px solid #2D1F16;border-radius:16px;box-shadow:4px 6px 0 rgba(45,31,22,.85);
+  padding:clamp(1.1rem,2.2vw,1.6rem) clamp(.9rem,1.8vw,1.3rem);display:flex;flex-direction:column;min-width:0}
+.impact-num{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:800;
+  font-size:calc(clamp(2.4rem,5.5vw,3.4rem) * var(--font-scale));line-height:1;color:var(--accent,#C8706F);letter-spacing:-.02em}
+.impact-unit{font-size:.5em;font-weight:800;margin-left:.04em}
+.impact-label{margin:.7rem 0 0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;
+  font-size:calc(clamp(.82rem,1.3vw,.95rem) * var(--font-scale));line-height:1.35;color:#2D1F16}
+.impact-desc{margin:.4rem 0 0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;
+  font-size:calc(clamp(.8rem,1.15vw,.9rem) * var(--font-scale));line-height:1.6;color:#6B5749}
+.impact-cap{margin:.6rem 0 0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;
+  font-size:clamp(.66rem,1vw,.74rem);letter-spacing:.04em;text-transform:uppercase;color:#B08968}
+.impact-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
+.impact-tags span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.68rem,1vw,.76rem);
+  color:#7A6252;background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.2rem .55rem;line-height:1.3;white-space:nowrap}
+@media (max-width:768px){
+  .impact-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .impact-card{padding:1rem .9rem}
+  .impact-tags span{font-size:.7rem}
 }
 /* Tri-fold overlay on mobile: a full-screen backdrop-filter blur re-rasterises
    continuously while pinch-zooming and can crash the mobile WebKit compositor
@@ -235,77 +212,49 @@ a:hover{color:#2A4B9E}
       <svg viewBox="0 0 200 12" width="170" style="display:block;margin:.6rem auto 0;max-width:60%" aria-hidden="true"><path d="M4 8 Q50 2 100 7 Q150 12 196 6" stroke="var(--accent,#C8706F)" stroke-width="3.5" fill="none" stroke-linecap="round"></path></svg>
     </div>
 
-    <div data-about-item="" class="about-desktop-resume" style="display:flex;flex-direction:column;align-items:center;gap:clamp(1.5rem,3vw,2.5rem);width:100%">
-      <x-import component-from-global-scope="ppt-resume-slide" from="./assets/ppt/resume-slide.js" hint-size="100%,700px"></x-import>
+    <div data-about-item="" class="about-native">
+      <p class="about-lead">能理解需求，也能把事情推進到落地。</p>
+      <p class="about-lead-sub">具備專案企劃、活動執行、企業開發與現場營運經驗。</p>
     </div>
 
-    <!-- Mobile-only readable version of the résumé. The résumé above is one
-         indivisible PPT export that only scales as a whole (illegible on a
-         phone), so on <=768px it is hidden and the same content is shown here
-         in normal document flow. Text is verbatim; font-family / font-weight /
-         colour / line-height are carried over from the PPT. Hidden on desktop. -->
-    <div data-about-item="" class="about-mobile" aria-label="關於我">
-      <div class="about-mobile-content">
+    <div data-about-item="" class="about-native about-body">
+      <p>工作中經常需要在企業窗口、品牌、供應商與內部團隊之間整理資訊、確認需求與推進進度，因此習慣先掌握專案目的，再拆解工作內容、時程與合作角色。</p>
+      <p>我的優勢不只在執行既定任務，而是在資訊分散、角色較多或現場快速變動的情況下，仍能整理優先順序、維持溝通一致，並讓工作持續往下一步推進。</p>
+      <p>藝術與設計背景則讓我在專案執行之外，也具備視覺與內容溝通能力，能理解企劃內容如何被清楚地傳達與呈現。</p>
+    </div>
+  </div>
+</section>
 
-        <div class="am-intro">
-          <p class="am-name"><span>洪芃薰</span> <span class="am-slash">/</span> <span class="am-name-en">HONG PENG SYUN</span></p>
-          <p class="am-tagline">B2B 商務開發 × 專案執行 × AI 協作</p>
-          <p class="am-body">具藝術設計背景，職涯經驗橫跨<strong>營運、活動企劃、B2B 商務開發與異業合作</strong>。擅長釐清需求、整合資訊與協調資源，並將想法轉化為可執行的專案流程。現階段亦持續將 GPT、Claude 等生成式 AI 導入商務開發、企劃與內容工作，提高資料整理與執行效率。</p>
+<section id="impact" style="scroll-margin-top:84px;background:#FFE5EE;padding:calc(clamp(2.5rem,6vw,4.5rem) * var(--space-scale)) 16px;position:relative">
+  <div class="impact-wrap">
+    <div class="impact-head" data-reveal="">
+      <h2 class="impact-title">BUSINESS IMPACT</h2>
+      <p class="impact-sub">專案與活動實績 ✦</p>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card" data-reveal="">
+        <p class="impact-num">60</p>
+        <p class="impact-label">Corporate Event Participants</p>
+        <p class="impact-desc">單場企業論壇參與規模</p>
+        <p class="impact-cap">Corporate Summit / Event Execution</p>
+      </div>
+      <div class="impact-card" data-reveal="">
+        <p class="impact-num">4</p>
+        <p class="impact-label">Large-scale Event Projects</p>
+        <p class="impact-desc">百人規模大型活動企劃與執行經驗</p>
+      </div>
+      <div class="impact-card" data-reveal="">
+        <p class="impact-num">2.5<span class="impact-unit">Y</span></p>
+        <p class="impact-label">Frontline Operations Experience</p>
+        <p class="impact-desc">第一線營運、現場協調與突發問題處理經驗</p>
+      </div>
+      <div class="impact-card" data-reveal="">
+        <p class="impact-num">6<span class="impact-unit">+</span></p>
+        <p class="impact-label">Stakeholder Types Coordinated</p>
+        <p class="impact-desc">跨角色協作經驗</p>
+        <div class="impact-tags">
+          <span>企業窗口</span><span>品牌</span><span>供應商</span><span>講師</span><span>場地方</span><span>內部團隊</span>
         </div>
-
-        <div class="am-section">
-          <h3 class="am-exp-heading">EXPERIENCE</h3>
-          <div class="am-exp-item">
-            <p class="am-exp-label">Education</p>
-            <p class="am-exp-line">國立東華大學｜藝術與設計學系</p>
-          </div>
-          <div class="am-exp-item">
-            <p class="am-exp-label">B2B / E-commerce Experience</p>
-            <p class="am-exp-line">4 個月｜B2B 商務開發・電商企劃</p>
-            <p class="am-exp-keywords about-keywords">企業陌生開發｜CRM｜商品企劃｜活動執行</p>
-          </div>
-          <div class="am-exp-item">
-            <p class="am-exp-label">Operations Experience</p>
-            <p class="am-exp-line">2.5 年｜餐飲現場</p>
-            <p class="am-exp-line">1 年正職管理＋1.5 年兼職經驗</p>
-            <p class="am-exp-keywords about-keywords">人員協調｜現場營運｜突發狀況處理</p>
-          </div>
-          <div class="am-exp-item">
-            <p class="am-exp-label">Event Project Experience</p>
-            <p class="am-exp-line">4 場｜百人規模大型學生企劃</p>
-          </div>
-        </div>
-
-        <div class="about-mobile-skills am-section">
-          <div class="about-mobile-skill-item">
-            <p class="am-skill-cat">01｜Business Development</p>
-            <p class="am-skill-title">B2B 商務開發與客戶管理</p>
-            <p class="am-skill-keywords about-keywords">陌生開發｜潛在客戶研究｜企業窗口溝通｜CRM</p>
-            <p class="am-skill-desc">具企業福委、平台與供應商接觸經驗，能從名單建立、需求溝通到合作追蹤，協助推進商務流程。</p>
-          </div>
-          <div class="about-mobile-skill-item">
-            <p class="am-skill-cat">02｜Project Coordination</p>
-            <p class="am-skill-title">專案企劃與跨方協作</p>
-            <p class="am-skill-keywords about-keywords">企劃執行｜供應商協調｜活動規劃｜現場執行</p>
-            <p class="am-skill-desc">具企業活動與百人規模專案經驗，能協調客戶、品牌、供應商與內部團隊，將需求轉化為具體執行項目。</p>
-          </div>
-          <div class="about-mobile-skill-item">
-            <p class="am-skill-cat">03｜Business Operations</p>
-            <p class="am-skill-title">營運、內容與流程整合</p>
-            <p class="am-skill-keywords about-keywords">商品企劃｜電商營運｜資料管理｜視覺溝通｜AI 應用</p>
-            <p class="am-skill-desc">能整合商品、內容與商業資訊，並運用 AI 與數位工具支援資料整理、提案、視覺與日常營運流程。</p>
-          </div>
-        </div>
-
-        <div class="am-section am-tags">
-          <p class="am-tag am-tag-green"><b>AI &amp; Productivity</b><br>ChatGPT｜Claude｜Midjourney</p>
-          <p class="am-tag am-tag-orange"><b>Business &amp; Operations</b><br>Excel｜Google Sheets｜CRM 資料管理｜Accupass</p>
-          <p class="am-tag am-tag-pink"><b>Digital Knowledge</b><br>HTML / CSS 基礎｜AI-assisted Web Prototype</p>
-          <div class="am-soft">
-            <span>跨方溝通</span><span>執行與應變</span><span>結構化思考</span>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
