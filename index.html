@@ -192,6 +192,30 @@ a:hover{color:#2A4B9E}
   .matrix-mid{transform:rotate(90deg);padding:1px 0}
   .matrix-row + .matrix-row{margin-top:.5rem;padding-top:.6rem;border-top:1.5px dashed #E3D8C4}
 }
+/* §08–10 Experience entries */
+.exp-list{display:flex;flex-direction:column;gap:clamp(14px,2vw,20px)}
+.exp-card{background:#FFFDF8;border:2px solid #2D1F16;border-radius:16px;box-shadow:4px 6px 0 rgba(45,31,22,.85);
+  padding:clamp(1.3rem,2.4vw,1.9rem);display:flex;flex-direction:column;gap:.55rem}
+.exp-top{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .9rem;justify-content:space-between}
+.exp-role{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;font-size:clamp(1rem,1.7vw,1.2rem);letter-spacing:.02em;color:#2D1F16;line-height:1.25}
+.exp-badge{flex:0 0 auto;font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(.72rem,1vw,.82rem);letter-spacing:.03em;
+  color:#FFFDF8;background:var(--accent,#C8706F);border:2px solid #2D1F16;border-radius:999px;padding:.25rem .8rem;white-space:nowrap}
+.exp-badge.alt{color:#2D1F16;background:#F2C832}
+.exp-meta{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;font-size:clamp(.86rem,1.2vw,.96rem);color:var(--accent,#C8706F);line-height:1.5}
+.exp-desc{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;font-size:clamp(.9rem,1.2vw,.99rem);line-height:1.8;color:#5C4A3D}
+.exp-scope{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem;margin-top:.15rem}
+.exp-scope-label{font-family:'DM Sans',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#B08968}
+.exp-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.exp-chips span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.74rem,1vw,.84rem);
+  color:#7A6252;background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.22rem .6rem;line-height:1.3}
+/* §14 Working tools — deliberately low visual weight */
+.tools-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);max-width:1000px;margin:0 auto}
+.tools-label{margin:0 0 .6rem;font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(.78rem,1.1vw,.88rem);
+  letter-spacing:.05em;text-transform:uppercase;color:#8A7060}
+.tools-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools-chips span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.78rem,1vw,.86rem);
+  color:#6B5749;background:rgba(255,253,248,.7);border:1px solid #E3D8C4;border-radius:8px;padding:.28rem .6rem;line-height:1.3}
+@media (max-width:768px){ .tools-groups{grid-template-columns:1fr;gap:16px} }
 /* Tri-fold overlay on mobile: a full-screen backdrop-filter blur re-rasterises
    continuously while pinch-zooming and can crash the mobile WebKit compositor
    (the tab reloads to the top — the "閃退到首頁"). Drop the blur on phones and
@@ -500,6 +524,74 @@ a:hover{color:#2A4B9E}
         <div class="matrix-cell challenge">客戶需求與執行端存在落差</div>
         <div class="matrix-mid" aria-hidden="true">→</div>
         <div class="matrix-cell contribute">企業需求與執行資訊轉譯</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#FFE5EE 0%,#F0FFDD 55%);padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
+  <div class="sec-wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="sec-title">EXPERIENCE</h2>
+      <p class="sec-sub">經歷 ✦</p>
+    </div>
+    <div class="exp-list">
+      <article class="exp-card" data-reveal="">
+        <div class="exp-top">
+          <p class="exp-role">CORPORATE PROJECT &amp; EVENT OPERATIONS</p>
+          <span class="exp-badge">Current Role</span>
+        </div>
+        <p class="exp-meta">企業開發｜客戶溝通｜專案協作｜活動執行</p>
+        <p class="exp-desc">參與企業開發、品牌與供應商合作、企業活動及專案執行。工作涵蓋企業窗口溝通、需求整理、合作追蹤、活動籌備與現場執行，需持續在外部合作方與內部團隊之間確認資訊與推進工作。</p>
+        <div class="exp-scope">
+          <span class="exp-scope-label">Scope</span>
+          <div class="exp-chips"><span>Corporate Development</span><span>Client Communication</span><span>Project Coordination</span><span>Vendor Coordination</span><span>Event Execution</span><span>CRM &amp; Follow-up</span></div>
+        </div>
+      </article>
+      <article class="exp-card" data-reveal="">
+        <div class="exp-top">
+          <p class="exp-role">HOSPITALITY OPERATIONS</p>
+          <span class="exp-badge alt">2.5 Years</span>
+        </div>
+        <p class="exp-desc">第一線營運與管理經驗，長期處理人員協作、現場流程、顧客需求與突發狀況。這段經驗建立了我在高節奏工作環境中的判斷力、溝通能力、責任意識與現場應變能力。</p>
+        <div class="exp-scope">
+          <span class="exp-scope-label">Scope</span>
+          <div class="exp-chips"><span>Frontline Operations</span><span>Team Coordination</span><span>On-site Problem Solving</span></div>
+        </div>
+      </article>
+      <article class="exp-card" data-reveal="">
+        <div class="exp-top">
+          <p class="exp-role">LARGE-SCALE EVENT PLANNING</p>
+          <span class="exp-badge alt">4 Projects · 100+ Scale</span>
+        </div>
+        <p class="exp-desc">參與多場百人規模大型活動，涵蓋企劃、預算、招商、場地、設備、宣傳、人員分工與現場執行。其中具跨團隊活動統籌經驗，需整合不同工作組與外部合作資源，確保活動依照時程推進。</p>
+        <div class="exp-scope">
+          <span class="exp-scope-label">Scope</span>
+          <div class="exp-chips"><span>Event Planning</span><span>Resource Coordination</span><span>On-site Execution</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="tools" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#F0FFDD 0%,#FFE5EE 60%);padding:calc(clamp(2.4rem,5.5vw,4.2rem) * var(--space-scale)) 16px;position:relative">
+  <div class="sec-wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="sec-title">WORKING TOOLS</h2>
+      <p class="sec-sub">使用工具 ✦</p>
+    </div>
+    <div class="tools-groups" data-reveal="">
+      <div class="tools-group">
+        <p class="tools-label">Project &amp; Communication</p>
+        <div class="tools-chips"><span>Google Sheets</span><span>Excel</span><span>CRM</span><span>Accupass</span><span>Google Workspace</span></div>
+      </div>
+      <div class="tools-group">
+        <p class="tools-label">Planning &amp; Presentation</p>
+        <div class="tools-chips"><span>PowerPoint</span><span>Figma</span><span>Canva</span></div>
+      </div>
+      <div class="tools-group">
+        <p class="tools-label">Digital Productivity</p>
+        <div class="tools-chips"><span>ChatGPT</span><span>Claude</span><span>Midjourney</span></div>
       </div>
     </div>
   </div>
