@@ -83,12 +83,14 @@ a:hover{color:#2A4B9E}
   font-size:calc(clamp(1.3rem,3vw,1.75rem) * var(--font-scale));line-height:1.45;color:#2D1F16}
 .about-lead-sub{margin:.7rem auto 0;text-align:center;max-width:640px;font-family:'DM Sans','Noto Sans TC',sans-serif;
   font-weight:600;font-size:calc(clamp(1rem,2.1vw,1.18rem) * var(--font-scale));line-height:1.5;color:var(--accent,#C8706F)}
-.about-body{margin-top:clamp(1.8rem,4vw,2.6rem);display:flex;flex-direction:column;gap:clamp(1rem,2.2vw,1.25rem)}
-.about-body p{margin:0;text-align:left;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;
-  font-size:calc(clamp(1rem,1.6vw,1.09rem) * var(--font-scale));line-height:1.9;color:#3A2C22;overflow-wrap:anywhere}
+.about-body{margin-top:clamp(1.6rem,3.5vw,2.2rem);display:flex;flex-direction:column;gap:clamp(1rem,2.2vw,1.25rem)}
+.about-body p{margin:0;text-align:center;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;
+  font-size:calc(clamp(1rem,1.6vw,1.09rem) * var(--font-scale));line-height:1.85;color:#3A2C22;overflow-wrap:anywhere}
+.about-note{margin-top:.3rem!important;font-size:calc(clamp(.86rem,1.3vw,.94rem) * var(--font-scale))!important;color:#8A7060!important}
 @media (max-width:768px){
   #about{overflow:visible}
   .about-native{max-width:100%}
+  .about-body p{text-align:left}
 }
 /* Business Impact — enterprise-readable data cards (desktop 4-col, mobile 2×2). */
 .impact-wrap{max-width:1120px;margin:0 auto}
@@ -96,7 +98,7 @@ a:hover{color:#2A4B9E}
 .impact-title{margin:0;font-family:'Climate Crisis',cursive;font-weight:400;
   font-size:calc(clamp(1.5rem,3.6vw,2.4rem) * var(--font-scale));color:#2D1F16;letter-spacing:.02em}
 .impact-sub{margin:.5rem 0 0;font-family:'Caveat',cursive;font-size:1.15rem;color:#8A7060}
-.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,24px)}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px);max-width:900px;margin:0 auto}
 .impact-card{background:#FFFDF8;border:2px solid #2D1F16;border-radius:16px;box-shadow:4px 6px 0 rgba(45,31,22,.85);
   padding:clamp(1.1rem,2.2vw,1.6rem) clamp(.9rem,1.8vw,1.3rem);display:flex;flex-direction:column;min-width:0}
 .impact-num{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:800;
@@ -114,12 +116,12 @@ a:hover{color:#2A4B9E}
 .impact-tags span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.68rem,1vw,.76rem);
   color:#7A6252;background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.2rem .55rem;line-height:1.3;white-space:nowrap}
 @media (max-width:768px){
-  .impact-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .impact-card{padding:1rem .9rem}
+  .impact-grid{grid-template-columns:1fr;gap:12px;max-width:340px}
+  .impact-card{padding:1rem 1.1rem}
   .impact-tags span{font-size:.7rem}
 }
 /* Enterprise content sections (phase 2) — shared heading + card patterns. */
-.sec-wrap{max-width:1120px;margin:0 auto}
+.sec-wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(0px,2vw,24px)}
 .sec-head{text-align:center;margin-bottom:clamp(1.8rem,4vw,2.8rem)}
 .sec-title{margin:0;font-family:'Climate Crisis',cursive;font-weight:400;
   font-size:calc(clamp(1.35rem,3.3vw,2.2rem) * var(--font-scale));color:#2D1F16;letter-spacing:.02em;line-height:1.18}
@@ -157,22 +159,21 @@ a:hover{color:#2A4B9E}
   font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.84rem,1.1vw,.92rem);line-height:1.55;color:var(--accent,#C8706F)}
 .value-biz b{color:#8A5A52;font-weight:800}
 @media (max-width:768px){ .value-grid{grid-template-columns:1fr} }
-/* §07 Core competencies */
-.comp-list{display:flex;flex-direction:column;gap:clamp(14px,2vw,20px)}
+/* Core Skills — three side-by-side cards, centred */
+.comp-list{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px);max-width:1080px;margin:0 auto}
 .comp-item{background:#FFFDF8;border:2px solid #2D1F16;border-radius:16px;box-shadow:4px 6px 0 rgba(45,31,22,.85);
-  padding:clamp(1.2rem,2.4vw,1.8rem);display:grid;grid-template-columns:minmax(190px,270px) 1fr;gap:clamp(1rem,2.5vw,2rem);align-items:start}
-.comp-head-l{display:flex;flex-direction:column;gap:.3rem}
+  padding:clamp(1.3rem,2.2vw,1.8rem);display:flex;flex-direction:column;gap:.5rem;min-width:0}
 .comp-num{font-family:'DM Sans',sans-serif;font-weight:800;font-size:1rem;color:var(--accent,#C8706F)}
 .comp-en{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;
-  font-size:clamp(1rem,1.7vw,1.18rem);color:#2D1F16;line-height:1.25}
+  font-size:clamp(1rem,1.5vw,1.14rem);color:#2D1F16;line-height:1.25}
 .comp-zh{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;
-  font-size:clamp(.92rem,1.3vw,1rem);color:var(--accent,#C8706F)}
-.comp-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.7rem}
-.comp-tags span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.76rem,1vw,.86rem);
-  color:#7A6252;background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.25rem .6rem;line-height:1.3}
+  font-size:clamp(.9rem,1.2vw,.98rem);color:var(--accent,#C8706F)}
+.comp-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.35rem 0 .1rem}
+.comp-tags span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:clamp(.74rem,1vw,.82rem);
+  color:#7A6252;background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.22rem .55rem;line-height:1.3}
 .comp-desc{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;
-  font-size:clamp(.9rem,1.2vw,.98rem);line-height:1.7;color:#5C4A3D}
-@media (max-width:768px){ .comp-item{grid-template-columns:1fr;gap:.9rem} }
+  font-size:clamp(.88rem,1.15vw,.95rem);line-height:1.7;color:#5C4A3D}
+@media (max-width:768px){ .comp-list{grid-template-columns:1fr;max-width:420px} }
 /* §15 Value matrix */
 .matrix-head-row,.matrix-row{display:grid;grid-template-columns:1fr 40px 1fr;gap:clamp(.5rem,1.4vw,1.1rem)}
 .matrix-head-row{margin-bottom:.7rem}
@@ -221,21 +222,19 @@ a:hover{color:#2A4B9E}
 /* §11 Selected-project business info (sits under the tarot cards) */
 .proj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,22px);max-width:1120px;margin:.4rem auto 2.2rem;padding:0 clamp(1.2rem,4vw,3rem)}
 .proj-card{background:#FFFDF8;border:2px solid #2D1F16;border-radius:14px;box-shadow:4px 6px 0 rgba(45,31,22,.85);
-  padding:clamp(1rem,1.8vw,1.35rem);display:flex;flex-direction:column;gap:.38rem;text-align:left;min-width:0}
+  padding:clamp(1.1rem,1.8vw,1.4rem);display:flex;flex-direction:column;gap:.42rem;text-align:center;align-items:center;min-width:0}
 .proj-no{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;color:#B08968}
-.proj-title-en{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;font-size:clamp(.92rem,1.25vw,1.05rem);color:#2D1F16;line-height:1.2}
-.proj-title-zh{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;font-size:clamp(.84rem,1.05vw,.94rem);color:var(--accent,#C8706F)}
-.proj-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.1rem 0}
+.proj-title-en{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:800;font-size:clamp(1rem,1.4vw,1.15rem);color:#2D1F16;line-height:1.25}
+.proj-title-zh{margin:0;font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(.82rem,1.05vw,.92rem);color:var(--accent,#C8706F)}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.35rem 0 .1rem;justify-content:center}
 .proj-tags span{font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:600;font-size:.68rem;color:#7A6252;
   background:#F5EFE0;border:1px solid #E3D8C4;border-radius:999px;padding:.16rem .5rem;line-height:1.3}
-.proj-value{margin:0;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:400;font-size:clamp(.8rem,1.05vw,.87rem);line-height:1.6;color:#5C4A3D}
-.proj-link{margin-top:auto;padding-top:.55rem;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.8rem;
-  color:var(--accent,#C8706F);text-decoration:none;display:inline-flex;align-items:center;gap:.25rem;align-self:flex-start}
+.proj-link{margin-top:.5rem;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.8rem;
+  color:var(--accent,#C8706F);text-decoration:none;display:inline-flex;align-items:center;gap:.25rem}
 .proj-link:hover{color:#2A4B9E}
-.proj-link.muted{color:#B0A090;font-weight:600}
 @media (max-width:768px){ .proj-grid{grid-template-columns:1fr;gap:12px;margin:.2rem auto 1.8rem} }
 /* §12–13 Case study (Project 01) */
-.case-panel{max-width:960px;margin:0 auto;background:#FFFDF8;border:2.5px solid #2D1F16;border-radius:20px;box-shadow:6px 8px 0 rgba(45,31,22,.85);padding:clamp(1.6rem,3.5vw,2.8rem)}
+.case-panel{max-width:880px;margin:0 auto;background:#FFFDF8;border:2.5px solid #2D1F16;border-radius:20px;box-shadow:6px 8px 0 rgba(45,31,22,.85);padding:clamp(1.6rem,3.5vw,2.8rem)}
 .case-eyebrow{margin:0;font-family:'DM Sans',sans-serif;font-weight:800;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:#B08968}
 .case-name{margin:.3rem 0 0;font-family:'Climate Crisis',cursive;font-weight:400;font-size:calc(clamp(1.3rem,3vw,2rem) * var(--font-scale));color:#2D1F16;line-height:1.15}
 .case-name small{display:block;font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:700;font-size:.5em;color:var(--accent,#C8706F);letter-spacing:.02em;margin-top:.4rem}
@@ -317,9 +316,9 @@ a:hover{color:#2A4B9E}
 
   <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:44px;height:min(42%,340px);z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(18,65,77,0) 0%,rgba(18,65,77,.42) 48%,rgba(18,65,77,.72) 100%)"></div>
   <div id="heroContent" style="position:relative;z-index:2;padding:0 clamp(1.2rem,5vw,3rem) clamp(1.3rem,3.2vh,2.4rem);text-align:center">
-    <p class="hero-tag-en">Project Planning · Stakeholder Coordination · Execution Management</p>
-    <p class="hero-tag-zh">專案企劃｜跨方協作｜執行管理</p>
-    <p class="hero-sub">從需求整理、資訊整合與合作方溝通，到進度追蹤與實際執行，協助不同角色在一致資訊下推進專案。</p>
+    <p class="hero-tag-en">Project Planning · Stakeholder Coordination · Project Execution</p>
+    <p class="hero-tag-zh">專案企劃｜跨方協作｜專案執行</p>
+    <p class="hero-sub">將需求與資訊整理成可執行項目，協調合作角色並追蹤進度，協助專案從規劃持續推進到實際執行。</p>
     <div class="hero-cta">
       <a href="#works" class="hero-btn primary">VIEW PROJECTS</a>
       <a href="#about" class="hero-btn ghost">ABOUT ME</a>
@@ -384,14 +383,13 @@ a:hover{color:#2A4B9E}
     </div>
 
     <div data-about-item="" class="about-native">
-      <p class="about-lead">擅長整理需求、協調資訊，讓專案持續往下一步推進。</p>
+      <p class="about-lead">從需求整理到執行追蹤，讓專案有清楚的下一步。</p>
     </div>
 
     <div data-about-item="" class="about-native about-body">
-      <p>工作經驗涵蓋企業合作、專案協作與現場營運，實務中經常需要在企業窗口、品牌、供應商與內部團隊之間確認需求、整理資訊與追蹤後續事項。</p>
-      <p>面對資訊分散或合作角色較多的工作，我習慣先釐清目標與待確認事項，再整理執行內容、合作窗口與下一步，協助各方在一致資訊下持續推進。</p>
-      <p>第一線營運與專案執行經驗，也讓我熟悉快速變動的工作環境，能依照實際狀況調整工作優先順序與處理方式。</p>
-      <p>藝術與設計背景則讓我在企劃、提案與資訊呈現上具備視覺溝通能力。</p>
+      <p>工作經驗涵蓋企業合作、專案協作與現場營運，實務中經常需要在企業窗口、品牌、供應商與內部團隊之間整理需求、確認資訊與追蹤後續事項。</p>
+      <p>面對資訊分散或合作角色較多的專案，我習慣先釐清目標、工作項目與待確認事項，再整理合作窗口與進度，協助各方在一致資訊下持續推進。</p>
+      <p class="about-note">藝術與設計背景，也讓我具備企劃簡報與資訊視覺化的溝通能力。</p>
     </div>
   </div>
 </section>
@@ -405,197 +403,102 @@ a:hover{color:#2A4B9E}
     <div class="impact-grid">
       <div class="impact-card" data-reveal="">
         <p class="impact-num">60</p>
-        <p class="impact-label">Corporate Event Participants</p>
+        <p class="impact-label">Corporate Project Scale</p>
         <p class="impact-desc">企業論壇單場參與規模</p>
       </div>
       <div class="impact-card" data-reveal="">
         <p class="impact-num">4</p>
-        <p class="impact-label">Large-scale Event Projects</p>
-        <p class="impact-desc">大型活動企劃與執行經驗</p>
+        <p class="impact-label">Large-scale Projects</p>
+        <p class="impact-desc">大型專案企劃與執行經驗</p>
       </div>
       <div class="impact-card" data-reveal="">
         <p class="impact-num">2.5<span class="impact-unit">Y</span></p>
-        <p class="impact-label">On-site Operations Experience</p>
+        <p class="impact-label">On-site Operations</p>
         <p class="impact-desc">第一線營運與現場協作經驗</p>
         <p class="impact-kw">人員協作｜顧客溝通｜問題處理｜現場應變</p>
-      </div>
-      <div class="impact-card" data-reveal="">
-        <p class="impact-kicker">MULTI-STAKEHOLDER</p>
-        <p class="impact-label">Stakeholder Coordination</p>
-        <div class="impact-tags">
-          <span>企業窗口</span><span>品牌</span><span>供應商</span><span>平台</span><span>講師</span><span>內部團隊</span>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="scope" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#FFE5EE 0%,#F0FFDD 62%);padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
+<section id="competencies" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#FFE5EE 0%,#F0FFDD 62%);padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
   <div class="sec-wrap">
     <div class="sec-head" data-reveal="">
-      <h2 class="sec-title">PROJECT EXECUTION SCOPE</h2>
-      <p class="sec-sub">專案參與與執行範圍 ✦</p>
+      <h2 class="sec-title">CORE SKILLS</h2>
+      <p class="sec-sub">核心技能 ✦</p>
+    </div>
+    <div class="comp-list">
+      <div class="comp-item" data-reveal="">
+        <span class="comp-num">01</span>
+        <p class="comp-en">PROJECT PLANNING &amp; COORDINATION</p>
+        <p class="comp-zh">專案企劃與協作</p>
+        <div class="comp-tags"><span>需求釐清</span><span>工作拆解</span><span>範圍確認</span><span>執行規劃</span></div>
+        <p class="comp-desc">能依據需求整理專案目標、工作項目與待確認事項，將分散資訊轉換為較清楚的執行架構。</p>
+      </div>
+      <div class="comp-item" data-reveal="">
+        <span class="comp-num">02</span>
+        <p class="comp-en">STAKEHOLDER COORDINATION</p>
+        <p class="comp-zh">跨方溝通與資訊整合</p>
+        <div class="comp-tags"><span>企業窗口</span><span>品牌</span><span>供應商</span><span>平台</span><span>講師</span><span>內部團隊</span></div>
+        <p class="comp-desc">具不同合作角色溝通經驗，能整理各方需求、確認資訊與後續事項，協助維持合作過程中的資訊一致。</p>
+      </div>
+      <div class="comp-item" data-reveal="">
+        <span class="comp-num">03</span>
+        <p class="comp-en">PROGRESS TRACKING &amp; EXECUTION</p>
+        <p class="comp-zh">進度追蹤與執行</p>
+        <div class="comp-tags"><span>時程追蹤</span><span>任務確認</span><span>資訊更新</span><span>問題處理</span></div>
+        <p class="comp-desc">能依照專案進度追蹤工作狀態、確認待辦與交付事項，並配合實際執行情況調整工作優先順序。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="scope" style="scroll-margin-top:84px;background:#F0FFDD;padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
+  <div class="sec-wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="sec-title">PROJECT WORKFLOW</h2>
+      <p class="sec-sub">我參與專案時的工作方式 ✦</p>
     </div>
     <div class="scope-flow">
       <div class="scope-step" data-reveal="">
         <span class="scope-badge">01</span>
-        <p class="scope-en">REQUIREMENT ALIGNMENT</p>
-        <p class="scope-zh">需求確認</p>
-        <p class="scope-desc">整理目標、對象、合作條件與待確認事項</p>
+        <p class="scope-en">REQUIREMENTS</p>
+        <p class="scope-zh">需求釐清</p>
+        <p class="scope-desc">確認目標、對象與執行條件</p>
       </div>
       <span class="scope-arrow" aria-hidden="true">→</span>
       <div class="scope-step" data-reveal="">
         <span class="scope-badge">02</span>
-        <p class="scope-en">PLANNING SUPPORT</p>
-        <p class="scope-zh">企劃與執行拆解</p>
-        <p class="scope-desc">整理工作項目、執行順序、時程與相關資訊</p>
+        <p class="scope-en">PLANNING</p>
+        <p class="scope-zh">工作拆解</p>
+        <p class="scope-desc">整理工作項目、時程與待確認事項</p>
       </div>
       <span class="scope-arrow" aria-hidden="true">→</span>
       <div class="scope-step" data-reveal="">
         <span class="scope-badge">03</span>
-        <p class="scope-en">STAKEHOLDER COORDINATION</p>
-        <p class="scope-zh">跨方協作</p>
-        <p class="scope-desc">企業窗口、合作方、供應商與內部團隊之間的資訊確認與協作</p>
+        <p class="scope-en">ALIGNMENT</p>
+        <p class="scope-zh">資訊對齊</p>
+        <p class="scope-desc">確認合作角色、責任與最新資訊</p>
       </div>
       <span class="scope-arrow" aria-hidden="true">→</span>
       <div class="scope-step" data-reveal="">
         <span class="scope-badge">04</span>
-        <p class="scope-en">EXECUTION</p>
-        <p class="scope-zh">專案執行</p>
-        <p class="scope-desc">進度追蹤、流程確認、資源協作與現場執行</p>
+        <p class="scope-en">TRACKING</p>
+        <p class="scope-zh">進度追蹤</p>
+        <p class="scope-desc">持續確認任務狀態與後續事項</p>
       </div>
       <span class="scope-arrow" aria-hidden="true">→</span>
       <div class="scope-step" data-reveal="">
         <span class="scope-badge">05</span>
-        <p class="scope-en">FOLLOW-UP</p>
-        <p class="scope-zh">專案後續</p>
-        <p class="scope-desc">資料整理、合作追蹤與後續事項確認</p>
+        <p class="scope-en">EXECUTION</p>
+        <p class="scope-zh">執行</p>
+        <p class="scope-desc">依計畫完成相關交付與現場工作</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="value" style="scroll-margin-top:84px;background:#F0FFDD;padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
-  <div class="sec-wrap">
-    <div class="sec-head" data-reveal="">
-      <h2 class="sec-title">WHAT I BRING TO A PROJECT</h2>
-      <p class="sec-sub">我能為專案帶來什麼 ✦</p>
-    </div>
-    <div class="value-grid">
-      <div class="value-card" data-reveal="">
-        <span class="value-num">01</span>
-        <h3 class="value-title">Structured Coordination</h3>
-        <p class="value-headline">將分散資訊整理成可追蹤事項</p>
-        <p class="value-body">面對多方窗口或資訊分散的專案，習慣先整理需求、責任窗口、待確認事項與下一步，再持續追蹤執行進度。</p>
-      </div>
-      <div class="value-card" data-reveal="">
-        <span class="value-num">02</span>
-        <h3 class="value-title">Stakeholder Communication</h3>
-        <p class="value-headline">維持不同角色之間的資訊一致</p>
-        <p class="value-body">依照不同合作角色整理資訊與確認事項，協助外部合作方與內部執行端理解彼此需求與後續安排。</p>
-      </div>
-      <div class="value-card" data-reveal="">
-        <span class="value-num">03</span>
-        <h3 class="value-title">Execution Awareness</h3>
-        <p class="value-headline">不只整理資訊，也理解實際執行</p>
-        <p class="value-body">具專案與現場營運經驗，能將前期規劃與實際執行條件一起納入考量。</p>
-      </div>
-      <div class="value-card" data-reveal="">
-        <span class="value-num">04</span>
-        <h3 class="value-title">Adaptability</h3>
-        <p class="value-headline">面對變動時重新確認優先順序</p>
-        <p class="value-body">熟悉高即時性的工作環境，能依現場狀況與執行條件調整處理順序。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="competencies" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#F0FFDD 0%,#FFE5EE 62%);padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
-  <div class="sec-wrap">
-    <div class="sec-head" data-reveal="">
-      <h2 class="sec-title">CORE COMPETENCIES</h2>
-      <p class="sec-sub">核心能力 ✦</p>
-    </div>
-    <div class="comp-list">
-      <div class="comp-item" data-reveal="">
-        <div class="comp-head-l">
-          <span class="comp-num">01</span>
-          <p class="comp-en">PROJECT PLANNING &amp; COORDINATION</p>
-          <p class="comp-zh">專案企劃與進度協作</p>
-        </div>
-        <div>
-          <div class="comp-tags"><span>需求整理</span><span>工作拆解</span><span>時程追蹤</span><span>執行確認</span><span>資訊整合</span></div>
-          <p class="comp-desc">能依據專案需求整理工作內容、合作角色與待確認事項，將分散資訊轉化為可追蹤的執行項目，並持續確認進度與後續安排。</p>
-        </div>
-      </div>
-      <div class="comp-item" data-reveal="">
-        <div class="comp-head-l">
-          <span class="comp-num">02</span>
-          <p class="comp-en">STAKEHOLDER COORDINATION</p>
-          <p class="comp-zh">跨方溝通與合作協調</p>
-        </div>
-        <div>
-          <div class="comp-tags"><span>企業窗口</span><span>品牌</span><span>供應商</span><span>平台</span><span>內部團隊</span></div>
-          <p class="comp-desc">具不同合作角色的溝通與協作經驗，能整理各方需求、確認合作資訊與待辦事項，協助維持外部合作方與內部執行端之間的資訊一致。</p>
-        </div>
-      </div>
-      <div class="comp-item" data-reveal="">
-        <div class="comp-head-l">
-          <span class="comp-num">03</span>
-          <p class="comp-en">EXECUTION &amp; PROGRESS MANAGEMENT</p>
-          <p class="comp-zh">執行與進度管理</p>
-        </div>
-        <div>
-          <div class="comp-tags"><span>進度追蹤</span><span>任務確認</span><span>流程協作</span><span>現場執行</span><span>問題處理</span></div>
-          <p class="comp-desc">能依照專案時程與實際執行情況追蹤工作狀態，確認相關資訊與交付事項；在現場型專案中，也具備即時調整與問題處理經驗。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="matrix" style="scroll-margin-top:84px;background:#FFE5EE;padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
-  <div class="sec-wrap">
-    <div class="sec-head" data-reveal="">
-      <h2 class="sec-title">VALUE MATRIX</h2>
-      <p class="sec-sub">進團隊能解決的專案問題 ✦</p>
-    </div>
-    <div class="matrix-head-row" data-reveal="">
-      <div class="matrix-colhead l">Project Challenge</div>
-      <div></div>
-      <div class="matrix-colhead r">What I Contribute</div>
-    </div>
-    <div class="matrix-list">
-      <div class="matrix-row" data-reveal="">
-        <div class="matrix-cell challenge">需求模糊</div>
-        <div class="matrix-mid" aria-hidden="true">→</div>
-        <div class="matrix-cell contribute">需求拆解與資訊整理</div>
-      </div>
-      <div class="matrix-row" data-reveal="">
-        <div class="matrix-cell challenge">多方窗口</div>
-        <div class="matrix-mid" aria-hidden="true">→</div>
-        <div class="matrix-cell contribute">跨方協調與資訊同步</div>
-      </div>
-      <div class="matrix-row" data-reveal="">
-        <div class="matrix-cell challenge">時程交錯</div>
-        <div class="matrix-mid" aria-hidden="true">→</div>
-        <div class="matrix-cell contribute">進度確認與優先順序管理</div>
-      </div>
-      <div class="matrix-row" data-reveal="">
-        <div class="matrix-cell challenge">現場變動</div>
-        <div class="matrix-mid" aria-hidden="true">→</div>
-        <div class="matrix-cell contribute">即時判斷與執行調整</div>
-      </div>
-      <div class="matrix-row" data-reveal="">
-        <div class="matrix-cell challenge">客戶需求與執行端存在落差</div>
-        <div class="matrix-mid" aria-hidden="true">→</div>
-        <div class="matrix-cell contribute">企業需求與執行資訊轉譯</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="experience" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#FFE5EE 0%,#F0FFDD 55%);padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
+<section id="experience" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#F0FFDD 0%,#FFE5EE 55%);padding:calc(clamp(2.6rem,6vw,4.8rem) * var(--space-scale)) 16px;position:relative">
   <div class="sec-wrap">
     <div class="sec-head" data-reveal="">
       <h2 class="sec-title">EXPERIENCE</h2>
@@ -644,29 +547,6 @@ a:hover{color:#2A4B9E}
   </div>
 </section>
 
-<section id="tools" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#F0FFDD 0%,#FFE5EE 60%);padding:calc(clamp(2.4rem,5.5vw,4.2rem) * var(--space-scale)) 16px;position:relative">
-  <div class="sec-wrap">
-    <div class="sec-head" data-reveal="">
-      <h2 class="sec-title">WORKING TOOLS</h2>
-      <p class="sec-sub">使用工具 ✦</p>
-    </div>
-    <div class="tools-groups" data-reveal="">
-      <div class="tools-group">
-        <p class="tools-label">Project &amp; Communication</p>
-        <div class="tools-chips"><span>Google Sheets</span><span>Excel</span><span>CRM</span><span>Accupass</span><span>Google Workspace</span></div>
-      </div>
-      <div class="tools-group">
-        <p class="tools-label">Planning &amp; Presentation</p>
-        <div class="tools-chips"><span>PowerPoint</span><span>Figma</span><span>Canva</span></div>
-      </div>
-      <div class="tools-group">
-        <p class="tools-label">Productivity</p>
-        <div class="tools-chips"><span>ChatGPT</span><span>Claude</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="works" style="scroll-margin-top:84px;background:linear-gradient(to bottom,#FFE5EE 0%,#F0FFDD 14%);position:relative;overflow:hidden;padding-bottom:1rem">
   <div data-reveal="" style="text-align:center;padding:calc(clamp(3rem,7vw,5rem) * var(--space-scale)) clamp(1.2rem,4vw,3rem) 1.5rem">
     <h2 class="sec-title" style="margin:0">SELECTED PROJECTS</h2><p class="sec-sub" style="margin:.55rem 0 0">角色 · 執行範圍 ✦</p>
@@ -697,34 +577,30 @@ a:hover{color:#2A4B9E}
       <p class="proj-title-en">企業高峰論壇</p>
       <p class="proj-title-zh">Corporate Summit</p>
       <p class="proj-role"><span>Role</span>Project Coordination</p>
-      <div class="proj-tags"><span>講師</span><span>供應商</span><span>報名資訊</span><span>內部團隊</span></div>
-      <p class="proj-value"><span class="proj-k">Key Delivery</span>報名管理、講師資訊確認、活動流程整理、EDM 與活動資訊、外燴協調、活動前確認、現場執行</p>
-      <p class="proj-scale">約 60 位參與者</p>
-      <a class="proj-link" href="#case">VIEW CASE →</a>
+      <div class="proj-tags"><span>Registration</span><span>Speaker Coordination</span><span>Vendor Coordination</span><span>Project Execution</span></div>
+      <p class="proj-scale">60 Participants</p>
+      <a class="proj-link" href="#case">VIEW PROJECT →</a>
     </article>
     <article class="proj-card" data-reveal="">
       <p class="proj-no">PROJECT 02</p>
-      <p class="proj-title-en">品牌線下活動</p>
-      <p class="proj-title-zh">Brand Event</p>
-      <p class="proj-role"><span>Role</span>Project Coordination / On-site Execution</p>
-      <div class="proj-tags"><span>場地方</span><span>品牌</span><span>內部團隊</span><span>活動參與者</span></div>
-      <p class="proj-value"><span class="proj-k">Key Delivery</span>場勘、物資確認、合作資訊整理、活動流程協作、現場接待與執行</p>
+      <p class="proj-title-en">品牌合作專案</p>
+      <p class="proj-title-zh">Brand Collaboration Project</p>
+      <p class="proj-role"><span>Role</span>Project Coordination</p>
+      <div class="proj-tags"><span>Stakeholder Communication</span><span>Information Coordination</span><span>On-site Execution</span></div>
     </article>
     <article class="proj-card" data-reveal="">
       <p class="proj-no">PROJECT 03</p>
       <p class="proj-title-en">品牌體驗專案</p>
       <p class="proj-title-zh">Brand Experience Project</p>
       <p class="proj-role"><span>Role</span>Stakeholder Coordination</p>
-      <div class="proj-tags"><span>品牌</span><span>供應商</span><span>內部團隊</span></div>
-      <p class="proj-value"><span class="proj-k">Key Delivery</span>合作需求確認、內容與物資資訊整理、配送與執行需求確認、現場協作</p>
+      <div class="proj-tags"><span>Requirement Alignment</span><span>Vendor Coordination</span><span>Execution Support</span></div>
     </article>
     <article class="proj-card" data-reveal="">
       <p class="proj-no">PROJECT 04</p>
-      <p class="proj-title-en">大型活動企劃</p>
-      <p class="proj-title-zh">Large-scale Event Project</p>
-      <p class="proj-role"><span>Role</span>Project Coordination</p>
-      <div class="proj-tags"><span>工作團隊</span><span>外部廠商</span><span>場地方</span><span>合作單位</span></div>
-      <p class="proj-value"><span class="proj-k">Key Delivery</span>企劃、工作分工、招商、場地、設備、宣傳、流程、現場執行</p>
+      <p class="proj-title-en">大型活動型專案</p>
+      <p class="proj-title-zh">Large-scale Project</p>
+      <p class="proj-role"><span>Role</span>Project Planning / Coordination</p>
+      <div class="proj-tags"><span>Task Coordination</span><span>External Partners</span><span>On-site Execution</span></div>
     </article>
   </div>
 </section>
@@ -742,7 +618,7 @@ a:hover{color:#2A4B9E}
     <div class="case-blocks">
       <div class="case-block"><div class="case-label">Project Overview</div><p class="case-text">企業論壇專案，參與規模約 60 人，工作內容涵蓋報名、講師、活動資訊、外部供應商與現場流程協作。</p></div>
       <div class="case-block"><div class="case-label">Role</div><div class="case-chips"><span>Project Coordination</span><span>Event Execution</span></div></div>
-      <div class="case-block"><div class="case-label">Scope</div><div class="case-chips"><span>Accupass 報名頁與資訊管理</span><span>講師聯繫與資訊確認</span><span>活動流程整理</span><span>EDM 與活動資訊</span><span>外燴與供應商協調</span><span>報名進度追蹤</span><span>活動前 Checklist</span><span>現場執行</span></div></div>
+      <div class="case-block"><div class="case-label">Responsibilities</div><div class="case-chips"><span>Accupass 報名頁與資訊管理</span><span>講師聯繫與資訊確認</span><span>活動流程整理</span><span>EDM 與活動資訊</span><span>外燴與供應商協調</span><span>報名進度追蹤</span><span>活動前 Checklist</span><span>現場執行</span></div></div>
       <div class="case-block"><div class="case-label">Stakeholders</div><div class="case-chips"><span>講師</span><span>外部供應商</span><span>活動參與者</span><span>內部團隊</span></div></div>
       <div class="case-block"><div class="case-label">Execution</div><p class="case-text">持續整理活動資訊、確認窗口與待辦事項，並依照籌備進度更新執行內容。活動前逐項確認報名、講師、餐飲與現場流程資訊。</p></div>
       <div class="case-block divide"><div class="case-label">Delivery</div>
@@ -753,6 +629,29 @@ a:hover{color:#2A4B9E}
             <div class="case-chips"><span>Registration</span><span>Speaker Coordination</span><span>Vendor Coordination</span><span>Event Information</span><span>On-site Execution</span></div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tools" style="scroll-margin-top:84px;background:#F0FFDD;padding:calc(clamp(2.2rem,5vw,3.6rem) * var(--space-scale)) 16px 0;position:relative">
+  <div class="sec-wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="sec-title" style="font-size:calc(clamp(1.2rem,2.8vw,1.8rem) * var(--font-scale))">WORKING TOOLS</h2>
+      <p class="sec-sub">使用工具 ✦</p>
+    </div>
+    <div class="tools-groups" data-reveal="">
+      <div class="tools-group">
+        <p class="tools-label">Project &amp; Data</p>
+        <div class="tools-chips"><span>Google Sheets</span><span>Excel</span><span>CRM</span><span>Accupass</span></div>
+      </div>
+      <div class="tools-group">
+        <p class="tools-label">Planning &amp; Presentation</p>
+        <div class="tools-chips"><span>PowerPoint</span><span>Figma</span><span>Canva</span></div>
+      </div>
+      <div class="tools-group">
+        <p class="tools-label">Productivity</p>
+        <div class="tools-chips"><span>ChatGPT</span><span>Claude</span></div>
       </div>
     </div>
   </div>
@@ -817,7 +716,7 @@ a:hover{color:#2A4B9E}
     <div data-reveal="" style="text-align:center;margin-bottom:clamp(2.2rem,5vw,3.5rem)">
       <h2 style="font-family:'Pacifico',cursive;font-weight:400;font-size:calc(clamp(2rem,4.5vw,3.2rem) * var(--font-scale));margin:0;color:#FFFDF8"><p><strong>Let's Connect</strong></p></h2>
       <p style="font-family:'DM Sans','Noto Sans TC',sans-serif;font-weight:500;font-size:clamp(.92rem,1.4vw,1.02rem);line-height:1.7;color:rgba(255,253,248,.95);margin:.7rem auto 0;max-width:560px">如果你正在尋找具備專案協作、跨方溝通與執行能力的夥伴，歡迎與我聯繫。</p>
-      <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(.74rem,1.1vw,.84rem);letter-spacing:.03em;color:rgba(255,253,248,.9);margin:.7rem 0 0">Open to opportunities in&nbsp;·&nbsp;Project Coordination&nbsp;·&nbsp;Project Planning&nbsp;·&nbsp;Project Execution</p>
+      <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(.74rem,1.1vw,.84rem);letter-spacing:.03em;color:rgba(255,253,248,.9);margin:.7rem 0 0">Open to&nbsp;·&nbsp;Project Coordinator&nbsp;·&nbsp;Project Planning&nbsp;·&nbsp;Project Operations</p>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(2rem,4vw,4rem);align-items:start">
