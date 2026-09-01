@@ -103,6 +103,12 @@ function loadGLB(url) {
 const DUR = 12;              // loop length in seconds
 const W = (Math.PI * 2) / DUR; // base angular frequency -> perfect loop
 
+// Coarse/small screens run a lighter water shader (fewer fbm octaves) and a
+// capped frame rate. Desktop keeps the full 4-octave look. This only changes
+// noise detail slightly on phones — the sea style is unchanged.
+const IS_MOBILE = (function () { try { return matchMedia('(max-width:768px), (pointer:coarse)').matches; } catch (e) { return false; } })();
+const FBM_ITER = IS_MOBILE ? 3 : 4;
+
 const VERT = `
 varying vec2 vUv;
 void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }
@@ -131,7 +137,7 @@ float vnoise(vec2 p){
 
 float fbm(vec2 p){
   float s = 0.0, a = 0.5;
-  for(int i=0;i<4;i++){ s += a*vnoise(p); p *= 2.03; a *= 0.5; }
+  for(int i=0;i<${FBM_ITER};i++){ s += a*vnoise(p); p *= 2.03; a *= 0.5; }
   return s;
 }
 
@@ -248,8 +254,12 @@ class SeaScene extends HTMLElement {
     canvas.style.cssText = 'display:block;width:100%;height:100%';
     this.appendChild(canvas);
 
-    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true, alpha: false });
-    this.renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+    // preserveDrawingBuffer:false — nothing reads the canvas back (no export /
+    // screenshot), so the browser can discard the buffer each frame (cheaper).
+    // Antialias is dropped on mobile (MSAA is costly) — the shader is soft anyway.
+    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: !IS_MOBILE, preserveDrawingBuffer: false, alpha: false, powerPreference: 'high-performance' });
+    // Adaptive DPR: fewer pixels per frame on phones (biggest WebGL cost).
+    this.renderer.setPixelRatio(Math.min(devicePixelRatio || 1, IS_MOBILE ? 1.25 : 1.5));
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.autoClear = false;
 
@@ -439,15 +449,50 @@ class SeaScene extends HTMLElement {
     this._ro.observe(this);
     this.resize();
 
-    const loop = () => {
+    // --- render loop, gated so the GPU only works when the hero is on screen ---
+    // The hero lives in an iframe, so it can't see the parent's scroll. The parent
+    // page observes the hero and posts {type:'sea-visible'} messages; we also pause
+    // when the tab/app is backgrounded. Off-screen or hidden => cancelAnimationFrame
+    // (no idle GPU). Mobile is capped to ~30 FPS via a frame interval.
+    this._inView = true;
+    this._active = false;
+    this._lastFrame = 0;
+    this._frameInterval = IS_MOBILE ? 33 : 0;   // 0 = uncapped (up to display refresh)
+
+    const loop = (now) => {
+      if (!this._active) return;
       this._raf = requestAnimationFrame(loop);
       if (this.paused) return;
+      if (this._frameInterval && (now - this._lastFrame) < this._frameInterval) return;
+      this._lastFrame = now;
       this.render(((performance.now() - this._t0) / 1000) % DUR);
     };
-    loop();
+    this._start = () => {
+      if (this._active || !this._inView || document.hidden) return;
+      this._active = true;
+      this._t0 = performance.now() - (this.time || 0) * 1000;   // continue smoothly
+      this._raf = requestAnimationFrame(loop);
+    };
+    this._stop = () => { this._active = false; cancelAnimationFrame(this._raf); };
+
+    this._onVis = () => { if (document.hidden) this._stop(); else this._start(); };
+    document.addEventListener('visibilitychange', this._onVis);
+    this._onMsg = (e) => {
+      const d = e.data;
+      if (d && d.type === 'sea-visible') { this._inView = !!d.visible; this._inView ? this._start() : this._stop(); }
+    };
+    window.addEventListener('message', this._onMsg);
+
+    this._start();
   }
 
-  disconnectedCallback() { cancelAnimationFrame(this._raf); this._ro && this._ro.disconnect(); }
+  disconnectedCallback() {
+    this._stop && this._stop();
+    cancelAnimationFrame(this._raf);
+    this._ro && this._ro.disconnect();
+    document.removeEventListener('visibilitychange', this._onVis);
+    window.removeEventListener('message', this._onMsg);
+  }
 
   resize() {
     const w = this.clientWidth || 1280;

@@ -364,7 +364,7 @@ a:hover{color:#2A4B9E}
 
         <div id="cakeArrowHint" aria-hidden="true" style="position:absolute;left:calc(100% + 38px);top:36%;width:clamp(150px,44%,205px);aspect-ratio:1.478;pointer-events:none;z-index:5;--arrow-bounce-x:-8px;--arrow-bounce-y:0px">
           <div id="cakeArrowBounce" style="position:relative;width:100%;height:100%;animation:cakeArrowBounce 1.5s cubic-bezier(.34,1.56,.64,1) infinite;will-change:transform">
-            <img id="cakeArrowImg" src="./assets/arrow-hint.png" alt="" style="position:absolute;left:50%;top:50%;width:67.66%;transform:translate(-50%,-50%) rotate(-90deg)">
+            <img id="cakeArrowImg" loading="lazy" decoding="async" src="./assets/arrow-hint.webp" alt="" style="position:absolute;left:50%;top:50%;width:67.66%;transform:translate(-50%,-50%) rotate(-90deg)">
             <span id="cakeArrowText" style="position: absolute; left: 67px; top: 66px; display: grid; place-items: center; white-space: nowrap; line-height: 1; font-size: clamp(14px,1.3vw,20px); font-weight: 700; color: #4A3036; font-family: 'Playfair Display',Georgia,serif">Click me</span>
           </div>
         </div>
@@ -679,7 +679,7 @@ a:hover{color:#2A4B9E}
     <div id="contactSign" style="position:absolute;left:50%;top:clamp(150px,22vh,260px);width:clamp(320px,36vw,580px);transform:translate(-50%,12px) scale(.98);opacity:0;transition:opacity .82s cubic-bezier(.22,1,.36,1),transform .82s cubic-bezier(.22,1,.36,1);z-index:30;pointer-events:none;will-change:opacity,transform">
       <div style="position:absolute;inset:0;background:#FBF3C6;opacity:.7;border-radius:clamp(16px,3vw,28px);z-index:0"></div>
       <div style="position:relative;width:100%;aspect-ratio:965/481;filter:drop-shadow(0 10px 18px rgba(45,31,22,.28));z-index:1">
-        <img src="./assets/contact-card.png" alt="聯絡資訊：LinkedIn、電話、Email" style="position:absolute;inset:0;width:100%;height:100%;display:block">
+        <img loading="lazy" decoding="async" src="./assets/contact-card.png" alt="聯絡資訊：LinkedIn、電話、Email" style="position:absolute;inset:0;width:100%;height:100%;display:block">
         <button type="button" aria-label="開啟 LinkedIn 頁面" onClick="{{ openLinkedIn }}" style="position:absolute;left:6%;top:7%;width:88%;height:27%;cursor:pointer;background:none;border:0;padding:0;margin:0;appearance:none;border-radius:6px" style-hover="background:rgba(255,255,255,.08)" style-focus="outline:2px solid #2A4B9E;outline-offset:3px"></button>
         <button type="button" aria-label="用 Gmail 寄信給我" onClick="{{ openGmail }}" style="position:absolute;left:6%;top:66%;width:88%;height:27%;cursor:pointer;background:none;border:0;padding:0;margin:0;appearance:none;border-radius:6px" style-hover="background:rgba(255,255,255,.08)" style-focus="outline:2px solid #2A4B9E;outline-offset:3px"></button>
       </div>
@@ -690,19 +690,19 @@ a:hover{color:#2A4B9E}
     <div id="catChase" style="position:absolute;inset:0;pointer-events:none;opacity:0;visibility:hidden">
       <div id="dogTrack" style="position:absolute;left:0;top:0;width:clamp(104px,14vw,182px);aspect-ratio:657/703;opacity:0;will-change:transform,opacity">
         <div id="dogFlip" style="width:100%;height:100%;will-change:transform">
-          <img src="./assets/balloon-dog.png" alt="氣球狗" style="display:block;width:100%;height:100%;object-fit:contain">
+          <img loading="lazy" decoding="async" src="./assets/balloon-dog.webp" alt="氣球狗" style="display:block;width:100%;height:100%;object-fit:contain">
         </div>
       </div>
 
       <div id="catTrack" style="position:absolute;left:0;top:0;width:clamp(110px,17vw,196px);aspect-ratio:1/1;opacity:0;will-change:transform,opacity">
         <div id="catFlip" style="width:100%;height:100%;will-change:transform">
         <div id="catSprite" role="img" aria-label="追逐氣球狗的貓咪" style="position:relative;width:100%;height:100%;user-select:none">
-          <img data-catframe="" src="./assets/cat-1.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:1">
-          <img data-catframe="" src="./assets/cat-2.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
-          <img data-catframe="" src="./assets/cat-3.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
-          <img data-catframe="" src="./assets/cat-4.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
-          <img data-catframe="" src="./assets/cat-5.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
-          <img data-catframe="" src="./assets/cat-6.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+          <img data-catframe="" loading="lazy" decoding="async" src="./assets/cat-1.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:1">
+          <img data-catframe="" loading="lazy" decoding="async" src="./assets/cat-2.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+          <img data-catframe="" loading="lazy" decoding="async" src="./assets/cat-3.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+          <img data-catframe="" loading="lazy" decoding="async" src="./assets/cat-4.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+          <img data-catframe="" loading="lazy" decoding="async" src="./assets/cat-5.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
+          <img data-catframe="" loading="lazy" decoding="async" src="./assets/cat-6.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0">
         </div>
         </div>
       </div>
@@ -921,24 +921,53 @@ class Component extends DCLogic {
       this._welcomeTop = this.welcome ? this.welcome.offsetTop : 0;
     };
     this.measureScroll();
-    addEventListener('scroll', this.onScroll, { passive: true });
+    // Coalesce scroll events into one rAF: the handler runs at most once per frame
+    // and only writes styles from cached reads (no per-event layout thrash).
+    this._scrollTick = false;
+    this.onScrollRAF = () => {
+      if (this._scrollTick) return;
+      this._scrollTick = true;
+      requestAnimationFrame(() => { this._scrollTick = false; this.onScroll(); });
+    };
+    addEventListener('scroll', this.onScrollRAF, { passive: true });
     addEventListener('resize', () => { this.measureScroll(); this.onScroll(); }, { passive: true });
     addEventListener('load', () => { this.measureScroll(); this.onScroll(); });
     this.onScroll();
 
+    // The hero sea/3D runs three.js inside an iframe, which can't see the parent's
+    // scroll. Observe the hero and tell it when it leaves/enters the viewport so it
+    // can cancel its render loop off-screen (visibilitychange is handled inside it).
+    this.heroFrame = this.heroVisual ? this.heroVisual.querySelector('iframe') : null;
+    this.postHeroVisible = v => { try { this.heroFrame && this.heroFrame.contentWindow && this.heroFrame.contentWindow.postMessage({ type: 'sea-visible', visible: v }, '*'); } catch (e) {} };
+    if (this.heroVisual && 'IntersectionObserver' in window) {
+      this.heroIO = new IntersectionObserver(es => { es.forEach(e => this.postHeroVisible(e.isIntersecting)); }, { rootMargin: '200px 0px 200px 0px', threshold: 0 });
+      this.heroIO.observe(this.heroVisual);
+    }
+
     // cake pointer tilt + click sparkle
     this.cake = document.getElementById('welcomeCake');
     this.cakeWrap = document.getElementById('cakeWrap');
+    // Desktop-only cake tilt. Skip touch/coarse pointers entirely, and coalesce
+    // pointermove into one rAF so we read the cake rect + write transform at most
+    // once per frame instead of on every move event.
+    const fineHover = (() => { try { return matchMedia('(hover:hover) and (pointer:fine)').matches; } catch (e) { return false; } })();
     this.onMove = e => {
       if (!this.cakeWrap) return;
-      const r = this.cakeWrap.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > innerHeight) return;
-      const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
-      const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
-      this.cakeWrap.style.rotate = (dx * 3).toFixed(2) + 'deg';
-      this.cakeWrap.style.translate = (dx * 12).toFixed(1) + 'px ' + (dy * 8).toFixed(1) + 'px';
+      this._lastMove = e;
+      if (this._moveTick) return;
+      this._moveTick = true;
+      requestAnimationFrame(() => {
+        this._moveTick = false;
+        const ev = this._lastMove;
+        const r = this.cakeWrap.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        const dx = (ev.clientX - (r.left + r.width / 2)) / r.width;
+        const dy = (ev.clientY - (r.top + r.height / 2)) / r.height;
+        this.cakeWrap.style.rotate = (dx * 3).toFixed(2) + 'deg';
+        this.cakeWrap.style.translate = (dx * 12).toFixed(1) + 'px ' + (dy * 8).toFixed(1) + 'px';
+      });
     };
-    addEventListener('pointermove', this.onMove, { passive: true });
+    if (fineHover) addEventListener('pointermove', this.onMove, { passive: true });
     if (this.cake) {
       this.onCake = () => {
         this.cakeWrap.animate(
@@ -1175,7 +1204,7 @@ class Component extends DCLogic {
         treeTrack.innerHTML = '';
         for (let i = 0; i < need; i++) {
           const im = document.createElement('img');
-          im.src = './assets/tree-row.png';
+          im.src = './assets/tree-row.webp';
           im.alt = '';
           im.style.cssText = 'height:100%;width:auto;flex:0 0 auto;display:block;user-select:none';
           treeTrack.appendChild(im);
@@ -1674,9 +1703,10 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
-    removeEventListener('scroll', this.onScroll);
+    removeEventListener('scroll', this.onScrollRAF);
     removeEventListener('resize', this.onScroll);
     removeEventListener('pointermove', this.onMove);
+    if (this.heroIO) this.heroIO.disconnect();
     removeEventListener('keydown', this.onKeyDown);
     clearTimeout(this.revealTimer);
     clearTimeout(this.fanTimer);
@@ -1763,15 +1793,11 @@ class Component extends DCLogic {
     this.introOverlayOpen = false;
     this.trifoldControllers = {};
     this.trifoldLoading = {};
-    // pre-warm during idle time: fetch the mount script AND actually mount it
-    // into its (opacity:0, non-interactive) host now, so the expensive one-time
-    // image-decode/layout cost for the ~1-3MB of inline artwork happens in the
-    // background — a click later just flips opacity/transform, no stall.
-    const idle = window.requestIdleCallback || (fn => setTimeout(fn, 300));
-    idle(() => this.preloadTrifoldScript(0).then(() => this.getTrifoldController(0)));
-    idle(() => this.preloadTrifoldScript(1).then(() => this.getTrifoldController(1)));
-    idle(() => this.preloadTrifoldScript(2).then(() => this.getTrifoldController(2)));
-    idle(() => this.preloadTrifoldScript(3).then(() => this.getTrifoldController(3)));
+    // Lazy: each tri-fold's ~1–3 MB mount script + inline artwork is fetched and
+    // mounted only the first time its card is opened (openTarotIntro falls back to
+    // preloadTrifoldScript on demand), then cached for instant re-opens. We no
+    // longer download/mount all four on load — that was ~8 MB of work nobody may
+    // ever trigger. See preloadTrifoldScript / getTrifoldController.
     this.onIntroKeyDown = e => {
       if (e.key === 'Escape' && this.introOverlayOpen) { e.preventDefault(); this.closeTarotIntro(); }
     };
