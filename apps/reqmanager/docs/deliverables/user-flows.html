@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>需求管理平台｜使用者操作圖（User Flow）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f5f6f8; --surface: #fff; --border: #eaecf0; --border-strong: #d0d5dd; --text: #1d2939; --text-2: #475467; --muted: #667085;
+  --primary: #2f6fed; --primary-weak: #eaf1fe; --anno: #f97316; --danger: #d92d20; --warn-bg: #fef0c7; --warn: #93370d; --ok: #067647;
+  font-family: 'Noto Sans TC', 'Noto Sans CJK TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+  color: var(--text); font-size: 15px; line-height: 1.55;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); }
+a { color: var(--primary); }
+.doc-head { background: var(--surface); border-bottom: 1px solid var(--border); padding: 28px 16px 0; }
+.doc-head .inner, .doc-main { max-width: 1320px; margin: 0 auto; }
+.doc-head h1 { margin: 0; font-size: 26px; }
+.doc-head p { margin: 6px 0 16px; color: var(--muted); }
+.toc { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 0; }
+.toc a { padding: 10px 12px; color: var(--text-2); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; font-size: 14px; }
+.toc a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+.doc-main { padding: 24px 16px 64px; }
+section.sheet { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; scroll-margin-top: 16px; overflow: hidden; }
+.sheet-head { display: flex; align-items: baseline; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.sheet-head .id { font-weight: 700; color: var(--anno); }
+.sheet-head h2 { margin: 0; font-size: 20px; }
+.sheet-head .meta { color: var(--muted); font-size: 13px; margin-left: auto; }
+.sheet-body { display: grid; grid-template-columns: minmax(0, 1fr) 320px; }
+.sheet-body > .canvas-wrap { padding: 20px; background: #eef0f3; border-right: 1px solid var(--border); min-width: 0; }
+.notes { padding: 20px 22px; font-size: 14px; }
+.notes ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.notes li { display: flex; gap: 10px; }
+.notes .ref { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+.n { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--anno); color: #fff; font-size: 12px; font-weight: 700; font-style: normal; line-height: 1; }
+.legend-row { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--text-2); padding: 12px 22px; border-top: 1px solid var(--border); background: #fafbfc; }
+.legend-row span { display: inline-flex; align-items: center; gap: 6px; }
+@media (max-width: 900px) { .sheet-body { grid-template-columns: 1fr; } .sheet-body > .canvas-wrap { border-right: none; border-bottom: 1px solid var(--border); padding: 12px; } }
+@media print { body { background: #fff; } .doc-head .toc { display: none; } section.sheet { break-inside: avoid; page-break-inside: avoid; } }
+
+.flow-body { padding: 18px 22px; }
+.flow-scroll { overflow-x: auto; }
+svg.flow { display: block; width: 100%; height: auto; margin: 0 auto; font-family: inherit; }
+.flow-body h3 { font-size: 16px; margin: 22px 0 8px; } .flow-body h3:first-child { margin-top: 0; }
+.flow-body p { color: var(--text-2); margin: 0 0 10px; font-size: 14px; }
+table.vis { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 18px; }
+table.vis th, table.vis td { border-bottom: 1px solid var(--border); padding: 8px 10px; text-align: left; }
+table.vis thead th { background: #f9fafb; color: var(--text-2); }
+table.vis td.no { color: #98a2b3; }
+.grid2 { display: grid; grid-template-columns: 1fr; gap: 8px; }
+
+</style>
+</head>
+<body>
+<header class="doc-head"><div class="inner">
+<h1>需求管理平台｜使用者操作圖（User Flow）</h1>
+<p>PRD v0.3・UF-00 網站地圖／UF-01 需求生命週期／狀態機／UF-02 各角色操作流程／自動化更新</p>
+<nav class="toc"><a href="#uf00">UF-00 網站地圖</a><a href="#uf01">UF-01 生命週期泳道</a><a href="#states">狀態機</a><a href="#uf02">UF-02 角色操作流程</a><a href="#auto">自動化更新</a></nav>
+</div></header>
+<main class="doc-main">
+<section class="sheet" id="uf00"><div class="sheet-head"><span class="id">UF-00</span><h2>網站地圖與角色可見性</h2><span class="meta">登入後依角色顯示導覽；直接輸入網址也會由後端檢查權限</span></div><div class="flow-body"><div class="flow-scroll"><svg class="flow" viewBox="0 0 1248 546" style="max-width:1248px" role="img" aria-label="UF-00 網站地圖" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475467"/></marker>
+<marker id="ah-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d92d20"/></marker>
+<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#067647"/></marker>
+</defs>
+<polyline points="140,80 194,80" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="334,80 374,80" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="506,80 544.25,80" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="616,52 616,30 264,30 264,54" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="440,112 440,154" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="368.25,180 88,180 88,254" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="368.25,180 264,180 264,254" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="440,206 440,254" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="511.75,180 616,180 616,254" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="511.75,180 792,180 792,254" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="511.75,180 968,180 968,254" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="511.75,180 1144,180 1144,254" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="264,306 264,354" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="440,306 440,380 334,380" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="616,306 616,354" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="792,306 792,354" fill="none" stroke="#475467" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<polyline points="1144,306 1144,354" fill="none" stroke="#475467" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<polyline points="264,406 264,480 158,480" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="264,406 264,480 370,480" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="36" y="62" width="104" height="36" rx="18" fill="#1d2939"/><text x="88" y="85" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">開啟網站</text>
+<rect x="194" y="54" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="264" y="85" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S01 登入</text>
+<polygon points="440,48 506,80 440,112 374,80" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="440" y="85" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">SSO 驗證</text>
+<rect x="544.25" y="52" width="143.5" height="56" rx="4" fill="#fff" stroke="#d0d5dd" stroke-dasharray="3 3"/><text x="616" y="77" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">顯示錯誤訊息</text><text x="616" y="93" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">（停用／驗證失敗）</text>
+<rect x="368.25" y="154" width="143.5" height="52" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="440" y="185" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">依角色顯示左側導覽</text>
+<rect x="18" y="254" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="88" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S02 工作台</text>
+<rect x="194" y="254" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="264" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S05 需求列表</text>
+<rect x="370" y="254" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="440" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S06 提交需求</text>
+<rect x="546" y="254" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="616" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S03 客戶列表</text>
+<rect x="722" y="254" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="792" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S10 報表</text>
+<rect x="898" y="254" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="968" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S11 帳號與權限</text>
+<rect x="1074" y="254" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="1144" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S12 系統狀態</text>
+<rect x="194" y="354" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="264" y="385" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S07 需求詳細</text>
+<rect x="546" y="354" width="140" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="616" y="385" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S04 客戶詳細</text>
+<rect x="720.25" y="354" width="143.5" height="52" rx="4" fill="#fff" stroke="#d0d5dd" stroke-dasharray="3 3"/><text x="792" y="385" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">時間軸・現金流試算</text>
+<rect x="1072.25" y="354" width="143.5" height="52" rx="4" fill="#fff" stroke="#d0d5dd" stroke-dasharray="3 3"/><text x="1144" y="385" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">外部整合・資料管理</text>
+<rect x="18" y="452" width="140" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="88" y="477" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S08 評估與指派</text><text x="88" y="493" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">（對話框）</text>
+<rect x="370" y="452" width="140" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="440" y="477" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S09 測試與驗收</text><text x="440" y="493" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">（抽屜）</text>
+<rect x="1074" y="52" width="140" height="56" rx="4" fill="#fff" stroke="#d0d5dd" stroke-dasharray="3 3"/><text x="1144" y="77" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">說明與回饋</text><text x="1144" y="93" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">（全部角色可見）</text>
+<rect x="508.125" y="70" width="34" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="525.125" y="84" text-anchor="middle" font-size="12" fill="#d92d20">失敗</text>
+<rect x="411" y="20" width="58" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="440" y="34" text-anchor="middle" font-size="12" fill="#d92d20">重新登入</text>
+<rect x="423" y="123" width="34" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="440" y="137" text-anchor="middle" font-size="12" fill="#475467">成功</text>
+<rect x="181.1375" y="170" width="122" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="242.1375" y="184" text-anchor="middle" font-size="12" fill="#475467">業務・PM・工程・QA</text>
+<rect x="533.875" y="170" width="60" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="563.875" y="184" text-anchor="middle" font-size="12" fill="#475467">業務・PM</text>
+<rect x="643.505" y="170" width="84" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="685.505" y="184" text-anchor="middle" font-size="12" fill="#475467">PM・業務主管</text>
+<rect x="817.75" y="170" width="45" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="840.25" y="184" text-anchor="middle" font-size="12" fill="#475467">Admin</text>
+<rect x="1013.6624999999999" y="170" width="71" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="1049.1625" y="184" text-anchor="middle" font-size="12" fill="#475467">Admin・PM</text>
+<rect x="247" y="320" width="34" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="264" y="334" text-anchor="middle" font-size="12" fill="#475467">點列</text>
+<rect x="364" y="370" width="46" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="387" y="384" text-anchor="middle" font-size="12" fill="#475467">提交後</text>
+<rect x="599" y="320" width="34" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="616" y="334" text-anchor="middle" font-size="12" fill="#475467">點列</text>
+<rect x="199" y="470" width="24" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="211" y="484" text-anchor="middle" font-size="12" fill="#475467">PM</text>
+<rect x="268" y="470" width="98" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="317" y="484" text-anchor="middle" font-size="12" fill="#475467">QA・驗收者・PM</text>
+</svg></div><table class="vis">
+<thead><tr><th>頁面</th><th>業務</th><th>業務主管</th><th>PM</th><th>工程</th><th>QA</th><th>Admin</th></tr></thead>
+<tbody>
+<tr><th>S02 工作台</th><td class="">✓</td><td class="">✓</td><td class="">✓</td><td class="">✓</td><td class="">✓</td><td class="no">—</td></tr>
+<tr><th>S03／S04 客戶</th><td class="">本人負責</td><td class="">全部＋封存</td><td class="">範圍內</td><td class="">僅公司名</td><td class="">僅公司名</td><td class="no">—</td></tr>
+<tr><th>S05／S07 需求</th><td class="">本人提交＋負責客戶</td><td class="">全部</td><td class="">範圍內</td><td class="">被指派</td><td class="">被指派</td><td class="no">—</td></tr>
+<tr><th>S06 提交需求</th><td class="">✓</td><td class="">✓</td><td class="">✓</td><td class="">✓</td><td class="">✓</td><td class="no">—</td></tr>
+<tr><th>S08 評估與指派</th><td class="no">—</td><td class="no">—</td><td class="">受理 PM</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+<tr><th>S09 測試與驗收</th><td class="">被指定驗收者</td><td class="no">—</td><td class="">結案</td><td class="no">—</td><td class="">記錄測試</td><td class="no">—</td></tr>
+<tr><th>S10 報表</th><td class="no">—</td><td class="">✓</td><td class="">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+<tr><th>S11 帳號與權限</th><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="">✓</td></tr>
+<tr><th>S12 系統狀態</th><td class="no">—</td><td class="no">—</td><td class="">整合與排程</td><td class="no">—</td><td class="no">—</td><td class="">✓</td></tr>
+</tbody></table></div><div class="legend-row">
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#1d2939"/></svg>起點</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/></svg>畫面（S01–S12）</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#fff" stroke="#475467"/></svg>使用者操作</span>
+<span><svg width="54" height="22"><polygon points="27,1 53,11 27,21 1,11" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/></svg>判斷</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/></svg>系統自動處理</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#e8f0fe" stroke="#1d4ed8" stroke-width="1.5"/></svg>需求狀態</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#067647" stroke-width="2"/></svg>通過</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#d92d20" stroke-width="2"/></svg>退回／失敗</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#475467" stroke-width="2" stroke-dasharray="5 4"/></svg>自動／附帶</span>
+</div></section>
+<section class="sheet" id="uf01"><div class="sheet-head"><span class="id">UF-01</span><h2>需求生命週期（跨角色泳道）</h2><span class="meta">Submit → Evaluate → Assign → Track → Test → UAT → Close</span></div><div class="flow-body"><p>每一步都寫入狀態時間軸（操作者、時間、前後狀態、理由），並依 PRD FR-04 通知下一位負責人。</p><div class="flow-scroll"><svg class="flow" viewBox="0 0 1612 616" style="max-width:1612px" role="img" aria-label="UF-01 需求生命週期" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475467"/></marker>
+<marker id="ah-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d92d20"/></marker>
+<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#067647"/></marker>
+</defs>
+<rect x="0" y="40" width="1612" height="112" fill="#ffffff"/>
+<line x1="0" x2="1612" y1="40" y2="40" stroke="#eaecf0"/>
+<rect x="0" y="40" width="96" height="112" fill="#f2f4f7"/>
+<text x="48" y="101" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">業務</text>
+<rect x="0" y="152" width="1612" height="112" fill="#fafbfc"/>
+<line x1="0" x2="1612" y1="152" y2="152" stroke="#eaecf0"/>
+<rect x="0" y="152" width="96" height="112" fill="#f2f4f7"/>
+<text x="48" y="213" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">PM</text>
+<rect x="0" y="264" width="1612" height="112" fill="#ffffff"/>
+<line x1="0" x2="1612" y1="264" y2="264" stroke="#eaecf0"/>
+<rect x="0" y="264" width="96" height="112" fill="#f2f4f7"/>
+<text x="48" y="325" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">工程</text>
+<rect x="0" y="376" width="1612" height="112" fill="#fafbfc"/>
+<line x1="0" x2="1612" y1="376" y2="376" stroke="#eaecf0"/>
+<rect x="0" y="376" width="96" height="112" fill="#f2f4f7"/>
+<text x="48" y="437" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">QA</text>
+<rect x="0" y="488" width="1612" height="112" fill="#ffffff"/>
+<line x1="0" x2="1612" y1="488" y2="488" stroke="#eaecf0"/>
+<rect x="0" y="488" width="96" height="112" fill="#f2f4f7"/>
+<text x="48" y="549" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">系統通知</text>
+<line x1="96" x2="96" y1="40" y2="616" stroke="#d0d5dd"/>
+<rect x="0" y="0" width="1612" height="40" fill="#1d2939"/>
+<text x="171" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Submit</text>
+<text x="321" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Evaluate</text>
+<text x="471" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">補件</text>
+<text x="621" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Assign</text>
+<text x="771" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Track</text>
+<text x="921" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Test</text>
+<text x="1071" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff"></text>
+<text x="1221" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">UAT</text>
+<text x="1371" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Close</text>
+<text x="1521" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#fff"></text>
+<polyline points="171,122 171,208 255,208" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="321,240 321,301" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="387,208 471,208 471,122" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="471,70 471,48 321,48 321,176" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="387,208 559.6,208" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="621,234 621,320 714,320" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="828,320 921,320 921,400" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="921,464 921,486 771,486 771,348" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="987,432 1221,432 1221,128" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="1287,96 1371,96 1371,182" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="1221,64 1221,42 771,42 771,292" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="1428,208 1469,208" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="114" y="70" width="114" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="171" y="101" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S06 填表提交</text>
+<polygon points="321,176 387,208 321,240 255,208" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="321" y="213" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">評估</text>
+<rect x="265" y="301" width="112" height="38" rx="19" fill="#eaecf0" stroke="#475467" stroke-width="1.5"/><text x="321" y="325" text-anchor="middle" font-size="13" font-weight="700" fill="#475467">不採納</text>
+<rect x="414" y="70" width="114" height="52" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="471" y="101" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">補充資訊</text>
+<rect x="559.6" y="182" width="122.8" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="621" y="213" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S08-B 指派開發</text>
+<rect x="714" y="292" width="114" height="56" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="771" y="317" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">開發・提交</text><text x="771" y="333" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">測試版本</text>
+<polygon points="921,400 987,432 921,464 855,432" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="921" y="437" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">測試結果</text>
+<polygon points="1221,64 1287,96 1221,128 1155,96" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="1221" y="101" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">業務驗收</text>
+<rect x="1314" y="182" width="114" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="1371" y="213" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S09-C 結案</text>
+<rect x="1469" y="190" width="104" height="36" rx="18" fill="#067647"/><text x="1521" y="213" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">已結案</text>
+<rect x="113.5" y="516" width="114.99999999999999" height="56" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="171" y="541" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">產生 REQ 編號</text><text x="171" y="557" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">通知受理 PM</text>
+<rect x="414" y="518" width="114" height="52" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="471" y="549" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">通知提出人</text>
+<rect x="556" y="518" width="130" height="52" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="621" y="549" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">通知開發・提出人</text>
+<rect x="864" y="518" width="114" height="52" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="921" y="549" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">通知 QA</text>
+<rect x="1164" y="518" width="114" height="52" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="1221" y="549" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">通知驗收者</text>
+<rect x="1464" y="516" width="114" height="56" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="1521" y="541" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">通知提出人</text><text x="1521" y="557" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">工程・QA</text>
+<rect x="154" y="155" width="34" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="171" y="169" text-anchor="middle" font-size="12" fill="#475467">提交</text>
+<rect x="292" y="260.5" width="58" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="321" y="274.5" text-anchor="middle" font-size="12" fill="#475467">理由必填</text>
+<rect x="442" y="155" width="58" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="471" y="169" text-anchor="middle" font-size="12" fill="#d92d20">要求補件</text>
+<rect x="367" y="38" width="58" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="396" y="52" text-anchor="middle" font-size="12" fill="#475467">補件重送</text>
+<rect x="473.56" y="198" width="34" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="490.56" y="212" text-anchor="middle" font-size="12" fill="#067647">接受</text>
+<rect x="625.5" y="310" width="84" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="667.5" y="324" text-anchor="middle" font-size="12" fill="#475467">承諾日期・AC</text>
+<rect x="845.5" y="310" width="58" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="874.5" y="324" text-anchor="middle" font-size="12" fill="#475467">提交測試</text>
+<rect x="763" y="476" width="166" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="846" y="490" text-anchor="middle" font-size="12" fill="#d92d20">失敗＋缺陷（保留前次紀錄）</text>
+<rect x="1204" y="315.6" width="34" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="1221" y="329.6" text-anchor="middle" font-size="12" fill="#067647">通過</text>
+<rect x="1354" y="129" width="34" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="1371" y="143" text-anchor="middle" font-size="12" fill="#067647">通過</text>
+<rect x="1033" y="32" width="106" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="1086" y="46" text-anchor="middle" font-size="12" fill="#d92d20">退回（原因必填）</text>
+</svg></div></div><div class="legend-row">
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#1d2939"/></svg>起點</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/></svg>畫面（S01–S12）</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#fff" stroke="#475467"/></svg>使用者操作</span>
+<span><svg width="54" height="22"><polygon points="27,1 53,11 27,21 1,11" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/></svg>判斷</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/></svg>系統自動處理</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#e8f0fe" stroke="#1d4ed8" stroke-width="1.5"/></svg>需求狀態</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#067647" stroke-width="2"/></svg>通過</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#d92d20" stroke-width="2"/></svg>退回／失敗</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#475467" stroke-width="2" stroke-dasharray="5 4"/></svg>自動／附帶</span>
+</div></section>
+<section class="sheet" id="states"><div class="sheet-head"><span class="id">PRD 7.2</span><h2>需求狀態機</h2><span class="meta">只允許表列轉換，其他跳階一律由後端拒絕並記錄</span></div><div class="flow-body"><p>主流程：草稿 → 待評估 → 待排程 → 開發中 → 待測試 → 待業務驗收 → 已結案。紅線為退回路徑，全部需要填寫原因。</p><div class="flow-scroll"><svg class="flow" viewBox="0 0 1206 346" style="max-width:1206px" role="img" aria-label="需求狀態機" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475467"/></marker>
+<marker id="ah-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d92d20"/></marker>
+<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#067647"/></marker>
+</defs>
+<polyline points="141,180 199,180" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="311,180 369,180" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="481,180 539,180" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="651,180 709,180" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="821,180 874,180" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="996,180 1049,180" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="217.6,160 217.6,100" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="292.4,100 292.4,160" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="238,200 238,260" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="289,200 289,225 340,225 340,280 374,280" fill="none" stroke="#475467" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<polyline points="425,200 425,260" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="561,200 561,280 475.99999999999994,280" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="765,200 765,222 612,222 612,200" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="935,200 935,248 629,248 629,200" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="1105,160 1105,125 302.6,125 302.6,160" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<rect x="199" y="61" width="112" height="38" rx="19" fill="#FEF0C7" stroke="#B54708" stroke-width="1.5"/><text x="255" y="85" text-anchor="middle" font-size="13" font-weight="700" fill="#B54708">待補件</text>
+<rect x="29" y="161" width="112" height="38" rx="19" fill="#F2F4F7" stroke="#475467" stroke-width="1.5"/><text x="85" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#475467">草稿</text>
+<rect x="199" y="161" width="112" height="38" rx="19" fill="#E8F0FE" stroke="#1D4ED8" stroke-width="1.5"/><text x="255" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#1D4ED8">待評估</text>
+<rect x="369" y="161" width="112" height="38" rx="19" fill="#D1E9FF" stroke="#175CD3" stroke-width="1.5"/><text x="425" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#175CD3">待排程</text>
+<rect x="539" y="161" width="112" height="38" rx="19" fill="#F4EBFF" stroke="#6941C6" stroke-width="1.5"/><text x="595" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#6941C6">開發中</text>
+<rect x="709" y="161" width="112" height="38" rx="19" fill="#CFF9FE" stroke="#0E7090" stroke-width="1.5"/><text x="765" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#0E7090">待測試</text>
+<rect x="874" y="161" width="122" height="38" rx="19" fill="#FFE6D5" stroke="#C4320A" stroke-width="1.5"/><text x="935" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#C4320A">待業務驗收</text>
+<rect x="1049" y="161" width="112" height="38" rx="19" fill="#DCFAE6" stroke="#067647" stroke-width="1.5"/><text x="1105" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#067647">已結案</text>
+<rect x="199" y="261" width="112" height="38" rx="19" fill="#EAECF0" stroke="#475467" stroke-width="1.5"/><text x="255" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#475467">不採納</text>
+<rect x="369" y="261" width="112" height="38" rx="19" fill="#F2F4F7" stroke="#475467" stroke-width="1.5"/><text x="425" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#475467">已取消</text>
+<rect x="153" y="170" width="34" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="170" y="184" text-anchor="middle" font-size="12" fill="#475467">提交</text>
+<rect x="323" y="170" width="34" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="340" y="184" text-anchor="middle" font-size="12" fill="#067647">接受</text>
+<rect x="493" y="170" width="34" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="510" y="184" text-anchor="middle" font-size="12" fill="#475467">指派</text>
+<rect x="651" y="170" width="58" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="680" y="184" text-anchor="middle" font-size="12" fill="#475467">測試版本</text>
+<rect x="820" y="170" width="55" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="847.5" y="184" text-anchor="middle" font-size="12" fill="#067647">QA 通過</text>
+<rect x="995" y="170" width="55" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="1022.5" y="184" text-anchor="middle" font-size="12" fill="#067647">PM 結案</text>
+<rect x="188.6" y="135" width="58" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="217.6" y="149" text-anchor="middle" font-size="12" fill="#d92d20">要求補件</text>
+<rect x="263.4" y="135" width="58" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="292.4" y="149" text-anchor="middle" font-size="12" fill="#475467">補件重送</text>
+<rect x="215" y="220" width="46" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="238" y="234" text-anchor="middle" font-size="12" fill="#475467">不採納</text>
+<rect x="305" y="242.5" width="70" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="340" y="256.5" text-anchor="middle" font-size="12" fill="#475467">撤回／重複</text>
+<rect x="397.5" y="220" width="55" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="425" y="234" text-anchor="middle" font-size="12" fill="#475467">PM 取消</text>
+<rect x="491" y="270" width="55" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="518.5" y="284" text-anchor="middle" font-size="12" fill="#475467">PM 取消</text>
+<rect x="659.5" y="212" width="58" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="688.5" y="226" text-anchor="middle" font-size="12" fill="#d92d20">測試失敗</text>
+<rect x="814.2" y="238" width="58" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="843.2" y="252" text-anchor="middle" font-size="12" fill="#d92d20">驗收退回</text>
+<rect x="678.9200000000001" y="115" width="130" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="743.9200000000001" y="129" text-anchor="middle" font-size="12" fill="#d92d20">重新開啟（原因必填）</text>
+</svg></div></div><div class="legend-row">
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#1d2939"/></svg>起點</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/></svg>畫面（S01–S12）</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#fff" stroke="#475467"/></svg>使用者操作</span>
+<span><svg width="54" height="22"><polygon points="27,1 53,11 27,21 1,11" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/></svg>判斷</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/></svg>系統自動處理</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#e8f0fe" stroke="#1d4ed8" stroke-width="1.5"/></svg>需求狀態</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#067647" stroke-width="2"/></svg>通過</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#d92d20" stroke-width="2"/></svg>退回／失敗</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#475467" stroke-width="2" stroke-dasharray="5 4"/></svg>自動／附帶</span>
+</div></section>
+<section class="sheet" id="uf02"><div class="sheet-head"><span class="id">UF-02</span><h2>各角色操作流程</h2><span class="meta">以畫面與判斷點描述每個角色完成主要任務的步驟</span></div><div class="flow-body">
+      <h3>業務：提交需求（S06）</h3><p>缺必填欄位不建立需求，就地標示並保留內容（AC-02A）；網路重試只建立一筆（AC-02B）。</p><div class="flow-scroll"><svg class="flow" viewBox="0 0 1276 322" style="max-width:1276px" role="img" aria-label="業務：提交需求" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475467"/></marker>
+<marker id="ah-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d92d20"/></marker>
+<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#067647"/></marker>
+</defs>
+<polyline points="142,76 198,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="342,76 378,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="522,76 558,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="702,76 738,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="882,76 922.625,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="1057.375,76 1108.5,76" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="990,108 990,140" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="918,168 270,168 270,102" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="450,234 450,102" fill="none" stroke="#475467" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<polyline points="1170,140 1170,94" fill="none" stroke="#475467" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="38" y="58" width="104" height="36" rx="18" fill="#1d2939"/><text x="90" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">＋提交需求</text>
+<rect x="198" y="50" width="144" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="270" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">① 基本資訊</text>
+<rect x="378" y="50" width="144" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="450" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">② 需求描述</text>
+<rect x="558" y="50" width="144" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="630" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">③ 影響與客戶</text>
+<rect x="738" y="50" width="144" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="810" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">④ 確認提交</text>
+<polygon points="990,44 1057.375,76 990,108 922.625,76" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="990" y="81" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">檢核通過？</text>
+<rect x="1108.5" y="58" width="122.99999999999999" height="36" rx="18" fill="#067647"/><text x="1170" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">取得 REQ 編號</text>
+<rect x="918" y="140" width="144" height="56" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="990" y="165" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">就地標示錯誤</text><text x="990" y="181" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">跳到該段・內容保留</text>
+<rect x="365.5" y="234" width="169" height="52" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="450" y="265" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">每 1.5 秒自動儲存草稿</text>
+<rect x="1087" y="140" width="165.99999999999997" height="56" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="1170" y="165" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">重試只建立一筆</text><text x="1170" y="181" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">（Idempotency-Key）</text>
+<rect x="1071.9375" y="66" width="22" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="1082.9375" y="80" text-anchor="middle" font-size="12" fill="#067647">是</text>
+<rect x="979" y="114" width="22" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="990" y="128" text-anchor="middle" font-size="12" fill="#d92d20">否</text>
+<rect x="559" y="158" width="70" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="594" y="172" text-anchor="middle" font-size="12" fill="#d92d20">修正後再送</text>
+</svg></div>
+      <h3>PM：評估與指派（S07 → S08）</h3><p>補件、不採納必填原因（AC-03A）；四項齊全才能開始開發（AC-03C）。</p><div class="flow-scroll"><svg class="flow" viewBox="0 0 1564 322" style="max-width:1564px" role="img" aria-label="PM：評估與指派" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475467"/></marker>
+<marker id="ah-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d92d20"/></marker>
+<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#067647"/></marker>
+</defs>
+<polyline points="148.25,76 190,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="326,76 362.625,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="497.375,76 536,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="668,76 706,76" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="842,76 890,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="1002,76 1050,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="1186,76 1222.625,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="1357.375,76 1406,76" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="430,108 430,142" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="430,194 430,241" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="602,108 602,234" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="1290,108 1290,140" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="1222,168 1118,168 1118,104" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<rect x="23.75" y="58" width="124.5" height="36" rx="18" fill="#1d2939"/><text x="86" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">工作台：待評估</text>
+<rect x="190" y="50" width="136" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="258" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S07 需求詳細</text>
+<polygon points="430,44 497.375,76 430,108 362.625,76" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="430" y="81" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">資訊足夠？</text>
+<polygon points="602,44 668,76 602,108 536,76" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="602" y="81" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">值得做？</text>
+<rect x="706" y="48" width="136" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="774" y="73" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S08-A 計分</text><text x="774" y="89" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">優先級・說明</text>
+<rect x="890" y="57" width="112" height="38" rx="19" fill="#D1E9FF" stroke="#175CD3" stroke-width="1.5"/><text x="946" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#175CD3">待排程</text>
+<rect x="1050" y="48" width="136" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="1118" y="73" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S08-B 負責人</text><text x="1118" y="89" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">承諾日・AC</text>
+<polygon points="1290,44 1357.375,76 1290,108 1222.625,76" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="1290" y="81" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">四項齊全？</text>
+<rect x="1406" y="57" width="112" height="38" rx="19" fill="#F4EBFF" stroke="#6941C6" stroke-width="1.5"/><text x="1462" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#6941C6">開發中</text>
+<rect x="351.5" y="142" width="157" height="52" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="430" y="173" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">要求補件（原因必填）</text>
+<rect x="530.25" y="234" width="143.5" height="52" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="602" y="265" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">不採納（理由必填）</text>
+<rect x="1222" y="140" width="136" height="56" rx="4" fill="#fff" stroke="#d0d5dd" stroke-dasharray="3 3"/><text x="1290" y="165" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">按鈕停用</text><text x="1290" y="181" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">列出「尚缺」</text>
+<rect x="374" y="241" width="112" height="38" rx="19" fill="#FEF0C7" stroke="#B54708" stroke-width="1.5"/><text x="430" y="265" text-anchor="middle" font-size="13" font-weight="700" fill="#B54708">待補件</text>
+<rect x="505.6875" y="66" width="22" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="516.6875" y="80" text-anchor="middle" font-size="12" fill="#475467">是</text>
+<rect x="676" y="66" width="22" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="687" y="80" text-anchor="middle" font-size="12" fill="#067647">是</text>
+<rect x="1370.6875" y="66" width="22" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="1381.6875" y="80" text-anchor="middle" font-size="12" fill="#067647">是</text>
+<rect x="419" y="115" width="22" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="430" y="129" text-anchor="middle" font-size="12" fill="#d92d20">否</text>
+<rect x="591" y="161" width="22" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="602" y="175" text-anchor="middle" font-size="12" fill="#d92d20">否</text>
+<rect x="1279" y="114" width="22" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="1290" y="128" text-anchor="middle" font-size="12" fill="#d92d20">否</text>
+</svg></div>
+      <h3>工程與 QA：開發與測試（S07 → S09-A）</h3><p>測試失敗必須關聯缺陷，退回開發且前次紀錄保留（AC-05A）。</p><div class="flow-scroll"><svg class="flow" viewBox="0 0 1036 322" style="max-width:1036px" role="img" aria-label="工程與 QA：開發與測試" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475467"/></marker>
+<marker id="ah-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d92d20"/></marker>
+<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#067647"/></marker>
+</defs>
+<polyline points="147.25,76 183.25,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="326.75,76 369,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="481,76 528,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="662,76 697.625,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="832.375,76 874,76" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="765,108 765,140" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="698,168 255,168 255,104" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="662,260 765,260 765,196" fill="none" stroke="#475467" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="22.75" y="58" width="124.5" height="36" rx="18" fill="#1d2939"/><text x="85" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">工作台：開發中</text>
+<rect x="183.25" y="48" width="143.5" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="255" y="73" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">工程：提交測試版本</text><text x="255" y="89" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">版本號＋自測確認</text>
+<rect x="369" y="57" width="112" height="38" rx="19" fill="#CFF9FE" stroke="#0E7090" stroke-width="1.5"/><text x="425" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#0E7090">待測試</text>
+<rect x="528" y="48" width="134" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="595" y="73" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">QA：S09-A</text><text x="595" y="89" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">逐案記錄結果</text>
+<polygon points="765,44 832.375,76 765,108 697.625,76" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="765" y="81" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">全部通過？</text>
+<rect x="874" y="57" width="122" height="38" rx="19" fill="#FFE6D5" stroke="#C4320A" stroke-width="1.5"/><text x="935" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#C4320A">待業務驗收</text>
+<rect x="698" y="140" width="134" height="56" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="765" y="165" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">關聯缺陷（必填）</text><text x="765" y="181" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">退回開發中</text>
+<rect x="528" y="234" width="134" height="52" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="595" y="265" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">前次測試紀錄保留</text>
+<rect x="842.1875" y="66" width="22" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="853.1875" y="80" text-anchor="middle" font-size="12" fill="#067647">是</text>
+<rect x="754" y="114" width="22" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="765" y="128" text-anchor="middle" font-size="12" fill="#d92d20">否</text>
+<rect x="429.5" y="158" width="94" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="476.5" y="172" text-anchor="middle" font-size="12" fill="#d92d20">修正後重新提交</text>
+</svg></div>
+      <h3>業務驗收與 PM 結案（S09-B → S09-C）</h3><p>只有指定驗收者可操作（AC-05B）；QA 通過＋UAT 通過＋交付證據三項齊全才可結案（AC-05C）。</p><div class="flow-scroll"><svg class="flow" viewBox="0 0 1096 322" style="max-width:1096px" role="img" aria-label="業務驗收與 PM 結案" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475467"/></marker>
+<marker id="ah-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d92d20"/></marker>
+<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#067647"/></marker>
+</defs>
+<polyline points="161.1,76 198,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="342,76 365,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="535,76 558,76" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="702,76 725,76" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="895,76 938,76" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="450,108 450,142" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="450,194 450,241" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="810,108 810,142" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="731.5,168 630,168 630,104" fill="none" stroke="#d92d20" stroke-width="1.6" marker-end="url(#ah-back)"/>
+<polyline points="990,94 990,140" fill="none" stroke="#475467" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="18.900000000000006" y="58" width="142.2" height="36" rx="18" fill="#1d2939"/><text x="90" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">通知：請執行 UAT</text>
+<rect x="198" y="48" width="144" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="270" y="73" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">業務：S09-B</text><text x="270" y="89" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">逐項確認 AC</text>
+<polygon points="450,44 535,76 450,108 365,76" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="450" y="81" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">符合實際任務？</text>
+<rect x="558" y="48" width="144" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="630" y="73" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">PM：S09-C</text><text x="630" y="89" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">結案前三項檢查</text>
+<polygon points="810,44 895,76 810,108 725,76" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="810" y="81" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">交付證據齊全？</text>
+<rect x="938" y="58" width="104" height="36" rx="18" fill="#067647"/><text x="990" y="81" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">已結案</text>
+<rect x="378" y="142" width="144" height="52" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="450" y="173" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">退回（原因必填）</text>
+<rect x="394" y="241" width="112" height="38" rx="19" fill="#F4EBFF" stroke="#6941C6" stroke-width="1.5"/><text x="450" y="265" text-anchor="middle" font-size="13" font-weight="700" fill="#6941C6">開發中</text>
+<rect x="731.5" y="142" width="157" height="52" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="810" y="173" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">填交付版本・上線日期</text>
+<rect x="918" y="140" width="144" height="56" rx="4" fill="#fff" stroke="#d0d5dd" stroke-dasharray="3 3"/><text x="990" y="165" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">可「重新開啟」</text><text x="990" y="181" text-anchor="middle" font-size="13" font-weight="400" fill="#667085">保留原結案紀錄</text>
+<rect x="529.5" y="66" width="34" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="546.5" y="80" text-anchor="middle" font-size="12" fill="#067647">通過</text>
+<rect x="905.5" y="66" width="22" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="916.5" y="80" text-anchor="middle" font-size="12" fill="#067647">是</text>
+<rect x="439" y="115" width="22" height="20" rx="4" fill="#fff" stroke="#d92d20"/><text x="450" y="129" text-anchor="middle" font-size="12" fill="#d92d20">否</text>
+<rect x="799" y="115" width="22" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="810" y="129" text-anchor="middle" font-size="12" fill="#475467">否</text>
+</svg></div>
+      <h3>Admin：人員異動（S11）</h3><p>停用當日生效，既有登入立即失效；HR 在職名單同步可自動停用離職帳號（PRD 6.3）。</p><div class="flow-scroll"><svg class="flow" viewBox="0 0 1241 226" style="max-width:1241px" role="img" aria-label="Admin：人員異動" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475467"/></marker>
+<marker id="ah-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d92d20"/></marker>
+<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#067647"/></marker>
+</defs>
+<polyline points="143,75 193,75" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="332,75 368,75" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="507,75 545.125,75" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="679.875,75 718,75" fill="none" stroke="#067647" stroke-width="1.6" marker-end="url(#ah-ok)"/>
+<polyline points="612.5,43 612.5,21 262.5,21 262.5,49" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="857,75 893,75" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="1032,75 1070.3,75" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="157,165 787.5,165 787.5,101" fill="none" stroke="#475467" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="32" y="57" width="111" height="36" rx="18" fill="#1d2939"/><text x="87.5" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">收到離職核准</text>
+<rect x="193" y="49" width="139" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="262.5" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">S11 帳號列表</text>
+<rect x="368" y="49" width="139" height="52" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="437.5" y="80" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">按「停用」</text>
+<polygon points="612.5,43 679.875,75 612.5,107 545.125,75" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/><text x="612.5" y="80" text-anchor="middle" font-size="13" font-weight="500" fill="#93370d">二次確認？</text>
+<rect x="718" y="49" width="139" height="52" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="787.5" y="80" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">帳號停用</text>
+<rect x="893" y="47" width="139" height="56" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="962.5" y="72" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">既有登入立即失效</text><text x="962.5" y="88" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">寫入稽核紀錄</text>
+<rect x="1070.3" y="57" width="134.4" height="36" rx="18" fill="#067647"/><text x="1137.5" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">PM 轉派未結需求</text>
+<rect x="18" y="137" width="139" height="56" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="87.5" y="162" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">HR 在職名單同步</text><text x="87.5" y="178" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">（離職自動停用）</text>
+<rect x="681.9375" y="65" width="34" height="20" rx="4" fill="#fff" stroke="#067647"/><text x="698.9375" y="79" text-anchor="middle" font-size="12" fill="#067647">確認</text>
+<rect x="420.5" y="11" width="34" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="437.5" y="25" text-anchor="middle" font-size="12" fill="#475467">取消</text>
+<rect x="449.25" y="155" width="46" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="472.25" y="169" text-anchor="middle" font-size="12" fill="#475467">自動化</text>
+</svg></div></div><div class="legend-row">
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#1d2939"/></svg>起點</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/></svg>畫面（S01–S12）</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#fff" stroke="#475467"/></svg>使用者操作</span>
+<span><svg width="54" height="22"><polygon points="27,1 53,11 27,21 1,11" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/></svg>判斷</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/></svg>系統自動處理</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#e8f0fe" stroke="#1d4ed8" stroke-width="1.5"/></svg>需求狀態</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#067647" stroke-width="2"/></svg>通過</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#d92d20" stroke-width="2"/></svg>退回／失敗</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#475467" stroke-width="2" stroke-dasharray="5 4"/></svg>自動／附帶</span>
+</div></section>
+<section class="sheet" id="auto"><div class="sheet-head"><span class="id">API</span><h2>自動化更新與 API 串接</h2><span class="meta">一位使用者的修改，其他人畫面不重新整理即可看到</span></div><div class="flow-body"><p>前端每 10 秒以 <code>GET /api/changes</code> 比對資料版本 rev，有變更才重新抓取；視窗取得焦點與同瀏覽器其他分頁寫入時立即更新。伺服器每分鐘執行時限提醒與外部 API 同步。</p><div class="flow-scroll"><svg class="flow" viewBox="0 0 1351 466" style="max-width:1351px" role="img" aria-label="自動化更新時序" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475467"/></marker>
+<marker id="ah-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d92d20"/></marker>
+<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#067647"/></marker>
+</defs>
+<rect x="0" y="30" width="1351" height="84" fill="#ffffff"/>
+<line x1="0" x2="1351" y1="30" y2="30" stroke="#eaecf0"/>
+<rect x="0" y="30" width="110" height="84" fill="#f2f4f7"/>
+<text x="55" y="77" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">業務 王小明</text>
+<rect x="0" y="114" width="1351" height="84" fill="#fafbfc"/>
+<line x1="0" x2="1351" y1="114" y2="114" stroke="#eaecf0"/>
+<rect x="0" y="114" width="110" height="84" fill="#f2f4f7"/>
+<text x="55" y="161" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">網頁（業務）</text>
+<rect x="0" y="198" width="1351" height="84" fill="#ffffff"/>
+<line x1="0" x2="1351" y1="198" y2="198" stroke="#eaecf0"/>
+<rect x="0" y="198" width="110" height="84" fill="#f2f4f7"/>
+<text x="55" y="245" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">REST API</text>
+<rect x="0" y="282" width="1351" height="84" fill="#fafbfc"/>
+<line x1="0" x2="1351" y1="282" y2="282" stroke="#eaecf0"/>
+<rect x="0" y="282" width="110" height="84" fill="#f2f4f7"/>
+<text x="55" y="329" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">網頁（PM）</text>
+<rect x="0" y="366" width="1351" height="84" fill="#ffffff"/>
+<line x1="0" x2="1351" y1="366" y2="366" stroke="#eaecf0"/>
+<rect x="0" y="366" width="110" height="84" fill="#f2f4f7"/>
+<text x="55" y="413" text-anchor="middle" font-size="14" font-weight="700" fill="#1d2939">PM 林雅婷</text>
+<line x1="110" x2="110" y1="30" y2="466" stroke="#d0d5dd"/>
+<polyline points="267,72 372.5,72 372.5,128" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="372.5,184 372.5,240 469.75,240" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="547.5,212 547.5,156 653,156" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="722.5,296 722.5,240 828,240" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="897.5,266 897.5,324 1003,324" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="1142,324 1247.5,324 1247.5,380" fill="none" stroke="#475467" stroke-width="1.6" marker-end="url(#ah)"/>
+<polyline points="1178,240 967,240" fill="none" stroke="#475467" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="128" y="46" width="139" height="52" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="197.5" y="77" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">按「提交需求」</text>
+<rect x="290" y="128" width="165" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="372.5" y="153" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">POST /api/requirements</text><text x="372.5" y="169" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">Idempotency-Key</text>
+<rect x="469.75" y="212" width="155.5" height="56" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="547.5" y="237" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">檢核・建立 REQ 編號</text><text x="547.5" y="253" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">資料版本 rev +1</text>
+<rect x="653" y="130" width="139" height="52" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="722.5" y="161" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">顯示 REQ 編號</text>
+<rect x="649.1" y="296" width="146.79999999999995" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="722.5" y="321" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">GET /api/changes</text><text x="722.5" y="337" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">（每 10 秒）</text>
+<rect x="828" y="214" width="139" height="52" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="897.5" y="245" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">回傳最新 rev</text>
+<rect x="1003" y="296" width="139" height="56" rx="6" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/><text x="1072.5" y="321" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">rev 不同 →</text><text x="1072.5" y="337" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">重新抓取畫面資料</text>
+<rect x="1178" y="380" width="139" height="56" rx="6" fill="#fff" stroke="#475467" stroke-width="1.3"/><text x="1247.5" y="405" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">工作台出現新需求</text><text x="1247.5" y="421" text-anchor="middle" font-size="13" font-weight="500" fill="#1d2939">通知鈴 +1</text>
+<rect x="1178" y="212" width="139" height="56" rx="6" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/><text x="1247.5" y="237" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">排程：時限提醒</text><text x="1247.5" y="253" text-anchor="middle" font-size="13" font-weight="500" fill="#475467">ERP／HR 同步</text>
+<rect x="556.75" y="146" width="87" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="600.25" y="160" text-anchor="middle" font-size="12" fill="#475467">201 Created</text>
+<rect x="1049.5" y="230" width="46" height="20" rx="4" fill="#fff" stroke="#eaecf0"/><text x="1072.5" y="244" text-anchor="middle" font-size="12" fill="#475467">每分鐘</text>
+</svg></div></div><div class="legend-row">
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#1d2939"/></svg>起點</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#eaf1fe" stroke="#2f6fed" stroke-width="1.5"/></svg>畫面（S01–S12）</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#fff" stroke="#475467"/></svg>使用者操作</span>
+<span><svg width="54" height="22"><polygon points="27,1 53,11 27,21 1,11" fill="#fffaeb" stroke="#dc6803" stroke-width="1.5"/></svg>判斷</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="5" fill="#f2f4f7" stroke="#98a2b3" stroke-dasharray="4 3"/></svg>系統自動處理</span>
+<span><svg width="54" height="22"><rect x="1" y="1" width="52" height="20" rx="10" fill="#e8f0fe" stroke="#1d4ed8" stroke-width="1.5"/></svg>需求狀態</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#067647" stroke-width="2"/></svg>通過</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#d92d20" stroke-width="2"/></svg>退回／失敗</span>
+<span><svg width="44" height="12"><line x1="0" y1="6" x2="40" y2="6" stroke="#475467" stroke-width="2" stroke-dasharray="5 4"/></svg>自動／附帶</span>
+</div></section>
+</main>
+</body>
+</html>

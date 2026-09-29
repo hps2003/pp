@@ -1,0 +1,13 @@
+{
+  "source": "HR 在職名單（示範資料）",
+  "employees": [
+    { "email": "wang@company.tw", "name": "王小明", "dept": "業務一部", "active": true },
+    { "email": "lin@company.tw", "name": "林雅婷", "dept": "產品部", "active": true },
+    { "email": "chang@company.tw", "name": "張家豪", "dept": "工程部", "active": true },
+    { "email": "chen@company.tw", "name": "陳志明", "dept": "品管部", "active": true },
+    { "email": "lee@company.tw", "name": "李淑芬", "dept": "業務一部", "active": true },
+    { "email": "chou@company.tw", "name": "周建宏", "dept": "業務二部", "active": true },
+    { "email": "huang@company.tw", "name": "黃美華", "dept": "產品部", "active": true },
+    { "email": "wu@company.tw", "name": "吳國華", "dept": "業務一部", "active": false }
+  ]
+}

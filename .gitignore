@@ -4,6 +4,6 @@ Thumbs.db
 
 # Local mobile-QA tooling (not part of the published site)
 node_modules/
-package.json
-package-lock.json
-scripts/
+/package.json
+/package-lock.json
+/scripts/

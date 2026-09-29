@@ -1,0 +1,39 @@
+name: ReqManager CI
+
+on:
+  pull_request:
+    paths: ["apps/reqmanager/**", "reqmanager/**", ".github/workflows/reqmanager-ci.yml"]
+  push:
+    branches: ["main"]
+    paths: ["apps/reqmanager/**", "reqmanager/**"]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/reqmanager
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/reqmanager/package-lock.json
+      - run: npm ci
+      - name: Typecheck + unit + API acceptance tests
+        run: npm run check
+      - name: Build site, single-file HTML and deliverables
+        run: npm run build:deliverables && npm run build && npm run build:single
+      - name: Committed build is up to date
+        working-directory: .
+        run: git diff --exit-code -- reqmanager apps/reqmanager/docs/deliverables apps/reqmanager/public/deliverables || (echo "::error::建置結果與原始碼不一致，請在 apps/reqmanager 執行 npm run build:all 後提交" && exit 1)
+      - run: npx playwright install --with-deps chromium
+      - name: End-to-end (Chromium)
+        run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-screenshots
+          path: apps/reqmanager/docs/screenshots

@@ -17,6 +17,9 @@ assets/             圖片、三折頁介紹頁、貓咪場景素材、hero 背�
   ├─ trifold-*.mount.js                              PPT 三折頁互動元件
   ├─ ppt/resume-slide.js + ppt/image*.png            履歷投影片
   └─ cat-*.webp、welcome-*.webp、tarot.webp 等        場景與插圖素材
+reqmanager/         作品：企業需求管理平台（建置後的靜態檔，GitHub Pages 路徑 /pp/reqmanager/）
+apps/reqmanager/    需求管理平台原始碼：React + TypeScript 前端、Node API 伺服器、測試與
+                    User Flow／Wireframe 拆解文件（詳見 apps/reqmanager/README.md）
 cyberbiz/           另一份作品：Cyberbiz 品牌頁的三種匯出版本（A 單塊內嵌圖 /
                     B 單塊外連圖 / C 拆分 HTML·CSS·JS），為獨立標準頁面
 .github/workflows/  GitHub Pages 自動部署 workflow
