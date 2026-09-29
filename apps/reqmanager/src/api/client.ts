@@ -7,6 +7,11 @@ import { handle, type ApiRequest, type Backend } from '../domain/api.ts'
 import { createSeed } from '../domain/seed.ts'
 import type { Database } from '../domain/types.ts'
 import type { FieldErrors } from '../domain/rules.ts'
+import erpMock from '../../public/mock/erp-customers.json'
+import hrMock from '../../public/mock/hr-employees.json'
+
+/** 內建示範資料：單檔 HTML（file://）無法 fetch 相對路徑時使用 */
+const BUNDLED_MOCKS: Record<string, unknown> = { './mock/erp-customers.json': erpMock, './mock/hr-employees.json': hrMock }
 
 export interface ApiConfig {
   mode: 'local' | 'http'
@@ -86,9 +91,14 @@ const localBackend: Backend = {
   },
   now: () => new Date(),
   async fetchJson(url) {
-    const res = await fetch(new URL(url, document.baseURI), { cache: 'no-store' })
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    return res.json()
+    try {
+      const res = await fetch(new URL(url, document.baseURI), { cache: 'no-store' })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      return await res.json()
+    } catch (e) {
+      if (url in BUNDLED_MOCKS) return structuredClone(BUNDLED_MOCKS[url])
+      throw e
+    }
   },
 }
 

@@ -7,6 +7,17 @@
 - User Flow／Wireframe 拆解：[`docs/USER-FLOW.md`](docs/USER-FLOW.md)，App 內「說明與回饋」頁也可逐一點進各畫面
 - 畫面截圖：[`docs/screenshots/`](docs/screenshots/)（由端對端測試自動產生）
 
+## 交付文件（`docs/deliverables/`，皆為單一 HTML 檔，可直接開啟、寄送或列印）
+
+| 檔案 | 內容 |
+|---|---|
+| `reqmanager-site.html` | 整個網站的單檔版本（JS／CSS 內嵌，離線可用，使用瀏覽器內建 API） |
+| `wireframes.html` | 網頁框線圖：S01–S12 全部 12 張畫面，附編號註解與對應驗收條件 |
+| `user-flows.html` | 使用者操作圖：UF-00 網站地圖與角色可見性、UF-01 生命週期泳道、狀態機、UF-02 五個角色操作流程、自動化更新時序 |
+
+框線圖與操作圖也發布在網站上（`/reqmanager/deliverables/`，「說明與回饋」頁有連結）。
+修改後執行 `npm run build:all` 重新產生網站、單檔 HTML 與交付文件；CI 會檢查三者與原始碼一致。
+
 ## 快速開始
 
 ```bash

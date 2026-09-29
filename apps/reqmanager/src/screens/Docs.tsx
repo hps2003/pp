@@ -62,6 +62,12 @@ export function Docs() {
           <h1>說明：User Flow 與 Wireframe</h1>
           <div className="sub">依 PRD v0.3 與 Wireframe（UF-00／UF-01／UF-02、S01–S12）拆解，每張畫面都可點進實作頁面操作。</div>
         </div>
+        <a className="btn btn-secondary" href="./deliverables/wireframes.html" target="_blank" rel="noreferrer">
+          網頁框線圖
+        </a>
+        <a className="btn btn-secondary" href="./deliverables/user-flows.html" target="_blank" rel="noreferrer">
+          使用者操作圖
+        </a>
         <a className="btn btn-secondary" href="mailto:it-helpdesk@company.tw?subject=需求管理平台回饋">
           回饋問題
         </a>
