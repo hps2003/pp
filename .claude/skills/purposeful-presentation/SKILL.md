@@ -1,6 +1,6 @@
 ---
 name: purposeful-presentation
-description: 以「目的」為導向規劃與撰寫簡報（PPT / 投影片 / 提案 / 作品集簡報）。在構思大綱、撰寫或審查任何簡報前使用：先釐清目的、受眾與決策者，再套用字級、配色、一頁一重點、結論式標題、20 字以內、轉折頁、淡入淡出、破題首頁等規則，並以主次分明的產品／使用者需求／創新性／獨特性結構與可量化數據（圓餅圖、長條圖、折線圖、框線分區、表格）呈現。可與 ppt-master、guizang-ppt-skill 等產出工具搭配：本 skill 決定「說什麼、怎麼排」，產出工具負責「做出來」。
+description: 以「目的」為導向規劃、撰寫並產出簡報（PPT / 投影片 / 提案 / 作品集簡報）。在構思大綱、撰寫或審查任何簡報前使用：先釐清目的、受眾與決策者，再套用字級、配色、一頁一重點、結論式標題、20 字以內、轉折頁、淡入淡出、破題首頁等規則，並以主次分明的產品／使用者需求／創新性／獨特性結構與可量化數據（圓餅圖、長條圖、折線圖、框線分區、表格）呈現。可與 ppt-master、guizang-ppt-skill 等產出工具搭配：本 skill 決定「說什麼、怎麼排」，並內建 16 種頁面版型與 6 種風格主題的 PPTX 產生器（scripts/deck.py），可直接做出可編輯的簡報。
 ---
 
 # 目的導向簡報（Purposeful Presentation）
@@ -66,6 +66,41 @@ description: 以「目的」為導向規劃與撰寫簡報（PPT / 投影片 / �
 | 配色 | 避免淺色塊配白字、深色塊配黑字、相近飽和度相鄰。文字對比 ≥ 4.5:1（≥ 24 pt 粗體可 3:1）。 |
 | 色盲友善 | 需要區分的顏色要「明度」不同，不只色相不同；避免紅綠配對，優先藍／橘；圖表一律直接標數值或標籤，不只靠圖例顏色。 |
 | 測試 | 提醒使用者：正式簡報前到會議室投影，從最遠、最偏的座位看一次再調整。 |
+
+## 階段 5：做出來（內建產出工具）
+
+本 skill 自帶一套從參考簡報拆解出的**風格主題＋頁面版型**，可直接產出可編輯的 PPTX（原生文字框、形狀、可改數據的圖表）。拆解分析見 [`references/visual-patterns.md`](references/visual-patterns.md)。
+
+1. **每頁先選「頁面任務」，再選版型**（`type`）：
+
+   | 頁面任務 | 版型 |
+   |---|---|
+   | 破題 / 結尾請求 | `cover` / `closing` |
+   | 預告結構 / 轉折 | `agenda` / `section` |
+   | 使用者需求、痛點 | `problem`（`columns` 或 `stack`） |
+   | 產品、方案、能力並列 | `cards`（可加 `effects` 虛線效果框） |
+   | 方法、步驟 | `process` |
+   | 創新性（改變了什麼） | `before_after` |
+   | 獨特性 | `venn`（交集）、`table`（比較表） |
+   | 成果數字 | `kpi`（`tile` 或 `ring`） |
+   | 比較／成長 · 趨勢 · 占比 | `bar` · `line` · `pie` |
+   | 利害關係人、價值 | `hub` |
+   | 時程、下一步 | `roadmap` |
+
+2. **選一個主題**（`theme`）：`deep_blue`、`friendly`、`infographic_navy`、`eco_green`、`fintech_teal`、`humanizer`。內部溝通選最簡潔的即可；外部展示再挑最貼近品牌的。
+
+3. **寫 JSON 規格**（範例：[`examples/showcase.json`](examples/showcase.json)，涵蓋全部 16 種版型）。標題用 `**…**` 標出結論詞，會自動上主題色；圖表頁一定填 `source`。
+
+4. **產出與檢查**：
+
+   ```bash
+   python3 .claude/skills/purposeful-presentation/scripts/deck.py spec.json out.pptx
+   python3 .claude/skills/purposeful-presentation/scripts/deck.py --list   # 列出主題與版型欄位
+   ```
+
+   程式會強制字級下限（16／20／30／44 pt）、只用淡入轉場、圖表只亮一個重點，並輸出 `[LINT]`：對比不足、內文過長、標題超過 28 字、圓餅超過 5 塊、折線超過 4 條、表格超過 5×6、圖表缺來源。**每條 LINT 都要處理或向使用者說明。**
+
+5. **目視檢查**：`soffice --headless --convert-to pdf out.pptx` 後轉圖檢查文字是否溢出。預覽範例見 `examples/previews/`。
 
 ## 搭配其他工具
 
