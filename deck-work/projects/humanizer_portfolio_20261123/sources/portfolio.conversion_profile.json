@@ -1,0 +1,28 @@
+{
+  "schema": "ppt-master.source_to_md.profile.v1",
+  "converter": "doc_to_md.py",
+  "conversion_type": "html",
+  "source": {
+    "path": "portfolio.html",
+    "name": "portfolio.html",
+    "suffix": ".html",
+    "kind": "file",
+    "exists": true,
+    "size_bytes": 128743
+  },
+  "outputs": {
+    "markdown": "portfolio.md",
+    "asset_dir": "",
+    "image_manifest": "",
+    "image_count": 0
+  },
+  "markdown": {
+    "line_count": 338,
+    "char_count": 4530,
+    "heading_count": 11,
+    "table_count": 0,
+    "image_ref_count": 9,
+    "link_count": 10
+  },
+  "warnings": []
+}
