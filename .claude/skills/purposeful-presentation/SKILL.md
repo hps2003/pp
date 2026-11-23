@@ -1,6 +1,6 @@
 ---
 name: purposeful-presentation
-description: 以「目的」為導向規劃、撰寫並產出簡報（PPT / 投影片 / 提案 / 作品集簡報）。在構思大綱、撰寫或審查任何簡報前使用：先釐清目的、受眾與決策者，再套用字級、配色、一頁一重點、結論式標題、20 字以內、轉折頁、淡入淡出、破題首頁等規則，並以主次分明的產品／使用者需求／創新性／獨特性結構與可量化數據（圓餅圖、長條圖、折線圖、框線分區、表格）呈現。可與 ppt-master、guizang-ppt-skill 等產出工具搭配：本 skill 決定「說什麼、怎麼排」，並內建 16 種頁面版型與 6 種風格主題的 PPTX 產生器（scripts/deck.py），可直接做出可編輯的簡報。
+description: 以「目的」為導向規劃、撰寫並產出簡報（PPT / 投影片 / 提案 / 作品集簡報）。在構思大綱、撰寫或審查任何簡報前使用：先釐清目的、受眾與決策者，再套用字級、配色、一頁一重點、結論式標題、20 字以內、轉折頁、淡入淡出、破題首頁等規則，並以主次分明的產品／使用者需求／創新性／獨特性結構與可量化數據（圓餅圖、長條圖、折線圖、框線分區、表格）呈現。本 skill 決定「說什麼、怎麼排」，並內建 16 種頁面版型與 6 種風格主題的 PPTX 產生器（scripts/deck.py），可直接做出可編輯的簡報。
 ---
 
 # 目的導向簡報（Purposeful Presentation）
@@ -93,20 +93,22 @@ description: 以「目的」為導向規劃、撰寫並產出簡報（PPT / 投�
 
 4. **產出與檢查**：
 
+   `<SKILL_DIR>` 是這個 skill 資料夾的絕對路徑（SKILL.md 所在處）。需要 `python-pptx`，沒有就先 `pip install python-pptx`。
+
    ```bash
-   python3 .claude/skills/purposeful-presentation/scripts/deck.py spec.json out.pptx
-   python3 .claude/skills/purposeful-presentation/scripts/deck.py --list   # 列出主題與版型欄位
+   python3 <SKILL_DIR>/scripts/deck.py spec.json out.pptx
+   python3 <SKILL_DIR>/scripts/deck.py --list   # 列出主題與版型欄位
    ```
+
+   產出的 `.pptx` 存到使用者可下載的輸出位置（例如 `/mnt/user-data/outputs/`），並附上連結。
 
    程式會強制字級下限（16／20／30／44 pt）、只用淡入轉場、圖表只亮一個重點，並輸出 `[LINT]`：對比不足、內文過長、標題超過 28 字、圓餅超過 5 塊、折線超過 4 條、表格超過 5×6、圖表缺來源。**每條 LINT 都要處理或向使用者說明。**
 
 5. **目視檢查**：`soffice --headless --convert-to pdf out.pptx` 後轉圖檢查文字是否溢出。預覽範例見 `examples/previews/`。
 
-## 搭配其他工具
+## 搭配其他簡報工具
 
-- **ppt-master**：把階段 1 的 brief 填入 Stage 1（受眾、目的、核心訊息、使用情境），階段 2 的大綱作為頁面清單，階段 4 的字級作為 body_size／標題字級下限。圖表頁照 ppt-master 的 verify-charts 流程校正。
-- **guizang-ppt-skill** 或其他網頁簡報：同樣規則，pt 換算為 px（16 pt ≈ 21 px @ 1920 寬）。
-- **Humanizer 設計系統**：配色與圖表色序見設計系統的「Presentations」章節。
+內建產生器是預設做法。若環境中另有簡報工具（例如 ppt-master、guizang-ppt-skill、pptx skill）且使用者指定使用，本 skill 仍負責階段 1–4：把 brief 與大綱交給該工具，字級下限照階段 4。網頁簡報把 pt 換算為 px（16 pt ≈ 21 px @ 1920 寬）。
 
 ## 交付前
 
